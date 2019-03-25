@@ -1,0 +1,36 @@
+[ 2017-08-06T11:13:59+08:00 ] 106.47.237.198 /index.php/Wft/jsapi
+ERR: {"Code":0,"Description":"请求数据成功!","Data":{"PayData":{"token_id":"25cb7ab909e88ccc10a3007ff7ff807fa","appId":"wxe00fda5293a2fa25","paySign":"54ECCE91A52376DE8439BB2F2DE5B1F6","package":"prepay_id=wx201708061113598af9f035200039106418","out_trade_no":"1320170806111358445889095","signType":"MD5","timeStamp":"1501989239253","nonceStr":"1501989239253"}}}
+
+[ 2017-08-06T11:18:55+08:00 ] 43.249.138.92 /index.php/Wft/jsapi
+ERR: {"Code":0,"Description":"请求数据成功!","Data":{"PayData":{"token_id":"17b355fde5bbe57573d5270c57caf9aed","appId":"wxe00fda5293a2fa25","paySign":"9A22E40E61D7E35B60385944E4459FDD","package":"prepay_id=wx20170806111855b3d152a73a0904306398","out_trade_no":"1320170806111855594769204","signType":"MD5","timeStamp":"1501989535651","nonceStr":"1501989535651"}}}
+
+[ 2017-08-06T15:07:23+08:00 ] 106.47.251.75 /index.php/Wft/jsapi
+ERR: {"Code":0,"Description":"请求数据成功!","Data":{"PayData":{"token_id":"232727e9bdd126d240414c3336696f44d","appId":"wxe00fda5293a2fa25","paySign":"983A5DC679294EB9F4F7383A5CE31D5E","package":"prepay_id=wx2017080615072393d9b7cd640260310629","out_trade_no":"1320170806150722531949489","signType":"MD5","timeStamp":"1502003243295","nonceStr":"1502003243295"}}}
+
+[ 2017-08-06T16:52:44+08:00 ] 223.104.227.201 /index.php/Wft/jsapi
+ERR: {"Code":0,"Description":"请求数据成功!","Data":{"PayData":{"token_id":"283f3a4ee648deaf1bbdb370504203af1","appId":"wxe00fda5293a2fa25","paySign":"6AAE908E61B70EA86404232898E6B278","package":"prepay_id=wx201708061652448298dd97c50429992245","out_trade_no":"1320170806165243049044507","signType":"MD5","timeStamp":"1502009564772","nonceStr":"1502009564772"}}}
+
+[ 2017-08-06T17:34:23+08:00 ] 123.151.42.71 /index.php/Wft/jsapi
+ERR: {"Code":0,"Description":"请求数据成功!","Data":{"PayData":{"token_id":"122bdb651382e23c36d34eb88a1a1b6b7","appId":"wxe00fda5293a2fa25","paySign":"A077F4C8556B575DAD518F6E6F203A03","package":"prepay_id=wx201708061734231da9320e4b0418465950","out_trade_no":"1320170806173422451395288","signType":"MD5","timeStamp":"1502012063093","nonceStr":"1502012063093"}}}
+
+[ 2017-08-06T18:29:41+08:00 ] 123.151.138.58 /index.php/Wft/jsapi
+ERR: {"Code":0,"Description":"请求数据成功!","Data":{"PayData":{"token_id":"24960e565eb1509b02a5831773fc4fb80","appId":"wxe00fda5293a2fa25","paySign":"923FF120A17574E805FE2D1F51C46D90","package":"prepay_id=wx2017080618294194713f16930159455255","out_trade_no":"1320170806182940161105855","signType":"MD5","timeStamp":"1502015381145","nonceStr":"1502015381145"}}}
+
+[ 2017-08-06T19:49:00+08:00 ] 106.38.130.32 /index.php/Wft/jsapi
+ERR: {"Code":0,"Description":"请求数据成功!","Data":{"PayData":{"token_id":"2679f98efe9eb09507e32d0fa85186813","appId":"wxe00fda5293a2fa25","paySign":"E3A8B9810789208632A9B6A76AF73AE0","package":"prepay_id=wx2017080619490087007a50600761358015","out_trade_no":"1320170806194900864714352","signType":"MD5","timeStamp":"1502020140673","nonceStr":"1502020140673"}}}
+
+[ 2017-08-06T19:51:43+08:00 ] 61.49.57.60 /index.php/Wft/jsapi
+ERR: {"Code":0,"Description":"请求数据成功!","Data":{"PayData":{"token_id":"1447b4a40ca46de6a90f1ce1b565bed9d","appId":"wxe00fda5293a2fa25","paySign":"7D2514519468BD62D57A53445CE5EE53","package":"prepay_id=wx20170806195143369c9d04c20600677123","out_trade_no":"1320170806195142792789501","signType":"MD5","timeStamp":"1502020303216","nonceStr":"1502020303216"}}}
+
+[ 2017-08-06T20:13:07+08:00 ] 123.151.138.76 /index.php/Wft/jsapi
+ERR: {"Code":0,"Description":"请求数据成功!","Data":{"PayData":{"token_id":"19c06ad7d4bf93eea95a86944ee61a4f5","appId":"wxe00fda5293a2fa25","paySign":"199299DCB8013617A558F5E9BA0719FC","package":"prepay_id=wx201708062013074521fcb3070900720674","out_trade_no":"1320170806201307039490566","signType":"MD5","timeStamp":"1502021587462","nonceStr":"1502021587462"}}}
+
+[ 2017-08-06T21:29:48+08:00 ] 117.136.54.96 /index.php/Wft/jsapi
+ERR: {"Code":0,"Description":"请求数据成功!","Data":{"PayData":{"token_id":"29b1ad93c3e7563488693e5331a228476","appId":"wxe00fda5293a2fa25","paySign":"648CD1C2B459D6A8924A2D4D65404B06","package":"prepay_id=wx20170806212948b96f40d38d0812940851","out_trade_no":"1320170806212947643756375","signType":"MD5","timeStamp":"1502026188190","nonceStr":"1502026188190"}}}
+
+[ 2017-08-06T23:25:37+08:00 ] 101.226.33.224 /index.php/orderstatistics/order_statistics
+ERR: 无法加载控制器:Orderstatistics
+
+[ 2017-08-06T23:28:38+08:00 ] 101.226.99.196 /index.php/downloadorderstatistics/downloadorderstatistics
+ERR: 无法加载控制器:Downloadorderstatistics
+

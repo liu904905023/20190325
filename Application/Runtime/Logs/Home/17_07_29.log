@@ -1,0 +1,30 @@
+[ 2017-07-29T15:52:42+08:00 ] 223.104.227.246 /index.php/Wft/jsapi
+ERR: {"Code":0,"Description":"请求数据成功!","Data":{"PayData":{"token_id":"2536fc71d2979c276e7a5afc4bec5d2a5","appId":"wxe00fda5293a2fa25","paySign":"EEFA182334F2F063F269A7129AAF38A8","package":"prepay_id=wx20170729155242fc62e8bb760926239762","out_trade_no":"1320170729155242169849827","signType":"MD5","timeStamp":"1501314762778","nonceStr":"1501314762778"}}}
+
+[ 2017-07-29T23:57:32+08:00 ] 101.228.142.98 /contactus.html
+ERR: 无法加载控制器:Contactus
+
+[ 2017-07-29T23:57:32+08:00 ] 101.228.142.98 /about/contact
+ERR: 无法加载控制器:About
+
+[ 2017-07-29T23:57:32+08:00 ] 101.228.142.98 /about/contact.html
+ERR: 无法加载控制器:About
+
+[ 2017-07-29T23:57:32+08:00 ] 101.228.142.98 /about
+ERR: 无法加载控制器:About
+
+[ 2017-07-29T23:57:32+08:00 ] 101.228.142.98 /about/contactus.html
+ERR: 无法加载控制器:About
+
+[ 2017-07-29T23:57:33+08:00 ] 101.228.142.98 /contactus
+ERR: 无法加载控制器:Contactus
+
+[ 2017-07-29T23:57:33+08:00 ] 101.228.142.98 /contact.html
+ERR: 无法加载控制器:Contact
+
+[ 2017-07-29T23:57:34+08:00 ] 101.228.142.98 /contact
+ERR: 无法加载控制器:Contact
+
+[ 2017-07-29T23:57:35+08:00 ] 101.228.142.98 /about/contactus
+ERR: 无法加载控制器:About
+

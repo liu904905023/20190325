@@ -1,0 +1,6 @@
+[ 2018-05-18T09:55:12+08:00 ] 123.151.77.48 /index.php/PartnerPay/pay?id=XvFi7qEWqckZ2Th0wVvV4g%3d%3d&datetime=ZvqnJplA0H2ZASPs3yzhCQ%3D%3D&amount=8HoUpFUQ4gqHj78t5HWLbA%3D%3D&out_trade_no=2f103oDJyWLSXaObA5tFAVWKnA4cVi%2FZe9pUuyvMDfI%3D&callback=http://pc.yunlaohu.cn
+ERR: 非法操作:pay
+
+[ 2018-05-18T09:56:03+08:00 ] 123.151.77.48 /index.php/Wft/weixin_direct?id=XvFi7qEWqckZ2Th0wVvV4g%3d%3d&datetime=18k%2bjtlHBLRCDn2epNbkyg%3d%3d&amount=8HoUpFUQ4gqHj78t5HWLbA%3D%3D&out_trade_no=X2fxqE%2bxAfhuoiG6A1jGga55D9ebF5KcdNJhrc8vmss%3d&callback=http://pc.yunlaohu.cn&code=011VhTJj2hUukF0JOcKj2tw2Kj2VhTJR&state=STATE
+ERR: 模板不存在:./Application/Home/View/Wft/weixin_direct.html
+

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
+    <title>支付成功</title>
+    <link rel="stylesheet" href="css/v3/default.css">
+    <link rel="stylesheet" href="css/v3/spay_scan.css?v=2.0">
+</head>
+<body>
+
+    <div class="layout-flex">
+        <!-- content start -->
+		<div class="content" id="box">
+		
+			<div class="bg_wt">
+				<p class="pay_stop"><span class="ico_success"></span></p>
+				<p class="pay_suc1">支付成功</p>
+				<p class="pay_suc2 none"><i>¥</i><span id="money"></span></p>
+				<p class="pay_suc3 none">订单后四位 <span id="order"></span></p>
+				<p class="btn_p"><button id="finish" class="btn btn_wt border b_all none">完成</button></p>
+			</div>
+
+			<div class="adv none">
+				<a><img id="adimg"></a>
+			</div>
+			
+		</div>
+        <!-- content end -->
+        
+        <div class="btn_row2 none">
+            <button class="btn btn_blue" id="retry">同步此订单</button>
+        </div>
+	</div>
+   
+    <div class="none">
+        <input type="hidden" id="moneyValue" value="0.01">
+        <input type="hidden" id="orderValue" value="7551000001201707253201438254">
+        <input type="hidden" id="imgValue" value="">
+        <input type="hidden" id="openid" value="oywgtuAz4ZiKVhaal2dIam4SeoAc">
+        <input type="hidden" id="sign" value="58E78B2B41125CCC7C091F3C39EF18B4">
+        <input type="hidden" id="userId" value="209937">
+        <input type="hidden" id="outTradeNo" value="755100000110520583759150734">
+        <input type="hidden" id="mchId" value="7551000001">
+        <input type="hidden" id="bakdistributionId" value="755010000001">
+        <input type="hidden" id="distributionid" value="755020000001">
+    </div>
+    
+    <script src="https://pub.idqqimg.com/qqmobile/qqapi.js?_bid=152"></script>
+	<script type="text/javascript" src="https://h5.bestpay.com.cn/common/js/bestpay.html5-2.0.js"></script>
+    <script src="https://spay3.swiftpass.cn/spay/js/v3/common.js?v=2"></script>
+    <script>
+    var box = getId('box');
+    var money = getId('money');
+    var order = getId('order');
+    var finish = getId('finish');
+    var retry = getId('retry');
+    var adimg = getId('adimg');
+    var moneyValue = getId('moneyValue').value;
+    var orderValue = getId('orderValue').value;
+    var imgValue = getId('imgValue').value;
+    var mchId = getId('mchId').value;
+    var userId = getId('userId').value;
+    var outTradeNo = getId('outTradeNo').value;
+    var openid = getId('openid').value;
+    var sign = getId('sign').value;
+    var moneyReg = /^\d+([\.]{1}\d+)*$/;
+    var orderReg = /^[0-9a-zA-Z]+$/;
+    var ajaxUrl = 'https://advert.swiftpass.cn/';
+
+    if(!ua.match('walletclient') && !ua.match('jdpaysdk')){
+        finish.classList.remove('none');
+    }
+
+    if(moneyValue && moneyReg.test(moneyValue)){
+        money.innerHTML = moneyValue;
+        money.parentNode.classList.remove('none');
+    }
+
+    if(orderValue && orderReg.test(orderValue)){
+        order.innerHTML = orderValue.slice(-4);
+        order.parentNode.classList.remove('none');
+    }else{
+        box.classList.add('none');
+        retry.parentNode.classList.remove('none');
+    }
+
+    function getImg(){
+
+        if(!moneyValue || !mchId || !openid || !sign){
+            return;
+        }
+
+        new Post({
+            url : ajaxUrl + 'channel/getAd',
+            data : {
+                amount : moneyValue,
+                mchId : mchId,
+                openid : openid,
+                sign : sign
+            },
+            success : function(response){
+                if(response.success && response.imgPath && response.url){
+                    adimg.src = response.imgPath;
+                    adimg.parentNode.href = response.url;
+                    adimg.parentNode.parentNode.classList.remove('none');
+                }
+            }
+        });
+    }
+
+    finish.addEventListener('click',function(){
+        if(typeof WeixinJSBridge != "undefined") {
+            WeixinJSBridge.call("closeWindow");
+        } else if (ua.indexOf("bestpay") >= 0) {
+            App.exitApp();
+        } else if (typeof AlipayJSBridge != "undefined") {
+             AlipayJSBridge.call('closeWebview');
+        }  else if (typeof mqq != "undefined") {
+            mqq.ui.popBack();
+        }
+    },false);
+
+    retry.addEventListener('click',function(){
+        location.href = 'getCallbackUrl?mchId=' + mchId + '&userId=' + userId + '&outTradeNo=' + outTradeNo;
+    },false);
+
+    getImg();
+    </script>
+</body>
+</html>

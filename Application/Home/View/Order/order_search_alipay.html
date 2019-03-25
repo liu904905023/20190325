@@ -1,0 +1,265 @@
+<include file="Base:header"/>
+
+<div class="main-content">
+
+    <div class="breadcrumbs" id="breadcrumbs">
+
+        <script type="text/javascript">try {
+            ace.settings.check('breadcrumbs', 'fixed')
+        } catch (e) {
+        }</script>
+
+        <ul class="breadcrumb">
+
+            <li>
+
+                <i class="icon-home home-icon"></i>
+
+                <a href="__APP__">首页</a>
+
+            </li>
+
+            <li>支付宝交易订单查询</li>
+
+        </ul>
+
+    </div>
+
+    <div class="page-content">
+
+        <div class="page-header">
+
+            <h1>支付宝交易订单查询</h1>
+
+        </div>
+
+        <div class="row">
+
+            <div class="col-xs-12 sx-search">
+
+                <div class="col-md-6 col-xs-12">
+
+                    <div class="form-group">
+
+                        <label for="sx-8" class="control-label col-sm-2">订单号</label>
+
+                        <div class="col-sm-10">
+
+                            <input type="text" id="ordernum" class="form-control" placeholder="订单号">
+                            <div class="help-block yz text-danger" id="OrderCheck">订单号不能为空</div>
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+                <div class="col-md-6 col-xs-12 mr_mab">
+
+                    <div class="form-group">
+
+                        <label for="sx-8" class="control-label col-sm-2">平台订单号</label>
+
+                        <div class="col-sm-10">
+
+                            <input type="text" id="platformordernum" class="form-control" placeholder="平台订单号">
+                            <div class="help-block yz text-danger" id="">平台订单号不能为空</div>
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+                <div class="col-md-12 col-xs-12 txrimar">
+
+                    <div class="form-group">
+
+                        <div class="col-sm-12">
+
+                            <button class="btn btn-primary" id="search">
+
+                                <i class="icon-search bigger-110"></i>
+
+                                查询
+
+                            </button>
+                            &emsp;
+                            <button class="btn btn-primary" id="addorder">
+
+                                <i class="icon-search bigger-110"></i>
+
+                                补单
+
+                            </button>
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+                <div class="clearfix"></div>
+
+                <div class="row">
+
+                    <div class="table-header">查询结果</div>
+
+                    <div class="col-xs-12">
+
+                        <div class="table-responsive">
+
+                            <table id="sample-table-1" class="table table-striped table-bordered table-hover">
+
+                                <thead id="list">
+
+                                <tr>
+
+                                    <th>订单号</th>
+
+                                    <th>平台订单号</th>
+
+                                    <th>交易类型</th>
+
+                                    <th>交易金额</th>
+
+                                    <th>交易币种</th>
+
+                                    <th>交易时间</th>
+
+                                    <th>交易状态</th>
+
+                                </tr>
+
+                                </thead>
+
+                                <tbody id="info">
+
+
+                                </tbody>
+
+                            </table>
+
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+</div>
+
+<a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
+
+    <i class="icon-double-angle-up icon-only bigger-110"></i>
+
+</a>
+
+</div>
+
+<include file="Base:jsfile"/>
+
+
+<script type="text/javascript">
+
+    $('.form_datetime').datetimepicker({
+
+        //language:  'fr',
+
+        weekStart: 1,
+
+        todayBtn: 1,
+
+        autoclose: 1,
+
+        todayHighlight: 1,
+
+        startView: 2,
+
+        forceParse: 0,
+
+        showMeridian: 1
+
+    });
+
+</script>
+
+
+<script>
+
+    $("#OrderCheck,#list").hide();
+
+    $("#search").click(function () {
+        if ($("#ordernum").val() == "" && $("#platformordernum").val() == "") {
+            $("#OrderCheck").show();
+            return false;
+        }
+        $("#OrderCheck").hide();
+        var out_trade_no = $("#ordernum").val();
+        var transactionid = $("#platformordernum").val();
+        var wxorderinfo = "";
+
+        $.ajax({
+            type: "post",
+            url: "__APP__/Order/ali_search",
+            data: {
+                out_trade_no: out_trade_no,
+                transactionid: transactionid
+            },
+            async: false,
+            success: function (data) {
+
+                if (data.Code==0) {
+                    $("#list").show();
+                    wxorderinfo = "<tr><td>" + data.Out_Trade_No + "</td><td>" + data.Transaction_Id + "</td><td>" + data.TypeName + "</td><td>" + data.Total_Fee + "</td><td>人民币</td><td>" + data.Time + "</td><td>" + data.Status + "</td></tr>";
+                    $("#info").html(wxorderinfo);
+                } else {
+                    $("#list").hide();
+                    $("#info").html("<tr><td colspan=2 align='center'>查无此单</td></tr>");
+                }
+            },
+            error: function () {
+                alert('ajax error!');
+            }
+        })
+
+    });
+
+    $("#addorder").click(function () {
+        if ($("#ordernum").val() == "" && $("#platformordernum").val() == "") {
+            $("#OrderCheck").show();
+            return false;
+        }
+        $("#OrderCheck").hide();
+        var out_trade_no = $("#ordernum").val();
+        var transactionid = $("#platformordernum").val();
+        $.ajax({
+            type: "post",
+            url: "__APP__/Order/AliSupplyOrder",
+            data: {
+                out_trade_no: out_trade_no,
+                transactionid: transactionid
+            },
+            async: false,
+            success: function (data) {
+
+                show_alert(data);
+            },
+            error: function () {
+                console.log('ajax error!');
+            }
+        })
+    });
+
+</script>
+<include file="Base:footer"/>

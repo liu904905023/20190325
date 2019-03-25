@@ -1,0 +1,1018 @@
+<include file="Base:header"/>
+
+
+
+<div class="main-content">
+
+
+    <div class="breadcrumbs" id="breadcrumbs">
+
+
+        <script type="text/javascript">try{ace.settings.check('breadcrumbs' , 'fixed')}catch(e){}</script>
+
+
+        <ul class="breadcrumb">
+
+
+            <li>
+
+
+                <i class="icon-home home-icon"></i>
+
+
+                <a href="__APP__">首页</a>
+
+
+            </li>
+
+
+            <li>免充值批次详情</li>
+
+
+        </ul>
+
+
+    </div>
+
+
+
+    <div class="page-content">
+
+
+
+        <div class="page-header">
+
+
+
+            <h1>免充值批次详情</h1>
+
+
+
+        </div>
+
+
+
+        <div class="row">
+
+
+
+            <div class="col-xs-12 sx-search">
+
+                <form id="searchform" name="searchform" method="post">
+
+                    <div class="col-md-6 col-xs-12 mr_mab">
+
+
+                        <div class="form-group">
+
+
+
+                            <label for="Time_Start" class="control-label col-sm-4" >开始时间</label>
+
+
+
+                            <div class="col-sm-8 input-group">
+
+
+
+
+
+                                <input type="text" id="Time_Start" name="Time_Start" value="<php> echo date('Y-m-d',time()).' 00:00:00';</php>" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" class="form-control"/>
+
+                                <span class="input-group-addon">
+
+
+
+                                                <span class="glyphicon glyphicon-time"></span>
+
+
+
+                                </span>
+
+
+
+
+
+                            </div>
+
+
+
+
+
+                        </div>
+
+
+
+                    </div>
+
+                    <div class="col-md-6 col-xs-12 mr_mab">
+
+
+
+                        <div class="form-group">
+
+
+                            <label for="Time_End" class="control-label col-sm-4">结束时间</label>
+
+
+                            <div class="col-sm-8 input-group">
+
+
+                                <input type="text" id="Time_End" name="Time_End" value="<php> echo date('Y-m-d',time()).' 23:59:59';</php>" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" class="form-control"/>
+
+                                <span class="input-group-addon">
+
+
+
+                                                <span class="glyphicon glyphicon-time"></span>
+
+
+
+                                            </span>
+
+
+
+                            </div>
+
+
+
+                        </div>
+
+
+
+                    </div>
+
+                    <php>if(session('data')['CustomersType']==0&session('flag')==0){</php>
+                    <div class="col-md-6 col-xs-12 mr_mab">
+
+                        <div class="form-group">
+
+                            <label for="employeeLoginName" class="control-label col-sm-4">商户用户名</label>
+
+                            <div class="col-sm-8">
+
+                                <input type="text" id="storename" name="storename" class="form-control" placeholder="商户用户名"></div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-6 col-xs-12 mr_mab">
+
+                        <div class="form-group">
+
+                            <label for="realName" class="control-label col-sm-4">商户名称</label>
+
+                            <div class="col-sm-8">
+                                <input type="text" id="CustomerNames" name="CustomerNames" class="form-control" placeholder="商户名称" required="required"></div>
+                        </div>
+
+                    </div>
+
+                    <php>}</php>
+
+                    <div class="col-md-6 col-xs-12 mr_mab">
+
+                        <div class="form-group">
+
+                            <label for="BatchNumber" class="control-label col-sm-4">批次号</label>
+
+                            <div class="col-sm-8">
+
+                                <input type="text" id="BatchNumber" name="BatchNumber" class="form-control" placeholder="批次号">
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="clearfix"></div>
+
+                    <div class="col-md-11 col-xs-11">
+
+                        <div class="form-group txrimar">
+
+                            <a class="btn btn-primary search"><i class="icon-search"></i>查询</a>
+
+                        </div>
+
+                    </div>
+
+                    <div class="clearfix"></div>
+
+                    <div class="row">
+
+                        <div class="table-header">查询结果</div>
+
+                        <div class="col-xs-12">
+
+
+                            <div class="table-responsive">
+
+
+                                <table id="sample-table-1" class="table table-striped table-bordered table-hover">
+
+                                    <thead>
+
+                                    <tr>
+                                        <php>if(session('data')['CustomersType']==0&session('flag')==0){</php>
+                                        <th>商户用户名</th>
+
+                                        <th>商户名称</th>
+                                        <php>}</php>
+
+                                        <th>批次号</th>
+
+                                        <th>代金券名称</th>
+
+                                        <th>代金券面值</th>
+
+                                        <th>描述</th>
+
+                                        <th>时间</th>
+
+                                        <th>操作</th>
+
+                                    </tr>
+
+                                    </thead>
+
+                                    <tbody id = "info">
+
+                                    </tbody>
+
+
+                                </table>
+
+
+                                <div class="page_new">
+
+                                    <input type = "hidden" id = "totalCount" value= "">
+
+                                    <a id="prev">上一页</a>  <a id = "next">下一页</a> <a id = "first">最前页</a> <a id = "last">最末页</a>
+
+                                    <select id = "SelectNo">
+
+
+
+                                    </select>
+
+                                    <span>总 <label id = "TotalCount"></label> 条</span> <span>分为 <label id = "TotalPage"></label> 页</span> <span>当前第 <label id ="NowPage">1</label> 页</span><input type= "hidden" id= "PageSize" value=10>
+
+                                    <input type = "hidden" id = "SystemUserSysNo" name = "systemusersysno" value= "<php>echo $_GET['id']</php>">
+
+
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+</div>
+
+<!-- start 这里的 id 和 name 需要重新定义，其他不用 -->
+<div class="pricing-box2 detail-box">
+
+    <div class="widget-box">
+
+        <div class="widget-header header-color-red3">
+
+            <h5 class="bigger lighter">详情</h5>
+
+        </div>
+
+        <div class="widget-body">
+
+            <div class="widget-main">
+
+                <div class="col-md-12 form-group">
+
+                    <div class="col-xs-12 col-md-4 mr_mab">
+
+                        <div class="form-group">
+
+                            <div class="col-xs-12">
+
+                                <label>批次号</label>
+
+                                <div class="over">
+
+                                    <input type="text" class="form-control" disabled name="coupon_stock_id" id="coupon_stock_id" value ="" placeholder="批次号" value="13866447856" />
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-xs-12 col-md-4 mr_mab">
+
+                        <div class="form-group">
+
+                            <div class="col-xs-12">
+
+                                <label>代金券名称</label>
+
+                                <div class="over">
+
+                                    <input type="text" class="form-control" disabled name="coupon_name" id="coupon_name" value ="" placeholder="代金券名称" />
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-xs-12 col-md-4 mr_mab">
+
+                        <div class="form-group">
+
+                            <div class="col-xs-12">
+
+                                <label>代金券面额</label>
+
+                                <div class="over">
+
+                                    <input type="text" class="form-control" disabled name="coupon_value" id="coupon_value" value ="" placeholder="代金券面额" value="13866447856" />
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="clearfix"></div>
+
+
+                    <div class="col-xs-12 col-md-4 mr_mab">
+
+                        <div class="form-group">
+
+                            <div class="col-xs-12">
+
+                                <label>代金券使用最低限额</label>
+
+                                <div class="over">
+
+                                    <input type="text" class="form-control" disabled name="coupon_mininumn" id="coupon_mininumn" value ="" placeholder="代金券使用最低限额" />
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-xs-12 col-md-4 mr_mab">
+
+                        <div class="form-group">
+
+                            <div class="col-xs-12">
+
+                                <label>代金券批次状态</label>
+
+                                <div class="over">
+
+                                    <input type="text" class="form-control" disabled name="coupon_stock_status" id="coupon_stock_status" value ="" placeholder="代金券批次状态" />
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-xs-12 col-md-4 mr_mab">
+
+                        <div class="form-group">
+
+                            <div class="col-xs-12">
+
+                                <label>代金券数量</label>
+
+                                <div class="over">
+
+                                    <input type="text" class="form-control" disabled name="coupon_total" id="coupon_total" value ="" placeholder="代金券数量" />
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="clearfix"></div>
+
+
+                    <div class="col-xs-12 col-md-4 mr_mab">
+
+                        <div class="form-group">
+
+                            <div class="col-xs-12">
+
+                                <label>代金券最大领取数量</label>
+
+                                <div class="over">
+
+                                    <input type="text" class="form-control" disabled name="max_quota" id="max_quota" value ="" placeholder="代金券最大领取数量" />
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-xs-12 col-md-4 mr_mab">
+
+                        <div class="form-group">
+
+                            <div class="col-xs-12">
+
+                                <label>代金券已发送数量</label>
+
+                                <div class="over">
+
+                                    <input type="text" class="form-control" disabled name="is_send_num" id="is_send_num" value ="" placeholder="代金券已发送数量" />
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-xs-12 col-md-4 mr_mab">
+
+                        <div class="form-group">
+
+                            <div class="col-xs-12">
+
+                                <label>生效开始时间</label>
+
+                                <div class="over">
+
+                                    <input type="text" class="form-control" disabled name="begin_time" id="begin_time" value ="" placeholder="生效开始时间" />
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="clearfix"></div>
+
+
+                    <div class="col-xs-12 col-md-4 mr_mab">
+
+                        <div class="form-group">
+
+                            <div class="col-xs-12">
+
+                                <label>生效结束时间</label>
+
+                                <div class="over">
+
+                                    <input type="text" class="form-control" disabled name="end_time" id="end_time" value ="" placeholder="生效结束时间" />
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-xs-12 col-md-4 mr_mab">
+
+                        <div class="form-group">
+
+                            <div class="col-xs-12">
+
+                                <label>创建时间</label>
+
+                                <div class="over">
+
+                                    <input type="text" class="form-control" disabled name="create_time" id="create_time" value ="" placeholder="创建时间" />
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-xs-12 col-md-4 mr_mab">
+
+                        <div class="form-group">
+
+                            <div class="col-xs-12">
+
+                                <label>代金券预算额度</label>
+
+                                <div class="over">
+
+                                    <input type="text" class="form-control" disabled name="coupon_budget" id="coupon_budget" value ="" placeholder="代金券预算额度" />
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+
+            </div>
+
+            <div class="refund_box">
+
+                <a href="#" class="btn btn-grey btn-close">
+
+                    <span>关闭</span>
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+<!-- end 这里的 id 和 name 需要重新定义，其他不用 -->
+<div class="pricing-box2 change-box">
+
+    <div class="widget-box">
+
+        <div class="widget-header header-color-red3">
+
+            <h5 class="bigger lighter">修改</h5>
+
+        </div>
+
+        <div class="widget-body">
+            <form id="changeForm" name="changeForm" method="post">
+            <div class="widget-main">
+
+                <div class="col-md-12 form-group">
+
+                    <div class="col-xs-12 col-md-4 mr_mab">
+
+                        <div class="form-group">
+
+                            <div class="col-xs-12">
+
+                                <label>批次号</label>
+
+                                <div class="over">
+
+                                    <input type="text" class="form-control"  name="Batch_number" id="Batch_number" value ="" placeholder="批次号" value="13866447856" />
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-xs-12 col-md-4 mr_mab">
+
+                        <div class="form-group">
+
+                            <div class="col-xs-12">
+
+                                <label>代金券名称</label>
+
+                                <div class="over">
+
+                                    <input type="text" class="form-control" name="Voucher_name" id="Voucher_name" value ="" placeholder="代金券名称" />
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-xs-12 col-md-4 mr_mab">
+
+                        <div class="form-group">
+
+                            <div class="col-xs-12">
+
+                                <label>代金券面值</label>
+
+                                <div class="over">
+
+                                    <input type="text" class="form-control" name="Voucher_denomination" id="Voucher_denomination" value ="" placeholder="代金券面值" value="" />
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-xs-12 col-md-12 mr_mab">
+
+                        <div class="form-group">
+
+                            <div class="col-xs-12">
+
+                                <label>描述</label>
+
+                                <div class="over">
+
+                                    <textarea name="describe" id="describe" class="form-control" rows="3" placeholder="描述信息" style="resize:none" ></textarea>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="clearfix"></div>
+
+            </div>
+                <input type="hidden" value="" id="SysNo">
+            <div class="refund_box">
+
+                <button type="submit" class="btn btn-primary" id="register">
+                   保存
+                </button>
+                &nbsp;&nbsp;
+                <a href="#" class="btn btn-grey btn-close">
+
+                    <span>关闭</span>
+
+                </a>
+            </div>
+            </form>
+        </div>
+
+    </div>
+
+</div>
+
+<div class="bg_black"></div>
+
+
+</div>
+
+<include file="Base:jsfile"/>
+
+<script type="text/javascript">
+
+    $.validator.addMethod("CashCouponMoney", function (value, element) {
+        var reg = /(^[1-9](\d+)?(\.\d{1,2})?$)|(^[1-9]$)|(^\d\.[1-9]{1,2}$)|(^\d\.([0]{1})([1-9]{1})|(^\d\.([1-9]{1})([0]{1}))$)/;
+        if (reg.exec(value)) {
+            return true;
+        } else {
+            return false;
+        }
+    });
+
+    jQuery(function ($) {
+
+
+        $('#changeForm').validate({
+
+            errorElement: 'div',
+
+            errorClass: 'help-block',
+
+            focusInvalid: false,
+
+            rules: {
+
+                Batch_number: {
+                    required: true,
+                    username:true
+                },
+                Voucher_name:{
+                    required: true,
+                    maxlength:15
+                },
+                Voucher_denomination:{
+                    required: true,
+                    CashCouponMoney:true
+                },
+                describe:{
+                    maxlength:200
+                }
+
+            },
+
+            messages: {
+                Batch_number: {
+                    required: '请输入批次号.',
+                    username:'请输入数字或字母.'
+                },
+                Voucher_name:{
+                    required: '请输入代金券名称.',
+                    maxlength: '代金券名称最多为15个字符.'
+                },
+                Voucher_denomination:{
+                    required: '请输入代金券面额.',
+                    CashCouponMoney:'请输入正确格式的金额.'
+                },
+                describe:{
+                    maxlength:'最多可输入 200 个字符.'
+                }
+
+            },
+
+            invalidHandler: function (event, validator) {
+
+                $('.alert-danger', $('.login-form')).show();
+
+            },
+
+            highlight: function (e) {
+
+                $(e).closest('.form-group').removeClass('has-info').addClass('has-error');
+
+            },
+
+            success: function (e) {
+
+                $(e).closest('.form-group').removeClass('has-error').addClass('has-info');
+
+                $(e).remove();
+
+            },
+
+            errorPlacement: function (error, element) {
+
+                if (element.is(':checkbox') || element.is(':radio')) {
+
+                    var controls = element.closest('div[class*="col-"]');
+
+                    if (controls.find(':checkbox,:radio').length > 1) controls.append(error); else error.insertAfter(element.nextAll('.lbl:eq(0)').eq(0));
+
+                } else if (element.is('.select2')) {
+
+                    error.insertAfter(element.siblings('[class*="select2-container"]:eq(0)'));
+
+                } else if (element.is('.chosen-select')) {
+
+                    error.insertAfter(element.siblings('[class*="chosen-container"]:eq(0)'));
+
+                } else error.insertAfter(element.parent());
+
+            },
+
+
+            submitHandler: function (form) {
+
+                $.ajax({
+
+                    type: "POST",
+
+                    url: "__APP__/CouponCash/CouponCashUpdate",
+
+                    data: {
+                        Batch_number:$("#Batch_number").val(),
+                        Voucher_name:$("#Voucher_name").val(),
+                        Voucher_denomination:$("#Voucher_denomination").val(),
+                        describe:$("#describe").val(),
+                        SysNo:$("#SysNo").val()
+                    },
+
+                    async: false,
+
+                    success: function (data) {
+                        if(data.Code==0){
+                            show_alert("修改成功!");
+                            $(".change-box").hide(300);
+                            $(".bg_black").hide();
+                        }else {
+                            show_alert("修改失败!");
+                        }
+                        infoview(0,PageSize);
+
+
+                    }
+
+                })
+
+            },
+            invalidHandler: function (form) {
+
+                console.log("ajax失败！");
+
+            }
+
+        });
+
+    })</script>
+
+<script>
+    $(".update").live('click',function () {
+        $(".change-box").show(300);
+        $(".bg_black").show();
+        $("#Batch_number").val($(this).parent().siblings().eq(0).text());
+        $("#Voucher_name").val($(this).parent().siblings().eq(1).text());
+        $("#Voucher_denomination").val($(this).parent().siblings().eq(2).text());
+        $("#describe").val($(this).parent().siblings().eq(3).text());
+        $("#SysNo").val($(this).parent().siblings().eq(5).val());
+    });
+
+
+    function Detail(SysNo,stock_id){
+
+        var url = "__APP__/CouponCash/QueryCoupon";
+
+        $.ajax({
+
+            type : "post",
+
+            url : url,
+
+            data : {
+                SysNO:SysNo,
+                stock_id:stock_id
+            },
+            async:false,
+            success : function (data){
+                if(data.Code==0){
+                    $("#coupon_stock_id").val(data.coupon_stock_id);
+                    $("#coupon_name").val(data.coupon_name);
+                    $("#coupon_value").val(data.coupon_value);
+                    $("#coupon_mininumn").val(data.coupon_mininumn);
+                    $("#coupon_stock_status").val(data.coupon_stock_status);
+                    $("#coupon_total").val(data.coupon_total);
+                    $("#max_quota").val(data.max_quota);
+                    $("#is_send_num").val(data.is_send_num);
+                    $("#begin_time").val(data.begin_time);
+                    $("#end_time").val(data.end_time);
+                    $("#create_time").val(data.create_time);
+                    $("#coupon_budget").val(data.coupon_budget);
+                    $(".detail-box").show(300);
+                    $(".bg_black").show();
+                }else{
+                    show_alert('代金券批次查询失败！')
+                }
+            },
+
+            error : function (){
+
+                console.log( 'ajax error!' );
+
+            }
+
+
+
+        })
+
+
+
+    }
+
+    $(".btn-close").click(function(){
+
+        $(".detail-box").hide(300);
+        $(".change-box").hide(300);
+         $('#changeForm').find('.form-group').removeClass('has-error has-info');
+         $('#changeForm').find('.form-group .help-block').css('display','none');
+        $('#changeForm').find('input').val('');
+        $(".bg_black").hide();
+
+    });
+
+    function infoview(PageNumber,PageSize){
+
+        var Time_Start = $("#Time_Start").val();
+        var Time_End = $("#Time_End").val();
+        var Customer = $("#storename").val();
+        var CustomerNames = $("#CustomerNames").val();
+        var BatchNumber = $("#BatchNumber").val();
+        var CustomersTrueName = $.trim($("#CustomersTrueName").val());
+
+        var tt="";
+
+        if (this.ajaxRequest_ != undefined && this.ajaxRequest_.readyState < 4) {
+
+            return false;
+
+        }
+
+
+
+        this.ajaxRequest_ =$.post("__APP__/CouponCash/NonBatch",{Time_Start:Time_Start,Time_End:Time_End,Customer:Customer,CustomerNames:CustomerNames,BatchNumber:BatchNumber,PageNumber:PageNumber,PageSize:PageSize},function(data){
+            if(data.totalCount>0){
+
+                $.each(data.model, function(k, v) {
+                <php>if(session('data')['CustomersType']==1&session('flag')==0){</php>
+                        var cz="<a href=\"#\" onclick=\"Detail("+v.CustomerServiceSysNo+", '"+v.Coupon_stock_id+"')\" class=\"btn btn-danger btn-xs\">详情</a>&emsp;<a href=\"#\" class=\"btn btn-danger btn-xs update\" >修改</a>";
+                        tt += "<tr><td>"+v.Coupon_stock_id+"</td><td>"+v.Coupon_name+"</td><td>"+v.Coupon_value+"</td><td>"+v.Coupon_des+"</td><td>"+v.CreateTime+"</td><input type='hidden' value='"+v.SysNo+"'><td>"+cz+"</td></tr>";
+                <php>}else if(session('data')['CustomersType']==0&session('flag')==0){</php>
+                         cz="<a href=\"#\" onclick=\"Detail("+v.CustomerServiceSysNo+", '"+v.Coupon_stock_id+"')\" class=\"btn btn-danger btn-xs\">详情</a>";
+                        tt += "<tr><td>"+v.Customer+"</td><td>"+v.CustomerName+"</td><td>"+v.Coupon_stock_id+"</td><td>"+v.Coupon_name+"</td><td>"+v.Coupon_value+"</td><td>"+v.Coupon_des+"</td><td>"+v.CreateTime+"</td><input type='hidden' value='"+v.SysNo+"'><td>"+cz+"</td></tr>";
+                        <php>}</php>
+
+                });
+
+
+
+
+
+                $('#info').html(tt);
+
+                $('#TotalCount').html(data.totalCount);
+
+                TotalPage = Math.ceil(data.totalCount/PageSize);
+
+                var ff ="";
+
+                for (i=1;i<=TotalPage ;i++ )
+
+                {
+
+                    ff+="<option value = \""+i+"\">"+i+"</option>";
+
+                }
+
+                $('#SelectNo').html(ff);
+
+                $('#TotalPage').html(TotalPage);
+
+                $('#PageNumber').html(PageNumber);
+
+                $('#SelectNo').val(PageNumber+1);
+
+                $('#NowPage').text(PageNumber+1);
+
+                $(".page_new").show();
+
+            }else{
+
+                $('#info').html('');
+
+                $(".page_new").hide();
+
+            }
+
+
+
+        });
+
+
+
+    }
+
+
+
+
+    $(".page_new").hide();
+
+    var PageSize = $("#PageSize").val();
+
+    infoview(0,PageSize);
+
+    $(".search").click(function(){
+
+        infoview(0,PageSize);
+
+    })
+
+</script>
+
+
+<include file="Base:footer"/>

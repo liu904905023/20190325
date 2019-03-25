@@ -1,0 +1,322 @@
+<include file="Base:header"/>
+
+
+<div class="main-content">
+
+
+    <div class="breadcrumbs" id="breadcrumbs">
+
+
+        <script type="text/javascript">try {
+            ace.settings.check('breadcrumbs', 'fixed')
+        } catch (e) {
+        }</script>
+
+
+        <ul class="breadcrumb">
+
+
+            <li>
+
+
+                <i class="icon-home home-icon"></i>
+
+
+                <a href="__APP__">首页</a>
+
+
+            </li>
+
+
+            <li>免充值批次录入</li>
+
+
+        </ul>
+
+
+    </div>
+
+
+    <div class="page-content">
+
+
+        <div class="page-header">
+
+
+            <h1>免充值批次录入</h1>
+
+
+        </div>
+
+
+        <div class="row">
+
+
+            <div class="col-xs-12 sx-search">
+
+                <form id="changeForm" name="changeForm" method="post">
+
+                    <div class="col-xs-12 col-md-4 mr_mab">
+
+                        <div class="form-group">
+
+                            <div class="col-xs-12">
+
+                                <label>批次号</label>
+
+                                <div class="over">
+
+                                    <input type="text" class="form-control" name="Batch_number" id="Batch_number"
+                                           value="" placeholder="批次号"/>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-xs-12 col-md-4 mr_mab">
+
+                        <div class="form-group">
+
+                            <div class="col-xs-12">
+
+                                <label>代金券名称</label>
+
+                                <div class="over">
+
+                                    <input type="text" class="form-control" name="Voucher_name" id="Voucher_name"
+                                           value="" placeholder="代金券名称"/>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-xs-12 col-md-4 mr_mab">
+
+                        <div class="form-group">
+
+                            <div class="col-xs-12">
+
+                                <label>代金券面额</label>
+
+                                <div class="over">
+
+                                    <input type="text" class="form-control" name="Voucher_denomination"
+                                           id="Voucher_denomination" value="" placeholder="代金券面额" value=""/>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="clearfix"></div>
+
+                    <div class="col-xs-12 col-md-12 mr_mab">
+
+                        <div class="form-group">
+
+                            <div class="col-xs-12">
+
+                                <label>描述</label>
+
+                                <div class="over">
+
+                                    <textarea name="describe" id="describe" class="form-control" rows="3" placeholder="描述信息" style="resize:none" ></textarea>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="refund_box">
+
+                        <button class="btn btn-primary search" type="submit">
+
+                            <i class="glyphicon glyphicon-ok
+"></i>
+                            确定录入
+                        </button>
+                    </div>
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+</div>
+
+
+<div class="bg_black"></div>
+
+
+</div>
+
+<include file="Base:jsfile"/>
+
+<script type="text/javascript">
+    $.validator.addMethod("CashCouponMoney", function (value, element) {
+        var reg = /(^[1-9](\d+)?(\.\d{1,2})?$)|(^[1-9]$)|(^\d\.[1-9]{1,2}$)|(^\d\.[0]{1}[1-9]{1}$|(^\d\.[1-9]{1}[0]{1}$)$)/;
+        if (reg.exec(value)) {
+            return true;
+        } else {
+            return false;
+        }
+    });
+    jQuery(function ($) {
+
+
+        $('#changeForm').validate({
+
+            errorElement: 'div',
+
+            errorClass: 'help-block',
+
+            focusInvalid: false,
+
+            rules: {
+
+                Batch_number: {
+                    required: true,
+                    username: true
+                },
+                Voucher_name: {
+                    required: true,
+                    maxlength:15
+                },
+                Voucher_denomination: {
+                    required: true,
+                    CashCouponMoney:true
+                },
+                describe: {
+                    maxlength: 50
+                }
+
+            },
+
+            messages: {
+                Batch_number: {
+                    required: '请输入批次号.',
+                    username: '请输入数字或字母.'
+                },
+                Voucher_name: {
+                    required: '请输入代金券名称.',
+                    maxlength: '代金券名称最多为15个字符.'
+                },
+                Voucher_denomination: {
+                    required: '请输入代金券面额.',
+                    CashCouponMoney:'请输入正确格式的金额.'
+                },
+                describe: {
+                    maxlength:'最多可输入 50 个字符.'
+                }
+
+            },
+
+            invalidHandler: function (event, validator) {
+
+                $('.alert-danger', $('.login-form')).show();
+
+            },
+
+            highlight: function (e) {
+
+                $(e).closest('.form-group').removeClass('has-info').addClass('has-error');
+
+            },
+            onfocusout: function(element){
+                $(element).valid();
+            },
+            onkeyup: function(element){
+                $(element).valid();
+            },
+            success: function (e) {
+
+                $(e).closest('.form-group').removeClass('has-error').addClass('has-info');
+
+                $(e).remove();
+
+            },
+
+            errorPlacement: function (error, element) {
+
+                if (element.is(':checkbox') || element.is(':radio')) {
+
+                    var controls = element.closest('div[class*="col-"]');
+
+                    if (controls.find(':checkbox,:radio').length > 1) controls.append(error); else error.insertAfter(element.nextAll('.lbl:eq(0)').eq(0));
+
+                } else if (element.is('.select2')) {
+
+                    error.insertAfter(element.siblings('[class*="select2-container"]:eq(0)'));
+
+                } else if (element.is('.chosen-select')) {
+
+                    error.insertAfter(element.siblings('[class*="chosen-container"]:eq(0)'));
+
+                } else error.insertAfter(element.parent());
+
+            },
+
+
+            submitHandler: function (form) {
+
+                $.ajax({
+
+                    type: "POST",
+
+                    url: "__SELF__",
+
+                    data: {
+                        Batch_number:$("#Batch_number").val(),
+                        Voucher_name:$("#Voucher_name").val(),
+                        Voucher_denomination:$("#Voucher_denomination").val(),
+                        describe:$("#describe").val()
+                    },
+
+                    async: false,
+
+                    success: function (data) {
+                        if(data.Code==0){
+                            var url = '__APP__/CouponCash/NonBatch';
+                            show_alert('新增成功！', "location.href='" + url + "';");
+                        }else {
+                            show_alert('新增失败！')
+                        }
+
+
+                    }
+
+                })
+
+            },
+            invalidHandler: function (form) {
+
+                console.log("ajax失败！");
+
+            }
+
+        });
+
+    })</script>
+
+
+<include file="Base:footer"/>

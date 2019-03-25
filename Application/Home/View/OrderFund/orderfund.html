@@ -1,0 +1,1586 @@
+<include file="Base:header"/>
+
+
+
+<div class="main-content">
+
+
+
+    <div class="breadcrumbs" id="breadcrumbs">
+
+
+
+        <script type="text/javascript">try{ace.settings.check('breadcrumbs' , 'fixed')}catch(e){}</script>
+
+
+
+        <ul class="breadcrumb">
+
+
+
+            <li>
+
+
+
+                <i class="icon-home home-icon"></i>
+
+
+
+                <a href="__APP__">首页</a>
+
+
+
+            </li>
+
+
+
+            <li>交易费率订单查询</li>
+
+
+
+        </ul>
+
+
+
+    </div>
+
+
+
+    <div class="page-content">
+
+
+
+        <div class="page-header">
+
+
+
+            <h1>交易费率订单查询</h1>
+
+
+
+        </div>
+
+
+
+        <div class="row">
+
+
+
+            <div class="col-xs-12 sx-search">
+
+                <form id="searchform" name="searchform" method="post">
+
+
+
+                    <div class="col-md-6 col-xs-12 mr_mab">
+
+
+
+                        <div class="form-group">
+
+
+
+                            <label for="dtp_input1" class="control-label col-sm-4" >开始时间</label>
+
+
+
+                            <div class="col-sm-8 input-group">
+
+
+                                <input type="text" id="Time_Start" name="Time_Start" value="<php> echo date('Y-m-d',time()).' 00:00:00';</php>" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" class="form-control"/>
+                                <span class="input-group-addon">
+
+                                                <span class="glyphicon glyphicon-time"></span>
+
+                                            </span>
+
+
+                            </div>
+
+
+
+                            <input type="hidden" id="dtp_input1" name="dtp_input1" value="<php>echo date('Y-m-d',time());</php>" />
+
+                            <input type="hidden" id="type" value="<{$Think.session.data.CustomersType}>" />
+
+                            <input type="hidden" id="serstafftype" value="<{$Think.session.servicestoretype}>" />
+
+                            <input type= "hidden" value = "" id ="SystemUserSysNo" name = "SystemUserSysNo">
+
+                            <input type="hidden" id="flag" value="<{$Think.session.flag}>" />
+
+                            <input type= "hidden" value = "" id ="Customer" name = "Customer">
+
+                            <!-- ///////////////add by qiwei 20161024/////////////// -->
+
+                            <input type= "hidden" value = "" id ="TopSysNo" name = "TopSysNo">
+
+                            <input type= "hidden" value = "" id ="SysNo" name = "SysNo">
+
+                            <input type= "hidden" value = "" id ="Top" name = "Top">
+
+                            <input type= "hidden" value = "" id ="CustomerSysNo" name = "CustomerSysNo">
+
+                            <!-- ///////////////add by qiwei 20161024/////////////// -->
+
+
+
+                        </div>
+
+
+
+                    </div>
+
+
+
+                    <div class="col-md-6 col-xs-12 mr_mab">
+
+
+
+                        <div class="form-group">
+
+
+
+                            <label for="sx-2" class="control-label col-sm-4">结束时间</label>
+
+
+
+                            <div class="col-sm-8 input-group">
+
+                                <input type="text" id="Time_End" name="Time_End" value="<php> echo date('Y-m-d',time()).' 23:59:59';</php>" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" class="form-control"/>
+                                <span class="input-group-addon">
+
+                                                <span class="glyphicon glyphicon-time"></span>
+
+                                            </span>
+
+                            </div>
+
+
+
+                            <input type="hidden" id="dtp_input2" name="dtp_input2" value="<php>echo date('Y-m-d',time());</php>" />
+
+
+
+                        </div>
+
+
+
+                    </div>
+
+
+
+                    <div class="col-md-6 col-xs-12 mr_mab">
+
+
+
+                        <div class="form-group">
+
+
+
+                            <label for="sx-8" class="control-label col-sm-4">订单号</label>
+
+
+
+                            <div class="col-sm-8">
+
+
+
+                                <input type="text" id="ordernum" name = "ordernum" class="form-control" placeholder="订单号"></div>
+
+
+
+                        </div>
+
+
+
+                    </div>
+
+                    <div class="col-md-6 col-xs-12 mr_mab StoreName"  id = "StoreName" >
+
+
+
+                        <div class="form-group" >
+
+                            <php>if( session('data')['CustomersType']==1&session('flag')==0 ||I('SysNo')){</php>
+
+                            <label for="sx-8" class="control-label col-sm-4">登录名</label>
+
+                            <div class="col-sm-8">
+
+                                <input type="text"  id="storename" name = "storename" class="form-control" placeholder="登录名" required="required" ></div>
+
+                            <php>}else{</php>
+
+                            <label for="sx-8" class="control-label col-sm-4">商户用户名</label>
+
+                            <div class="col-sm-8">
+
+                                <input type="text"  id="storename" name = "storename" class="form-control" placeholder="商户用户名" required="required" ></div>
+
+                            <php>}</php>
+
+
+
+
+
+                        </div>
+
+                        <div class="form-group " id = "CheckStoreUser">
+
+
+
+                            <label for="sx-8" class="control-label col-sm-4"></label>
+
+
+
+                        </div>
+
+
+
+                    </div>
+
+                    <div class="col-md-6 col-xs-12 mr_mab StoreName"  id = "StoreName" >
+
+
+
+                        <div class="form-group" >
+
+                            <php>if( session('data')['CustomersType']==1&session('flag')==0 ||I('SysNo')){</php>
+
+                            <label for="sx-8" class="control-label col-sm-4">真实姓名</label>
+
+                            <div class="col-sm-8">
+
+                                <input type="text"  id="CustomerNames" name = "CustomerNames" class="form-control" placeholder="真实姓名" required="required" ></div>
+
+                            <php>}else{</php>
+
+                            <label for="sx-8" class="control-label col-sm-4">商户名称</label>
+
+                            <div class="col-sm-8">
+
+                                <input type="text"  id="CustomerNames" name = "CustomerNames" class="form-control" placeholder="商户名称" required="required" ></div>
+
+                            <php>}</php>
+
+
+
+                        </div>
+
+
+
+
+
+                    </div>
+
+
+
+
+
+                    <include file="Base:ordertypelist"/>
+
+
+
+
+
+                    <!-- 2016/7/11 -->
+
+                    <div class="col-md-12 col-xs-12">
+
+                        <input type ="hidden" id = "buttontype" name="buttontype" value =0>
+
+                        <div class="form-group txrimar">
+
+
+
+                            <a href="#" class="btn btn-primary" id ="search">
+
+
+
+                                <i class="icon-search"></i>
+
+
+
+                                查询
+
+
+
+                            </a>
+
+                            &nbsp;
+
+                            <a href="#" class="btn btn-primary" id ="allcount">
+
+
+
+                                <i class="icon-search"></i>
+
+
+
+                                汇总
+
+
+
+                            </a>
+
+                            &nbsp;
+
+                            <a href="#" type="submit" class="btn btn-success" id="download" onclick="checkaction(0);"  disabled=true>
+
+
+
+                                <i class="icon-download-alt" ></i>
+
+
+
+                                下载报表
+
+
+
+                            </a>
+
+                            <input type="hidden" value="" id="input_hidden" name="input_hidden">
+
+
+
+                        </div>
+
+
+
+                    </div>
+
+                </form>
+
+                <div class="clearfix"></div>
+
+
+
+                <div class="row">
+
+
+
+                    <div class="table-header">查询结果<php>if(((session('data')['CustomersType']==0&session('flag')==0)&&($_GET['SysNo']!=""))||((session('data')['CustomersType']==0&session('flag')==0)&&($_GET['CustomerSysNo']!=""))||((session('servicestoretype')==0&session('flag')==1)&&($_GET['SysNo']!=""))||((session('servicestoretype')==0&session('flag')==1)&&($_GET['Top']=="")&&($_GET['Customer']==""))||((session('data')['CustomersType']==1&session('flag')==0)&&($_GET['TopSysNo']==""))){</php>
+                        <div>
+                            <span>交易总金额：<strong id = "total_fee"></strong> &emsp; 实际交易总金额：<strong id="fee"></strong>&emsp; 交易笔数: <strong id = "tradecount"></strong>&emsp; 手续费: <strong id = "Rate_fee"></strong>&emsp; 费率金额: <strong id = "Total_Rate_fee"></strong></span>
+                            <a href="#" class="btn btn-minier btn-yellow" id ="search"> <i class="icon-search"></i>
+                                查询总费率
+                            </a>
+                        </div>
+                        <php>}</php>
+                    </div>
+
+
+
+                    <div class="col-xs-12">
+
+
+
+                        <div class="table-responsive">
+
+
+
+                            <table id="sample-table-1" class="table table-striped table-bordered table-hover">
+
+
+
+                                <thead>
+
+
+
+                                <tr id = "info_name">
+
+
+
+                                    <th>序号</th>
+
+
+
+                                    <th>商户名称</th>
+
+                                    <php>if(session( 'data')['CustomersType']==1||I('SysNo')){</php>
+                                    <th>登录名</th>
+                                    <th>真实姓名</th>
+                                    <php>}</php>
+
+                                    <th>订单号</th>
+                                    <th>交易金额</th>
+
+                                    <php>if(session('servicestoretype')==1&session('flag')==1){</php>
+                                    <th>员工费率</th>
+                                    
+                                    <php>}else if(session('servicestoretype')==0&session('flag')==1){</php>
+
+                                        <php>if($_GET['SysNo']){</php>
+                                        <th>折后金额</th>
+                                        <th>实际交易金额</th>
+                                        <th>商户费率</th>
+                                        <th>手续费</th>
+
+                                    <php>}else if($_GET['Customer']){</php>
+                                        <th>实际交易金额</th>
+                                        <th>上级费率</th>
+                                        <th>返佣</th>
+                                        <php>}else if($_GET['Top']){</php>
+                                        <th>实际交易金额</th>
+                                        <th>上级费率</th>
+                                        <th>返佣</th>
+                                        <php>}else {</php>
+                                        <th>折后金额</th>
+                                        <th>实际交易金额</th>
+                                        <th>商户费率</th>
+                                        <th>手续费</th>
+                                        <php>}</php>
+                                    <php>}else if(session('data')['CustomersType']==1&session('flag')==0){ </php>
+                                        <php>if($_GET['TopSysNo']){</php>
+                                        <th>员工费率</th>
+                                        <php>}else{</php>
+                                        <th>折后金额</th>
+                                        <th>实际交易金额</th>
+                                        <th>商户费率</th>
+                                        <th>手续费</th>
+                                        <th>费率金额</th>
+                                        <php>}</php>
+
+
+
+                                    <php>}else if(session('data')['CustomersType']==0&session('flag')==0){</php>
+
+                                    <php>if($_GET['SysNo']){</php>
+
+                                    <th>折后金额</th>
+                                    <th>实际交易金额</th>
+                                    <th>商户费率</th>
+                                    <th>手续费</th>
+
+                                    <php>}else if($_GET['CustomerSysNo']){</php>
+                                    <th>折后金额</th>
+                                    <th>实际交易金额</th>
+                                    <th>商户费率</th>
+                                    <th>手续费</th>
+                                    <php>}else if($_GET['TopSysNo']){</php>
+                                    <th>实际交易金额</th>
+                                    <th>上级费率</th>
+                                    <th>返佣</th>
+
+                                    <php>}</php>
+                                    <php>}</php>
+
+
+
+                                    <th>交易类型</th>
+
+
+
+                                    <th>交易币种</th>
+
+
+
+                                    <th>交易时间</th>
+
+
+
+                                </tr>
+
+
+
+                                <tr id = "total_name"  style = "display:none">
+
+                                    <php>if(session('data')['CustomersType']==1&session('flag')==0){</php>
+
+                                    <th>员工名称</th>
+
+                                    <php>} if( session('data')['CustomersType']==0&session('flag')==0 ) {</php>
+
+
+
+                                    <php>if($_GET['SysNo']){</php>
+
+
+
+                                    <th>员工名称</th>
+
+
+
+                                    <php>}else if($_GET['Customer']){</php>
+
+
+
+                                    <th>商户名称</th>
+
+
+
+                                    <php>}else{</php>
+
+
+
+                                    <th>商户名称</th>
+
+
+
+                                    <php>}</php>
+
+                                    <php>}if(session('servicestoretype')==0&session('flag')==1){</php>
+
+                                    <php>if($_GET['SysNo']){</php>
+
+
+
+                                    <th>员工名称</th>
+
+
+
+                                    <php>}else if($_GET['Customer']){</php>
+
+
+
+                                    <th>商户名称</th>
+
+
+
+                                    <php>}else{</php>
+
+
+
+                                    <th>商户名称</th>
+
+
+
+                                    <php>}</php>
+
+                                    <php>} if(session('servicestoretype')==1&session('flag')==1){</php>
+
+                                    <th>员工名称</th>
+
+
+
+                                    <php>}</php>
+
+
+
+                                    <th>交易金额</th>
+
+
+
+                                    <th>实际交易金额</th>
+
+
+
+
+
+
+
+                                    <php>
+
+                                        if(session('servicestoretype')==1&session('flag')==1){//商户员工
+
+                                    </php>
+
+
+
+                                    <th>员工费率</th>
+
+
+
+                                    <php>}else if(session('servicestoretype')==0&session('flag')==1){//服务商员工</php>
+                                        <php>if($_GET['SysNo']){</php>
+                                        <th>商户费率</th>
+                                        <php>}else if($_GET['Customer']){</php>
+                                        <th>上级费率</th>
+                                        <php>}else if($_GET['Top']){</php>
+                                        <th>上级费率</th>
+                                        <php>}else{</php>
+                                        <th>商户费率</th>
+                                         <php>}</php>
+
+                                        <php>if($_GET['SysNo']){</php>
+
+                                        <th>手续费</th>
+
+                                        <php>}else if($_GET['CustomerSysNo']){</php>
+
+                                        <th>手续费</th>
+                                        <php>}else if($_GET['Customer']){</php>
+
+                                        <th>返佣</th>
+
+                                        <php>}else if($_GET['Top']){</php>
+
+                                        <th>返佣</th>
+
+                                        <php>}else{</php>
+
+                                        <th>手续费</th>
+
+                                        <php>}</php>
+
+                                        <th>交易类型</th>
+
+
+                                    <php>}else if(session('data')['CustomersType']==1&session('flag')==0){</php><!--商户-->
+                                        <php>if($_GET['TopSysNo']){</php>
+                                        <th>员工费率</th>
+                                        <php>}else{</php>
+                                            <th>商户费率</th>
+                                            <th>手续费</th>
+                                            <th>费率金额</th>
+                                            <th>交易类型</th>
+                                        <php>}</php>
+
+
+
+
+
+
+
+
+                                    <php>}else if(session('data')['CustomersType']==0&session('flag')==0){</php><!--服务商-->
+
+                                    <php>if($_GET['SysNo']){</php>
+                                        <th>商户费率</th>
+                                        <php>}else if($_GET['CustomerSysNo']){</php>
+                                        <th>商户费率</th>
+
+
+
+                                        <php>}else{</php>
+
+
+
+                                        <th>上级费率</th>
+
+
+
+                                        <php>}</php>
+                                        <php>if($_GET['SysNo']){</php>
+
+                                        <th>手续费</th>
+
+                                        <php>}else if($_GET['CustomerSysNo']){</php>
+
+                                        <th>手续费</th>
+                                        <php>}else if($_GET['Customer']){</php>
+
+                                        <th>手续费</th>
+
+                                        <php>}else{</php>
+
+                                        <th>返佣</th>
+
+                                        <php>}</php>
+
+
+                                        <php>if((session('data')['CustomersType']==1&&session('flag')==0)||(session('servicestoretype')==1&&session('flag')==1)||$_GET['SysNo']||$_GET['CustomerSysNo']||$_GET['Customer']||$_GET['TopSysNo']||$_GET['Top']){</php>
+                                        <th>交易类型</th>
+                                        <php>}</php>
+
+                                    <php>}</php>
+
+
+
+
+                                    <th>交易币种</th>
+
+
+
+                                    <th>交易笔数</th>
+
+
+
+                                </tr>
+
+
+
+                                </thead>
+
+
+
+                                <tbody id = "info">
+
+
+
+                                <!-- <tr>
+
+
+
+                                    <td>01</td>
+
+
+
+                                    <td>021355123541</td>
+
+
+
+                                    <td>微信</td>
+
+
+
+                                    <td>58.00</td>
+
+
+
+                                    <td>人民币</td>
+
+
+
+                                    <td>2016-05-26</td>
+
+
+
+                                </tr> -->
+
+
+
+                                </tbody>
+
+
+
+                            </table>
+
+                            <input type="hidden" id="aa" value=1 >
+
+
+
+                            <div class="page_new">
+
+                                <input type = "hidden" id = "totalCount" value= "">
+
+                                <a id="prev">上一页</a>  <a id = "next">下一页</a> <a id = "first">最前页</a> <a id = "last">最末页</a>
+
+                                <select id = "SelectNo">
+
+
+
+                                </select>
+
+                                <span>总 <label id = "TotalCount"></label> 条</span> <span>分为 <label id = "TotalPage"></label> 页</span> <span>当前第 <label id ="NowPage">1</label> 页</span><input type= "hidden" id= "PageSize" value=10>
+
+
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+
+                </div>
+
+
+
+            </div>
+
+
+
+
+
+
+
+
+
+        </div>
+
+
+
+
+
+    </div>
+
+
+
+</div>
+
+
+
+</div>
+
+
+
+</div>
+
+
+
+</div>
+
+
+
+<a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
+
+
+
+    <i class="icon-double-angle-up icon-only bigger-110"></i>
+
+
+
+</a>
+
+
+
+</div>
+
+
+
+<include file="Base:jsfile"/>
+
+
+
+<script type="text/javascript">
+
+
+
+    jQuery(function($) {
+
+
+
+        var oTable1 = $('#sample-table-2').dataTable( {
+
+
+
+            "aoColumns": [
+
+
+
+                { "bSortable": false },
+
+
+
+                null, null,null, null, null,
+
+
+
+                { "bSortable": false }
+
+
+
+            ]
+
+
+
+        });
+
+
+
+
+
+
+
+        $('table th input:checkbox').on('click' , function(){
+
+
+
+            var that = this;
+
+
+
+            $(this).closest('table').find('tr > td:first-child input:checkbox')
+
+
+
+                .each(function(){
+
+
+
+                    this.checked = that.checked;
+
+
+
+                    $(this).closest('tr').toggleClass('selected');
+
+
+
+                });
+
+
+
+        });
+
+
+
+
+
+
+
+        $('[data-rel="tooltip"]').tooltip({placement: tooltip_placement});
+
+
+
+        function tooltip_placement(context, source) {
+
+
+
+            var $source = $(source);
+
+
+
+            var $parent = $source.closest('table')
+
+
+
+            var off1 = $parent.offset();
+
+
+
+            var w1 = $parent.width();
+
+
+
+            var off2 = $source.offset();
+
+
+
+            var w2 = $source.width();
+
+
+
+            if( parseInt(off2.left) < parseInt(off1.left) + parseInt(w1 / 2) ) return 'right';
+
+
+
+            return 'left';
+
+
+
+        }
+
+
+
+    })
+
+
+
+</script>
+
+
+
+<script>
+
+
+
+    var reg_phone = /^0?1[3|4|5|8][0-9]\d{8}$/;
+
+
+
+    var reg_email = /.+@.+\.[a-zA-Z]{2,4}$/;
+
+
+
+    $("#sx-2").blur(function(){
+
+
+
+        if(reg_email.test($("#sx-2").val()) || $("#sx-2").val()==""){
+
+
+
+            $("#email").hide();
+
+
+
+        }
+
+
+
+        else{
+
+
+
+            $("#email").show();
+
+
+
+        }
+
+
+
+    }).focus(function(){
+
+
+
+        $(this).triggerHandler("blur");
+
+
+
+    }).keyup(function(){
+
+
+
+        $(this).triggerHandler("blur");
+
+
+
+    });
+
+
+
+    $("#sx-3").blur(function(){
+
+
+
+        if(reg_phone.test($("#sx-3").val()) || $("#sx-3").val()==""){
+
+
+
+            $("#phone").hide();
+
+
+
+        }
+
+
+
+        else{
+
+
+
+            $("#phone").show();
+
+
+
+        }
+
+
+
+    }).focus(function(){
+
+
+
+        $(this).triggerHandler("blur");
+
+
+
+    }).keyup(function(){
+
+
+
+        $(this).triggerHandler("blur");
+
+
+
+    });
+
+
+
+</script>
+
+
+
+<script type="text/javascript">
+
+
+
+    $('.form_date').datetimepicker({
+
+
+
+        language:  'fr',
+
+
+
+        weekStart: 1,
+
+
+
+        todayBtn:  1,
+
+
+
+        autoclose: 1,
+
+
+
+        todayHighlight: 1,
+
+
+
+        startView: 2,
+
+
+
+        minView: 2,
+
+
+
+        forceParse: 0
+
+
+
+    });
+
+    $("#Time_Start").blur(function(){
+
+        if($(this).val()==""){
+
+            $("#dtp_input1").val("");
+
+        }
+
+    })
+
+    $("#Time_End").blur(function(){
+
+        if($(this).val()==""){
+
+            $("#dtp_input2").val("");
+
+        }
+
+    })
+
+
+
+
+
+
+
+
+
+</script>
+
+<script>
+
+
+
+    function infoview(PageNumber,PageSize){
+
+        var Time_Start = $("#Time_Start").val();
+
+        var Time_End = $("#Time_End").val();
+
+        var out_trade_no = $("#ordernum").val();
+
+        var CustomerNames = $("#CustomerNames").val();
+
+        var Ordertype = $("input[type='radio']:checked").val();
+
+        var buttontype =$("#buttontype").val();
+
+
+
+//			console.log(Ordertype);
+
+        if(Customername){
+
+            Customer = Customername;
+
+        }else{
+
+            Customer = $("#storename").val();
+
+            //Customer = "";
+
+        }
+
+        var tt="";
+
+        if (this.ajaxRequest_ != undefined && this.ajaxRequest_.readyState < 4) {
+
+            return false;
+
+        }
+
+
+
+        this.ajaxRequest_ =
+
+            $.post("__APP__/OrderFund/order_fund",{Time_Start:Time_Start,Time_End:Time_End,out_trade_no:out_trade_no,Customer:Customer,PageNumber:PageNumber,PageSize:PageSize,SysNo:SysNo,CustomerNames:CustomerNames,Ordertype:Ordertype,ButtonType:buttontype,TopSysNo:TopSysNo,Top:Top,CustomerSysNo:CustomerSysNo},function(data){
+
+                if(data.totalCount>0){
+
+                    $(".page_new").show();
+
+                    $.each(data.model, function(k, v) {
+
+
+
+                        if(data.ButtonType==0){
+
+                        <php>if(session( 'data')['CustomersType']==1&session('flag')==0){</php>//商户
+
+                                if (TopSysNo != null) {
+
+                                    tt += "<tr><td>" + v.SysNo + "</td><td>" + v.CustomerName + "</td><td>" + v.loginname + "</td><td>" + v.displayname + "</td><td>" + v.Out_trade_no + "</td><td>" + v.Total_fee + "</td><td>" + v.rate + "</td><td>" + v.Pay_Type + "</td><td>人民币</td><td>" + v.Time_Start + "</td></tr>";
+
+
+                                } else {
+
+                                    tt += "<tr><td>" + v.SysNo + "</td><td>" + v.CustomerName + "</td><td>" + v.loginname + "</td><td>" + v.displayname + "</td><td>" + v.Out_trade_no + "</td><td>" + v.Total_fee + "</td><td>" + v.Cash_fee + "</td><td>" + v.fee + "</td><td>" + v.rate + "</td><td>" + v.ratefee + "</td><td>" + v.totalratefee + "</td><td>" + v.Pay_Type + "</td><td>人民币</td><td>" + v.Time_Start + "</td></tr>";
+
+                                }
+
+                            <php>}else if(session('servicestoretype')==1&session('flag')==1) {</php>//商户员工
+
+                            tt += "<tr><td>"+v.SysNo+"</td><td>"+v.CustomerName+"</td><td>"+v.Out_trade_no+"</td><td>"+v.Total_fee+"</td><td>"+v.rate+"</td><td>"+v.Pay_Type+"</td><td>人民币</td><td>"+v.Time_Start+"</td></tr>";
+
+                            <php>}else if(session( 'data')['CustomersType']==0&session('flag')==0){</php>//服务商
+                                if(SysNo!=null){
+                                    tt += "<tr><td>"+v.SysNo+"</td><td>"+v.CustomerName+"</td><td>" + v.loginname + "</td><td>" + v.displayname + "</td><td>"+v.Out_trade_no+"</td><td>"+v.Total_fee+"</td><td>"+v.Cash_fee+"</td><td>"+v.fee+"</td><td>"+v.rate+"</td><td>"+v.ratefee+"</td><td>"+v.Pay_Type+"</td><td>人民币</td><td>"+v.Time_Start+"</td></tr>";
+                                }
+                                else if(CustomerSysNo!=null){
+                                    tt += "<tr><td>"+v.SysNo+"</td><td>"+v.CustomerName+"</td><td>"+v.Out_trade_no+"</td><td>"+v.Total_fee+"</td><td>"+v.Cash_fee+"</td><td>"+v.fee+"</td><td>"+v.rate+"</td><td>"+v.ratefee+"</td><td>"+v.Pay_Type+"</td><td>人民币</td><td>"+v.Time_Start+"</td></tr>";
+                                }else if(TopSysNo!=null){
+
+                                    tt += "<tr><td>"+v.SysNo+"</td><td>"+v.CustomerName+"</td><td>"+v.Out_trade_no+"</td><td>"+v.Total_fee+"</td><td>"+v.fee+"</td><td>"+v.rate+"</td><td>"+v.ratefee+"</td><td>"+v.Pay_Type+"</td><td>人民币</td><td>"+v.Time_Start+"</td></tr>";
+                                }else{
+
+                                    tt += "<tr><td>"+v.SysNo+"</td><td>"+v.CustomerName+"</td><td>"+v.Out_trade_no+"</td><td>"+v.Total_fee+"</td><td>"+v.rate+"</td><td>"+v.ratefee+"</td><td>"+v.Pay_Type+"</td><td>人民币</td><td>"+v.Time_Start+"</td></tr>";
+                                }
+
+                            <php>}else if(session('servicestoretype')==0&session('flag')==1) {</php>//服务商员工
+                                if(SysNo!=null){
+                                    tt += "<tr><td>"+v.SysNo+"</td><td>"+v.CustomerName+"</td><td>" + v.loginname + "</td><td>" + v.displayname + "</td><td>"+v.Out_trade_no+"</td><td>"+v.Total_fee+"</td><td>"+v.Cash_fee+"</td><td>"+v.fee+"</td><td>"+v.rate+"</td><td>"+v.ratefee+"</td><td>"+v.Pay_Type+"</td><td>人民币</td><td>"+v.Time_Start+"</td></tr>";
+
+                                }else if(Top!=null){
+                                    tt += "<tr><td>"+v.SysNo+"</td><td>"+v.CustomerName+"</td><td>"+v.Out_trade_no+"</td><td>"+v.Total_fee+"</td><td>"+v.fee+"</td><td>"+v.rate+"</td><td>"+v.ratefee+"</td><td>"+v.Pay_Type+"</td><td>人民币</td><td>"+v.Time_Start+"</td></tr>";
+                                }else if(Customername!=null){
+                                    tt += "<tr><td>"+v.SysNo+"</td><td>"+v.CustomerName+"</td><td>"+v.Out_trade_no+"</td><td>"+v.Total_fee+"</td><td>"+v.fee+"</td><td>"+v.rate+"</td><td>"+v.ratefee+"</td><td>"+v.Pay_Type+"</td><td>人民币</td><td>"+v.Time_Start+"</td></tr>";
+                                 }else if(Customername!=null){
+                                    tt += "<tr><td>"+v.SysNo+"</td><td>"+v.CustomerName+"</td><td>"+v.Out_trade_no+"</td><td>"+v.Total_fee+"</td><td>"+v.rate+"</td><td>"+v.ratefee+"</td><td>"+v.Pay_Type+"</td><td>人民币</td><td>"+v.Time_Start+"</td></tr>";
+                                }else{
+                                    tt += "<tr><td>"+v.SysNo+"</td><td>"+v.CustomerName+"</td><td>"+v.Out_trade_no+"</td><td>"+v.Total_fee+"</td><td>"+v.Cash_fee+"</td><td>"+v.fee+"</td><td>"+v.rate+"</td><td>"+v.ratefee+"</td><td>"+v.Pay_Type+"</td><td>人民币</td><td>"+v.Time_Start+"</td></tr>";
+                                }
+
+
+                            <php>}</php>
+
+                        }else if(data.ButtonType==1){
+
+
+
+                            if(v.customername){
+
+                                var tempname = v.customername;
+
+                            }
+
+                            if(v.displayname){
+
+                                tempname = v.displayname;
+
+                            }
+
+
+
+                        <php>if(session('data')['CustomersType']==1&session('flag')==0){</php>//商户
+
+                            <php>if ($_GET['Top']||$_GET['TopSysNo']) {</php>
+
+                            tt += "<tr><td>"+tempname+"</td><td>"+v.cash_fee+"</td><td>"+v.fee+"</td><td>"+v.rate+"</td><td>"+v.cash_fee_type+"</td><td>"+v.tradecount+"</td></tr>";
+
+                            <php>}else{</php>
+
+                            tt += "<tr><td>"+tempname+"</td><td>"+v.cash_fee+"</td><td>"+v.fee+"</td><td>"+v.rate+"</td><td>"+v.ratefee+"</td><td>"+v.totalratefee+"</td><td>" + v.pay_type + "</td><td>"+v.cash_fee_type+"</td><td>"+v.tradecount+"</td></tr>";
+
+                            <php>}</php>
+
+                            <php>} if( session('data')['CustomersType']==0&session('flag')==0 ) {</php>//服务商
+
+                                <php>if($_GET['SysNo']){</php>
+                                tt += "<tr><td>" + tempname + "</td><td>" + v.cash_fee + "</td><td>" + v.fee + "</td><td>" + v.rate + "</td><td>" + v.ratefee + "</td><td>" + v.pay_type + "</td><td>" + v.cash_fee_type + "</td><td>" + v.tradecount + "</td></tr>";
+                                <php>} else if($_GET['CustomerSysNo']){</php >
+                                tt += "<tr><td>" + tempname + "</td><td>" + v.cash_fee + "</td><td>" + v.fee + "</td><td>" + v.rate + "</td><td>" + v.ratefee + "</td><td>" + v.pay_type + "</td><td>" + v.cash_fee_type + "</td><td>" + v.tradecount + "</td></tr>";
+                                <php>} else if($_GET['TopSysNo']){</php >
+                                tt += "<tr><td>" + tempname + "</td><td>" + v.cash_fee + "</td><td>" + v.fee + "</td><td>" + v.rate + "</td><td>" + v.ratefee + "</td><td>" + v.pay_type + "</td><td>" + v.cash_fee_type + "</td><td>" + v.tradecount + "</td></tr>";
+                                <php>} else{</php >
+                                tt += "<tr><td>" + tempname + "</td><td>" + v.cash_fee + "</td><td>" + v.fee + "</td><td>" + v.rate + "</td><td>" + v.ratefee + "</td><td>" + v.cash_fee_type + "</td><td>" + v.tradecount + "</td></tr>";
+                                <php >}</php >
+
+                            <php>}if(session('servicestoretype')==0&session('flag')==1){</php>//服务商员工
+
+                                <php>if($_GET['SysNo']){</php>
+                                tt += "<tr><td>" +tempname + "</td><td>" + v.cash_fee + "</td><td>" + v.fee + "</td><td>" + v.rate + "</td><td>" + v.ratefee + "</td><td>" + v.pay_type + "</td><td>" + v.cash_fee_type + "</td><td>" + v.tradecount + "</td></tr>";
+                                <php>}else if($_GET['Customer']){</php>
+                                tt += "<tr><td>" +tempname + "</td><td>" + v.cash_fee + "</td><td>" + v.fee + "</td><td>" + v.rate + "</td><td>" + v.ratefee + "</td><td>" + v.pay_type + "</td><td>" + v.cash_fee_type + "</td><td>" + v.tradecount + "</td></tr>";
+                                <php>}else if($_GET['Top']){</php>
+                                tt += "<tr><td>" +tempname + "</td><td>" + v.cash_fee + "</td><td>" + v.fee + "</td><td>" + v.rate + "</td><td>" + v.ratefee + "</td><td>" + v.pay_type + "</td><td>" + v.cash_fee_type + "</td><td>" + v.tradecount + "</td></tr>";
+                                <php>}else{</php>
+                                tt += "<tr><td>" +tempname + "</td><td>" + v.cash_fee + "</td><td>" + v.fee + "</td><td>" + v.rate + "</td><td>" + v.ratefee + "</td><td>" + v.pay_type + "</td><td>" + v.cash_fee_type + "</td><td>" + v.tradecount + "</td></tr>";
+                                <php>}</php>
+
+                            <php>} if(session('servicestoretype')==1&session('flag')==1){</php>//商户员工
+
+                            tt += "<tr><td>"+tempname+"</td><td>"+v.cash_fee+"</td><td>"+v.fee+"</td><td>"+v.rate+"</td><td>"+v.cash_fee_type+"</td><td>"+v.tradecount+"</td></tr>";
+
+                            <php>}</php>
+
+
+
+
+
+                        }
+
+                    });
+
+                    $('#info').html(tt);
+
+                    $('#TotalCount').html(data.totalCount);
+
+                    TotalPage = Math.ceil(data.totalCount/PageSize);
+
+                    var ff ="";
+
+                    for (i=1;i<=TotalPage ;i++ )
+
+                    {
+
+                        ff+="<option value = \""+i+"\">"+i+"</option>";
+
+                    }
+
+                    $('#SelectNo').html(ff);
+
+                    $('#TotalPage').html(TotalPage);
+
+                    $('#PageNumber').html(PageNumber);
+
+                    $('#SelectNo').val(PageNumber+1);
+
+                    $('#NowPage').text(PageNumber+1);
+
+                    $(".page_new").show();
+
+
+
+                }else{
+
+                    $('#info').html("");
+
+                    $(".page_new").hide();
+
+                }
+
+                //alert(1111);
+
+                $('#download').attr("disabled",false);
+
+            });
+
+
+
+    }
+
+    var total,totalPage,pageStr; //总记录数，每页显示数，总页数
+
+    var PageSize = $("#PageSize").val();
+
+    var Customername = GetQueryString ("Customer");
+
+    var SysNo = GetQueryString ("SysNo");
+
+    var TopSysNo = GetQueryString ("TopSysNo");
+
+    var Top = GetQueryString ("Top");
+
+    var CustomerSysNo = GetQueryString ("CustomerSysNo");
+
+
+
+    var Cn = parseInt(Customername);
+
+    $("#Customer").val(Cn);
+
+    var Sn = parseInt(SystemUserSysNo);
+
+    $("#SystemUserSysNo").val(Sn);
+
+
+
+
+
+    ///////////////add by qiwei 20161024///////////////
+
+    var Tn = parseInt(TopSysNo);
+
+    $("#TopSysNo").val(Tn);
+
+
+
+    var So = parseInt(SysNo);
+
+    $("#SysNo").val(So);
+
+
+
+    var Tp = parseInt(Top);
+
+    $("#Top").val(Tp);
+
+
+
+    var Cu = parseInt(CustomerSysNo);
+
+    $("#CustomerSysNo").val(Cu);
+
+    ///////////////add by qiwei 20161024///////////////
+
+
+
+    $(".page_new").hide();
+
+    $("#storename").val();
+
+    $("#buttontype").val(0);
+
+    if(Customername){
+
+        $("#storename").val(Customername);
+
+        $("#storename").attr("disabled",true);
+
+        infoview(0,PageSize);
+
+
+
+    }
+
+    if(SystemUserSysNo){
+
+        infoview(0,PageSize);
+
+
+
+    }
+
+
+
+    $("#CheckStoreUser").hide();
+
+    var type = $("#type").val();
+
+    var flag = $("#flag").val();
+
+    var serstafftype = $("#serstafftype").val();
+
+    /*-------20160708zy新增-----------*/
+
+
+
+    if(serstafftype==1&&flag==1){//商户下的员工
+
+        infoview(0,PageSize);
+
+    }
+
+    if(type==1&&type){
+
+
+
+        infoview(0,PageSize);
+
+    }
+
+    /*-------20160708zy新增-----------*/
+
+    $("#search").click(function(){
+
+        $('#info_name').show();
+
+        $('#total_name').hide();
+
+        $("#input_hidden").val("a");
+
+        $("#buttontype").val(0);
+
+        $('#info').html("");
+
+        if(type==0&&type){
+
+            var Customer = $("#storename").val();
+
+        }else if(serstafftype==0&&flag==1){
+
+            var Customer = $("#storename").val();
+
+
+
+        }
+
+        $("#CheckStoreUser").hide();
+
+        infoview(0,PageSize);
+
+    });
+
+
+
+
+
+    $('#allcount').click(function(){
+
+        $('#info_name').hide();
+
+        $('#total_name').show();
+
+        $("#buttontype").val(1);
+
+        $("#input_hidden").val("b");
+
+        $('#info').html("");
+
+        infoview(0,PageSize);
+
+
+
+    });
+
+
+
+
+
+
+
+    function checkaction(v){
+
+        if(v==0){
+
+            document.searchform.action="__APP__/Export/exportorder";
+
+        }
+
+        searchform.submit();
+
+    }
+
+
+    $(".table-header .btn").click(function(){
+        var Time_Start = $("#Time_Start").val();
+        var Time_End = $("#Time_End").val();
+        var out_trade_no = $("#ordernum").val();
+        var CustomerNames = $("#CustomerNames").val();
+        var Ordertype = $("input[type='radio']:checked").val();
+        var buttontype =$("#buttontype").val();
+        var CustomerSysNo = GetQueryString ("CustomerSysNo");
+        var SysNo = GetQueryString ("SysNo");
+        var TopSysNo = GetQueryString ("TopSysNo");
+        var Top = GetQueryString ("Top");
+
+        if(Customername){
+            Customer = Customername;
+        }else{
+            Customer = $("#storename").val();
+            //Customer = "";
+        }
+        var tt="";
+        if (this.ajaxRequest_ != undefined && this.ajaxRequest_.readyState < 4) {
+            return false;
+        }
+
+        this.ajaxRequest_ =
+            $.post("__APP__/OrderFund/showratefee",{Time_Start:Time_Start,Time_End:Time_End,out_trade_no:out_trade_no,Customer:Customer,PageNumber:0,PageSize:10,CustomerNames:CustomerNames,CustomerSysNo:CustomerSysNo,Ordertype:Ordertype,ButtonType:buttontype,SysNo:SysNo,TopSysNo:TopSysNo,Top:Top},function(data){
+
+                $('#total_fee').html(data.total.Total_fee);
+                $('#fee').html(data.total.fee);
+                $('#tradecount').html(data.total.Tradecount);
+                $('#Rate_fee').html(data.total.Rate_fee);
+                $('#Total_Rate_fee').html(data.total.Total_Rate_fee);
+                $(".table-header span").show(500);
+
+
+            });
+
+    })
+
+
+</script>
+
+<include file="Base:foot>    

@@ -1,0 +1,120 @@
+[ 2017-08-11T08:54:09+08:00 ] 123.151.42.144 /index.php/Wft/jsapi
+ERR: {"Code":0,"Description":"请求数据成功!","Data":{"PayData":{"token_id":"29bed8eeaa2cee11815eee387d83aa793","appId":"wxe00fda5293a2fa25","paySign":"32EF001DBD24A18466C772D70A43E775","package":"prepay_id=wx20170811085409b8dc8be8170584525510","out_trade_no":"1320170811085409888866578","signType":"MD5","timeStamp":"1502412849701","nonceStr":"1502412849701"}}}
+
+[ 2017-08-11T08:54:19+08:00 ] 101.226.33.224 /index.php/Wft/jsapi
+ERR: {"Code":102,"Description":"员工主键不能为空!","Data":{"PayData":null}}
+
+[ 2017-08-11T09:05:43+08:00 ] 123.151.42.144 /index.php/Wft/jsapi
+ERR: {"Code":0,"Description":"请求数据成功!","Data":{"PayData":{"token_id":"28f5bf74aa9a7c6bb20861b35c42e8d0d","appId":"wxe00fda5293a2fa25","paySign":"E498A9029D6DDD0D73DF754EA717B1CF","package":"prepay_id=wx201708110905438d80e1e2700996318248","out_trade_no":"1320170811090543539460132","signType":"MD5","timeStamp":"1502413543743","nonceStr":"1502413543743"}}}
+
+[ 2017-08-11T09:05:58+08:00 ] 123.151.42.144 /index.php/Wft/jsapi
+ERR: {"Code":0,"Description":"请求数据成功!","Data":{"PayData":{"token_id":"11311c57d97afcfb159d3b13b41bd7948","appId":"wxe00fda5293a2fa25","paySign":"9122D51A30F804293620C04D331B02A3","package":"prepay_id=wx201708110905585e32b0cb2a0710150354","out_trade_no":"1320170811090558380047359","signType":"MD5","timeStamp":"1502413558628","nonceStr":"1502413558628"}}}
+
+[ 2017-08-11T09:06:08+08:00 ] 101.226.66.187 /index.php/Wft/jsapi
+ERR: {"Code":102,"Description":"员工主键不能为空!","Data":{"PayData":null}}
+
+[ 2017-08-11T09:06:12+08:00 ] 125.39.57.38 /index.php/Wft/jsapi
+ERR: {"Code":0,"Description":"请求数据成功!","Data":{"PayData":{"token_id":"1b4897f13cde3957dc6d2f0be4f852243","appId":"wxe00fda5293a2fa25","paySign":"389C8C0AC2F78C7971FA0491C52183E5","package":"prepay_id=wx201708110906129d34437d650186121617","out_trade_no":"1320170811090610234729852","signType":"MD5","timeStamp":"1502413572117","nonceStr":"1502413572117"}}}
+
+[ 2017-08-11T09:06:29+08:00 ] 123.151.42.144 /index.php/Wft/jsapi
+ERR: {"Code":0,"Description":"请求数据成功!","Data":{"PayData":{"token_id":"16c494983aa03cbdc954bd53068bc0266","appId":"wxe00fda5293a2fa25","paySign":"FE18E9110027214050A94B79D85E5540","package":"prepay_id=wx20170811090629aa59beef690999842698","out_trade_no":"1320170811090629719800437","signType":"MD5","timeStamp":"1502413589651","nonceStr":"1502413589651"}}}
+
+[ 2017-08-11T09:06:42+08:00 ] 123.151.42.144 /index.php/Wft/jsapi
+ERR: {"Code":0,"Description":"请求数据成功!","Data":{"PayData":{"token_id":"22fc6b35a8aa715f68780937c3a992b36","appId":"wxe00fda5293a2fa25","paySign":"82A8AB5A74778CD08B4BB747B351D38D","package":"prepay_id=wx20170811090642fffca346370363680684","out_trade_no":"1320170811090641230618510","signType":"MD5","timeStamp":"1502413602482","nonceStr":"1502413602482"}}}
+
+[ 2017-08-11T09:06:55+08:00 ] 123.151.42.144 /index.php/Wft/jsapi
+ERR: {"Code":0,"Description":"请求数据成功!","Data":{"PayData":{"token_id":"203c525b15c3787af69fa85eb9944a7b4","appId":"wxe00fda5293a2fa25","paySign":"E3EE51F84F8CE03C9E7952986DB6C4B3","package":"prepay_id=wx2017081109065514458278100273533133","out_trade_no":"1320170811090655199181169","signType":"MD5","timeStamp":"1502413615806","nonceStr":"1502413615806"}}}
+
+[ 2017-08-11T09:07:08+08:00 ] 123.151.42.144 /index.php/Wft/jsapi
+ERR: {"Code":0,"Description":"请求数据成功!","Data":{"PayData":{"token_id":"1058692bb20ac340533ec1ddc52ceacf1","appId":"wxe00fda5293a2fa25","paySign":"0B25FD99B8A18148CF60FB4E4F26F7EA","package":"prepay_id=wx201708110907089c30a9f2a70443954371","out_trade_no":"1320170811090707346361691","signType":"MD5","timeStamp":"1502413628331","nonceStr":"1502413628331"}}}
+
+[ 2017-08-11T09:14:01+08:00 ] 123.151.138.83 /index.php/Wft/jsapi
+ERR: {"Code":0,"Description":"请求数据成功!","Data":{"PayData":{"token_id":"1ce54c7f85221b9f1698f2d1d92167fa7","appId":"wxe00fda5293a2fa25","paySign":"9A159BB09B6263BD707813B16B3F61C7","package":"prepay_id=wx20170811091401ea9a0deaef0644413602","out_trade_no":"1320170811091400325837112","signType":"MD5","timeStamp":"1502414041223","nonceStr":"1502414041223"}}}
+
+[ 2017-08-11T09:15:31+08:00 ] 123.151.176.198 /index.php/Wft/jsapi
+ERR: {"Code":0,"Description":"请求数据成功!","Data":{"PayData":{"token_id":"1ea822766af8b235c97d895fba95a556c","appId":"wxe00fda5293a2fa25","paySign":"DB33AFDFCC30491AF5AEEB1AA6439775","package":"prepay_id=wx201708110915315607c63be30314197066","out_trade_no":"1320170811091531853651309","signType":"MD5","timeStamp":"1502414131881","nonceStr":"1502414131881"}}}
+
+[ 2017-08-11T09:58:47+08:00 ] 210.12.68.218 /index.php/Wft/jsapi
+ERR: {"Code":0,"Description":"请求数据成功!","Data":{"PayData":{"token_id":"114b093b508ae5d1c6b502d0447f93e87","appId":"wxe00fda5293a2fa25","paySign":"8E13E83D7CB0F4BF4C640D268DA93FEA","package":"prepay_id=wx201708110958476707be132d0851294566","out_trade_no":"1320170811095847632733981","signType":"MD5","timeStamp":"1502416727742","nonceStr":"1502416727742"}}}
+
+[ 2017-08-11T09:59:25+08:00 ] 210.12.68.218 /index.php/Wft/jsapi
+ERR: {"Code":0,"Description":"请求数据成功!","Data":{"PayData":{"token_id":"1d43abcd82fba7f4258ed86fc918a98eb","appId":"wxe00fda5293a2fa25","paySign":"FB9AE6CD04EDD3CBA4A26F58A13283A1","package":"prepay_id=wx2017081109592522f2cb266d0319381903","out_trade_no":"1320170811095924542087396","signType":"MD5","timeStamp":"1502416765393","nonceStr":"1502416765393"}}}
+
+[ 2017-08-11T10:00:02+08:00 ] 210.12.68.218 /index.php/Wft/jsapi
+ERR: {"Code":0,"Description":"请求数据成功!","Data":{"PayData":{"token_id":"20c34ab5c49d862e8875f97c6f685630b","appId":"wxe00fda5293a2fa25","paySign":"0DFE2E2C80A6C1D69A42176C6C7590ED","package":"prepay_id=wx20170811100002925360d1f10174898570","out_trade_no":"1320170811100001385925597","signType":"MD5","timeStamp":"1502416802317","nonceStr":"1502416802317"}}}
+
+[ 2017-08-11T10:01:54+08:00 ] 210.12.68.218 /index.php/Wft/jsapi
+ERR: {"Code":0,"Description":"请求数据成功!","Data":{"PayData":{"token_id":"184b9f79d39ae0292f1cdca816952fd69","appId":"wxe00fda5293a2fa25","paySign":"47F1EDF7B239E11E7953B931F7CE2B4C","package":"prepay_id=wx20170811100154289caf46510938376746","out_trade_no":"1320170811100153443290105","signType":"MD5","timeStamp":"1502416914161","nonceStr":"1502416914161"}}}
+
+[ 2017-08-11T10:03:41+08:00 ] 210.12.68.218 /index.php/Wft/jsapi
+ERR: {"Code":0,"Description":"请求数据成功!","Data":{"PayData":{"token_id":"2b2d3e6be0332dfb493253e656f9abb34","appId":"wxe00fda5293a2fa25","paySign":"B9AC16D6B661439B84AA6507A74C16AC","package":"prepay_id=wx20170811100341d4fad3333e0674941191","out_trade_no":"1320170811100340713857605","signType":"MD5","timeStamp":"1502417021231","nonceStr":"1502417021231"}}}
+
+[ 2017-08-11T10:19:56+08:00 ] 111.161.59.195 /index.php/Wft/jsapi
+ERR: {"Code":0,"Description":"请求数据成功!","Data":{"PayData":{"token_id":"1871b3efb4c80939140f306d0c0ef0ac4","appId":"wxe00fda5293a2fa25","paySign":"8A96DCA68CD6591FEE881AA5FE2F284E","package":"prepay_id=wx20170811101956acee4cc3ac0272342479","out_trade_no":"1320170811101956064882992","signType":"MD5","timeStamp":"1502417996807","nonceStr":"1502417996807"}}}
+
+[ 2017-08-11T10:20:01+08:00 ] 36.106.83.34 /index.php/Wft/jsapi
+ERR: {"Code":0,"Description":"请求数据成功!","Data":{"PayData":{"token_id":"2328e9ae364ae536e5ebd39a7fbdb0daa","appId":"wxe00fda5293a2fa25","paySign":"16426A9C58508046C3897C27FFB9705C","package":"prepay_id=wx2017081110200135eeb1539d0485480547","out_trade_no":"1320170811102000758524742","signType":"MD5","timeStamp":"1502418001487","nonceStr":"1502418001487"}}}
+
+[ 2017-08-11T10:20:23+08:00 ] 36.106.83.34 /index.php/Wft/jsapi
+ERR: {"Code":0,"Description":"请求数据成功!","Data":{"PayData":{"token_id":"1997e6a5a0a71ecc18d5bfb8b5773556c","appId":"wxe00fda5293a2fa25","paySign":"BDED7A13322A3E73F142D56DD06EAB2F","package":"prepay_id=wx20170811102023353fee4ac60580582084","out_trade_no":"1320170811102023766285053","signType":"MD5","timeStamp":"1502418023852","nonceStr":"1502418023852"}}}
+
+[ 2017-08-11T10:20:28+08:00 ] 123.151.176.198 /index.php/Wft/jsapi
+ERR: {"Code":0,"Description":"请求数据成功!","Data":{"PayData":{"token_id":"28caf1930f36e32d92cdb584c41417ac8","appId":"wxe00fda5293a2fa25","paySign":"822475665A68BEAEE3F96ACEAD4AF4B3","package":"prepay_id=wx20170811102028780f0312250420629470","out_trade_no":"1320170811102028611969484","signType":"MD5","timeStamp":"1502418028874","nonceStr":"1502418028874"}}}
+
+[ 2017-08-11T10:21:08+08:00 ] 101.226.33.225 /index.php/Wft/jsapi
+ERR: {"Code":102,"Description":"员工主键不能为空!","Data":{"PayData":null}}
+
+[ 2017-08-11T10:22:51+08:00 ] 123.151.42.144 /index.php/Wft/jsapi
+ERR: {"Code":0,"Description":"请求数据成功!","Data":{"PayData":{"token_id":"29d2daef681a59adcf41fd32d810723a6","appId":"wxe00fda5293a2fa25","paySign":"C57EE69E59E9E0DBB9C963E6AC75ECB1","package":"prepay_id=wx20170811102251b282e8c5ac0458813183","out_trade_no":"1320170811102250814665579","signType":"MD5","timeStamp":"1502418171097","nonceStr":"1502418171097"}}}
+
+[ 2017-08-11T11:04:47+08:00 ] 111.161.59.195 /index.php/Wft/jsapi
+ERR: {"Code":0,"Description":"请求数据成功!","Data":{"PayData":{"token_id":"1e16d9cd62f1909bf29b5ffd771bbfdaa","appId":"wxe00fda5293a2fa25","paySign":"DBFA4E558249B2E38360F01873BAA5ED","package":"prepay_id=wx20170811110447903cae72640241230880","out_trade_no":"1320170811110447216330053","signType":"MD5","timeStamp":"1502420687695","nonceStr":"1502420687695"}}}
+
+[ 2017-08-11T11:13:55+08:00 ] 202.99.101.5 /index.php/Wft/jsapi
+ERR: {"Code":0,"Description":"请求数据成功!","Data":{"PayData":{"token_id":"169e7c30adb49ac61245095c066724026","appId":"wxe00fda5293a2fa25","paySign":"6852FDB93ABB1294FC6A734B43B87F8F","package":"prepay_id=wx201708111113553a82caa19a0481905018","out_trade_no":"1320170811111355891541084","signType":"MD5","timeStamp":"1502421235916","nonceStr":"1502421235916"}}}
+
+[ 2017-08-11T12:14:52+08:00 ] 101.226.125.115 /index.php/Wft/jsapi
+ERR: {"Code":0,"Description":"请求数据成功!","Data":{"PayData":{"token_id":"225b8577164699fdc120306a571dc34bc","appId":"wxe00fda5293a2fa25","paySign":"B3A19CCE85918681B3AE47E06E39BDA2","package":"prepay_id=wx201708111214522809f511da0268471645","out_trade_no":"1320170811121452832952207","signType":"MD5","timeStamp":"1502424892518","nonceStr":"1502424892518"}}}
+
+[ 2017-08-11T12:15:35+08:00 ] 101.226.125.115 /index.php/Wft/jsapi
+ERR: {"Code":0,"Description":"请求数据成功!","Data":{"PayData":{"token_id":"1337c26779ba091d597bc6d50c90c36eb","appId":"wxe00fda5293a2fa25","paySign":"A96BEA2F8411BB1EFD8222729FF0FFC1","package":"prepay_id=wx201708111215350e0feebf470117155806","out_trade_no":"1320170811121535216648542","signType":"MD5","timeStamp":"1502424935673","nonceStr":"1502424935673"}}}
+
+[ 2017-08-11T12:15:39+08:00 ] 106.120.161.66 /index.php/Wft/jsapi
+ERR: {"Code":102,"Description":"员工主键不能为空!","Data":{"PayData":null}}
+
+[ 2017-08-11T12:15:58+08:00 ] 220.181.132.197 /index.php/Wft/jsapi
+ERR: {"Code":102,"Description":"员工主键不能为空!","Data":{"PayData":null}}
+
+[ 2017-08-11T12:17:19+08:00 ] 101.226.125.115 /index.php/Wft/jsapi
+ERR: {"Code":0,"Description":"请求数据成功!","Data":{"PayData":{"token_id":"1d1fa9132362a8ebcddbc3b7d8801e93b","appId":"wxe00fda5293a2fa25","paySign":"49911FC0E8DA2CC135899F09BC7C9E25","package":"prepay_id=wx201708111217196a1b195e8f0413469079","out_trade_no":"1320170811121718757184918","signType":"MD5","timeStamp":"1502425039202","nonceStr":"1502425039202"}}}
+
+[ 2017-08-11T15:52:14+08:00 ] 223.104.7.133 /index.php/Wft/jsapi
+ERR: {"Code":0,"Description":"请求数据成功!","Data":{"PayData":{"token_id":"2065d81051cdf9d3d0d1bf4385b040742","appId":"wxe00fda5293a2fa25","paySign":"A9AC2F105598C60D96B1380F6F7C3AF1","package":"prepay_id=wx20170811155214d03d44daa60010882723","out_trade_no":"1320170811155214265638222","signType":"MD5","timeStamp":"1502437934749","nonceStr":"1502437934749"}}}
+
+[ 2017-08-11T15:54:50+08:00 ] 123.151.148.172 /index.php/Wft/jsapi
+ERR: {"Code":0,"Description":"请求数据成功!","Data":{"PayData":{"token_id":"2447b55ad8120bf940230f10c7af3beb0","appId":"wxe00fda5293a2fa25","paySign":"A3692435E6A5C5E02567E6C071F828D9","package":"prepay_id=wx20170811155450e191c366c70408786845","out_trade_no":"1320170811155450281457638","signType":"MD5","timeStamp":"1502438090985","nonceStr":"1502438090985"}}}
+
+[ 2017-08-11T16:01:47+08:00 ] 42.80.206.231 /index.php/Wft/jsapi
+ERR: {"Code":0,"Description":"请求数据成功!","Data":{"PayData":{"token_id":"11d4c1f2cca8048000726383f5fb47cf8","appId":"wxe00fda5293a2fa25","paySign":"A73F611CFA15F0523696D587BCB46B6F","package":"prepay_id=wx2017081116014719f0696d2c0975065604","out_trade_no":"1320170811160146817004799","signType":"MD5","timeStamp":"1502438507215","nonceStr":"1502438507215"}}}
+
+[ 2017-08-11T17:35:15+08:00 ] 111.161.105.16 /index.php/Wft/jsapi
+ERR: {"Code":0,"Description":"请求数据成功!","Data":{"PayData":{"token_id":"2fdb67703c52db0ddd5b0685dd4aaf914","appId":"wxe00fda5293a2fa25","paySign":"4046D5ED83CD60EDD885DA0BF62347A7","package":"prepay_id=wx2017081117351520b6d2af600173748749","out_trade_no":"1320170811173514493702623","signType":"MD5","timeStamp":"1502444115112","nonceStr":"1502444115112"}}}
+
+[ 2017-08-11T17:56:29+08:00 ] 123.151.43.126 /index.php/Wft/jsapi
+ERR: {"Code":0,"Description":"请求数据成功!","Data":{"PayData":{"token_id":"1f0c5f3b6abd0479408ee8589615b9ff4","appId":"wxe00fda5293a2fa25","paySign":"0D0383AABE5686CD5F9900658DDBBF90","package":"prepay_id=wx20170811175629bd3b179e5a0524447080","out_trade_no":"1320170811175629397733399","signType":"MD5","timeStamp":"1502445389779","nonceStr":"1502445389779"}}}
+
+[ 2017-08-11T18:40:29+08:00 ] 36.102.227.112 /index.php/Wft/jsapi
+ERR: {"Code":0,"Description":"请求数据成功!","Data":{"PayData":{"token_id":"2c7f4ee7f0588635715e72d779f86c7cf","appId":"wxe00fda5293a2fa25","paySign":"AB94C57F0974C1CB250C12FAD6FC58D4","package":"prepay_id=wx20170811184029aaa46230450031323408","out_trade_no":"1320170811184029223296925","signType":"MD5","timeStamp":"1502448029981","nonceStr":"1502448029981"}}}
+
+[ 2017-08-11T18:41:03+08:00 ] 101.226.125.122 /index.php/Wft/jsapi
+ERR: {"Code":0,"Description":"请求数据成功!","Data":{"PayData":{"token_id":"144f681de9ffc13213bc5195b1bdcf2d2","appId":"wxe00fda5293a2fa25","paySign":"61894307834A8882011D82D70C5691CE","package":"prepay_id=wx20170811184103dde3b2b1990586238958","out_trade_no":"1320170811184103117653256","signType":"MD5","timeStamp":"1502448063961","nonceStr":"1502448063961"}}}
+
+[ 2017-08-11T18:45:51+08:00 ] 101.226.125.122 /index.php/Wft/jsapi
+ERR: {"Code":0,"Description":"请求数据成功!","Data":{"PayData":{"token_id":"28d482ae932abbf8279c74e9c1e5e9496","appId":"wxe00fda5293a2fa25","paySign":"9D61D1F9F52F436C1937F40073D9303D","package":"prepay_id=wx20170811184551007152a4550909479527","out_trade_no":"1320170811184551538252630","signType":"MD5","timeStamp":"1502448351833","nonceStr":"1502448351833"}}}
+
+[ 2017-08-11T19:55:26+08:00 ] 117.10.153.145 /index.php/Wft/jsapi
+ERR: {"Code":0,"Description":"请求数据成功!","Data":{"PayData":{"token_id":"12a49e0a1e500c1fe61c157180ee92056","appId":"wxe00fda5293a2fa25","paySign":"059E41DDA9A6906435EB37847B17E10E","package":"prepay_id=wx2017081119552650e7f19de20878722497","out_trade_no":"1320170811195525764345546","signType":"MD5","timeStamp":"1502452526238","nonceStr":"1502452526238"}}}
+
+[ 2017-08-11T21:45:26+08:00 ] 117.136.54.137 /index.php/Wft/jsapi
+ERR: {"Code":0,"Description":"请求数据成功!","Data":{"PayData":{"token_id":"23472dd0f32c679e536ff54f1c717ca4b","appId":"wxe00fda5293a2fa25","paySign":"09E4FBCAC57549A39E9ADE19405B9BB5","package":"prepay_id=wx20170811214526476b281fc40297025777","out_trade_no":"1320170811214525436276178","signType":"MD5","timeStamp":"1502459126547","nonceStr":"1502459126547"}}}
+

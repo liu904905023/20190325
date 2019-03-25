@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>二维码卡券</title>
+    <link href="__PUBLIC__/assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="__PUBLIC__/assets/css/flat-ui.min.css" rel="stylesheet">
+    <link href="__PUBLIC__/assets/css/style.css" rel="stylesheet">
+    <script src="__PUBLIC__/assets/js/jquery-2.0.3.min.js"></script>
+    <script src="__PUBLIC__/assets/js/jquery.validate.min.js"></script>
+    <script src="__PUBLIC__/assets/js/bootstrap.min.js"></script>
+</head>
+<body>
+</body>
+
+<div class="login-form">
+    <div class="form-group" id="icon">
+        <div class="col-xs-12 mr_mab">
+            <div class="over">
+                <img src="__PUBLIC__/assets/images/sico_pay.png" alt="">
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+
+    <form class="form-horizontal" id="validation-form" method="post">
+        <div class="form-group">
+            <div class="col-xs-12 mr_mab">
+                <div class="over">
+                    <select class="form-control form-select" id="cashVoucher" name="cashVoucher">
+                        <option value="">请选择金额</option>
+                        <php>foreach($data as $key=>$row){</php>
+                        <option value="<php>echo $row['SysNo'];</php>"><php>echo ($row['Money']);</php>元</option>
+
+                        <php>}</php>
+                    </select>
+                    <label class="login-field-icon glyphicon glyphicon-credit-card" for="cashVoucher"></label>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-xs-12 mr_mab">
+                <div class="over">
+                    <input type="number" class="form-control" name="count" id="count" placeholder="数量" value=""  onkeypress='return(/[\d]/.test(String.fromCharCode(event.keyCode)))'/>
+                    <label class="login-field-icon glyphicon  glyphicon-shopping-cart" for="count"></label>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-xs-12 mr_mab">
+                <div class="over">
+                    <input type="text" class="form-control" name="userName" id="userName" placeholder="姓名" value=""/>
+                    <label class="login-field-icon glyphicon glyphicon-user" for="userName"></label>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-xs-12 mr_mab">
+                <div class="over">
+                    <input type="number" class="form-control" name="telephone" id="telephone" placeholder="电话号" value=""/>
+                    <label class="login-field-icon glyphicon glyphicon-earphone" for="telephone"></label>
+                </div>
+            </div>
+        </div>
+		<div class="form-group">
+            <div class="col-xs-12 mr_mab">
+                <div class="over">
+                    <input type="number" class="form-control" name="checkTelephone" id="checkTelephone" placeholder="请再次输入电话号" value=""/>
+                    <label class="login-field-icon glyphicon glyphicon-earphone" for="checkTelephone"></label>
+                </div>
+            </div>
+        </div>
+
+
+        <input type = 'hidden' id = 'PayType' value = '<{$PayType}>'>
+        <input type = 'hidden' id = 'userid' value = '<{$userid}>'>
+        <input type = 'hidden' id = 'systemUserSysNo' value = '<{$systemUserSysNo}>'>
+        <input type = 'hidden' id = 'CustomersTopSysNo' value = '<{$CustomersTopSysNo}>'>
+        <input type = 'hidden' id = 'Switch' value = '<{$Switch}>'>
+        <input type = 'hidden' id = 'amount' value = ''>
+        <input type = 'hidden' id = 'cashAmount' value = ''>
+        <button class="btn btn-primary btn-lg btn-block" type="submit" id="send">支付（合计：<span id="allMoney">¥ 0.00 元</span>）
+        </button>
+		<div class="form-group" id="explainArea">
+          <div class="col-xs-12 mr_mab">
+            <div class="over">
+               <a class="text-info" id="explain" data-toggle="modal"
+                       data-target="#explainModal">支付宝抵用券说明
+                </a>
+            </div>
+          </div>
+        </div>
+
+    </form>
+</div>
+
+<!-- 支付宝抵用券说明弹窗 -->
+<div class="modal fade" id="explainModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">支付宝抵用券说明：</h4>
+            </div>
+            <div class="modal-body">
+
+                <ul>
+                    <li> 1.本券仅限在支付宝线下签约商家（个人收款码及转账除外）及部分线上APP使用支付宝付款时（包含出示付款码、扫码付、支付宝付款）实付金额大于券面金额时自动抵扣。</li>
+                    <li> 2.在线上APP使用支付宝付款时，须关闭免密支付，本券方可被抵扣。</li>
+                    <li> 3.本券每笔交易限使用1张。在您绑定了多张券的情况下，支付系统将自动优先选择最大券面额进行抵扣；</li>
+                    <li> 4.本券自激活之日起90日内使用有效。</li>
+                    <li> 5.使用该券后发生的退款，本券不自动退还。可通过 <a href="https://jinshuju.net/f/3tNcz9 
+
+">https://jinshuju.net/f/3tNcz9</a 
+
+> 在线申请退券。</li>
+                </ul>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-info" data-dismiss="modal">确认</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="circle-box"><div class="circle_animate"><div class="circle"></div><p>加载中...</p></div></div>
+
+ <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" id="tipModal">
+        <div class="modal-dialog modal-sm" role="document">
+             <div class="modal-content" id="tipModalContent">
+                <div class="modal-body">
+                     <p class="text-center tipMessage">提示信息</p>
+                    <hr>
+                    <p class="text-center text-info tipBtn" data-dismiss="modal">我知道了！</p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+<script>
+	var submitAble = true;
+    jQuery(function ($) {
+
+        let count = '';
+		let moneyValue = ''
+		$('.circle-box').hide();
+		let reg = /^\d+\.\d+$/
+
+		function accMul(arg1, arg2) {
+			var m = 0, s1 = arg1.toString(), s2 = arg2.toString();
+			try {
+				m += s1.split(".")[1].length
+				m += s2.split(".")[1].length
+			} catch (e) {
+			}
+			return Number(s1.replace(".", "")) * Number(s2.replace(".", "")) / Math.pow(10, m)
+		}
+
+		Number.prototype.mul = function (arg) {
+			return accMul(arg, this);
+		}
+
+		$('#cashVoucher').on('change', () => {
+			let amountOfMoney = $('#cashVoucher option:checked').text();
+			let end = amountOfMoney.lastIndexOf('元');
+			moneyValue = Number(amountOfMoney.substr(0, end));
+			$('#cashAmount').val(moneyValue);
+			CalculationMoney(moneyValue, count);
+
+		});
+
+		$('#count').on('keyup', function () {
+			count = this.value;
+//			console.log(count);
+			CalculationMoney(moneyValue, count);
+		})
+		let CalculationMoney = (str, count) => {
+			let moneyCount = accMul(str,count);
+			if(moneyCount){
+				if (reg.exec(moneyValue) && $('#count').val() != '') {
+					$('#allMoney').text(`¥ ${moneyCount} 元`);
+				} else {
+					moneyCount = moneyCount + '.00';
+					$('#allMoney').text(`¥ ${moneyCount} 元`);
+				}
+				$('#amount').val(moneyCount);
+			}else{
+				$('#allMoney').text('¥ 0.00元');
+			}
+			
+		}
+
+
+
+        $.validator.addMethod("productCount", function (value, element) {
+            let reg = /^[1-5]?$/
+            if (reg.exec(value)) {
+                return true;
+            } else {
+                return false;
+            }
+        });
+
+        $('#validation-form').validate({
+
+            errorElement: 'div',
+
+            errorClass: 'help-block',
+
+            focusInvalid: false,
+
+            rules: {
+
+                cashVoucher: {required: true},
+                count: {required: true, productCount: true},
+                userName: {required: true, chinese: true},
+                telephone: {required: true, mobile: true},
+				checkTelephone:{required:true,mobile:true,equalTo:'#telephone'}
+
+
+            },
+
+            messages: {
+
+                cashVoucher: {required: '请选择现金券面值.'},
+                count: {required: '请输入数量.', productCount: '请输入数字1-5'},
+                userName: {required: '请输入姓名.', chinese: '请输入正确格式的姓名.'},
+                telephone: {required: '请输入电话号码.', mobile: '请输入正确格式的电话号码.'},
+				checkTelephone:{required:'请再次填写电话号码.',mobile:'请输入正确格式的电话号码',equalTo:'两次输入的电话号码不一致.'},
+
+                subscription: "Please choose at least one option",
+
+                gender: "Please choose gender",
+
+                agree: "Please accept our policy"
+
+            },
+
+            invalidHandler: function (event, validator) {
+
+                $('.alert-danger', $('.login-form')).show();
+
+            },
+
+            highlight: function (e) {
+
+                $(e).closest('.form-group').removeClass('has-info').addClass('has-error');
+
+            },
+
+            success: function (e) {
+
+                $(e).closest('.form-group').removeClass('has-error').addClass('has-info');
+                $(e).remove();
+
+            },
+
+            errorPlacement: function (error, element) {
+
+                if (element.is(':checkbox') || element.is(':radio')) {
+
+                    var controls = element.closest('div[class*="col-"]');
+
+                    if (controls.find(':checkbox,:radio').length > 1) controls.append(error); else error.insertAfter(element.nextAll('.lbl:eq(0)').eq(0));
+
+                } else if (element.is('.select2')) {
+
+                    error.insertAfter(element.siblings('[class*="select2-container"]:eq(0)'));
+
+                } else if (element.is('.chosen-select')) {
+
+                    error.insertAfter(element.siblings('[class*="chosen-container"]:eq(0)'));
+
+                } else error.insertAfter(element.parent());
+
+            },
+
+            submitHandler: function (form) {
+				if(!submitAble){
+					return;
+				}
+				$("#send").attr("disabled","disabled");
+				$('.circle-box').show();
+				submitAble = false;
+                $.ajax({
+					
+                    type: "POST",
+
+                    url: "__APP__/Intel/EFuliPay",
+
+                    data: {
+                        cashVoucher: $('#cashVoucher').val(),
+                        count: $('#count').val(),
+                        userName: $('#userName').val(),
+                        cashVoucher: $('#cashVoucher').val(),
+                        telephone: $('#telephone').val(),
+                        PayType: $('#PayType').val(),
+                        userid: $('#userid').val(),
+                        amount: $('#amount').val(),
+                        cashAmount: $('#cashAmount').val(),
+                        CustomersTopSysNo: $('#CustomersTopSysNo').val(),
+                        Switch: $('#Switch').val(),
+                        systemUserSysNo: $('#systemUserSysNo').val()
+                    },
+
+//                    async: false,
+
+                    success: function (response) {
+                        if(response.Code==0){
+                            var payInfo = response['PayInfo'];
+                        <php>if( strpos($_SERVER['HTTP_USER_AGENT'], 'MicroMessenger') !== false ){</php>
+                            WeixinJSBridge.invoke('getBrandWCPayRequest',{
+                                "appId": payInfo.appId, //公众号名称，由商户传入
+                                "timeStamp": payInfo.timeStamp, //时间戳，自1970 年以来的秒数
+                                "nonceStr": payInfo.nonceStr, //随机串
+                                "package": payInfo.package,
+                                "signType": payInfo.signType, //微信签名方式:
+                                "paySign": payInfo.paySign//微信签名,
+                            },function(res){
+                                if (res.err_msg == "get_brand_wcpay_request:ok") {
+                                    // 此处可以使用此方式判断前端返回,微信团队郑重提示：res.err_msg 将在用户支付成功后返回ok，但并不保证它绝对可靠。
+                                    if(response['Ad_Info']['Switch']==0){
+                                        location.href ="<php>echo C('AD_HOST');</php>";
+
+                                    }else{
+                                        WeixinJSBridge.call( 'closeWindow' );
+                                    }
+                                }else{
+                                    WeixinJSBridge.call( 'closeWindow' );
+                                }
+                            });
+                            <php>}</php>
+                            <php>if ( strpos($_SERVER['HTTP_USER_AGENT'], 'AlipayClient') !== false ){</php>
+                                var trade_no = response['PayInfo'];
+                                AlipayJSBridge.call("tradePay", {
+                                    tradeNO: trade_no
+                                }, function (result) {
+                                    if ( result.resultCode=="9000") {
+                                        if(response['Ad_Info']['Switch']==0){
+                                            location.href ="<php>echo C('AD_HOST');</php>";
+//								location.href ="<php>echo C('AD_HOST');</php>"+'?amount='+response['Ad_Info']['Fee']+'&product='+response['Ad_Info']['CustomerName'];
+
+                                        }else{
+                                            AlipayJSBridge.call('closeWebview');
+                                        }
+                                    }else{
+                                        AlipayJSBridge.call('closeWebview');
+                                    }
+                                });
+                            <php>}</php>
+                        }else{
+							$('.tipMessage').text(response.Description);
+							$('#tipModal').modal('show');
+
+//                            alert(response.Description);
+                        }
+						submitAble=true;
+						$('.circle-box').hide();
+
+						$("#send").removeAttr("disabled");
+
+                    }
+
+                });
+
+            },
+
+            invalidHandler: function (form) {
+
+                console.log("ajax失败！");
+
+            }
+
+        });
+
+    });
+</script>
+</script>
+</html>

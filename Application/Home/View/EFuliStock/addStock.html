@@ -1,0 +1,339 @@
+<include file="Base:header"/>
+
+<div class="main-content">
+
+    <div class="breadcrumbs" id="breadcrumbs">
+
+        <script type="text/javascript">            try {
+
+            ace.settings.check('breadcrumbs', 'fixed')
+
+        } catch (e) {
+
+        }        </script>
+
+        <ul class="breadcrumb">
+
+            <li><i class="icon-home home-icon"></i> <a href="__APP__">首页</a></li>
+
+            <li>库存新增</li>
+
+        </ul>
+
+    </div>
+
+    <div class="page-content">
+
+        <div class="page-header"><h1>库存新增</h1></div>
+
+        <div class="row">
+
+            <div class="col-xs-12">
+
+                <div class="row-fluid">
+
+                    <div class="span12">
+
+                        <div class="widget-box">
+
+                            <div class="widget-header widget-header-blue widget-header-flat"><h4 class="lighter">
+                                填写详细信息</h4></div>
+
+                            <div class="widget-body">
+
+                                <div class="widget-main">
+
+                                    <div class="step-content row-fluid position-relative" id="step-container">
+
+                                        <div class="step-pane active" id="step1">
+
+                                            <form class="form-horizontal" id="validation-form" method="post">
+
+                                                <div class="row">
+
+                                                    <div class="col-md-4">
+
+                                                        <div class="form-group">
+
+                                                            <div class="col-xs-12 mr_mab"><label>产品编号</label>
+
+                                                                <div class="over"><input type="text"
+                                                                                         class="form-control"
+                                                                                         name="productNumber"
+                                                                                         id="productNumber"
+                                                                                         placeholder="产品编号" value=""/>
+                                                                </div>
+
+                                                            </div>
+
+                                                        </div>
+
+                                                    </div>
+
+                                                    <div class="col-md-4">
+
+                                                        <div class="form-group">
+
+                                                            <div class="col-xs-12 mr_mab"><label>进货金额</label>
+
+                                                                <div class="over"><input type="text"
+                                                                                         class="form-control"
+                                                                                         name="stockMoney"
+                                                                                         id="stockMoney"
+                                                                                         placeholder="进货金额" value=""/>
+                                                                </div>
+
+                                                            </div>
+
+                                                        </div>
+
+                                                    </div>
+
+                                                    <div class="col-md-4">
+
+                                                        <div class="form-group">
+
+                                                            <div class="col-xs-12 mr_mab"><label>进货数量</label>
+
+                                                                <div class="over"><input type="text"
+                                                                                         class="form-control"
+                                                                                         name="stockCount"
+                                                                                         id="stockCount"
+                                                                                         placeholder="进货数量" value=""/>
+                                                                </div>
+
+                                                            </div>
+
+                                                        </div>
+
+                                                    </div>
+
+                                                    <div class="clearfix"></div>
+
+                                                    <div class="col-md-4">
+
+                                                        <div class="form-group">
+
+                                                            <div class="col-xs-12 mr_mab"><label>出货金额</label>
+
+                                                                <div class="over"><input type="text"
+                                                                                         class="form-control"
+                                                                                         name="shipmentMoney"
+                                                                                         id="shipmentMoney"
+                                                                                         placeholder="出货金额" value=""/>
+                                                                </div>
+
+                                                            </div>
+
+                                                        </div>
+
+                                                    </div>
+
+                                                    <div class="col-md-4">
+
+                                                        <div class="form-group">
+
+                                                            <div class="col-xs-12 mr_mab"><label>现金券面值</label>
+
+                                                                <div class="over"><select class="form-control"
+                                                                                          id="money" name="money">
+
+                                                                    <option value="">请选择金额</option>
+                                                                    <php>foreach($data as $key=>$row){</php>
+                                                                    <option value="<php>echo $row['SysNo'];</php>"><php>echo ($row['Money']);</php>元</option>
+
+                                                                    <php>}</php>
+
+                                                                </select></div>
+
+                                                            </div>
+
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="clearfix"></div>
+
+
+                                                </div>
+
+                                                <div class="clearfix"></div>
+
+                                                <div class="form-group">
+
+                                                    <div class="col-xs-12">
+
+                                                        <button type="submit" class="btn btn-primary"><i
+                                                                class="icon-ok bigger-110"></i> 保存
+                                                        </button>
+
+                                                    </div>
+
+                                                </div>
+
+                                            </form>
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div></div></div>
+
+<include file="Base:jsfile"/>
+
+<script type="text/javascript">    jQuery(function ($) {
+    $.validator.addMethod("money", function (value, element) {
+        let reg = /^(([1-9][0-9]*)|(([0]\.\d{1,2}|[1-9][0-9]*\.\d{1,2})))$/
+        if (reg.exec(value)) {
+            return true;
+        } else {
+            return false;
+        }
+    });
+    $.validator.addMethod("zero", function (value, element) {
+        let reg = /^(?:(?!(0\.0|0\.00)$))[\d\D]*/
+        if (reg.exec(value)) {
+            return true;
+        } else {
+            return false;
+        }
+    });
+    $('#validation-form').validate({
+
+        errorElement: 'div',
+
+        errorClass: 'help-block',
+
+        focusInvalid: false,
+
+        rules: {
+
+            productNumber: {required: true, rangelength: [0, 50], username: true},
+
+            stockMoney: {required: true, money: true, zero: true,max:9999.99},
+
+            stockCount: {required: true, min: 1, max: 9999, digits: true},
+
+            shipmentMoney: {required: true, money: true, zero: true,max:9999.99},
+
+            money: {required: true}
+        },
+
+        messages: {
+
+            productNumber: {required: '请输入产品编号.', rangelength: '请输入正确位数的产品编号.', username: '请输入正确格式的产品编号.'},
+
+            stockMoney: {required: '请输入进货金额.', money: '请输入正确格式的金额.', zero: '请输入正确格式的金额.',max:'请输入正确的金额.'},
+
+            stockCount: {required: '请输入进货数量.', min: '进货数量不能小于1.', digits: '请输入整数.',max:'进货数量不能大于9999'},
+
+            shipmentMoney: {required: '请输入出货金额.', money: '请输入正确格式的金额.', zero: '请输入正确格式的金额.',max:'请输入正确的金额.'},
+
+            money: {required: '请选择现金券面值.'},
+
+            subscription: "Please choose at least one option",
+
+            gender: "Please choose gender",
+
+            agree: "Please accept our policy"
+
+        },
+
+        invalidHandler: function (event, validator) {
+
+            $('.alert-danger', $('.login-form')).show();
+
+        },
+
+        highlight: function (e) {
+
+            $(e).closest('.form-group').removeClass('has-info').addClass('has-error');
+
+        },
+
+        success: function (e) {
+
+            $(e).closest('.form-group').removeClass('has-error').addClass('has-info');
+
+            $(e).remove();
+
+        },
+
+        errorPlacement: function (error, element) {
+
+            if (element.is(':checkbox') || element.is(':radio')) {
+
+                var controls = element.closest('div[class*="col-"]');
+
+                if (controls.find(':checkbox,:radio').length > 1) controls.append(error); else error.insertAfter(element.nextAll('.lbl:eq(0)').eq(0));
+
+            } else if (element.is('.select2')) {
+
+                error.insertAfter(element.siblings('[class*="select2-container"]:eq(0)'));
+
+            } else if (element.is('.chosen-select')) {
+
+                error.insertAfter(element.siblings('[class*="chosen-container"]:eq(0)'));
+
+            } else error.insertAfter(element.parent());
+
+        },
+
+        submitHandler: function (form) {
+
+            $.ajax({
+
+                type: "POST",
+
+                url: "__SELF__",
+
+                data: {
+                    productNumber: $('#productNumber').val(),
+                    stockMoney: $('#stockMoney').val(),
+                    stockCount: $('#stockCount').val(),
+                    shipmentMoney: $('#shipmentMoney').val(),
+                    money: $('#money').val()
+                },
+
+                async: false,
+
+                success: function (data) {
+                    if ( data.Code == 0 ) {
+                        show_alert("库存新增成功!");
+                    }else{
+                        show_alert(data.Description);
+                    }
+
+                }
+
+            });
+
+        },
+
+        invalidHandler: function (form) {
+
+            console.log("ajax失败！");
+
+        }
+
+    });
+
+})</script>
+
+
+<include file="Base:footer"/>

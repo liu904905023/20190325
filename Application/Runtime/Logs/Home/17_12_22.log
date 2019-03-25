@@ -1,0 +1,12 @@
+[ 2017-12-22T10:31:39+08:00 ] 36.48.96.107 /index.php/Intels/index
+ERR: {"Code":1,"Description":"\u7edf\u4e00\u4e0b\u5355\u5931\u8d25\uff01","Data":null}
+
+[ 2017-12-22T10:32:38+08:00 ] 36.48.96.107 /index.php/Intels/index
+ERR: {"systemUserSysNo":"6648","total_fee":"500","openId":"oxRnuwDh_XSoVkcyHc2y--R6rtkk"}
+
+[ 2017-12-22T10:37:01+08:00 ] 36.48.96.107 /index.php/Intels/index
+ERR: {"systemUserSysNo":"6648","total_fee":"200","openId":"oxRnuwDh_XSoVkcyHc2y--R6rtkk"}
+
+[ 2017-12-22T10:38:57+08:00 ] 36.48.96.107 /index.php/Intels/index
+ERR: {"systemUserSysNo":"6648","total_fee":"200","openId":"oxRnuwDh_XSoVkcyHc2y--R6rtkk"}
+

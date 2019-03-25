@@ -1,0 +1,497 @@
+<include file="Base:header"/>
+
+<div class="main-content">
+    <div class="breadcrumbs" id="breadcrumbs">
+        <script type="text/javascript">try {
+            ace.settings.check('breadcrumbs', 'fixed')
+        } catch (e) {
+        }</script>
+
+        <ul class="breadcrumb">
+
+            <li>
+
+                <i class="icon-home home-icon"></i>
+
+                <a href="#">首页</a>
+
+            </li>
+
+            <li>蓝海行动报名</li>
+
+        </ul>
+
+    </div>
+    <form class="form-horizontal" id="validation-form" method="post" action="">
+        <!--商户详情列表-->
+        <div class="page-content">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="row-fluid">
+                        <div class="span12">
+                            <div class="widget-box">
+                                <div class="widget-header widget-header-blue widget-header-flat">
+                                    <h4 class="lighter">蓝海行动报名 </h4>
+                                </div>
+                                <div class="widget-body">
+                                    <div class="widget-main">
+                                        <div class="step-content row-fluid position-relative">
+                                            <div class="step-pane active">
+
+                                                <div class="row">
+                                                    <div class="col-md-4">
+                                                        <div class="form-group">
+                                                            <div class="col-xs-12 mr_mab">
+                                                                <label>商户号</label>
+                                                                <div class="over">
+                                                                    <input type="text" class="form-control"
+                                                                           name="MerchantId"
+                                                                           id="MerchantId"
+                                                                           placeholder="商户号"
+                                                                           value="<{$_GET['MerchaId']}>"
+                                                                           readonly="readonly"/>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <div class="form-group">
+                                                            <div class="col-xs-12 mr_mab">
+                                                                <label>支付宝 Smid</label>
+                                                                <div class="over">
+                                                                    <input type="text" class="form-control"
+                                                                           name="Smid" id="Smid"
+                                                                           placeholder="支付宝 Smid"
+                                                                           value="<{$_GET['Smid']}>"
+                                                                           readonly="readonly">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <div class="form-group">
+                                                            <div class="col-xs-12 mr_mab">
+                                                                <label>活动类型</label>
+                                                                <div class="over">
+                                                                    <select class="form-control" id="ActivityType"
+                                                                            name="ActivityType">
+                                                                        <option value="BLUE_SEA">支付宝蓝海行动</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="clearfix"></div>
+                                                    <div class="col-md-4">
+                                                        <div class="form-group">
+                                                            <div class="col-xs-12 mr_mab">
+                                                                <label>商户名称(*与营业执照名称一致)</label>
+                                                                <div class="over">
+                                                                    <input type="text" class="form-control"
+                                                                           name="CustomerName" id="CustomerName"
+                                                                           placeholder="商户名称"/>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <div class="form-group">
+                                                            <div class="col-xs-12 mr_mab">
+                                                                <label>商户简称(*与
+                                                                    进件信息一致)</label>
+                                                                <div class="over">
+                                                                    <input type="text" class="form-control"
+                                                                           name="AliasName"
+                                                                           id="AliasName"
+                                                                           placeholder="商户简称">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <!--门头照-->
+                                                    <div class="col-md-4">
+                                                        <div class="form-group">
+                                                            <div class="col-xs-12 mr_mab">
+                                                                <label>门店门头照</label>
+                                                                <div class="input-group">
+                                                                    <div class="form-control">
+                                                                        <input type="file" class="form-control checkPic"
+                                                                               name="ShopEntrancePic"
+                                                                               id="ShopEntrancePic">
+                                                                        <span class="pic_text">门店门头照</span>
+                                                                        <span class="glyphicon glyphicon-remove form-control-feedback delete"
+                                                                              aria-hidden="true"></span>
+                                                                    </div>
+                                                                    <span class="input-group-addon">
+                                                                           <i class="glyphicon glyphicon-upload"></i>
+                                                                    </span>
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="clearfix"></div>
+                                                    <!--环境-->
+                                                    <div class="col-md-4">
+                                                        <div class="form-group">
+                                                            <div class="col-xs-12 mr_mab">
+                                                                <label>店内环境照片</label>
+                                                                <div class="input-group">
+                                                                    <div class="form-control">
+                                                                        <input type="file" class="form-control checkPic"
+                                                                               name="IndoorPic"
+                                                                               id="IndoorPic"
+                                                                               placeholder="代码证号">
+                                                                        <span>店内环境照片</span>
+                                                                        <span class="glyphicon glyphicon-remove form-control-feedback delete"
+                                                                              aria-hidden="true"></span>
+                                                                    </div>
+                                                                    <span class="input-group-addon">
+                                                                           <i class="glyphicon glyphicon-upload"></i>
+                                                                    </span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <!--材料-->
+                                                    <div class="col-md-4">
+                                                        <div class="form-group">
+                                                            <div class="col-xs-12 mr_mab">
+                                                                <label>入驻证明材料</label>
+                                                                <div class="input-group">
+                                                                    <div class="form-control">
+                                                                        <input type="file" class="form-control checkPic"
+                                                                               name="SettledPic" id="SettledPic">
+                                                                        <span>入驻证明材料</span>
+                                                                        <span class="glyphicon glyphicon-remove form-control-feedback delete"
+                                                                              aria-hidden="true"></span>
+                                                                    </div>
+                                                                    <span class="input-group-addon">
+                                                                           <i class="glyphicon glyphicon-upload"></i>
+                                                                    </span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <!--营业-->
+                                                    <div class="col-md-4">
+                                                        <div class="form-group">
+                                                            <div class="col-xs-12 mr_mab">
+                                                                <label>店内门店营业执照</label>
+                                                                <div class="input-group">
+                                                                    <div class="form-control">
+                                                                        <input type="file" class="form-control checkPic"
+                                                                               name="BusinessLicensePic"
+                                                                               id="BusinessLicensePic">
+                                                                        <span>店内门店营业执照</span>
+                                                                        <span class="glyphicon glyphicon-remove form-control-feedback delete"
+                                                                              aria-hidden="true"></span>
+                                                                    </div>
+                                                                    <span class="input-group-addon">
+                                                                           <i class="glyphicon glyphicon-upload"></i>
+                                                                    </span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="clearfix"></div>
+                                                    <!--收银-->
+                                                    <div class="col-md-4">
+                                                        <div class="form-group">
+                                                            <div class="col-xs-12 mr_mab">
+                                                                <label>收银台照片</label>
+                                                                <div class="input-group">
+                                                                    <div class="form-control">
+                                                                        <input type="file" class="form-control checkPic"
+                                                                               name="CheckstandPic"
+                                                                               id="CheckstandPic">
+                                                                        <span>收银台照片</span>
+                                                                        <span class="glyphicon glyphicon-remove form-control-feedback delete"
+                                                                              aria-hidden="true"></span>
+                                                                    </div>
+                                                                    <span class="input-group-addon">
+                                                                           <i class="glyphicon glyphicon-upload"></i>
+                                                                    </span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <input type="hidden" value="<{$_GET['CustomerSysNo']}>"
+                                                           id="CustomerSysNo"
+                                                           name="CustomerSysNo">
+                                                    <input type="hidden" value="<{$_GET['SysNo']}>" id="SysNo"
+                                                           name="SysNo">
+                                                    <div class="col-xs-12">
+                                                        <button type="submit" class="btn btn-primary" id="register"><i
+                                                                class="icon-ok bigger-110"></i>
+                                                            确认报名
+                                                        </button>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </form>
+</div>
+
+</div>
+
+</div>
+<div class="bg_black"></div>
+<div class='bg_load'>
+    <img src="__PUBLIC__/assets/img/load.gif" alt="" width='96px'>
+    <p class='load-info'>正在报名中,请稍后...</p>
+</div>
+<include file="Base:jsfile"/>
+<script>
+    $(document).ready(function () {
+        $(".checkPic").on("change", function () {
+            var filePath = $(this).val();
+            var fileArr = filePath.split("\\");
+            var fileTArr = fileArr[fileArr.length - 1].toLowerCase().split(".");
+            var str = fileTArr.join(".");
+            var str_len = str.length;
+            if (str_len > 15) {
+                var left = str.substring(0, 10);
+                var mid = "...";
+                var point = str.lastIndexOf(".");
+                var suffix_name = str.substring(point - 5);
+                str = left + mid + suffix_name;
+            }
+            $(this).next("span").text(str);
+            if ($(this).val() == "") {
+                $(this).siblings(".delete").css("display", "none");
+            } else {
+                $(this).siblings(".delete").css("display", "block");
+            }
+        });
+        $(".delete").on("click", function () {
+            $(this).siblings("input").val("");
+            var txt = "请上传";
+            var tips = $(this).parents(".input-group").prev("label").text();
+            var tips_len = tips.length;
+            if (tips_len > 14) {
+                var left = tips.substring(0, 3);
+                var mid = "...";
+                var right = tips.substring(10);
+                tips = left + mid + right;
+            }
+            var tips_text = txt + tips;
+            $(this).prev().text(tips_text);
+            $(this).css("display", "none");
+        });
+
+    })
+
+</script>
+<script type="text/javascript">
+
+    jQuery(function ($) {
+        // 验证上传文件格式
+        $.validator.addMethod("checkPic", function (value, element) {
+            var filePath = $(element).val();
+            //获得上传文件名
+            var fileArr = filePath.split("\\");
+            var fileTArr = fileArr[fileArr.length - 1].toLowerCase().split(".");
+            var fileType = fileTArr[fileTArr.length - 1];
+            // 验证文件后缀名
+            if (fileType != "jpg" && fileType != "png" && fileType != "gif" && fileType != "") {
+                return false;
+            } else {
+                return true;
+            }
+        }, "请上传正确格式的图片");
+        // 验证上传图片大小
+        $.validator.addMethod("checkPicSize", function (value, element) {
+            if (value != "") {
+                var fileSize = element.files[0].size;
+                var maxSize = 10 * 1024 * 1024;
+                if (fileSize > maxSize) {
+                    return false;
+                } else {
+                    return true;
+                }
+            } else {
+                return true;
+            }
+        }, "请上传大小在10M以下的图片");
+        var submitAble = false;
+        $('#validation-form').validate({
+            // 设置错误提示元素，默认为label
+            errorElement: 'div',
+            // 设置错误提示类名
+            errorClass: 'help-block',
+            // 验证错误时，默认选中，false为取消
+            focusInvalid: false,
+            // 验证规则
+            rules: {
+                MerchantId: {
+                    required: true
+                },
+                Smid: {
+                    required: true
+                },
+                ActivityType: {
+                    required: true
+                },
+                CustomerName: {
+                    required: true
+                },
+                AliasName: {
+                    required: true
+                },
+                ShopEntrancePic: {
+                    required: true,
+                    checkPic: true,
+                    checkPicSize: true
+                },
+                IndoorPic: {
+                    required: true,
+                    checkPic: true,
+                    checkPicSize: true
+                },
+                SettledPic: {
+                    required: true,
+                    checkPic: true,
+                    checkPicSize: true
+                },
+                BusinessLicensePic: {
+                    required: true,
+                    checkPic: true,
+                    checkPicSize: true
+                },
+                CheckstandPic: {
+                    required: true,
+                    checkPic: true,
+                    checkPicSize: true
+                },
+            },
+
+            // 定义错误提示信息
+            messages: {
+                MerchantId: {
+                    required: "请填写商户号."
+                },
+                Smid: {
+                    required: "请填写支付宝 Smid."
+                },
+                ActivityType: {
+                    required: "请选择活动类型."
+                },
+                CustomerName: {
+                    required: "请填写商户名称，需与营业执照名称一致."
+                },
+                AliasName: {
+                    required: "请填写商户简称，需与进件信息一致."
+                },
+                ShopEntrancePic: {
+                    required: "请上传门店门头照."
+                },
+                IndoorPic: {
+                    required: "请上传店内环境照片."
+                },
+                SettledPic: {
+                    required: "请上传入驻证明材料."
+                },
+                BusinessLicensePic: {
+                    required: "请上传店内门店营业执照."
+                },
+                CheckstandPic: {
+                    required: "请上传收银台照片."
+                }
+
+            },
+
+            // 验证错误时显示
+            highlight: function (e) {
+                $(e).closest('.form-group').removeClass('has-info').addClass('has-error');
+            }
+            ,
+            // 验证成功时显示
+            success: function (e) {
+                $(e).closest('.form-group').removeClass('has-error').addClass('has-info');
+                $(e).remove();
+            }
+            ,
+
+            // 错误信息提示位置
+            errorPlacement: function (error, element) {
+
+                if (element.is(".checkPic")) {
+                    error.insertAfter(element.parents(".input-group"));
+                }
+
+                else error.insertAfter(element.parent());
+
+            }
+            ,
+            // 验证成功后执行，一般用于ajax提交试用
+            submitHandler: function (form) {
+                if (submitAble) {
+                    return;
+                }
+                submitAble = true;
+                var formData = new FormData($("#validation-form")[0]);
+                $(".bg_black").show();
+                $(".bg_load").show();
+                $.ajax({
+
+                    type: "post",
+
+                    url: "__APP__/BussinessWs/rbluecreate",
+
+                    data: formData,
+
+                    async: true,
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                    success: function (data) {
+
+                        if (data.Code == 0) {
+
+                            var url = '__APP__/WSMerchantList/ws_merchant_list_rblue';
+                            show_alert(data.Description, "location.href='" + url + "';");
+//                            show_alert(data.Description, "location.reload();");
+//                            $('#validation-form').reset();
+
+                        } else {
+                            show_alert(data.Description);
+                        }
+
+                        $(".bg_black").hide();
+                        $(".bg_load").hide();
+                        submitAble = false;
+
+
+                    }
+
+                })
+
+            }
+            ,
+
+            invalidHandler: function (form) {
+
+                console.log("ajax失败！");
+
+            }
+
+        })
+        ;
+    })
+
+</script>
+
+</body>
+
+</html                           

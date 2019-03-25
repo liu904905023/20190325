@@ -1,0 +1,287 @@
+<include file="Base:header"/>
+
+<div class="main-content">
+
+    <div class="breadcrumbs" id="breadcrumbs">
+        <script type="text/javascript">
+            try {
+                ace.settings.check(
+                    'breadcrumbs'
+                    ,'fixed' )
+            } catch ( e ) {
+            }
+        </script>
+        <ul class="breadcrumb">
+            <li>
+                <i class="icon-home home-icon"></i>
+                <a href="__APP__">首页</a>
+            </li>
+            <li>卡券参数配置</li>
+        </ul>
+    </div>
+
+    <div class="page-content">
+        <div class="page-header">
+            <h1>卡券参数配置</h1>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="row-fluid">
+                    <div class="span12">
+                        <div class="widget-box">
+                            <div class="widget-header widget-header-blue widget-header-flat">
+                                <h4 class="lighter">填写详细信息</h4>
+                            </div>
+                            <div class="widget-body">
+                                <div class="widget-main">
+                                    <div class="step-content row-fluid position-relative" id="step-container">
+                                        <div class="step-pane active" id="step1">
+
+                                            <form class="form-horizontal" id="validation-form" method="post" action="__SELF__">
+                                                <div class="row">
+                                                    <div class="col-md-12 form-group">
+                                                        <div class="col-xs-12 col-md-6">
+                                                            <div class="form-group">
+                                                                <div class="col-xs-12">
+                                                                    <label>APPID</label>
+                                                                    <div class="over">
+                                                                        <input type="text" class="form-control" name="appid" id="appid" value="<{$data.APPID}>" placeholder="APPID" />
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-xs-12 col-md-6">
+                                                            <div class="form-group">
+                                                                <div class="col-xs-12">
+                                                                    <label>版本号</label>
+                                                                    <div class="over">
+                                                                        <input type="text" class="form-control" name="versionNumber" id="versionNumber" value="<{$data.Version}>" placeholder="版本号" />
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="clearfix"></div>
+                                                        <div class="col-xs-12 col-md-4">
+                                                            <div class="form-group">
+                                                                <div class="col-xs-12">
+                                                                    <label>公钥</label>
+                                                                    <div class="over">
+                                                                        <textarea id="publickey" name="publickey"  class="form-control" cols="10" rows="6" placeholder="公钥"><{$data.APP_PUBLIC_KEY}></textarea>
+
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-xs-12 col-md-4">
+                                                            <div class="form-group">
+                                                                <div class="col-xs-12">
+                                                                    <label>私钥</label>
+                                                                    <div class="over">
+                                                                        <textarea id="privatekey" name="privatekey" class="form-control" cols="10" rows="6" placeholder="私钥"><{$data.APP_PRIVATE_KEY}></textarea>
+
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-xs-12 col-md-4">
+                                                            <div class="form-group">
+                                                                <div class="col-xs-12">
+                                                                    <label>应用公钥</label>
+                                                                    <div class="over">
+                                                                        <textarea id="openkey" name="openkey" class="form-control" cols="10" rows="6" placeholder="应用公钥"><{$data.OPEN_PUBLIC_KEY}></textarea>
+
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class='clearfix'></div>
+                                                    </div>
+                                                    <input type= "hidden" value = "<{$isUorI}>" id ="isUorI" name = "isUorI">
+                                                </div>
+                                                <div class="form-group">
+                                                    <div class="col-xs-12">
+                                                        <button type="submit" dis <php>if($RoleValue==1){echo "disabled=disabled" ;}</php> class="btn btn-primary">
+                                                            <i class="icon-ok bigger-110"></i>
+                                                            保存
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </form>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<include file="Base:jsfile"/>
+
+<script type="text/javascript">
+
+    jQuery( function ( $ ){
+        $( '#validation-form' ).validate( {
+            errorElement : 'div',
+            errorClass : 'help-block',
+            focusInvalid : false,
+            rules : {
+
+                appid : {
+                    required : true,
+                    username:true
+
+                },
+                versionNumber : {
+                    required : true,
+                    username:true
+
+                },
+                publickey : {
+                    required : true
+                },
+                privatekey : {
+                    required : true
+                },
+                openkey : {
+                    required : true
+                }
+
+
+            },
+            messages : {
+
+                appid : {
+                    required : "APPID不能为空."
+
+                },
+                versionNumber : {
+                    required : "版本号不能为空."
+
+                },
+                publickey : {
+                    required : "公钥不能为空."
+                },
+                privatekey : {
+                    required : "私钥不能为空."
+                },
+                openkey : {
+                    required : "应用公钥不能为空."
+                },
+
+                subscription : "Please choose at least one option",
+                gender : "Please choose gender",
+                agree : "Please accept our policy"
+
+            },
+            invalidHandler : function ( event,
+                                        validator ){
+
+                $( '.alert-danger',$(
+                    '.login-form' ) ).
+                show( );
+            },
+            highlight : function ( e ){
+
+                $( e ).closest( '.form-group' ).
+                removeClass( 'has-info' ).addClass(
+                    'has-error' );
+            },
+            success : function ( e ){
+
+                $( e ).closest( '.form-group' ).
+                removeClass( 'has-error' ).
+                addClass(
+                    'has-info' );
+                $( e ).remove( );
+            },
+            errorPlacement : function ( error,
+                                        element ){
+
+                if ( element.is( ':checkbox' ) ||
+                    element.is( ':radio' ) ) {
+
+                    var controls = element.closest(
+                        'div[class*="col-"]' );
+                    if ( controls.find(
+                            ':checkbox,:radio' ).length >
+                        1 )
+                        controls.append(
+                            error );
+                    else
+                        error.insertAfter(
+                            element.nextAll(
+                                '.lbl:eq(0)' ).
+                            eq(
+                                0 ) );
+                }
+
+                else if ( element.is( '.select2' ) ) {
+
+                    error.insertAfter(
+                        element.siblings(
+                            '[class*="select2-container"]:eq(0)' ) );
+                }
+
+                else if ( element.is(
+                        '.chosen-select' ) ) {
+
+                    error.insertAfter(
+                        element.siblings(
+                            '[class*="chosen-container"]:eq(0)' ) );
+                }
+
+                else
+                    error.insertAfter(
+                        element.parent( ) );
+            },
+            submitHandler : function ( form ){
+                $.ajax( {
+                    type : "post",
+                    url : "__SELF__",
+                    data : {
+                        appid : $( "#appid" ).val( ),
+                        versionNumber : $( "#versionNumber" ).val( ),
+                        publickey : $("#publickey" ).val( ),
+                        privatekey : $("#privatekey" ).val( ),
+                        openkey : $("#openkey" ).val( ),
+                        isUorI : $("#isUorI" ).val( )
+                    },
+                    async:false,
+                    success : function ( data ){
+
+                        if ( data.Code == 0 ) {
+                            show_alert("配置修改成功!");
+                        }else{
+                            show_alert(data.Description);
+                        }
+
+                    },
+                    error : function (){
+                        show_alert( 'ajax error!' );
+                    }
+
+                } )
+            },
+            invalidHandler: function ( form ){
+
+                console.log( "有错误配置喽！" );
+            }
+
+        } );
+    } )
+
+</script>
+
+<script language="Javascript">
+
+    if ($( "#passtype" ).val()==-1) {
+        $(".btn-primary").attr("disabled", true);
+    }
+</script>
+
+<include file="Base:footer"/>

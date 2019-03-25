@@ -1,0 +1,6 @@
+[ 2017-07-31T12:10:53+08:00 ] 123.151.42.144 /index.php/Wft/jsapi
+ERR: {"Code":0,"Description":"请求数据成功!","Data":{"PayData":{"token_id":"228d82efe0c89b4339fd816e6f5630b66","appId":"wxe00fda5293a2fa25","paySign":"4E61848168C0B0F046B08E9686976740","package":"prepay_id=wx2017073112105374c541e7080322391820","out_trade_no":"1320170731121052336184853","signType":"MD5","timeStamp":"1501474253746","nonceStr":"1501474253746"}}}
+
+[ 2017-07-31T12:11:02+08:00 ] 101.226.66.172 /index.php/Wft/jsapi
+ERR: {"Code":102,"Description":"员工主键不能为空!","Data":{"PayData":null}}
+

@@ -1,0 +1,76 @@
+
+@charset "UTF-8";
+html {font-size:62.5%;-webkit-font-smoothing:antialiased;}
+body {text-align:center;font-family:"黑体","Microsoft YaHei","Helvetica Neue",Helvetica,STHeiTi,sans-serif; -webkit-text-size-adjust:none; font-size:1.4rem;background:#EFEFF4;color:#000;-webkit-user-select:none;}
+* {margin:0; padding:0;list-style:none; }
+i, em, b {font-style:normal; font-weight:normal;}
+input::-webkit-input-placeholder,textarea::-webkit-input-placeholder{color:#ccc;}
+img{width:100%;vertical-align:top;}
+input,textarea,select,button{font-size:1.4rem;border:0; outline:none;font-family:"黑体","Microsoft YaHei","Helvetica Neue",Helvetica,STHeiTi,sans-serif;}
+*{-webkit-tap-highlight-color: rgba(0,0,0,0);}
+.clear{ clear:both;}
+.none{ display:none !important;}
+.hide{ display:none;}
+.height100{ height:100%;}
+@media (max-device-width: 320px){
+    html{font-size: 52%;}
+}
+/* 按钮====================== */
+.btn{ padding: 6px 15%; text-decoration: none; border-radius:6px; font-size:1.7rem; border:1px solid #42af35;}
+.btn:hover{
+    background:#42af35;
+    color:#fff;
+}
+/* .btn:link {background:#42af35;
+    color:#fff;}
+.btn:visited {background:#42af35;
+    color:#fff;}
+.btn:hover {background:#42af35;
+    color:#fff;}
+.btn:active {background:#42af35;
+    color:#fff;}
+.btn:after{  border:1px solid #42af35;color:#42af35;} */
+/* 1像素边框====================== */
+.border{ position:relative;}
+.border:after{ content:""; position:absolute; left:0; top:0; right:-100%; bottom:-100%; -webkit-transform:scale(0.5); -webkit-transform-origin:0 0; pointer-events:none;}
+.b_all:after{ border:1px solid #42af35;}
+/* 支付成功====================== */
+.bg_wt{background-color: #fff;margin-bottom: 1rem;}
+.pay_stop{padding: 2rem 0 1rem 0;}
+/*.pay_stop .ico_success{display: block;height:7.54rem; background: url(../images/ico_success.png) center no-repeat; background-size: 100% 100%;margin: 0 auto;}*/
+.pay_suc1{font-size:20px; color: #42af35;height: 2.6rem;line-height: 2.6rem;overflow: hidden;}
+.pay_suc2{font-size: 3rem; color: #333;height: 3.1rem;line-height:3.1rem;overflow: hidden; margin-top:16px;margin-bottom:10px;}
+.pay_suc2 span{
+    font-size:32px;
+}
+.pay_suc2 i{font-size: 1.5rem;}
+.pay_suc3{font-size: 1.5rem;color: #999;height: 3.7rem;line-height: 3.7rem;overflow: hidden;}
+.btn_p{padding: 2rem 0 2rem 0;}
+.btn_wt{ color: #42af35;background-color: #fff;}
+.btn_wt:active{ background-color:#eee;}
+.yhlogo{
+    width:3rem;
+  margin-top:14px;
+ 
+}
+.yh_copyright {
+    margin-top:.7rem;
+    font-size: 1rem;
+    color: #b4b4b4;
+    text-align: center;
+    position: absolute;
+    bottom: 1rem;
+    left:0;
+    right:0;
+    width:100%;
+}
+ .copyright__brand {
+    background: url(../images/yw_sprite.png) no-repeat; 
+}
+.copyright__brand {
+    display: inline-block;
+    width: 3.93rem;
+    height: 1.58rem;
+    vertical-align: middle;
+    background-size: 3.55rem;
+}

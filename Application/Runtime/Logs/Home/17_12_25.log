@@ -1,0 +1,21 @@
+[ 2017-12-25T09:26:47+08:00 ] 139.214.254.96 /index.php/Intels/index
+ERR: {"systemUserSysNo":"4863","total_fee":"1","openId":"oxRnuwDh_XSoVkcyHc2y--R6rtkk"}
+
+[ 2017-12-25T09:27:56+08:00 ] 139.214.254.96 /index.php/Intels/index
+ERR: {"systemUserSysNo":"4863","total_fee":"500","openId":"oxRnuwDh_XSoVkcyHc2y--R6rtkk"}
+
+[ 2017-12-25T09:29:53+08:00 ] 139.214.254.96 /index.php/Intels/index
+ERR: {"systemUserSysNo":"6648","total_fee":"500","openId":"oxRnuwDh_XSoVkcyHc2y--R6rtkk"}
+
+[ 2017-12-25T10:54:45+08:00 ] 36.48.96.107 /index.php/Intels/index
+ERR: {"systemUserSysNo":"6648","total_fee":"600","openId":"oxRnuwDh_XSoVkcyHc2y--R6rtkk"}
+
+[ 2017-12-25T10:55:16+08:00 ] 36.48.96.107 /index.php/Intels/index
+ERR: {"systemUserSysNo":"6648","total_fee":"200","openId":"oxRnuwDh_XSoVkcyHc2y--R6rtkk"}
+
+[ 2017-12-25T10:57:46+08:00 ] 125.39.46.44 /index.php/Intels/index
+ERR: {"systemUserSysNo":"","total_fee":"1","openId":""}
+
+[ 2017-12-25T11:01:16+08:00 ] 124.193.108.250 /index.php/Intels/index?systemUserSysNo=6648&code=081xNVkG0jMTek2adDiG0lfEkG0xNVkr&state=STATE
+ERR: oxRnuwDKdVDXylUCvpS1KsqA8cZY
+

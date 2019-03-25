@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+
+    <meta name="format-detection" content="telephone=no">
+
+
+
+
+
+    <script type="text/javascript">
+
+        function closeWindow(){
+
+            var ua = window.navigator.userAgent.toLowerCase();
+
+            if(ua.match(/MicroMessenger/i) == 'micromessenger'){
+
+                WeixinJSBridge.call("closeWindow");
+
+            }
+
+            if(ua.match(/AlipayClient/i) == 'alipayclient'){
+
+                AlipayJSBridge.call('closeWebview');
+
+            }
+
+        }
+
+        document.addEventListener('back', function (e) {
+
+            AlipayJSBridge.call('popTo', {
+
+
+
+                index: -2,
+
+            }, function (result) {
+
+
+
+            });
+
+        }, false);
+
+        getHistory();
+
+        window.addEventListener('popstate',function(e){
+
+            window.history.go(-2);
+
+        },false);
+
+        function getHistory(){
+
+            var state={
+
+                title:'',
+
+                url:''
+
+            };
+
+            window.history.pushState(state,'title');
+
+        }
+
+    </script>
+
+</head>
+<style>
+    body{
+        margin:0;
+    }
+</style>
+<body>
+
+<iframe id="iframepage"  onLoad="iFrameHeight()" src = "<php>echo $Ad_Info['url'];</php>" width="100%" frameborder="0"></iframe>
+
+</body>
+
+<script>
+        var doc=document.getElementById("iframepage");
+        var docHeight=document.documentElement.clientHeight;
+        
+        doc.setAttribute("height",docHeight);
+</script>
+
+</html>

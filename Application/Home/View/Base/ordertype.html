@@ -1,0 +1,21 @@
+<ul class="l-list">
+    <li>
+        <label>
+            <input  type="radio" name= "Ordertype" checked="checked" value= "" class="ace">
+            <span class="lbl"> 全部</span>
+            &emsp;&emsp;
+        </label>
+    </li>
+
+    <php>
+        foreach(json_decode($_COOKIE['passageway_list'],true) as $key=>$val){
+    </php>
+    <li>
+        <label>
+            <input  type="radio" name= "Ordertype" value= "<php>echo $val['T'];</php>" class="ace">
+            <span class="lbl"> <php>echo $val['N'];</php></span>
+        </label>
+    </li>
+    <php>}</php>
+
+</ul>

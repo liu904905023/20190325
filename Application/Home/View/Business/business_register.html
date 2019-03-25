@@ -1,0 +1,2558 @@
+<include file="Base:header"/>
+
+
+
+<div class="main-content">
+
+
+
+    <div class="breadcrumbs" id="breadcrumbs">
+
+
+
+        <script type="text/javascript">try {
+
+            ace.settings.check('breadcrumbs', 'fixed')
+
+        } catch (e) {
+
+        }</script>
+
+
+
+        <ul class="breadcrumb">
+
+
+
+            <li>
+
+
+
+                <i class="icon-home home-icon"></i>
+
+
+
+                <a href="#">首页</a>
+
+
+
+            </li>
+
+
+
+            <li>商户注册</li>
+
+
+
+        </ul>
+
+
+
+    </div>
+
+
+
+    <div class="page-content">
+
+
+
+        <div class="page-header">
+
+
+
+            <h1>商户注册</h1>
+
+
+
+        </div>
+
+
+
+        <div class="row">
+
+
+
+            <div class="col-xs-12">
+
+
+
+                <div class="row-fluid">
+
+
+
+                    <div class="span12">
+
+
+
+                        <div class="widget-box">
+
+
+
+                            <div class="widget-header widget-header-blue widget-header-flat">
+
+
+
+                                <h4 class="lighter">填写详细资料</h4>
+
+
+
+                            </div>
+
+
+
+                            <div class="widget-body">
+
+
+
+                                <div class="widget-main">
+
+
+
+                                    <div class="step-content row-fluid position-relative" id="step-container">
+
+
+
+                                        <div class="step-pane active" id="step1">
+
+
+
+                                            <form class="form-horizontal" id="validation-form" method="post" action="">
+
+
+
+                                                <div class="row">
+
+
+
+                                                    <div class="col-md-4">
+
+
+
+                                                        <div class="form-group">
+
+
+
+                                                            <div class="col-xs-12 mr_mab">
+
+
+
+                                                                <label>用户名</label>
+
+
+
+                                                                <div class="over">
+
+
+
+                                                                    <input type="text" class="form-control"
+
+                                                                           name="sx_dlm" id="username"
+
+                                                                           placeholder="用户名"/>
+
+
+
+                                                                </div>
+
+
+
+                                                            </div>
+
+
+
+                                                        </div>
+
+
+
+                                                    </div>
+
+
+
+                                                    <div class="col-md-4">
+
+
+
+                                                        <div class="form-group">
+
+
+
+                                                            <div class="col-xs-12 mr_mab">
+
+
+
+                                                                <label>密码</label>
+
+
+
+                                                                <div class="over">
+
+
+
+                                                                    <input type="password" class="form-control"
+
+                                                                           name="sx_pass" id="passwd" placeholder="密码">
+
+                                                                </div>
+
+
+
+                                                            </div>
+
+
+
+                                                        </div>
+
+
+
+                                                    </div>
+
+
+
+                                                    <div class="col-md-4">
+
+
+
+                                                        <div class="form-group">
+
+
+
+                                                            <div class="col-xs-12 mr_mab">
+
+
+
+                                                                <label>重复密码</label>
+
+
+
+                                                                <div class="over">
+
+
+
+                                                                    <input type="password" class="form-control"
+
+                                                                           name="confirmpass" id="confirmpass"
+
+                                                                           placeholder="重复密码"></div>
+
+
+
+                                                            </div>
+
+
+
+                                                        </div>
+
+
+
+                                                    </div>
+
+
+
+
+
+                                                    <div class="clearfix"></div>
+
+
+
+
+
+                                                    <div class="col-md-4">
+
+
+
+                                                        <div class="form-group">
+
+
+
+                                                            <div class="col-xs-12 mr_mab">
+
+
+
+                                                                <label>门店名称</label>
+
+
+
+                                                                <div class="over">
+
+
+
+                                                                    <input type="text" class="form-control"
+
+                                                                           name="sx_name" id="realname"
+
+                                                                           placeholder="门店名称"/>
+
+
+
+                                                                </div>
+
+
+
+                                                            </div>
+
+
+
+                                                        </div>
+
+
+
+                                                    </div>
+
+
+
+                                                    <div class="col-md-4">
+
+
+
+                                                        <div class="form-group">
+
+
+
+                                                            <div class="col-xs-12 mr_mab">
+
+
+
+                                                                <label>邮箱</label>
+
+
+
+                                                                <div class="over">
+
+
+
+                                                                    <input type="text" class="form-control" name="email"
+
+                                                                           id="email" placeholder="邮箱"/>
+
+
+
+                                                                </div>
+
+
+
+                                                            </div>
+
+
+
+                                                        </div>
+
+
+
+                                                    </div>
+
+
+
+                                                    <div class="col-md-4">
+
+
+
+                                                        <div class="form-group">
+
+
+
+                                                            <div class="col-xs-12 mr_mab">
+
+
+
+                                                                <label>联系电话</label>
+
+
+
+                                                                <div class="over">
+
+
+
+                                                                    <input type="text" class="form-control" disabled=""
+
+                                                                           name="phone" id="phone" placeholder="联系电话"/>
+
+
+
+                                                                </div>
+
+
+
+                                                            </div>
+
+
+
+                                                        </div>
+
+
+
+                                                    </div>
+
+
+
+
+
+                                                    <div class="clearfix"></div>
+
+
+
+
+
+                                                    <div class="col-md-4">
+
+
+
+                                                        <div class="form-group">
+
+
+
+                                                            <div class="col-xs-12 mr_mab">
+
+
+
+                                                                <label>员工ID</label>
+
+
+
+                                                                <div class="over">
+
+
+
+                                                                    <input type="text" class="form-control"
+
+                                                                           name="staff_id" id="staff_id"
+
+                                                                           disabled="disabled" placeholder="员工ID"/>
+
+
+
+                                                                </div>
+
+
+
+                                                            </div>
+
+
+
+                                                        </div>
+
+
+
+                                                    </div>
+
+
+
+                                                    <div class="col-md-4">
+
+
+
+                                                        <div class="form-group">
+
+
+
+                                                            <div class="col-xs-12 mr_mab">
+
+
+
+                                                                <label>传真</label>
+
+
+
+                                                                <div class="over">
+
+
+
+                                                                    <input type="text" class="form-control" name="fax"
+
+                                                                           id="fax" placeholder="传真"/>
+
+
+
+                                                                </div>
+
+
+
+                                                            </div>
+
+
+
+                                                        </div>
+
+
+
+                                                    </div>
+
+
+
+
+
+                                                    <div class="col-md-4">
+
+
+
+                                                        <div class="form-group">
+
+
+
+                                                            <div class="col-xs-12 mr_mab">
+
+
+
+                                                                <label>邮政编码</label>
+
+
+
+                                                                <div class="over">
+
+
+
+                                                                    <input type="text" class="form-control"
+
+                                                                           name="zipcode" id="zipcode"
+
+                                                                           placeholder="邮政编码"/>
+
+
+
+                                                                </div>
+
+
+
+                                                            </div>
+
+
+
+                                                        </div>
+
+
+
+                                                    </div>
+
+
+
+
+
+                                                    <div class="clearfix"></div>
+
+
+
+
+
+                                                    <div class="col-md-4">
+
+
+
+                                                        <div class="form-group">
+
+
+
+                                                            <div class="col-xs-12 mr_mab">
+
+
+
+                                                                <label>第一级类目</label>
+
+
+
+                                                                <div class="over">
+
+
+
+                                                                    <select class="form-control" id="firstclass"
+
+                                                                            name="firstclass">
+
+
+
+                                                                        <option value="">请选择第一级类目</option>
+
+
+
+                                                                    </select>
+
+
+
+                                                                </div>
+
+
+
+                                                            </div>
+
+
+
+                                                        </div>
+
+
+
+                                                    </div>
+
+
+
+                                                    <div class="col-md-4">
+
+
+
+                                                        <div class="form-group">
+
+
+
+                                                            <div class="col-xs-12 mr_mab">
+
+
+
+                                                                <label>第二级类目</label>
+
+
+
+                                                                <div class="over">
+
+
+
+                                                                    <select class="form-control" id="secondclass"
+
+                                                                            name="secondclass">
+
+
+
+                                                                        <option value="">请选择第二级类目</option>
+
+
+
+                                                                    </select>
+
+
+
+                                                                </div>
+
+
+
+                                                            </div>
+
+
+
+                                                        </div>
+
+
+
+                                                    </div>
+
+
+
+                                                    <div class="col-md-4">
+
+
+
+                                                        <div class="form-group">
+
+
+
+                                                            <div class="col-xs-12 mr_mab">
+
+
+
+                                                                <label>第三级类目</label>
+
+
+
+                                                                <div class="over">
+
+
+
+                                                                    <select class="form-control" id="thirdclass"
+
+                                                                            name="thirdclass">
+
+
+
+                                                                        <option value="">请选择第三级类目</option>
+
+
+
+                                                                    </select>
+
+
+
+                                                                </div>
+
+
+
+                                                            </div>
+
+
+
+                                                        </div>
+
+
+
+                                                    </div>
+
+
+
+
+
+                                                    <div class="clearfix"></div>
+
+
+
+
+
+                                                    <div class="col-md-4">
+
+
+
+                                                        <div class="form-group">
+
+
+
+                                                            <div class="col-xs-12 mr_mab">
+
+
+
+                                                                <label>省份</label>
+
+
+
+                                                                <div class="over">
+
+
+
+                                                                    <select class="form-control" id="provinces"
+
+                                                                            name="provinces">
+
+
+
+                                                                        <option value="">请选择省份</option>
+
+
+
+                                                                    </select>
+
+
+
+                                                                </div>
+
+
+
+                                                            </div>
+
+
+
+                                                        </div>
+
+
+
+                                                    </div>
+
+
+
+                                                    <div class="col-md-4">
+
+
+
+                                                        <div class="form-group">
+
+
+
+                                                            <div class="col-xs-12 mr_mab">
+
+
+
+                                                                <label>市</label>
+
+
+
+                                                                <div class="over">
+
+
+
+                                                                    <select class="form-control" id="citys"
+
+                                                                            name="citys">
+
+
+
+                                                                        <option value="">请选择市</option>
+
+
+
+                                                                    </select>
+
+
+
+                                                                </div>
+
+
+
+                                                            </div>
+
+
+
+                                                        </div>
+
+
+
+                                                    </div>
+
+
+
+                                                    <div class="col-md-4">
+
+
+
+                                                        <div class="form-group">
+
+
+
+                                                            <div class="col-xs-12 mr_mab">
+
+
+
+                                                                <label>区</label>
+
+
+
+                                                                <div class="over">
+
+
+
+                                                                    <select class="form-control" id="countys"
+
+                                                                            name="countys">
+
+
+
+                                                                        <option value="">请选择区</option>
+
+
+
+                                                                    </select>
+
+
+
+                                                                </div>
+
+
+
+                                                            </div>
+
+
+
+                                                        </div>
+
+
+
+                                                    </div>
+
+
+
+
+
+                                                    <div class="clearfix"></div>
+
+
+
+
+
+                                                    <div class="col-md-4">
+
+
+
+                                                        <div class="form-group">
+
+
+
+                                                            <div class="col-xs-12 mr_mab">
+
+
+
+                                                                <label>详细地址</label>
+
+
+
+                                                                <div class="over">
+
+
+
+                                                                    <input type="text" class="form-control"
+
+                                                                           name="detailaddress" id="detailaddress"
+
+                                                                           placeholder="详细地址"/>
+
+
+
+                                                                </div>
+
+
+
+                                                            </div>
+
+
+
+                                                        </div>
+
+
+
+                                                    </div>
+
+                                                    <div class="col-md-4">
+
+                                                        <div class="form-group">
+
+                                                            <div class="col-md-12">
+
+                                                                <div class="row" style="margin-right: 0">
+
+                                                                    <div id="weChat">
+
+                                                                        <div class="col-xs-9 mr_mab">
+
+                                                                            <label>微信类型</label>
+
+                                                                            <div class="over">
+
+                                                                                <select class="form-control"
+
+                                                                                        id="PassageWay_WX"
+
+                                                                                        name="PassageWay_WX">
+
+
+
+                                                                                    <option value="" class="ace">请选择支付类型</option>
+
+                                                                                    <php>
+
+                                                                                        foreach(json_decode($_COOKIE['passageway_list'],true
+
+                                                                                        ) as $key=>$val){
+
+                                                                                        if($val['R']=="WX"){
+
+                                                                                    </php>
+
+                                                                                    <option value="<php>echo $val['T'];</php>">
+
+                                                                                        <php>echo $val['N'];</php>
+
+                                                                                    </option>
+
+                                                                                    <php>}}</php>
+
+                                                                                </select>
+
+                                                                                <div class="rate_check_wx"
+
+                                                                                     style="display:none;">请输入正确的费率
+
+                                                                                </div>
+
+                                                                                <div class="empty_check"
+
+                                                                                     style="display: none;">
+
+                                                                                    请选择至少一种支付方式，且费率不能为空
+
+                                                                                </div>
+
+                                                                            </div>
+
+                                                                        </div>
+
+                                                                        <div class="col-xs-3"
+
+                                                                             style="padding:26px 0 0 0">
+
+                                                                            <input type="text" class="form-control"
+
+                                                                                   id="wx_rate" name="wx_rate"
+
+                                                                                   placeholder="费率"/>
+
+                                                                        </div>
+
+                                                                    </div>
+
+                                                                </div>
+
+                                                            </div>
+
+
+
+                                                        </div>
+
+                                                    </div>
+
+                                                    <div class="col-md-4">
+
+                                                        <div class="form-group">
+
+
+
+                                                            <div class="col-md-12">
+
+                                                                <div class="row" style="margin-right: 0">
+
+                                                                    <div id="Alipay">
+
+                                                                        <div class="col-xs-9 mr_mab">
+
+                                                                            <label>支付宝类型</label>
+
+                                                                            <div class="over">
+
+                                                                                <select class="form-control"
+
+                                                                                        id="PassageWay_AliPay"
+
+                                                                                        name="PassageWay_AliPay">
+
+
+
+                                                                                    <option value="" class="ace">请选择支付类型</option>
+
+                                                                                    <php>
+
+                                                                                        foreach(json_decode($_COOKIE['passageway_list'],true
+
+                                                                                        ) as $key=>$val){
+
+                                                                                        if($val['R']=="AliPay"){
+
+                                                                                    </php>
+
+                                                                                    <option value="<php>echo $val['T'];</php>">
+
+                                                                                        <php>echo $val['N'];</php>
+
+                                                                                    </option>
+
+                                                                                    <php>}}</php>
+
+                                                                                </select>
+
+                                                                                <div class="rate_check_zfb"
+
+                                                                                     style="display:none;">请输入正确的费率
+
+                                                                                </div>
+
+                                                                            </div>
+
+                                                                        </div>
+
+                                                                        <div class="col-xs-3"
+
+                                                                             style="padding:26px 0 0 0">
+
+                                                                            <input type="text" class="form-control"
+
+                                                                                   id="zfb_rate" name="zfb_rate"
+
+                                                                                   placeholder="费率"/>
+
+                                                                        </div>
+
+                                                                    </div>
+
+                                                                </div>
+
+                                                            </div>
+
+                                                        </div>
+
+                                                    </div>
+
+
+
+
+
+                                                    <!-- 费率 -->
+
+                                                    <div class="clearfix"></div>
+
+                                                    <div class="col-md-4">
+
+
+
+                                                        <div class="form-group">
+
+
+
+                                                            <div class="col-xs-12 mr_mab">
+
+
+
+                                                                <label>商户简称</label>
+
+
+
+                                                                <div class="over">
+
+
+
+                                                                    <input type="text" class="form-control"
+
+                                                                           name="sx_shjc" id="nickname"
+
+                                                                           placeholder="商户简称"/>
+
+
+
+                                                                </div>
+
+
+
+                                                            </div>
+
+
+
+                                                        </div>
+
+
+
+                                                    </div>
+
+
+
+
+
+                                                    <div class="col-xs-12">
+
+
+
+                                                        <button type="submit" class="btn btn-primary" id="register"><i
+
+                                                                class="icon-ok bigger-110"></i>
+
+
+
+                                                            确认创建
+
+
+
+                                                        </button>
+
+
+
+                                                    </div>
+
+
+
+                                                </div>
+
+
+
+                                            </form>
+
+
+
+                                        </div>
+
+
+
+                                    </div>
+
+
+
+                                </div>
+
+
+
+                            </div>
+
+
+
+                        </div>
+
+
+
+                    </div>
+
+
+
+                </div>
+
+
+
+            </div>
+
+
+
+        </div>
+
+
+
+    </div>
+
+
+
+</div>
+
+
+
+</div>
+
+
+
+</div>
+
+
+
+<include file="Base:jsfile"/>
+
+
+
+<script type="text/javascript">
+
+
+
+    jQuery(function ($) {
+
+        // 添加费率验证方法
+
+        $.validator.addMethod("af", function (value, element) {
+
+            var reg = /^[0](\.\d{1,4})?$/;
+
+            var ele = $(element).parent().parent();
+
+            var eleselect = $(ele).find("select").val();
+
+            if (value != '') {
+
+                if (!reg.exec(value)) {
+
+                    return false;
+
+                } else if (eleselect == 0) {
+
+                    return false;
+
+                }
+
+            }
+
+            ;
+
+            return true;
+
+        });
+
+
+
+        $('#validation-form').validate({
+
+            // 群组绑定
+
+//            groups: {
+
+//                rate: "wx_rate zfb_rate"
+
+//            },
+
+            // 设置错误提示元素，默认为label
+
+            errorElement: 'div',
+
+            // 设置错误提示类名
+
+            errorClass: 'help-block',
+
+            // 验证错误时，默认选中，false为取消
+
+            focusInvalid: false,
+
+            // 验证规则
+
+            rules: {
+
+
+
+                sx_dlm: {
+
+                    // 必选字段
+
+                    required: true,
+
+
+
+                    mobile: true
+
+
+
+                },
+
+
+
+                sx_pass: {
+
+
+
+                    required: true,
+
+
+
+                    username: true
+
+
+
+                },
+
+
+
+                confirmpass: {
+
+
+
+                    required: true,
+
+                    // 与某项字段相同 ， 通过ID名获取
+
+                    equalTo: "#passwd",
+
+
+
+                    username: true
+
+
+
+                },
+
+
+
+                sx_name: {
+
+
+
+                    required: true,
+
+
+
+                    chinese: true
+
+
+
+                },
+
+
+
+                mobile: {
+
+
+
+                    required: true,
+
+
+
+                    mobile: true
+
+
+
+                },
+
+
+
+                email: {
+
+
+
+                    required: true,
+
+
+
+                    email: true
+
+
+
+                },
+
+                // 群组绑定 二选其一
+
+                wx_rate: {
+
+                    required: {
+
+                        depends: function () { //二选一
+
+                            return ($('input[name=zfb_rate]').val().length <= 0);
+
+                        }
+
+                    },
+
+                    af: true
+
+                },
+
+                zfb_rate: {
+
+                    required: {
+
+                        depends: function () { //二选一
+
+                            return ($('input[name=wx_rate]').val().length <= 0);
+
+                        }
+
+                    },
+
+                    af: true
+
+                },
+
+
+
+                state: {
+
+
+
+                    required: true
+
+
+
+                },
+
+
+
+                address: {
+
+
+
+                    required: true
+
+
+
+                },
+
+                firstclass: {
+
+
+
+                    required: true
+
+
+
+                },
+
+
+
+                secondclass: {
+
+
+
+                    required: true
+
+
+
+                },
+
+
+
+                thirdclass: {
+
+
+
+                    required: true
+
+
+
+                },
+
+
+
+                provinces: {
+
+
+
+                    required: true
+
+
+
+                },
+
+
+
+                citys: {
+
+
+
+                    required: true
+
+
+
+                },
+
+
+
+                countys: {
+
+
+
+                    required: true
+
+
+
+                },
+
+
+
+                detailaddress: {
+
+
+
+                    required: true
+
+
+
+                },
+
+
+
+                sx_shjc: {
+
+                    // 输入长度介于 1 - 6 之间
+
+                    rangelength: [1, 6],
+
+
+
+                    required: true,
+
+
+
+                    chinese: true
+
+
+
+                }
+
+
+
+
+
+            },
+
+
+
+            // 定义错误提示信息
+
+            messages: {
+
+
+
+                sx_dlm: {
+
+
+
+                    required: "登录名不能为空.",
+
+
+
+                    mobile: "登陆名必须为手机号，请输入正确的手机号！"
+
+
+
+                },
+
+
+
+                sx_pass: {
+
+
+
+                    required: "密码不能为空.",
+
+
+
+                    username: "密码格式不正确！"
+
+
+
+                },
+
+
+
+                confirmpass: {
+
+
+
+                    required: "密码不能为空.",
+
+
+
+                    equalTo: "请输入相同密码",
+
+
+
+                    username: "重复密码格式不正确！"
+
+
+
+                },
+
+
+
+                sx_name: {
+
+
+
+                    required: "门店名称不能为空.",
+
+
+
+                    chinese: "门店名称为中文"
+
+
+
+                },
+
+
+
+                mobile: {
+
+
+
+                    required: "手机号不能为空.",
+
+
+
+                },
+
+
+
+                state: {
+
+
+
+                    required: "部门不能为空.",
+
+
+
+                },
+
+
+
+                address: {
+
+
+
+                    required: "联系地址不能为空.",
+
+
+
+                },
+
+
+
+                firstclass: {
+
+
+
+                    required: "第一类目不能为空.",
+
+
+
+                },
+
+
+
+                secondclass: {
+
+
+
+                    required: "第二类目不能为空.",
+
+
+
+                },
+
+
+
+                thirdclass: {
+
+
+
+                    required: "第三类目不能为空.",
+
+
+
+                },
+
+
+
+                provinces: {
+
+
+
+                    required: "省级地址不能为空.",
+
+
+
+                },
+
+
+
+                citys: {
+
+
+
+                    required: "市级地址不能为空.",
+
+
+
+                },
+
+
+
+                countys: {
+
+
+
+                    required: "区级地址不能为空.",
+
+
+
+                },
+
+
+
+                detailaddress: {
+
+
+
+                    required: "详细地址不能为空.",
+
+
+
+                },
+
+
+
+                email: {
+
+
+
+                    required: "邮箱不能为空.",
+
+
+
+                    email: "请输入正确的邮箱"
+
+
+
+                },
+
+
+
+                username: {
+
+
+
+                    required: "邮箱不能为空.",
+
+
+
+                    email: "请输入正确的邮箱"
+
+
+
+                },
+
+                wx_rate: {
+
+
+
+                    required: "请选择一种支付方式，费率不能为空.",
+
+
+
+                    af: "请选择正确支付类型和费率"
+
+
+
+                },
+
+                zfb_rate: {
+
+
+
+                    required: "请选择一种支付方式，费率不能为空.",
+
+
+
+                    af: "请选择正确支付类型和费率"
+
+
+
+                },
+
+                sx_shjc: {
+
+
+
+                    rangelength: "商户简称最多六个汉字.",
+
+
+
+                    required: "商户简称不能为空.",
+
+
+
+                    chinese: "商户简称为中文"
+
+                },
+
+
+
+                subscription: "Please choose at least one option",
+
+
+
+                gender: "Please choose gender",
+
+
+
+                agree: "Please accept our policy"
+
+
+
+            },
+
+            // 验证未通过时，可显示错误信息数目
+
+            invalidHandler: function (event, validator) { //display error alert on form submit
+
+
+
+                $('.alert-danger', $('.login-form')).show();
+
+
+
+            },
+
+            // 验证错误时显示
+
+            highlight: function (e) {
+
+
+
+                $(e).closest('.form-group').removeClass('has-info').addClass('has-error');
+
+
+
+            },
+
+            // 验证成功时显示
+
+            success: function (e) {
+
+
+
+                $(e).closest('.form-group').removeClass('has-error').addClass('has-info');
+
+
+
+                $(e).remove();
+
+
+
+            },
+
+
+
+            // 错误信息提示位置
+
+            errorPlacement: function (error, element) {
+
+
+
+                if (element.is(':checkbox') || element.is(':radio')) {
+
+
+
+                    var controls = element.closest('div[class*="col-"]');
+
+
+
+                    if (controls.find(':checkbox,:radio').length > 1) controls.append(error);
+
+
+
+                    else error.insertAfter(element.nextAll('.lbl:eq(0)').eq(0));
+
+
+
+                } else if (element.attr("name") == "wx_rate") {
+
+                    error.insertAfter($("#weChat .over"));
+
+                } else if (element.attr("name") == "zfb_rate") {
+
+                    error.insertAfter($("#Alipay .over"));
+
+                }
+
+                else if (element.is('.select2')) {
+
+
+
+                    error.insertAfter(element.siblings('[class*="select2-container"]:eq(0)'));
+
+
+
+                }
+
+
+
+                else if (element.is('.chosen-select')) {
+
+
+
+                    error.insertAfter(element.siblings('[class*="chosen-container"]:eq(0)'));
+
+
+
+                }
+
+
+
+                else error.insertAfter(element.parent());
+
+
+
+            }
+
+            ,
+
+            // 验证成功后执行，一般用于ajax提交试用
+
+            submitHandler: function (form) {
+
+
+
+                $.ajax({
+
+
+
+                    type: "post",
+
+
+
+                    url: "__APP__/Business/businessregister",
+
+
+
+                    data: {
+
+
+
+                        username: $("#username").val(),
+
+
+
+                        passwd: $("#passwd").val(),
+
+
+
+                        confirmpass: $("#confirmpass").val(),
+
+
+
+                        realname: $("#realname").val(),
+
+
+
+                        email: $("#email").val(),
+
+
+
+                        phone: $("#phone").val(),
+
+
+
+                        fax: $("#fax").val(),
+
+
+
+                        address: $("#address").val(),
+
+
+
+                        zipcode: $("#zipcode").val(),
+
+
+
+                        wx_rate: $("#wx_rate").val(),
+
+
+
+                        zfb_rate: $("#zfb_rate").val(),
+
+
+
+                        PassageWay_WX: $("#PassageWay_WX  option:selected").val(),
+
+                        PassageWay_AliPay: $("#PassageWay_AliPay  option:selected").val(),
+
+
+
+//                        Customer_Wft: $("input[type='radio']:checked").val(),
+
+                        Customer_Wft: $("input[name='weChat_order']:checked").val(),
+
+                        Customer_Ali: $("input[name='Alipay_order']:checked").val(),
+
+
+
+                        SystemUserSysNo: $("#staff_id").val(),
+
+
+
+                        systemclassid: $("#firstclass").val() + '|' + $("#secondclass").val() + '|' + $("#thirdclass").val(),
+
+
+
+                        systemclassname: $("#firstclass  option:selected").text() + '-' + $("#secondclass  option:selected").text() + '-' + $("#thirdclass  option:selected").text(),
+
+
+
+                        AddressNum: $("#provinces").val() + '|' + $("#citys").val() + '|' + $("#countys").val(),
+
+
+
+                        address: $("#provinces  option:selected").text() + $("#citys  option:selected").text() + $("#countys  option:selected").text() + '-' + $("#detailaddress").val(),
+
+
+
+                        nickname: $("#nickname").val(),
+
+
+
+                        IsAd: $("input[name='IsAd']:checked").val()
+
+
+
+                    },
+
+
+
+                    async: false,
+
+
+
+                    success: function (data) {
+
+
+
+                        if (data.Code == 0) {
+
+
+
+                            alert(data.Description);
+
+                            $('#validation-form').reset();
+
+
+
+
+
+
+                        } else {
+
+
+
+                            alert(data.Description);
+
+
+
+                        }
+
+
+
+                    }
+
+
+
+                })
+
+
+
+            }
+
+            ,
+
+
+
+            invalidHandler: function (form) {
+
+
+
+                console.log("ajax失败！");
+
+
+
+            }
+
+
+
+        })
+
+        ;
+
+    })
+
+
+
+</script>
+
+
+
+<script language="Javascript">
+
+
+
+    $(function () {
+
+
+
+        $(".click_pass").click(function () {
+
+
+
+            var x = 1000000;
+
+
+
+            var y = 1;
+
+
+
+            var random = String.fromCharCode(Math.floor(Math.random() * 26) + "a".charCodeAt(0)).toUpperCase() + parseInt(Math.random() * (x - y + 1) + y) + String.fromCharCode(Math.floor(Math.random() * 26) + "a".charCodeAt(0));
+
+
+
+            $(".random_pass").val(random);
+
+
+
+        });
+
+
+
+        $("#username").keyup(function () {
+
+
+
+            var text1_val = $(this).val();
+
+
+
+            $("#phone").val(text1_val);
+
+
+
+        });
+
+
+
+    });
+
+
+
+    var SystemUserSysNo = GetQueryString("SystemUserSysNo");
+
+
+
+    var Sn = parseInt(SystemUserSysNo);
+
+
+
+    $("#staff_id").val(Sn);
+
+
+
+    $("#register").click(function () {
+
+
+
+    })
+
+
+
+</script>
+
+
+
+<script type="text/javascript">
+
+
+
+    $(document).ready(function () {
+
+
+
+
+
+        $.ajax({
+
+
+
+            type: "post",
+
+
+
+            url: "__APP__/Lian/GetClass",
+
+
+
+            data: {"class_id": "0"},
+
+
+
+            success: function (data) {
+
+
+
+                $("#firstclass").html("<option value=''>请选择第一级类目</option>");
+
+
+
+                $.each(data, function (i, item) {
+
+
+
+                    $("#firstclass").append("<option value='" + item.sysno + "'>" + item.class_name + "</option>");
+
+
+
+                });
+
+
+
+                $("#firstclass option").each(function () {
+
+
+
+                    var val = $(this).val();
+
+
+
+                    if ($("#firstclass option[value='" + val + "']").length > 1)
+
+
+
+                        $("#firstclass option[value='" + val + "']:gt(0)").remove();
+
+
+
+                });
+
+
+
+            }
+
+
+
+        });
+
+
+
+        $("#firstclass").change(function () {
+            var id = $(this).val();
+            if(id==''){
+                $("#secondclass").html("<option value=''>请选择第二级类目</option>");
+                $("#thirdclass").html("<option value=''>请选择第三级类目</option>");
+                return false;
+            }
+            $.ajax({
+
+
+
+                type: "post",
+
+
+
+                url: "__APP__/Lian/GetClass",
+
+
+
+                data: {"sysno": $(this).val(), "class_id": "1"},
+
+
+
+                success: function (data) {
+
+
+
+                    $("#secondclass").html("<option value=''>请选择第二级类目</option>");
+
+
+
+                    $("#thirdclass").html("<option value=''>请选择第三级类目</option>");
+
+
+
+                    $.each(data, function (i, item) {
+
+
+
+                        $("#secondclass").append("<option value='" + item.sysno + "'>" + item.class_name + "</option>");
+
+
+
+                    });
+
+
+
+                }
+
+
+
+            });
+
+
+
+        });
+
+
+
+        $("#secondclass").change(function () {
+            var id = $(this).val();
+            if(id==''){
+                $("#thirdclass").html("<option value=''>请选择第三级类目</option>");
+                return false;
+            }
+            $.ajax({
+
+
+
+                type: "post",
+
+
+
+                url: "__APP__/Lian/GetClass",
+
+
+
+                data: {"sysno": $(this).val(), "class_id": "2"},
+
+
+
+                success: function (data) {
+
+
+
+                    $("#thirdclass").html("<option value=''>请选择第三级类目</option>");
+
+
+
+                    $.each(data, function (i, item) {
+
+
+
+                        $("#thirdclass").append("<option value='" + item.sysno + "'>" + item.class_name + "</option>");
+
+
+
+                    });
+
+
+
+                }
+
+
+
+            });
+
+
+
+        });
+
+
+
+
+
+        $.ajax({
+
+
+
+            type: "post",
+
+
+
+            url: "__APP__/Lian/GetAddress",
+
+
+
+            data: {"type": "1"},
+
+
+
+            success: function (data) {
+
+
+
+                $("#provinces").html("<option value=''>请选择省份</option>");
+
+
+
+                $.each(data, function (i, item) {
+
+
+
+                    $("#provinces").append("<option value='" + item.region_id + "'>" + item.region_name + "</option>");
+
+
+
+                });
+
+
+
+                $("#provinces option").each(function () {
+
+
+
+                    var val = $(this).val();
+
+
+
+                    if ($("#provinces option[value='" + val + "']").length > 1)
+
+
+
+                        $("#provinces option[value='" + val + "']:gt(0)").remove();
+
+
+
+                });
+
+
+
+            }
+
+
+
+        });
+
+
+
+        $("#provinces").change(function () {
+            var id = $(this).val();
+            if(id==''){
+                $("#citys").html("<option value=''>请选择市</option>");
+                $("#countys").html("<option value=''>请选择区</option>");
+                return false;
+            }
+            $.ajax({
+
+
+
+                type: "post",
+
+
+
+                url: "__APP__/Lian/GetAddress",
+
+
+
+                data: {"parent_id": $(this).val(), "type": "2"},
+
+
+
+                success: function (data) {
+
+
+
+                    $("#citys").html("<option value=''>请选择市</option>");
+
+
+
+                    $("#countys").html("<option value=''>请选择区</option>");
+
+
+
+                    $.each(data, function (i, item) {
+
+
+
+                        $("#citys").append("<option value='" + item.region_id + "'>" + item.region_name + "</option>");
+
+
+
+                    });
+
+
+
+                }
+
+
+
+            });
+
+
+
+        });
+
+
+
+        $("#citys").change(function () {
+            var id = $(this).val();
+            if(id==''){
+                $("#countys").html("<option value=''>请选择区</option>");
+                return false;
+            }
+            $.ajax({
+
+
+
+                type: "post",
+
+
+
+                url: "__APP__/Lian/GetAddress",
+
+
+
+                data: {"parent_id": $(this).val(), "type": "3"},
+
+
+
+                success: function (data) {
+
+
+
+                    $("#countys").html("<option value=''>请选择区</option>");
+
+
+
+                    $.each(data, function (i, item) {
+
+
+
+                        $("#countys").append("<option value='" + item.region_id + "'>" + item.region_name + "</option>");
+
+
+
+                    });
+
+
+
+                }
+
+
+
+            });
+
+
+
+        });
+
+
+
+    });
+
+
+
+</script>
+
+</body>
+
+
+
+</html>

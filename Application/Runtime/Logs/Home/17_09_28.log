@@ -1,0 +1,18 @@
+[ 2017-09-28T10:25:46+08:00 ] 36.97.184.232 /index.php/Wft/recharge_jsapi
+ERR: {"Code":9001,"Description":"请求数据失败！","Data":{"PayData":{"message":"sub_appid and sub_openid not match","mch_id":"101500051058","status":"410","nonce_str":"FDYLmSuhBZRnMHDGZ8op1EJtomac2dqi","sign":"744173DB9AB3CF6E9CA1CE0BF0118925","charset":"UTF-8","version":"2.0"}}}
+
+[ 2017-09-28T10:43:32+08:00 ] 36.97.184.232 /index.php/Wft/recharge_jsapi
+ERR: Array
+
+[ 2017-09-28T10:44:02+08:00 ] 36.97.184.232 /index.php/Wft/recharge_jsapi
+ERR: {"Code":102,"Description":"\u8bf7\u4f7f\u7528\u5a01\u5bcc\u901a\u7c7b\u578b\uff01","Data":{"PayData":null}}
+
+[ 2017-09-28T10:46:32+08:00 ] 36.97.184.232 /index.php/Wft/recharge_jsapi
+ERR: {"Code":0,"Description":"\u8bf7\u6c42\u6570\u636e\u6210\u529f!","Data":{"PayData":{"token_id":"229489dbe67a02f951883fc3acd7a8e5d","appId":"wx0781c1dea664cd9a","paySign":"80FF8242D32929EC08A3B39BA0119726","package":"prepay_id=wx2017092810463237cab458610270675637","out_trade_no":"13201709281046327444408837264","signType":"MD5","timeStamp":"1506566792847","nonceStr":"1506566792847"}}}
+
+[ 2017-09-28T13:19:55+08:00 ] 117.185.27.115 /index.php/orderfund/orderfund
+ERR: 无法加载控制器:Orderfund
+
+[ 2017-09-28T13:20:27+08:00 ] 117.185.27.114 /index.php/orderfund/orderfund
+ERR: 无法加载控制器:Orderfund
+

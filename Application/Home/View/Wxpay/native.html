@@ -1,0 +1,107 @@
+<include file="Base:header"/>
+      <div class="main-content">
+        <div class="breadcrumbs" id="breadcrumbs">
+          <script type="text/javascript">try{ace.settings.check('breadcrumbs' , 'fixed')}catch(e){}</script>
+          <ul class="breadcrumb">
+            <li>
+              <i class="icon-home home-icon"></i>
+              <a href="#">首页</a>
+            </li>
+            <li>支付二维码</li>
+          </ul>
+        </div>
+        <div class="page-content">
+          <div class="page-header">
+            <h1>支付二维码</h1>
+          </div>
+
+			  <br>
+				<div class="col-md-12">
+                    <div class="row">
+
+                        <div class="col-md-2 col-xs-12">
+                            <h5>核销二维码</h5>
+                            <div class="over">
+                                <p class="qrcode_text">
+                                    <img width="100%" src="__PUBLIC__/assets/images/click_qrcode.png" id = "CheckQrcode" alt=""></p>
+                            </div>
+                        </div>
+						<div class="col-md-2 col-xs-12">
+                            <h5>删除核销二维码</h5>
+                            <div class="over">
+                                <p class="qrcode_text">
+                                    <img width="100%" src="__PUBLIC__/assets/images/click_qrcode.png" id = "DeleteCheckQrcode" alt=""></p>
+                            </div>
+                        </div>
+
+                        <div class="col-md-2 col-xs-12">
+                            <h5>智能二维码</h5>
+                            <div class="over">
+                                <p class="qrcode_text">
+                                    <img width="100%" src="__PUBLIC__/assets/images/click_qrcode.png" id = "IntelQrcode" alt=""></p>
+                            </div>
+                        </div>
+
+                        <div class="col-md-2 col-xs-12">
+                            <h5>卡券二维码</h5>
+                            <div class="over">
+                                <p class="qrcode_text">
+                                    <img width="100%" src="__PUBLIC__/assets/images/click_qrcode.png" id = "EfuliQrcode" alt=""></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<include file="Base:jsfile"/>
+  
+<include file="Base:footer"/>
+
+<script>
+	$("#PayQcode").click(function(){
+	var path = "http://<php>echo $_SERVER['HTTP_HOST'];</php>/index.php/Qrcode/qrcode/qrcode?url=http://<php>echo $_SERVER['HTTP_HOST'];</php>/index.php/Wxpay/newpay/?systemUserSysNo="+<{$Think.session.data.SysNO}>;
+	$("#PayQcode").attr('src',path); 	
+	})
+	$("#DeleteCheckQrcode").click(function(){
+			if (this.ajaxRequest_ != undefined && this.ajaxRequest_.readyState < 4) {
+						return false;
+			}
+
+			this.ajaxRequest_ =
+			$.post("__APP__/Test/index3",{DeletClear:1},function(data){
+					var path ="http://<php>echo $_SERVER['HTTP_HOST'];</php>/index.php/Qrcode/qrcode?url="+data;
+					$("#DeleteCheckQrcode").attr('src',path); 
+			})
+	
+	})
+	$("#CheckQrcode").click(function(){
+
+		if (this.ajaxRequest_ != undefined && this.ajaxRequest_.readyState < 4) {
+			return false;
+		}
+		this.ajaxRequest_ =
+		$.post("__APP__/Test/index3",{aaa:1},function(data){
+		var path ="http://<php>echo $_SERVER['HTTP_HOST'];</php>/index.php/Qrcode/qrcode/qrcode?url="+data;
+		$("#CheckQrcode").attr('src',path); 
+		});
+	});
+	$("#AliQrcode").click(function(){
+	var path = "http://<php>echo $_SERVER['HTTP_HOST'];</php>/index.php/Qrcode/aliqrcode?url="+<{$Think.session.data.SysNO}>;
+	$("#AliQrcode").attr('src',path); 
+	
+	
+	});
+	$("#IntelQrcode").click(function(){
+	var path = "http://<php>echo $_SERVER['HTTP_HOST'];</php>/index.php/Qrcode/intelqrcode?url="+<{$Think.session.data.SysNO}>;
+	$("#IntelQrcode").attr('src',path); 
+	})
+    $("#EfuliQrcode").click(function(){
+	var path = "http://<php>echo $_SERVER['HTTP_HOST'];</php>/index.php/Qrcode/qrcode?url=http://web.yunlaohu.cn/index.php/EFuliIndex/index?systemUserSysNo="+<{$Think.session.data.SysNO}>;
+	$("#EfuliQrcode").attr('src',path);
+	})
+
+</script>

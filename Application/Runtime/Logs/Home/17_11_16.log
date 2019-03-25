@@ -1,0 +1,27 @@
+[ 2017-11-16T09:43:52+08:00 ] 36.48.95.15 /index.php/Intel/newpay?systemUserSysNo=4863&code=081PmWcU170kQU0TIIdU1ca8dU1PmWcY&state=STATE
+ERR: 模板不存在:./Application/Home/View/Intel/newpay.html
+
+[ 2017-11-16T09:46:11+08:00 ] 36.48.95.15 /index.php/Intel/newpay
+ERR: Array
+
+[ 2017-11-16T09:46:41+08:00 ] 36.48.95.15 /index.php/Intel/newpay
+ERR: {"Code":0,"Description":"1320171116094641053378868039","Data":{"WxPayData":{"m_values":{"appId":"wxa85e01bfcc3b5d66","nonceStr":"138410b695fb423888fd8afc35ef800b","package":"prepay_id=wx20171116094641038e7848490352133431","paySign":"5904454A76EB5075D5817518F222A23D","signType":"MD5","timeStamp":"1510796801"}},"Status":null,"Pay_Type":null,"Time_Start":null,"YwMch_id":null,"Old_SysNo":null,"OpenID":null}}
+
+[ 2017-11-16T10:12:41+08:00 ] 36.48.95.15 /index.php/Intel/newpay
+ERR: {"Code":1,"Description":"\u7edf\u4e00\u4e0b\u5355\u5931\u8d25\uff01","Data":null}
+
+[ 2017-11-16T10:12:57+08:00 ] 139.214.244.35 /index.php/Intel/newpay
+ERR: {"Code":1,"Description":"\u7edf\u4e00\u4e0b\u5355\u5931\u8d25\uff01","Data":null}
+
+[ 2017-11-16T10:12:57+08:00 ] 36.48.95.15 /index.php/Conff/pf_zfbConfig
+ERR: 非法操作:pf_zfbConfig
+
+[ 2017-11-16T10:13:26+08:00 ] 36.48.95.15 /index.php/Conff/pf_wxConfig
+ERR: 非法操作:pf_wxConfig
+
+[ 2017-11-16T10:15:24+08:00 ] 139.214.244.35 /index.php/Intel/newpay
+ERR: {"systemUserSysNo":"7817","total_fee":"600","openId":"oxRnuwDh_XSoVkcyHc2y--R6rtkk"}
+
+[ 2017-11-16T10:29:49+08:00 ] 139.214.244.35 /index.php/Intel/newpay
+ERR: {"systemUserSysNo":"4863","total_fee":"10","openId":"oxRnuwDh_XSoVkcyHc2y--R6rtkk"}
+

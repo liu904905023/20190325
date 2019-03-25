@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+
+ </head>
+
+<script>
+
+function ready(callback) {
+  if (window.AlipayJSBridge) {
+    callback && callback();
+  } else {
+    document.addEventListener('AlipayJSBridgeReady', callback, false);
+  }
+}
+ready(function(){
+    AlipayJSBridge.call("tradePay", {
+      tradeNO: '<{$out_trade_no}>'
+    }, function(result) {
+      if ( result.resultCode=="9000") {
+			<php>if($callback){</php>
+			location.href ="<{$callback}>?out_trade_no=<{$out_trade_no}>&status=1";
+			<php>}else{</php>
+				AlipayJSBridge.call('closeWindow');
+			<php>}</php>
+		}else{
+			<php>if($callback){</php>
+			location.href ="<{$callback}>?out_trade_no=<{$out_trade_no}>&status=0";
+			<php>}else{</php>
+				AlipayJSBridge.call('closeWindow');
+			<php>}</php>
+		}
+    });
+});
+</script>
+
+</html>

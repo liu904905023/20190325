@@ -1,0 +1,2187 @@
+<include file="Base:header"/>
+
+<div class="main-content">
+
+    <div class="breadcrumbs" id="breadcrumbs">
+
+        <script type="text/javascript">try {
+            ace.settings.check('bread2252555crumbs', 'fixed')
+        } catch (e) {
+        }</script>
+
+        <ul class="breadcrumb">
+
+            <li>
+
+                <i class="icon-home home-icon"></i>
+
+                <a href="#">首页</a>
+
+            </li>
+
+            <li>蓝海入驻1</li>
+
+        </ul>
+
+    </div>
+    <form class="form-horizontal" id="validation-form" method="post" action="">
+        <!--详细信息-->
+        <div class="page-content">
+            <div class="page-header">
+                <h1>蓝海入驻</h1>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="row-fluid">
+                        <div class="span12">
+                            <div class="widget-box">
+                                <div class="widget-header widget-header-blue widget-header-flat">
+                                    <h4 class="lighter">填写详细资料</h4>
+                                </div>
+                                <div class="widget-body">
+                                    <div class="widget-main">
+                                        <div class="step-content row-fluid position-relative" id="step-container">
+                                            <div class="step-pane active" id="step1">
+                                                <div class="row">
+                                                    <div class="col-md-4">
+                                                        <div class="form-group">
+                                                            <div class="col-xs-12 mr_mab">
+                                                                <label>外部商户号</label>
+                                                                <div class="over">
+                                                                    <input type="text" class="form-control"
+                                                                           id="External_Merchant_Number"
+                                                                           name="External_Merchant_Number"
+                                                                           value='<php>$str="QWERTYUIOPASDFGHJKLZXCVBNM1234567890qwertyuiopasdfghjklzxcvbnm";
+                                                                    str_shuffle($str);
+                                                                    $name=substr(str_shuffle($str),26,16);
+                                                                    echo $name;</php>'
+                                                                           readonly="readonly"
+                                                                           placeholder="外部商户号"/>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <div class="form-group">
+                                                            <div class="col-xs-12 mr_mab">
+                                                                <label>商户名称</label>
+                                                                <div class="over">
+                                                                    <input type="text" class="form-control"
+                                                                           id="Merchant_Name" name="Merchant_Name"
+                                                                           placeholder="商户名称">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <div class="form-group">
+                                                            <div class="col-xs-12 mr_mab">
+                                                                <label>经营类目</label>
+                                                                <div class="over">
+                                                                    <select class="form-control" id="Business_Category"
+                                                                            name="Business_Category">
+                                                                        <option value="">请选择经营类目</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="clearfix"></div>
+                                                    <div class="col-md-4">
+                                                        <div class="form-group">
+                                                            <div class="col-xs-12 mr_mab">
+                                                                <label>H5公众号相关信息类型</label>
+                                                                <div class="over">
+                                                                    <select class="form-control"
+                                                                            id="Merchant_Public_Number"
+                                                                            name="Merchant_Public_Number">
+                                                                        <option value="01">商户自有公众号</option>
+                                                                        <option value="03">合作机构对接网商时留存的公众号</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <div class="form-group">
+                                                            <div class="col-xs-12 mr_mab">
+                                                                <label>商户清算资金是否支持T+0到账</label>
+                                                                <div class="over">
+                                                                    <select class="form-control" id="T_Zero_Account"
+                                                                            name="T_Zero_Account">
+                                                                        <option value="N">不支持</option>
+                                                                        <!--<option value="Y">支持</option>-->
+
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <div class="form-group">
+                                                            <div class="col-xs-12 mr_mab">
+                                                                <label>结算方式</label>
+                                                                <div class="over">
+                                                                    <select class="form-control" id="Settlement_Method"
+                                                                            name="Settlement_Method">
+                                                                        <option value="01">结算到他行卡</option>
+                                                                        <!--<option value="02">结算到余利宝</option>-->
+                                                                        <!--<option value="03">结算到活期户(暂不开放)</option>-->
+                                                                        <!--<option value="04">自提打款(暂不开放)</option>-->
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="clearfix"></div>
+                                                    <div class="col-md-4">
+                                                        <div class="form-group">
+                                                            <div class="col-xs-12 mr_mab">
+                                                                <label>支持交易类型列表</label>
+                                                                <div class="input-group">
+                                                                    <input type="text" class="form-control list"
+                                                                           name="Transaction_Types"
+                                                                           id="Transaction_Types"
+                                                                           placeholder="请选择交易类型" readonly="readonly">
+                                                                    <span class="input-group-addon bor"><span
+                                                                            class="glyphicon glyphicon-chevron-down"></span></span>
+                                                                    <input name="Transaction_Type" id="Transaction_Type"
+                                                                           type="hidden">
+                                                                    <ul class="list_type">
+                                                                        <li>
+                                                                            <label>
+                                                                                <input type="checkbox"
+                                                                                       value="01"
+                                                                                       class="ace">
+                                                                                <span class="lbl">正扫交易</span>
+                                                                            </label>
+                                                                        </li>
+                                                                        <li>
+                                                                            <label>
+                                                                                <input type="checkbox"
+                                                                                       value="02" class="ace">
+                                                                                <span class="lbl">反扫交易</span>
+                                                                            </label>
+                                                                        </li>
+                                                                        <li>
+                                                                            <label>
+                                                                                <input type="checkbox"
+                                                                                       value="06" class="ace">
+                                                                                <span class="lbl">退款交易</span>
+                                                                            </label>
+                                                                        </li>
+                                                                        <li>
+                                                                            <label>
+                                                                                <input type="checkbox"
+                                                                                       value="08" class="ace">
+                                                                                <span class="lbl">动态扫码交易</span>
+                                                                            </label>
+                                                                        </li>
+                                                                    </ul>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <div class="form-group">
+                                                            <div class="col-xs-12 mr_mab">
+                                                                <label>支持支付渠道列表</label>
+                                                                <div class="input-group">
+                                                                    <input type="text" class="form-control list"
+                                                                           name="Payment_Channels" id="Payment_Channels"
+                                                                           placeholder="请选择支付渠道" readonly="readonly">
+                                                                    <span class="input-group-addon bor"><span
+                                                                            class="glyphicon glyphicon-chevron-down"></span></span>
+                                                                    <input name="Payment_Channel" id="Payment_Channel"
+                                                                           type="hidden">
+                                                                    <ul class="list_type">
+                                                                        <li>
+                                                                            <label>
+                                                                                <input type="checkbox"
+                                                                                       value="01"
+                                                                                       class="ace">
+                                                                                <span class="lbl">支付宝</span>
+                                                                            </label>
+                                                                        </li>
+                                                                        <li>
+                                                                            <label>
+                                                                                <input type="checkbox"
+                                                                                       value="02" class="ace">
+                                                                                <span class="lbl">微信支付</span>
+                                                                            </label>
+                                                                        </li>
+                                                                    </ul>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <div class="form-group">
+                                                            <div class="col-xs-12 mr_mab">
+                                                                <label>禁用支付方式</label>
+                                                                <div class="input-group">
+                                                                    <input type="text" class="form-control list"
+                                                                           name="Disable_Payment_Methods"
+                                                                           id="Disable_Payment_Methods"
+                                                                           placeholder="请选择禁用支付方式" readonly="readonly">
+                                                                    <span class="input-group-addon bor"><span
+                                                                            class="glyphicon glyphicon-chevron-down"></span></span>
+                                                                    <input name="Disable_Payment_Method"
+                                                                           id="Disable_Payment_Method" type="hidden">
+                                                                    <ul class="list_type">
+                                                                        <li>
+                                                                            <label>
+                                                                                <input type="checkbox" name="Ordertype"
+                                                                                       value="02"
+                                                                                       class="ace">
+                                                                                <span class="lbl">信用卡</span>
+                                                                            </label>
+                                                                        </li>
+                                                                        <li>
+                                                                            <label>
+                                                                                <input type="checkbox" name="Ordertype"
+                                                                                       value="03" class="ace">
+                                                                                <span class="lbl">花呗(仅支付宝)</span>
+                                                                            </label>
+                                                                        </li>
+                                                                    </ul>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="clearfix"></div>
+                                                    <div class="col-md-4">
+                                                        <div class="form-group">
+                                                            <div class="col-xs-12 mr_mab">
+                                                                <label>是否使用花呗分期</label>
+                                                                <div class="over">
+                                                                    <select class="form-control" id="Flower_Staging"
+                                                                            name="Flower_Staging">
+                                                                        <option value="Y">使用</option>
+                                                                        <option value="N">不使用</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <div class="form-group">
+                                                            <div class="col-xs-12 mr_mab">
+                                                                <label>商户类型</label>
+                                                                <div class="over">
+                                                                    <select class="form-control" id="Merchant_Type"
+                                                                            name="Merchant_Type">
+                                                                        <!--<option value="01">自然人</option>-->
+                                                                        <option value="02">个体工商户</option>
+                                                                        <option value="03">企业用户</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <div class="form-group">
+                                                            <div class="col-xs-12 mr_mab">
+                                                                <label>商户经营类型</label>
+                                                                <div class="over">
+                                                                    <select class="form-control"
+                                                                            id="Merchant_Business_Type"
+                                                                            name="Merchant_Business_Type">
+                                                                        <option value="01">实体特约商户</option>
+                                                                        <option value="02">网络特约商户</option>
+                                                                        <option value="03">实体兼网络特约商户</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!--渠道选择-->
+        <div class="page-content" id="channel">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="row-fluid">
+                        <div class="span12">
+                            <div class="widget-box">
+                                <div class="widget-header widget-header-blue widget-header-flat">
+                                    <h4 class="lighter">手续费列表</h4>
+                                </div>
+                                <div class="widget-body">
+                                    <div class="widget-main">
+                                        <div class="step-content row-fluid position-relative" id="">
+                                            <div class="step-pane active" id="Service_Charge_Type">
+                                                <div class="row">
+                                                    <div id="wx">
+                                                        <div class="col-md-4">
+                                                            <div class="form-group">
+                                                                <div class="col-xs-12 mr_mab">
+                                                                    <label>渠道类型</label>
+                                                                    <div class="over">
+                                                                        <input class="form-control" id=""
+                                                                               name="" value="微信"
+                                                                               disabled="disabled">
+                                                                        </input>
+                                                                        <input class="form-control" id="PassageWx"
+                                                                               name="PassageWx" value="02"
+                                                                               type="hidden">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <div class="form-group">
+                                                                <div class="col-xs-12 mr_mab">
+                                                                    <label>费用类型</label>
+                                                                    <div class="over">
+                                                                        <select class="form-control" id=""
+                                                                                name="wx_Type">
+                                                                            <option value="02">t1 收单手续费</option>
+                                                                            <!--<option value="01">t0 收单手续费</option>-->
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <div class="form-group">
+                                                                <div class="col-xs-12 mr_mab">
+                                                                    <label>费率</label>
+                                                                    <div class="over">
+                                                                        <input type="text" class="form-control"
+                                                                               name="wx_rate" id="wx_rate"
+                                                                               placeholder="请输入费率">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="cleardfix"></div>
+                                                    <div id="zfb">
+                                                        <div class="col-md-4">
+                                                            <div class="form-group">
+                                                                <div class="col-xs-12 mr_mab">
+                                                                    <label>渠道类型</label>
+                                                                    <div class="over">
+                                                                        <input class="form-control" id=""
+                                                                               name="" value="支付宝"
+                                                                               disabled="disabled">
+                                                                        </input>
+                                                                        <input class="form-control" id="PassageAli"
+                                                                               name="PassageAli" value="01"
+                                                                               type="hidden">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <div class="form-group">
+                                                                <div class="col-xs-12 mr_mab">
+                                                                    <label>费用类型</label>
+                                                                    <div class="over">
+                                                                        <select class="form-control" id=""
+                                                                                name="zfb_Type">
+                                                                            <option value="02">t1 收单手续费</option>
+                                                                            <!--<option value="01">t0 收单手续费</option>-->
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <div class="form-group">
+                                                                <div class="col-xs-12 mr_mab">
+                                                                    <label>费率</label>
+                                                                    <div class="over">
+                                                                        <input type="text" class="form-control"
+                                                                               name="zfb_rate" id="zfb_rate"
+                                                                               placeholder="请输入费率">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!--清算卡参数-->
+        <div class="page-content" id="Liquidation_Card">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="row-fluid">
+                        <div class="span12">
+                            <div class="widget-box">
+                                <div class="widget-header widget-header-blue widget-header-flat">
+                                    <h4 class="lighter">清算卡参数</h4>
+                                </div>
+                                <div class="widget-body">
+                                    <div class="widget-main">
+                                        <div class="step-content row-fluid position-relative" id="">
+                                            <div class="step-pane active" id="">
+                                                <div class="row">
+                                                    <div class="col-md-4">
+                                                        <div class="form-group">
+                                                            <div class="col-xs-12 mr_mab">
+                                                                <label>银行卡号</label>
+                                                                <div class="over">
+                                                                    <input type="text" class="form-control"
+                                                                           name="Bank_Card_Number" id="Bank_Card_Number"
+                                                                           placeholder="卡号"/>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <div class="form-group">
+                                                            <div class="col-xs-12 mr_mab">
+                                                                <label>开户人名称</label>
+                                                                <div class="over">
+                                                                    <input type="text" class="form-control"
+                                                                           name="Account_Holder_Name"
+                                                                           id="Account_Holder_Name" placeholder="开户人名称">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <div class="form-group">
+                                                            <div class="col-xs-12 mr_mab">
+                                                                <label>账户类型</label>
+                                                                <div class="over">
+                                                                    <select class="form-control" id="Account_Type"
+                                                                            name="Account_Type">
+                                                                        <option value="01">对私账户</option>
+                                                                        <option value="02">对公账户</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="clearfix"></div>
+                                                    <div class="col-md-4">
+
+                                                        <div class="form-group">
+
+                                                            <div class="col-xs-12 mr_mab">
+
+                                                                <label>省份</label>
+
+                                                                <div class="over">
+
+                                                                    <select class="form-control" id="Province"
+                                                                            name="Province">
+                                                                        <option value="">请选择省份</option>
+                                                                    </select>
+
+                                                                </div>
+
+                                                            </div>
+
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="col-md-4">
+
+                                                        <div class="form-group">
+
+                                                            <div class="col-xs-12 mr_mab">
+
+                                                                <label>市</label>
+
+                                                                <div class="over">
+
+                                                                    <select class="form-control" id="City" name="City">
+
+                                                                        <option value="">请选择市</option>
+
+                                                                    </select>
+
+                                                                </div>
+
+                                                            </div>
+
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="col-md-4">
+
+                                                        <div class="form-group">
+
+                                                            <div class="col-xs-12 mr_mab">
+
+                                                                <label>区</label>
+
+                                                                <div class="over">
+
+                                                                    <select class="form-control" id="Area" name="Area">
+
+                                                                        <option value="">请选择区</option>
+
+                                                                    </select>
+
+                                                                </div>
+                                                                <div for="Area" class="help-block" id="Show">请选择区.</div>
+                                                            </div>
+
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="clearfix"></div>
+                                                    <div class="col-md-4">
+                                                        <div class="form-group">
+                                                            <div class="col-xs-12 mr_mab">
+                                                                <label>查询开户支行</label>
+                                                                <div class="input-group">
+                                                                    <input type="text" class="form-control"
+                                                                           id="Search_Bank_Branch"
+                                                                           name="Search_Bank_Branch"
+                                                                           aria-describedby="inputGroupSuccess2Status"
+                                                                           placeholder="开户支行名称">
+                                                                    <!-- autocomplete="off"-->
+                                                                    <span class="input-group-btn">
+                                                                           <button class="btn btn-primary click_pass"
+                                                                                   type="button" id="Get_Bank_Branch"
+                                                                                   disabled="disabled">查询</button>
+                                                                    </span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4">
+
+                                                        <div class="form-group">
+
+                                                            <div class="col-xs-12 mr_mab">
+
+                                                                <label>选择开户支行</label>
+
+                                                                <div class="over">
+
+                                                                    <select class="form-control" id="Bank_Branch"
+                                                                            name="Bank_Branch">
+
+                                                                        <option value="">选择开户支行</option>
+
+                                                                    </select>
+                                                                    <input type="hidden" id="city_code" name="city_code"
+                                                                           value="">
+
+                                                                </div>
+
+                                                            </div>
+
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="col-md-4">
+
+                                                        <div class="form-group">
+
+                                                            <div class="col-xs-12 mr_mab">
+
+                                                                <label>联行号</label>
+
+                                                                <div class="over">
+
+                                                                    <input type="text" class="form-control"
+                                                                           id="Couplet_Number" name="Couplet_Number"
+                                                                           aria-describedby="inputGroupSuccess2Status"
+                                                                           placeholder="联行号" readonly="readonly">
+
+                                                                </div>
+
+                                                            </div>
+
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="clearfix"></div>
+                                                    <div class="col-md-4">
+                                                        <div class="form-group">
+                                                            <div class="col-xs-12 mr_mab">
+                                                                <label>持卡人证件号码</label>
+                                                                <div class="over">
+                                                                    <input type="text" class="form-control"
+                                                                           name="Cardholder_Number"
+                                                                           id="Cardholder_Number"
+                                                                           placeholder="证件号码">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <div class="form-group">
+                                                            <div class="col-xs-12 mr_mab">
+                                                                <label>持卡人地址</label>
+                                                                <div class="over">
+                                                                    <input type="text" class="form-control"
+                                                                           name="Cardholder_Address"
+                                                                           id="Cardholder_Address"
+                                                                           placeholder="地址"/>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!--商户详情列表-->
+        <div class="page-content">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="row-fluid">
+                        <div class="span12">
+                            <div class="widget-box">
+                                <div class="widget-header widget-header-blue widget-header-flat">
+                                    <h4 class="lighter">商户详情列表</h4>
+                                </div>
+                                <div class="widget-body">
+                                    <div class="widget-main">
+                                        <div class="step-content row-fluid position-relative" id="">
+                                            <div class="step-pane active" id="">
+
+                                                <div class="row">
+                                                    <div class="col-md-4">
+                                                        <div class="form-group">
+                                                            <div class="col-xs-12 mr_mab">
+                                                                <label>商户简称(*商户简称要与门头照简称一致)</label>
+                                                                <div class="over">
+                                                                    <input type="text" class="form-control"
+                                                                           name="Merchant_Abbreviation"
+                                                                           id="Merchant_Abbreviation"
+                                                                           placeholder="简称"/>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <div class="form-group">
+                                                            <div class="col-xs-12 mr_mab">
+                                                                <label>联系人手机号</label>
+                                                                <div class="over">
+                                                                    <input type="text" class="form-control"
+                                                                           name="Linkman_Mobile" id="Linkman_Mobile"
+                                                                           placeholder="手机号">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <div class="form-group">
+                                                            <div class="col-xs-12 mr_mab">
+                                                                <label>联系人姓名</label>
+                                                                <div class="over">
+                                                                    <input type="text" class="form-control"
+                                                                           name="Linkman_Name" id=""
+                                                                           placeholder="姓名"/>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="clearfix"></div>
+                                                    <div class="col-md-4">
+                                                        <div class="form-group">
+                                                            <div class="col-xs-12 mr_mab">
+                                                                <label>省份</label>
+                                                                <div class="over">
+                                                                    <select class="form-control" id="Province_Details"
+                                                                            name="Province_Details">
+                                                                        <option value="">请选择省份</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <div class="form-group">
+                                                            <div class="col-xs-12 mr_mab">
+                                                                <label>市</label>
+                                                                <div class="over">
+                                                                    <select class="form-control" id="City_Details"
+                                                                            name="City_Details">
+                                                                        <option value="">请选择市</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <div class="form-group">
+                                                            <div class="col-xs-12 mr_mab">
+                                                                <label>区</label>
+                                                                <div class="over">
+                                                                    <select class="form-control" id="Area_Details"
+                                                                            name="Area_Details">
+                                                                        <option value="">请选择区</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="clearfix"></div>
+                                                    <div class="col-md-4">
+                                                        <div class="form-group">
+                                                            <div class="col-xs-12 mr_mab">
+                                                                <label>地址</label>
+                                                                <div class="over">
+                                                                    <input type="text" class="form-control"
+                                                                           name="Address_Details" id="Address_Details"
+                                                                           placeholder="地址"/>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <div class="form-group">
+                                                            <div class="col-xs-12 mr_mab">
+                                                                <label>商户客服电话</label>
+                                                                <div class="over">
+                                                                    <input type="text" class="form-control"
+                                                                           name="Merchant_Service_Number"
+                                                                           id="Merchant_Service_Number"
+                                                                           placeholder="客服电话">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <div class="form-group">
+                                                            <div class="col-xs-12 mr_mab">
+                                                                <label>邮箱</label>
+                                                                <div class="over">
+                                                                    <input type="text" class="form-control"
+                                                                           name="Email" id="" placeholder="邮箱">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="clearfix"></div>
+                                                    <div class="col-md-4">
+                                                        <div class="form-group">
+                                                            <div class="col-xs-12 mr_mab">
+                                                                <label>企业名称
+                                                                </label>
+                                                                <div class="over">
+                                                                    <input type="text" class="form-control"
+                                                                           name="Enterprise_Name" id="Enterprise_Name"
+                                                                           placeholder="企业名称"/>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <div class="form-group">
+                                                            <div class="col-xs-12 mr_mab">
+                                                                <label>负责人手机号</label>
+                                                                <div class="input-group">
+                                                                    <input type="text" class="form-control"
+                                                                           name="Leader_Number" id="Leader_Number"
+                                                                           placeholder="手机号" autocomplete="off">
+                                                                    <span class="input-group-btn">
+                                                                           <button class="btn btn-primary click_pass"
+                                                                                   type="button"
+                                                                                   id="Get_Verification_Code">获取验证码</button>
+                                                                    </span>
+                                                                </div>
+                                                                <div for="Leader_Number" class="help-block" id="tel">
+                                                                    请输入负责人手机号.
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <div class="form-group">
+                                                            <div class="col-xs-12 mr_mab">
+                                                                <label>手机验证码</label>
+                                                                <div class="over">
+                                                                    <input type="text" class="form-control"
+                                                                           id="Verification_Code"
+                                                                           name="Verification_Code"
+                                                                           aria-describedby="inputGroupSuccess2Status"
+                                                                           placeholder="手机验证码">
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="clearfix"></div>
+                                                    <div class="col-md-4">
+                                                        <div class="form-group">
+                                                            <div class="col-xs-12 mr_mab">
+                                                                <label>负责人证件类型</label>
+                                                                <div class="over">
+                                                                    <select class="form-control"
+                                                                            id="Leader_Certificates_Type"
+                                                                            name="Leader_Certificates_Type">
+                                                                        <option value="01">身份证</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <div class="form-group">
+                                                            <div class="col-xs-12 mr_mab">
+                                                                <label>负责人证件号码</label>
+                                                                <div class="over">
+                                                                    <input type="text" class="form-control"
+                                                                           name="Leader_Certificates_Number"
+                                                                           id="Leader_Certificates_Number"
+                                                                           placeholder="证件号码">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <div class="form-group">
+                                                            <div class="col-xs-12 mr_mab">
+                                                                <label>负责人名称或企业法人代表姓名</label>
+                                                                <div class="over">
+                                                                    <input type="text" class="form-control"
+                                                                           name="Legal_Person_Name"
+                                                                           id="Legal_Person_Name"
+                                                                           placeholder="姓名或名称"/>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="clearfix"></div>
+                                                    <div class="col-md-4">
+                                                        <div class="form-group">
+                                                            <div class="col-xs-12 mr_mab">
+                                                                <label>他行卡储蓄卡卡号</label>
+                                                                <div class="over">
+                                                                    <input type="text" class="form-control"
+                                                                           name="Other_Card_Number"
+                                                                           id="Other_Card_Number"
+                                                                           placeholder="储蓄卡卡号">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <div class="form-group">
+                                                            <div class="col-xs-12 mr_mab">
+                                                                <label>社会信用代码/工商注册号</label>
+                                                                <div class="over">
+                                                                    <input type="text" class="form-control"
+                                                                           name="Registration_Number"
+                                                                           id="Registration_Number"
+                                                                           placeholder="社会信用代码/工商注册号">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <div class="form-group">
+                                                            <div class="col-xs-12 mr_mab">
+                                                                <label>组织机构代码证号</label>
+                                                                <div class="over">
+                                                                    <input type="text" class="form-control"
+                                                                           name="Organization_Number"
+                                                                           id="Organization_Number" placeholder="代码证号">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="clearfix"></div>
+                                                    <div class="col-md-4">
+                                                        <div class="form-group">
+                                                            <div class="col-xs-12 mr_mab">
+                                                                <label>负责人或企业法人代表的身份证图片正面</label>
+                                                                <div class="input-group">
+                                                                    <div class="form-control">
+                                                                        <input type="file" class="form-control checkPic"
+                                                                               name="Legal_Person_ID_Front"
+                                                                               id="Legal_Person_ID_Front">
+                                                                        <span class="pic_text">请上传身份证图片正面</span>
+                                                                        <span class="glyphicon glyphicon-remove form-control-feedback delete"
+                                                                              aria-hidden="true"></span>
+                                                                    </div>
+                                                                    <span class="input-group-addon">
+                                                                           <i class="glyphicon glyphicon-upload"></i>
+                                                                    </span>
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-md-4">
+                                                        <div class="form-group">
+                                                            <div class="col-xs-12 mr_mab">
+                                                                <label>负责人或企业法人代表的身份证图片反面</label>
+                                                                <div class="input-group">
+                                                                    <div class="form-control">
+                                                                        <input type="file" class="form-control checkPic"
+                                                                               name="Legal_Person_ID_Back"
+                                                                               id="Legal_Person_ID_Back">
+                                                                        <span>请上传身份证图片反面</span>
+                                                                        <span class="glyphicon glyphicon-remove form-control-feedback delete"
+                                                                              aria-hidden="true"></span>
+                                                                    </div>
+                                                                    <span class="input-group-addon">
+                                                                           <i class="glyphicon glyphicon-upload"></i>
+                                                                    </span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <div class="form-group">
+                                                            <div class="col-xs-12 mr_mab">
+                                                                <label>营业执照图片</label>
+                                                                <div class="input-group">
+                                                                    <div class="form-control">
+                                                                        <input type="file" class="form-control checkPic"
+                                                                               name="Business_License_Photo"
+                                                                               id="Business_License_Photo">
+                                                                        <span>请上传营业执照图片</span>
+                                                                        <span class="glyphicon glyphicon-remove form-control-feedback delete"
+                                                                              aria-hidden="true"></span>
+                                                                    </div>
+                                                                    <span class="input-group-addon">
+                                                                           <i class="glyphicon glyphicon-upload"></i>
+                                                                    </span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="clearfix"></div>
+                                                    <div class="col-md-4">
+                                                        <div class="form-group">
+                                                            <div class="col-xs-12 mr_mab">
+                                                                <label>组织机构代码证图片</label>
+                                                                <div class="input-group">
+                                                                    <div class="form-control">
+                                                                        <input type="file" class="form-control checkPic"
+                                                                               name="Organization_Photo"
+                                                                               id="Organization_Photo"
+                                                                               placeholder="代码证号">
+                                                                        <span>请上传组织机构代码证图片</span>
+                                                                        <span class="glyphicon glyphicon-remove form-control-feedback delete"
+                                                                              aria-hidden="true"></span>
+                                                                    </div>
+                                                                    <span class="input-group-addon">
+                                                                           <i class="glyphicon glyphicon-upload"></i>
+                                                                    </span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <div class="form-group">
+                                                            <div class="col-xs-12 mr_mab">
+                                                                <label>开户许可证照片</label>
+                                                                <div class="input-group">
+                                                                    <div class="form-control">
+                                                                        <input type="file" class="form-control checkPic"
+                                                                               name="Licence_Photo" id="Licence_Photo">
+                                                                        <span>请上传开户许可证照片</span>
+                                                                        <span class="glyphicon glyphicon-remove form-control-feedback delete"
+                                                                              aria-hidden="true"></span>
+                                                                    </div>
+                                                                    <span class="input-group-addon">
+                                                                           <i class="glyphicon glyphicon-upload"></i>
+                                                                    </span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <div class="form-group">
+                                                            <div class="col-xs-12 mr_mab">
+                                                                <label>门头照</label>
+                                                                <div class="input-group">
+                                                                    <div class="form-control">
+                                                                        <input type="file" class="form-control checkPic"
+                                                                               name="Storefront_Photo"
+                                                                               id="Storefront_Photo">
+                                                                        <span>请上传门头照</span>
+                                                                        <span class="glyphicon glyphicon-remove form-control-feedback delete"
+                                                                              aria-hidden="true"></span>
+                                                                    </div>
+                                                                    <span class="input-group-addon">
+                                                                           <i class="glyphicon glyphicon-upload"></i>
+                                                                    </span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="clearfix"></div>
+                                                    <div class="col-md-4">
+                                                        <div class="form-group">
+                                                            <div class="col-xs-12 mr_mab">
+                                                                <label>其他图片</label>
+                                                                <div class="input-group">
+                                                                    <div class="form-control">
+                                                                        <input type="file" class="form-control checkPic"
+                                                                               name="Other_Photo" id="Other_Photo">
+                                                                        <span>请上传其他图片</span>
+                                                                        <span class="glyphicon glyphicon-remove form-control-feedback delete"
+                                                                              aria-hidden="true"></span>
+                                                                    </div>
+                                                                    <span class="input-group-addon">
+                                                                           <i class="glyphicon glyphicon-upload"></i>
+                                                                    </span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <div class="form-group">
+                                                            <div class="col-xs-12 mr_mab">
+                                                                <label>需关注的公众号对应的APPID</label>
+                                                                <div class="over">
+                                                                    <input type="text" class="form-control"
+                                                                           name="Public_Number" id="Public_Number"
+                                                                           placeholder="APPID"/>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <input type="hidden" value="<{$_GET['CustomerSysNo']}>" id="SysNo"
+                                                           name="SysNo">
+                                                    <div class="col-xs-12">
+                                                        <button type="submit" class="btn btn-primary" id="register"><i
+                                                                class="icon-ok bigger-110"></i>
+                                                            确认创建
+                                                        </button>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </form>
+</div>
+
+</div>
+
+</div>
+<div class="bg_black"></div>
+<div class='bg_load'>
+    <img src="__PUBLIC__/assets/img/load.gif" alt="" width='96px'>
+    <p class='load-info'>正在入驻中,请稍后...</p>
+</div>
+<include file="Base:jsfile"/>
+<script>
+    $(document).ready(function () {
+
+        $("#channel").hide();
+        $("#wx").hide();
+        $("#zfb").hide();
+        $(document).on("click", function (e) {
+            var _con = $(".list_type");
+            if (!_con.is(e.target)) {
+                $(".list_type").hide();
+            }
+        });
+
+        function check_box(target) {
+            target.closest(".input-group").on("click", function (e) {
+                e.stopPropagation();
+                $(".list_type").hide();
+                $(this).children(".list_type").show();
+            });
+            target.closest(".input-group").find("input[type=checkbox]").on("change", function () {
+                var arr = [];
+                var arr_val = [];
+                target.closest(".input-group").find("input[type=checkbox]:checked").each(function () {
+                    arr.push($(this).next("span").text());
+                    arr_val.push($(this).val());
+                });
+                var str = arr.join(",");
+                var hidden_val = arr_val.join(",");
+                target.val(str);
+                target.next().next().val(hidden_val);
+            })
+        }
+
+        check_box($("#Transaction_Types"));
+        check_box($("#Payment_Channels"));
+        check_box($("#Disable_Payment_Methods"));
+
+        $("#Settlement_Method").on("change", function () {
+            if ($(this).val() == "02") {
+                $("#Liquidation_Card").hide();
+            } else {
+                $("#Liquidation_Card").show();
+            }
+            card_disabled();
+        })
+
+        function card_disabled() {
+            if ($("#Settlement_Method").val() == "01") {
+                $("#Other_Card_Number").attr("disabled", "disabled");
+                changeStyle($("#Other_Card_Number"));
+            } else {
+                $("#Other_Card_Number").removeAttr("disabled");
+            }
+        }
+
+        card_disabled();
+
+        function changeStyle(obj) {
+            obj.parents(".form-group").removeClass("has-error");
+            obj.parent().next().css("display", "none");
+        }
+
+//        function Verification_Code_disabled() {
+//            if ($("#Settlement_Method").val() == "01" && $("#Merchant_Type").val() == "03") {
+//                $("#Verification_Code").attr("disabled", "disabled");
+//                $("#Leader_Number").attr("disabled", "disabled");
+//                $("#Get_Verification_Code").attr("disabled", "disabled");
+//                changeStyle($("#Verification_Code"));
+//                changeStyle($("#Leader_Number"));
+//            } else {
+//                $("#Leader_Number").removeAttr("disabled");
+//                $("#Verification_Code").removeAttr("disabled");
+//                $("#Get_Verification_Code").removeAttr("disabled");
+//            }
+//        }
+//
+//        $("#Settlement_Method").on("change", function () {
+//            Verification_Code_disabled();
+//        })
+//        $("#Merchant_Type").on("change", function () {
+//            Verification_Code_disabled();
+//        })
+        $("#Payment_Channels").closest(".input-group").find("input[type=checkbox]").on("change", function () {
+            var arr = [];
+            $(this).parents(".input-group").find($("input[type=checkbox]:checked")).each(function (index, ele) {
+                arr.push($(ele).val());
+            });
+            var str = arr.join(",");
+            if (str == "01") {
+                $("#channel").show();
+                $("#wx").hide();
+                $("#zfb").show();
+            } else if (str == "02") {
+                $("#channel").show();
+                $("#wx").show();
+                $("#zfb").hide();
+            } else if (str == "01,02") {
+                $("#channel").show();
+                $("#wx").show();
+                $("#zfb").show();
+            } else {
+                $("#channel").hide();
+            }
+        })
+
+
+        var timer = null;
+        var count = 60;
+        $("#Get_Verification_Code").on("click", function () {
+            var reg = /^\s*$|^1[345789]\d{9}$/
+            var telValue = $("#Leader_Number").val();
+            if (telValue == "") {
+                $(this).parents(".form-group").addClass("has-error").removeClass("has-info");
+                $("#tel").show();
+                return false;
+            } else if (telValue != "" && reg.exec(telValue)) {
+                $(this).parents(".form-group").addClass("has-info").removeClass("has-error");
+                $("#tel").hide()
+                clearInterval(timer);
+                timer = setInterval(function () {
+                    count--;
+                    if (count >= 1) {
+                        $("#Get_Verification_Code").attr("disabled", true).text("重新发送" + " " + +count + " " + "s");
+                        ;
+                        $("#Leader_Number").attr("readonly", true);
+                    } else {
+                        clearInterval(timer);
+                        $("#Get_Verification_Code").attr("disabled", false).text("获取验证码");
+                        $("#Leader_Number").removeAttr("readonly");
+                        count = 60;
+                    }
+                }, 1000);
+                $.ajax({
+                    type: "post",
+                    url: "__APP__/BussinessWs/getWSSMSCode",
+                    data: {
+                        "Settlement_Method": $("#Settlement_Method").val(),
+                        "SysNo": $("#SysNo").val(),
+                        "Leader_Number": $("#Leader_Number").val()
+                    },
+                    beforeSend: function () {
+
+                    },
+                    success: function (data) {
+//                    sleep(10);
+                        if (data) {
+
+                        }
+                    }
+                });
+            }
+        });
+        $("#Merchant_Public_Number").on("change", function () {
+            if ($(this).val() == "03") {
+                $("#Public_Number").attr("disabled", "disabled");
+                changeStyle($("#Public_Number"));
+            } else {
+                $("#Public_Number").removeAttr("disabled");
+            }
+        });
+        $(".checkPic").on("change", function () {
+            var filePath = $(this).val();
+            var fileArr = filePath.split("\\");
+            var fileTArr = fileArr[fileArr.length - 1].toLowerCase().split(".");
+            var str = fileTArr.join(".");
+            var str_len = str.length;
+            if (str_len > 15) {
+                var left = str.substring(0, 10);
+                var mid = "...";
+                var point = str.lastIndexOf(".");
+                var suffix_name = str.substring(point - 5);
+                str = left + mid + suffix_name;
+            }
+            $(this).next("span").text(str);
+            if ($(this).val() == "") {
+                $(this).siblings(".delete").css("display", "none");
+            } else {
+                $(this).siblings(".delete").css("display", "block");
+            }
+        });
+        $(".delete").on("click", function () {
+            $(this).siblings("input").val("");
+            var txt = "请上传";
+            var tips = $(this).parents(".input-group").prev("label").text();
+            var tips_len = tips.length;
+            if (tips_len > 14) {
+                var left = tips.substring(0, 3);
+                var mid = "...";
+                var right = tips.substring(10);
+                tips = left + mid + right;
+            }
+            var tips_text = txt + tips;
+            $(this).prev().text(tips_text);
+            $(this).css("display", "none");
+        })
+
+
+    })
+    ;
+</script>
+<script type="text/javascript">
+
+    jQuery(function ($) {
+        // 储蓄卡卡号
+        $.validator.addMethod("Card_Optional", function (value, element) {
+            if ($("#Settlement_Method").val() == "02" && value == "") {
+                return false;
+            } else {
+                return true;
+            }
+        });
+        // 营业执照工商注册号
+        $.validator.addMethod("Business_License_02", function (value, element) {
+            if ($("#Merchant_Type").val() == "02" && value == "") {
+                return false;
+            } else {
+                return true;
+            }
+        });
+        $.validator.addMethod("Business_License_03", function (value, element) {
+            if ($("#Merchant_Type").val() == "03" && value == "") {
+                return false;
+            } else {
+                return true;
+            }
+        });
+        // 商户类型为企业用户，账户类型为对公账户
+        $.validator.addMethod("public_account", function (value, element) {
+            if ($("#Merchant_Type").val() == "03" && value == "01") {
+                return false;
+            } else {
+                return true;
+            }
+        });
+        // 验证上传文件格式
+        $.validator.addMethod("checkPic", function (value, element) {
+            var filePath = $(element).val();
+            //获得上传文件名
+            var fileArr = filePath.split("\\");
+            var fileTArr = fileArr[fileArr.length - 1].toLowerCase().split(".");
+            var fileType = fileTArr[fileTArr.length - 1];
+            // 验证文件后缀名
+            if (fileType != "jpg" && fileType != "png" && fileType != "gif" && fileType != "") {
+                return false;
+            } else {
+                return true;
+            }
+        }, "请上传正确格式的图片");
+
+        $.validator.addMethod("checkPicSize", function (value, element) {
+            if (value != "") {
+                var fileSize = element.files[0].size;
+                var maxSize = 10 * 1024 * 1024;
+                if (fileSize > maxSize) {
+                    return false;
+                } else {
+                    return true;
+                }
+            } else {
+                return true;
+            }
+        }, "请上传大小在10M以下的图片");
+        var submitAble = false;
+        $('#validation-form').validate({
+            // 设置错误提示元素，默认为label
+            errorElement: 'div',
+            // 设置错误提示类名
+            errorClass: 'help-block',
+            // 验证错误时，默认选中，false为取消
+            focusInvalid: false,
+            // 验证规则
+            rules: {
+//
+                External_Merchant_Number: {
+                    // 必选字段
+                    required: true
+                },
+
+                Merchant_Name: {
+                    required: true,
+                    rangelength: [2, 21]
+                },
+
+                Verification_Code: {
+                    required: true,
+                    cccaaa: true
+                },
+
+                External_Transaction_Number: {
+                    required: true,
+                    digits: true
+                },
+
+                Business_Category: {
+                    required: true,
+                },
+
+                Merchant_Public_Number: {
+                    required: true
+                },
+
+                T_Zero_Account: {
+                    required: true
+                },
+
+                Settlement_Method: {
+                    required: true
+                },
+                Flower_Staging: {
+                    required: true
+                },
+
+                Merchant_Type: {
+                    required: true
+                },
+                Transaction_Types: {
+                    required: true
+                },
+                Payment_Channels: {
+                    required: true
+                },
+                Disable_Payment_Methods: {
+//                    required: true
+                },
+                Merchant_Business_Type: {
+                    required: true
+                },
+
+                Channel_Type: {
+                    required: true
+                },
+
+                wx_Type: {
+                    required: true
+                },
+                zfb_Type: {
+                    required: true
+                },
+                wx_rate: {
+                    required: true,
+                    ratenum: true
+                },
+                zfb_rate: {
+                    required: true,
+                    ratenum: true
+                },
+                Bank_Card_Number: {
+                    required: true
+                },
+
+                Account_Holder_Name: {
+                    required: true
+                },
+
+                Account_Type: {
+                    required: true,
+                    public_account: true
+                },
+
+                Province: {
+                    required: true
+                },
+
+                City: {
+                    required: true
+                },
+
+                Area: {
+                    required: true
+                },
+
+                Search_Bank_Branch: {
+                    required: true,
+                    chinese: true
+                },
+                Bank_Branch: {
+                    required: true
+                },
+                Cardholder_Number: {
+                    required: true,
+                    ID_Card: true
+                },
+
+                Cardholder_Address: {
+                    required: true
+                },
+
+                Merchant_Abbreviation: {
+                    required: true
+                },
+
+                Linkman_Mobile: {
+                    required: true,
+                    mobile: true
+                },
+
+                Linkman_Name: {
+                    required: true
+                },
+
+                Province_Details: {
+                    required: true
+                },
+
+                City_Details: {
+                    required: true
+                },
+
+                Area_Details: {
+                    required: true
+                },
+
+                Address_Details: {
+                    required: true
+                },
+
+                Merchant_Service_Number: {
+                    required: true,
+                    digits: true,
+                    Hotline: true
+                },
+                Email: {
+                    required: true,
+                    email: true
+                },
+                Enterprise_Name: {
+//                    required: true
+                },
+                Leader_Number: {
+                    mobile: true,
+                    required: true
+                },
+                Leader_Certificates_Type: {
+                    required: true
+                },
+                Leader_Certificates_Number: {
+                    ID_Card: true,
+                    required: true
+                },
+                Legal_Person_Name: {
+                    required: true,
+                    chinese: true
+                },
+                Other_Card_Number: {
+                    digits: true,
+                    Card_Optional: true
+                },
+                Registration_Number: {
+                    registration: true,
+                    Business_License_02: true,
+                    Business_License_03: true
+                },
+
+                Organization_Number: {},
+                Legal_Person_ID_Front: {
+                    required: true,
+                    checkPic: true,
+                    checkPicSize: true
+                },
+                Legal_Person_ID_Back: {
+                    required: true,
+                    checkPic: true,
+                    checkPicSize: true
+                },
+                Business_License_Photo: {
+                    checkPic: true,
+                    Business_License_02: true,
+                    Business_License_03: true,
+                    checkPicSize: true
+                },
+                Organization_Photo: {
+//                    required: true,
+                    checkPic: true,
+                    checkPicSize: true
+                },
+                Licence_Photo: {
+//                    required: true,
+                    checkPic: true,
+                    checkPicSize: true,
+                    Business_License_03: true
+                },
+                Storefront_Photo: {
+//                    required: true,
+                    checkPic: true,
+                    checkPicSize: true
+                },
+                Other_Photo: {
+//                    required: true,
+                    checkPic: true,
+                    checkPicSize: true
+                },
+                Public_Number: {
+                    required: true,
+                    WX_Appid: true
+                },
+                Couplet_Number: {
+//                    required: true
+                }
+            },
+
+            // 定义错误提示信息
+            messages: {
+
+                External_Merchant_Number: {
+                    required: "外部商户号不能为空."
+                },
+
+                Merchant_Name: {
+                    required: "商户名称不能为空.",
+                    rangelength: "输入汉字字数为2 ~ 21."
+                },
+
+                Verification_Code: {
+                    required: "请填写验证码.",
+                    cccaaa: "请输入正确格式的验证码，只能为6位数字."
+                },
+
+                External_Transaction_Number: {
+                    required: "外部交易号不能为空.",
+                    digits: "请输入正确格式的外部交易号."
+                },
+
+                Business_Category: {
+                    required: "请选择一项经营类目."
+                },
+
+                Merchant_Public_Number: {
+                    required: "请选择合作机构对接网商."
+                },
+
+                T_Zero_Account: {
+                    required: "请选择商户清算资金是否支持T+0到账."
+                },
+
+                Settlement_Method: {
+                    required: "请选择一种结算方式."
+                },
+
+                Flower_Staging: {
+                    required: "请选择是否使用花呗分期."
+                },
+
+                Merchant_Type: {
+                    required: "请选择商户类型."
+                },
+                Transaction_Types: {
+                    required: "请选择一种或多种交易类型."
+                },
+                Payment_Channels: {
+                    required: "请选择一种或多种支付渠道."
+                },
+                Disable_Payment_Methods: {
+                    required: "请选择一种或多种禁用交易类型"
+                },
+                Merchant_Business_Type: {
+                    required: "请选择商户经营类型."
+                },
+                wx_Type: {
+                    required: "请选择费用类型"
+                },
+                zfb_Type: {
+                    required: "请选择费用类型"
+                },
+                wx_rate: {
+
+                    required: "费率不能为空.",
+
+                    ratenum: "请填写正确格式的费率."
+
+                },
+                zfb_rate: {
+
+                    required: "费率不能为空.",
+
+                    ratenum: "请填写正确格式的费率."
+
+                },
+                Bank_Card_Number: {
+                    required: "请输入银行卡号.",
+                    email: "请输入正确的邮箱."
+                },
+
+                Account_Holder_Name: {
+                    required: "请输入开户人名称."
+                },
+
+                Account_Type: {
+                    required: "请选择账户类型.",
+                    public_account: "当商户类型为企业用户时，账户类型必须为对公账户."
+                },
+
+                Province: {
+                    required: "请选择省份."
+                },
+
+                City: {
+                    required: "请选择市."
+                },
+
+                Area: {
+                    required: "请选择区."
+                },
+
+                Search_Bank_Branch: {
+                    required: "请输入开户支行名称.",
+                    chinese: "请输入中文."
+                },
+
+                Bank_Branch: {
+                    required: "请选择开户支行."
+                },
+
+                Cardholder_Number: {
+                    required: "请输入持卡人证件号码.",
+                    ID_Card: "请输入正确的证件号码."
+                },
+                Couplet_Number: {
+                    required: "请关联开户支行联行号."
+                },
+
+                Cardholder_Address: {
+                    required: "请输入持卡人地址."
+                },
+
+                Merchant_Abbreviation: {
+                    required: "请输入商户简称."
+                },
+
+                Linkman_Mobile: {
+                    required: "请输入联系人手机号."
+                },
+
+                Linkman_Name: {
+                    required: "请输入联系人姓名."
+                },
+
+                Province_Details: {
+                    required: "请选择省份."
+                },
+
+                City_Details: {
+                    required: "请选择市."
+                },
+
+                Area_Details: {
+                    required: "请选择区."
+                },
+
+                Address_Details: {
+                    required: "请填写地址"
+                },
+
+                Merchant_Service_Number: {
+                    required: "请输入客服电话.",
+                    digits: "电话格式只能为数字.",
+                    Hotline: "请输入正确格式的客服电话"
+                },
+
+                Email: {
+                    required: "请输入邮箱.",
+                    email: "邮箱格式不正确."
+                },
+                Enterprise_Name: {
+                    required: "请输入企业法人名称."
+                },
+                Leader_Number: {
+                    required: "请输入负责人手机号."
+                },
+                Leader_Certificates_Type: {
+                    required: "请选择证件类型."
+                },
+                Leader_Certificates_Number: {
+                    ID_Card: "请输入正确格式的负责人证件号码.",
+                    required: "请输入负责人证件号码."
+                },
+                Legal_Person_Name: {
+                    required: "请输入负责人名称或企业法人代表姓名.",
+                    chinese: "请输入不少于两个中文."
+                },
+                Other_Card_Number: {
+                    digits: "卡号只能为数字.",
+                    Card_Optional: "请输入他行储蓄卡卡号"
+
+                },
+                Registration_Number: {
+                    registration: "请输入15或18位的社会信用代码/工商注册号.",
+                    Business_License_02: "请输入社会信用代码/工商注册号",
+                    Business_License_03: "请输入社会信用代码/工商注册号"
+                },
+                Organization_Number: {
+                    required: "请输入组织机构代码证号."
+                },
+
+                Legal_Person_ID_Front: {
+                    required: "请上传负责人或企业法人代表的身份证图片正面."
+                },
+                Legal_Person_ID_Back: {
+                    required: "请上传负责人或企业法人代表的身份证图片反面."
+                },
+                Business_License_Photo: {
+                    Business_License_02: "请上传营业执照图片",
+                    Business_License_03: "请上传营业执照图片"
+                },
+                Licence_Photo: {
+                    Business_License_03: " 请上传开户许可证图片."
+                },
+                Public_Number: {
+                    required: "请输入APPID.",
+                    WX_Appid: "APPID格式为以\"wx\"开头+16位数字或字母"
+                },
+                subscription: "Please choose at least one option",
+
+                gender: "Please choose gender",
+
+                agree: "Please accept our policy"
+
+            },
+            // 验证未通过时，可显示错误信息数目
+            invalidHandler: function (event, validator) { //display error alert on form submit
+
+                $('.alert-danger', $('.login-form')).show();
+
+            },
+
+            // 验证错误时显示
+            highlight: function (e) {
+                $(e).closest('.form-group').removeClass('has-info').addClass('has-error');
+            }
+            ,
+            // 验证成功时显示
+            success: function (e) {
+                $(e).closest('.form-group').removeClass('has-error').addClass('has-info');
+                $(e).remove();
+            }
+            ,
+
+            // 错误信息提示位置
+            errorPlacement: function (error, element) {
+
+                if (element.is(':checkbox') || element.is(':radio')) {
+
+                    var controls = element.closest('div[class*="col-"]');
+
+                    if (controls.find(':checkbox,:radio').length > 1) controls.append(error);
+
+                    else error.insertAfter(element.nextAll('.lbl:eq(0)').eq(0));
+
+                }
+                else if (element.is('.select2')) {
+
+                    error.insertAfter(element.siblings('[class*="select2-container"]:eq(0)'));
+
+                }
+
+                else if (element.is('.chosen-select')) {
+
+                    error.insertAfter(element.siblings('[class*="chosen-container"]:eq(0)'));
+
+                }
+                else if (element.is(".checkPic")) {
+                    error.insertAfter(element.parents(".input-group"));
+                }
+
+                else error.insertAfter(element.parent());
+
+            }
+            ,
+            // 验证成功后执行，一般用于ajax提交试用
+            submitHandler: function (form) {
+                if (submitAble) {
+                    return;
+                }
+                submitAble = true;
+                var formData = new FormData($("#validation-form")[0]);
+                $(".bg_black").show();
+                $(".bg_load").show();
+                $.ajax({
+
+                    type: "post",
+
+                    url: "__APP__/BussinessWs/registerWs_rblue",
+
+                    data: formData,
+
+                    async: true,
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                    success: function (data) {
+
+                        if (data.Code == 0) {
+
+                            var url = '__APP__/WSMerchantList/ws_merchant_list_rblue';
+                            show_alert(data.Description, "location.href='" + url + "';");
+//                            $('#validation-form').reset();
+
+                        } else {
+                            show_alert(data.Description);
+                        }
+
+                        $(".bg_black").hide();
+                        $(".bg_load").hide();
+                        submitAble = false;
+
+
+                    }
+
+                })
+
+            }
+            ,
+
+            invalidHandler: function (form) {
+
+                console.log("ajax失败！");
+
+            }
+
+        })
+        ;
+    })
+
+</script>
+
+<script language="Javascript">
+
+    $(function () {
+
+        $(".click_pass").click(function () {
+
+            var x = 1000000;
+
+            var y = 1;
+
+            var random = String.fromCharCode(Math.floor(Math.random() * 26) + "a".charCodeAt(0)).toUpperCase() + parseInt(Math.random() * (x - y + 1) + y) + String.fromCharCode(Math.floor(Math.random() * 26) + "a".charCodeAt(0));
+
+            $(".random_pass").val(random);
+
+        });
+
+        $("#username").keyup(function () {
+
+            var text1_val = $(this).val();
+
+            $("#phone").val(text1_val);
+
+        });
+
+    });
+
+    var SystemUserSysNo = GetQueryString("SystemUserSysNo");
+
+    var Sn = parseInt(SystemUserSysNo);
+
+    $("#staff_id").val(Sn);
+
+    $("#register").click(function () {
+
+    })
+
+</script>
+
+
+<!--add by qiwei 20180105-->
+<script type="text/javascript">
+
+    $(document).ready(function () {
+//1.省市区码表
+        $.ajax({
+            type: "post",
+            url: "__APP__/Lian/GetWS_Address",
+            data: {"type": "1"},
+            success: function (data) {
+                $("#Province_Details").html("<option value=''>请选择省份</option>");
+                $.each(data, function (i, item) {
+                    $("#Province_Details").append("<option value='" + item.region_id + "'>" + item.region_name + "</option>");
+                });
+                $("#Province_Details option").each(function () {
+                    var val = $(this).val();
+                    if ($("#Province_Details option[value='" + val + "']").length > 1)
+                        $("#Province_Details option[value='" + val + "']:gt(0)").remove();
+                });
+            }
+        });
+        $("#Province_Details").change(function () {
+            if ($(this).val() == '') {
+                $("#City_Details").html("<option value=''>请选择市</option>");
+                $("#Area_Details").html("<option value=''>请选择区</option>");
+                return false;
+            }
+
+            $.ajax({
+                type: "post",
+                url: "__APP__/Lian/GetWS_Address",
+                data: {"parent_id": $(this).val(), "type": "2"},
+                success: function (data) {
+                    $("#City_Details").html("<option value=''>请选择市</option>");
+                    $("#Area_Details").html("<option value=''>请选择区</option>");
+                    $.each(data, function (i, item) {
+                        $("#City_Details").append("<option value='" + item.region_id + "'>" + item.region_name + "</option>");
+                    });
+                }
+            });
+        });
+        $("#City_Details").change(function () {
+            if ($(this).val() == '') {
+                $("#Area_Details").html("<option value=''>请选择区</option>");
+                return false;
+            }
+
+            $.ajax({
+                type: "post",
+                url: "__APP__/Lian/GetWS_Address",
+                data: {"parent_id": $(this).val(), "type": "3"},
+                success: function (data) {
+                    $("#Area_Details").html("<option value=''>请选择区</option>");
+                    $.each(data, function (i, item) {
+                        $("#Area_Details").append("<option value='" + item.region_id + "'>" + item.region_name + "</option>");
+                    });
+                }
+            });
+        });
+//2.类目码表
+        $.ajax({
+            type: "post",
+            url: "__APP__/Lian/GetWS_Category",
+            data: {"type": "1"},
+            success: function (data) {
+                $("#Business_Category").html("<option value=''>请选择类目</option>");
+                $.each(data, function (i, item) {
+                    $("#Business_Category").append("<option value='" + item.sysno + "'>" + item.class_name + "</option>");
+                });
+                $("#Business_Category option").each(function () {
+                    var val = $(this).val();
+                    if ($("#Business_Category option[value='" + val + "']").length > 1)
+                        $("#Business_Category option[value='" + val + "']:gt(0)").remove();
+                });
+            }
+        });
+
+//3.银行省市区
+        $.ajax({
+            type: "post",
+            url: "__APP__/Lian/GetWS_BankArea",
+            data: {"type": "1"},
+            success: function (data) {
+                $("#Province").html("<option value=''>请选择省份</option>");
+                $.each(data, function (i, item) {
+                    $("#Province").append("<option value='" + item.region_id + "'>" + item.region_name + "</option>");
+                });
+                $("#Province option").each(function () {
+                    var val = $(this).val();
+                    if ($("#Province option[value='" + val + "']").length > 1)
+                        $("#Province option[value='" + val + "']:gt(0)").remove();
+                });
+            }
+        });
+
+        //省
+        $("#Province").change(function () {
+            if ($(this).val() == '') {
+                $("#City").html("<option value=''>请选择市</option>");
+                $("#Area").html("<option value=''>请选择区</option>");
+                return false;
+            }
+
+            $.ajax({
+                type: "post",
+                url: "__APP__/Lian/GetWS_BankArea",
+                data: {"parent_id": $(this).val(), "type": "2"},
+                success: function (data) {
+                    $("#City").html("<option value=''>请选择市</option>");
+                    $("#Area").html("<option value=''>请选择区</option>");
+                    $("#Get_Bank_Branch").attr("disabled", "disabled");
+                    $("#Bank_Branch").html("<option value=''>选择开户支行</option>");
+                    $.each(data, function (i, item) {
+                        $("#City").append("<option value='" + item.region_id + "'>" + item.region_name + "</option>");
+                    });
+                }
+            });
+        });
+
+        //市
+        $("#City").change(function () {
+            if ($(this).val() == '') {
+                $("#Area").html("<option value=''>请选择区</option>");
+                return false;
+            }
+            $.ajax({
+                type: "post",
+                url: "__APP__/Lian/GetWS_BankArea",
+                data: {"parent_id": $(this).val(), "type": "3"},
+                success: function (data) {
+                    $("#Area").html("<option value=''>请选择区</option>");
+                    $("#Get_Bank_Branch").attr("disabled", "disabled");
+                    $("#Bank_Branch").html("<option value=''>选择开户支行</option>");
+
+                    $.each(data, function (i, item) {
+                        $("#Area").append("<option value='" + item.city_code + "'>" + item.region_name + "</option>");
+                    });
+                }
+            });
+        });
+
+        //区
+        $("#Area").change(function () {
+            $("#Search_Bank_Branch").val('');
+            $("#Get_Bank_Branch").attr("disabled", "disabled");
+            $("#Bank_Branch").html("<option value=''>选择开户支行</option>");
+            $("#Couplet_Number").val('');
+            if ($("#Area option:selected").val() == '') {
+                $("#Area").parents(".form-group").removeClass("has-info").addClass("has-error");
+                $("#Show").show();
+            } else {
+                $("#Area").parents(".form-group").removeClass("has-error").addClass("has-info");
+                $("#Show").hide();
+            }
+        });
+
+    });
+
+    function check_value(obj, btn, res) {
+        obj.on("keyup", function () {
+            var reg = res;
+            var val = obj.val()
+            if (val != "" && reg.exec(val)) {
+                btn.removeAttr("disabled");
+            } else {
+                btn.attr("disabled", "disabled");
+            }
+        })
+    }
+
+    check_value($("#Search_Bank_Branch"), $("#Get_Bank_Branch"), /^[\u4e00-\u9fa5]+$/i);
+    //查询
+    $("#Get_Bank_Branch").click(function () {
+        if ($("#Area option:selected").val() == '') {
+            $("#Area").parents(".form-group").removeClass("has-info").addClass("has-error");
+            $("#Show").show();
+            return false;
+        }
+        $.ajax({
+            type: "post",
+            url: "__APP__/Lian/GetWS_ContactLine",
+            data: {"parent_id": $("#Area  option:selected").val(), "bankname": $("#Search_Bank_Branch").val()},
+            success: function (data) {
+                $("#Bank_Branch").html("<option value=''>选择开户支行</option>");
+                $("#Couplet_Number").val('');
+                $.each(data.data, function (i, item) {
+                    $("#Bank_Branch").append("<option value='" + item.region_name + "'>" + item.region_name + "</option>");
+                });
+                $("#city_code").val(data.city_code);
+
+            }
+        });
+    });
+
+    //选择开户支行
+    $("#Bank_Branch").change(function () {
+        $.ajax({
+            type: "post",
+            url: "__APP__/Lian/GetWS_ContactLine_Number",
+            data: {
+                "parent_id": $("#city_code").val(),
+                "bankname": $("#Bank_Branch  option:selected").text()
+            },
+            success: function (data) {
+                $("#Couplet_Number").val(data);
+            }
+        });
+    });
+
+</script>
+
+
+</body>
+
+</html                           

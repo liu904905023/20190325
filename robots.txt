@@ -1,0 +1,20 @@
+User-agent: Baiduspider
+Disallow: /w?
+Allow: /
+
+User-agent: Googlebot
+User-agent: MSNBot
+User-agent: Baiduspider-image
+User-agent: YoudaoBot
+User-agent: Sogou web spider
+User-agent: Sogou inst spider
+User-agent: Sogou spider2
+User-agent: Sogou blog
+User-agent: Sogou News Spider
+User-agent: Sogou Orion spider
+User-agent: JikeSpider
+User-agent: Sosospider
+Allow: /
+
+User-agent: *
+Disallow: /
