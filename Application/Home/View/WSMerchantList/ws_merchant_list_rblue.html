@@ -377,25 +377,8 @@
 
 
 
-                                <div class="page_new">
+                                <include file="Base:page"/>
 
-                                    <input type = "hidden" id = "totalCount" value= "">
-
-                                    <a id="prev">上一页</a>  <a id = "next">下一页</a> <a id = "first">最前页</a> <a id = "last">最末页</a>
-
-                                    <select id = "SelectNo">
-
-
-
-                                    </select>
-
-                                    <span>总 <label id = "TotalCount"></label> 条</span> <span>分为 <label id = "TotalPage"></label> 页</span> <span>当前第 <label id ="NowPage">1</label> 页</span><input type= "hidden" id= "PageSize" value=10>
-
-                                    <input type = "hidden" id = "SystemUserSysNo" name = "systemusersysno" value= "<php>echo $_GET['id']</php>">
-
-
-
-                                </div>
 
 
 
@@ -543,23 +526,9 @@
 
                 TotalPage = Math.ceil(data.totalCount/PageSize);
 
-                var ff ="";
-
-                for (i=1;i<=TotalPage ;i++ )
-
-                {
-
-                    ff+="<option value = \""+i+"\">"+i+"</option>";
-
-                }
-
-                $('#SelectNo').html(ff);
-
                 $('#TotalPage').html(TotalPage);
 
                 $('#PageNumber').html(PageNumber);
-
-                $('#SelectNo').val(PageNumber+1);
 
                 $('#NowPage').text(PageNumber+1);
 

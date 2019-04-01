@@ -742,23 +742,10 @@
 
                     TotalPage = Math.ceil(data.totalCount/PageSize);
 
-                    var ff ="";
-
-                    for (i=1;i<=TotalPage ;i++ )
-
-                    {
-
-                        ff+="<option value = \""+i+"\">"+i+"</option>";
-
-                    }
-
-                    $('#SelectNo').html(ff);
-
                     $('#TotalPage').html(TotalPage);
 
                     $('#PageNumber').html(PageNumber);
 
-                    $('#SelectNo').val(PageNumber+1);
 
                     $('#NowPage').text(PageNumber+1);
 

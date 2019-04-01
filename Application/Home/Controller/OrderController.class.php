@@ -146,7 +146,8 @@ class OrderController extends Base {
 
     public function platform_order_search() {
         R("Base/getMenu");
-
+        $Retrun_GetPassageWay = $this->QueryNowPassageWay('WX');
+        $this->assign('NowPassageWay', $Retrun_GetPassageWay['NowPassageWay']);
         $this->display();
     }
     public function platformsearch(){
@@ -283,6 +284,25 @@ class OrderController extends Base {
                $Transaction_Id =  $List['Data']['WxPayData']['m_values']['OutTradeNo'];
                $Time_End =  $List['Data']['WxPayData']['m_values']['GmtPayment'];
                break;
+           case 112:
+               $Data['ReqModel']['orgOrderNo'] = $Post_Data['Out_Trade_No'];
+               $Data['ReqModel']['orderDt'] = date("Y-m-d",time());
+               $Data['ReqModel']['orderNo'] = $Post_Data['Transactionid'];
+               $Data['SystemUserSysNo'] = session('SysNO');
+               $Data['Remarks'] = 'WX';
+               $Url = C('SERVER_HOST') . 'IPP3RuralCredit/RuralCreditOrderQuery';
+               $List = http($Url, $Data);
+               switch ($List['Data']['paySt']) {
+                   case '1':$Status = "待支付";break;
+                   case '2':$Status = "支付成功";break;
+                   case '3':$Status = "支付失败";break;
+                   case '4':$Status = "已关闭";break;
+               };
+               $TotalFee = fee2yuan($List['Data']['transAmt']);
+               $Out_trade_no =  $List['Data']['orgOrderNo'];
+               $Transaction_Id =  $List['Data']['orderNo'];
+               $Time_End = "";
+               $Code = $List['Code'];
        }
         $Info['Code'] = $Code;
         $Info['Trade_State'] = $Trade_State;
@@ -300,6 +320,8 @@ class OrderController extends Base {
 
     public function order_search_alipay() {
         R("Base/getMenu");
+        $Retrun_GetPassageWay = $this->QueryNowPassageWay('AliPay');
+        $this->assign('NowPassageWay', $Retrun_GetPassageWay['NowPassageWay']);
         $this->display();
     }
 
@@ -423,6 +445,26 @@ class OrderController extends Base {
                 $Transaction_Id =  $List['Data']['WxPayData']['m_values']['OutTradeNo'];
                 $Time_End =  $List['Data']['WxPayData']['m_values']['GmtPayment'];
                 break;
+            case 112:
+                $Data['ReqModel']['orgOrderNo'] = $Post_Data['Out_Trade_No'];
+                $Data['ReqModel']['orderDt'] = date("Y-m-d",time());
+                $Data['ReqModel']['orderNo'] = $Post_Data['Transactionid'];
+                $Data['SystemUserSysNo'] = session('SysNO');
+                $Data['Remarks'] = 'Alipay';
+                $Url = C('SERVER_HOST') . 'IPP3RuralCredit/RuralCreditOrderQuery';
+                $List = http($Url, $Data);
+                switch ($List['Data']['paySt']) {
+                    case '1':$Status = "待支付";break;
+                    case '2':$Status = "支付成功";break;
+                    case '3':$Status = "支付失败";break;
+                    case '4':$Status = "已关闭";break;
+                };
+                $TotalFee = fee2yuan($List['Data']['transAmt']);
+                $Out_trade_no =  $List['Data']['orgOrderNo'];
+                $Transaction_Id =  $List['Data']['orderNo'];
+                $Time_End = "";
+                $Code = $List['Code'];
+                break;
         }
 
             $Info['Code'] = $Code;
@@ -451,7 +493,7 @@ class OrderController extends Base {
                 $Description = "请用平台订单号进行补单!";
             }else{
                 $ActStatus = $this->AddAliOrder($Data,$Retrun_GetPassageWay['NowPassageWay']);
-                if ($ActStatus['Code']==0) {
+                if ($ActStatus['Code']==0&&$ActStatus) {
                     $Description = "补单成功!";
                 } else {
                     $Description = "补单失败!";
@@ -641,7 +683,7 @@ class OrderController extends Base {
                     $Description = "请用平台订单号进行补单!";
                 }else{
                     $ActStatus = $this->AddWxOrder($Data,$Retrun_GetPassageWay['NowPassageWay']);
-                    if ($ActStatus['Code']==0) {
+                    if ($ActStatus['Code']==0&&$ActStatus) {
                         $Description = "补单成功!";
                     } else {
                         $Description = "补单失败!";

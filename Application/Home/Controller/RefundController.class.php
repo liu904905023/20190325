@@ -144,7 +144,7 @@ class RefundController extends Base {
         $list = http($url, $data);
         $return_data['Code'] = $list['Code'];
 
-        if($list['Code']==0){
+        if($list['Code']==0&&$list){
             $return_data['Description']='退款成功！';
         }else{
             $return_data['Description']='退款失败！';

@@ -164,7 +164,15 @@ class BusinessRefundController extends Base {
 //
         $list = http($url, $data);
 
-        $this->ajaxReturn($list, json);
+        if($list['Code']==0&&$list){
+            $return_data['Description']='退款成功！';
+        }else{
+            $return_data['Description']='退款失败！';
+        }
+
+
+
+        $this->ajaxReturn($return_data);
     }
 
 
