@@ -69,6 +69,7 @@
                                                                 </div>
                                                             </div>
                                                         </div>
+                                                        <div class="clearfix"></div>
                                                         <div class="col-xs-12 col-md-4">
                                                             <div class="form-group">
                                                                 <div class="col-xs-12">
@@ -119,9 +120,7 @@
             rules : {
 
                 MCHID : {
-                    required : true,
-                    num:true
-
+                    required : true
                 },
                 APPID:{
                     required:true
@@ -138,8 +137,7 @@
             messages : {
 
                 MCHID : {
-                    required : "商户号不能为空！",
-                    num : "商户号为纯数字！"
+                    required : "商户号不能为空！"
                 },
                 APPID : {
                     required : "支付宝APPID不能为空！"
