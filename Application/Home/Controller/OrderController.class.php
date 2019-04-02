@@ -322,7 +322,7 @@ class OrderController extends Base {
                $TotalFee = $List['Data']['PayData']['totalFee'];
                $Out_trade_no =  $List['Data']['PayData']['transactionId'];
                $Transaction_Id = $List['Data']['PayData']['outTradeNo'] ;
-               $Time_End = $List['Data']['PayData']['timeEnd'];
+               $Time_End = $List['Data']['PayData']['timeEnd']?$List['Data']['PayData']['timeEnd']:"";
                $Code = $List['Code'];
                break;
 
@@ -506,7 +506,7 @@ class OrderController extends Base {
                 $TotalFee = $List['Data']['PayData']['totalFee'];
                 $Out_trade_no =  $List['Data']['PayData']['transactionId'];
                 $Transaction_Id =  $List['Data']['PayData']['outTradeNo'];
-                $Time_End = $List['Data']['PayData']['timeEnd'];
+                $Time_End = $List['Data']['PayData']['timeEnd']?$List['Data']['PayData']['timeEnd']:"";
                 $Code = $List['Code'];
                 break;
         }
