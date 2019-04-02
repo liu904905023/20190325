@@ -320,8 +320,8 @@ class OrderController extends Base {
                    case 'closed':$Status = ":订单已关闭";break;
                };
                $TotalFee = $List['Data']['PayData']['totalFee'];
-               $Out_trade_no =  $List['Data']['PayData']['outTradeNo'];
-               $Transaction_Id =  $List['Data']['PayData']['transactionId'];
+               $Out_trade_no =  $List['Data']['PayData']['transactionId'];
+               $Transaction_Id = $List['Data']['PayData']['outTradeNo'] ;
                $Time_End = $List['Data']['PayData']['timeEnd'];
                $Code = $List['Code'];
                break;
@@ -504,8 +504,8 @@ class OrderController extends Base {
                     case 'closed':$Status = ":订单已关闭";break;
                 };
                 $TotalFee = $List['Data']['PayData']['totalFee'];
-                $Out_trade_no =  $List['Data']['PayData']['outTradeNo'];
-                $Transaction_Id =  $List['Data']['PayData']['transactionId'];
+                $Out_trade_no =  $List['Data']['PayData']['transactionId'];
+                $Transaction_Id =  $List['Data']['PayData']['outTradeNo'];
                 $Time_End = $List['Data']['PayData']['timeEnd'];
                 $Code = $List['Code'];
                 break;
