@@ -119,7 +119,11 @@ class BusinessRefundController extends Base {
             $data['ReqModel']['RefundAmount'] = $Refund_Fee;
             $data['ReqModel']['Total_fee'] = $Total_Fee;
             $data['SystemUserSysNo'] = $OldSysNo;
+        }else if ($PayType == '114' || $PayType == '115'){
+            $data['ReqModel']['RefundAmount'] = $Refund_Fee;
+            $data['SystemUserSysNo'] = $OldSysNo;
         }else{
+
             $data = array("refund_fee" => $Refund_Fee, "total_fee" => $Total_Fee, "SOSysNo" => $SOSysNo);
             $data['YwMch_id2'] = $OldSysNo;
         }
@@ -133,6 +137,10 @@ class BusinessRefundController extends Base {
             $data['ChannelType'] = 'WX';
         }else if ($PayType == '109') {
             $data['ChannelType'] = 'ALI';
+        }else if ($PayType == '114') {
+            $data['Remarks'] = 'WX';
+        }else if ($PayType == '115') {
+            $data['Remarks'] = 'AliPay';
         }
         if ($PayType == 104 || $PayType == 105 || $PayType == 106 || $PayType == 107) {
             $data["Transaction_id"] = $Out_trade_no;
@@ -143,6 +151,8 @@ class BusinessRefundController extends Base {
         }else if ($PayType == '108' || $PayType == '109') {
             $data['ReqModel']['OutTradeNo'] = $Out_trade_no;
 //            $data['Transaction_id'] = $tranno;
+        }else if ($PayType=='114'||$PayType=='115') {
+            $data['ReqModel']['TransactionId'] = $Out_trade_no;
         }
 
 
@@ -157,6 +167,8 @@ class BusinessRefundController extends Base {
             $url = C('SERVER_HOST') . "IPP3Swiftpass/RefundApiUnion";
         }else if ($PayType=='108'||$PayType=='109') {
             $url = C('SERVER_HOST') . "IPP3WSOrder/WSPayRefundUnion";
+        }else if ($PayType=='114'||$PayType=='115') {
+            $url = C('SERVER_HOST') . "IPP3LMFPay/Refund";
         }
 //        var_dump(json_encode($data));
 //        echo $url;

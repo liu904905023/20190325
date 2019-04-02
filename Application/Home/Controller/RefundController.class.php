@@ -97,6 +97,9 @@ class RefundController extends Base {
             $data['ReqModel']['RefundAmount'] = $refund_fee;
             $data['ReqModel']['Total_fee'] = $total_fee;
             $data['SystemUserSysNo'] = session('SysNO');
+        }else if ($paytype == '114' || $paytype == '115'){
+            $data['ReqModel']['RefundAmount'] = $refund_fee;
+            $data['SystemUserSysNo'] = session('SysNO');
         }else{
             $data = array("refund_fee" => $refund_fee, "total_fee" => $total_fee, "SOSysNo" => $SOSysNo);
             if (session(flag) == 0) {
@@ -112,6 +115,8 @@ class RefundController extends Base {
         } else if ($paytype == '108' || $paytype == '109') {
             $data['ReqModel']['OutTradeNo'] = $out_trade_no;
 //            $data['Transaction_id'] = $tranno;
+        }else if ($paytype=='114'||$paytype=='115') {
+            $data['ReqModel']['TransactionId'] = $out_trade_no;
         }
 
 
@@ -123,6 +128,10 @@ class RefundController extends Base {
             $data['ChannelType']='WX';
         } else if ($paytype == '109') {
             $data['ChannelType'] = 'ALI';
+        }else if ($paytype == '114') {
+            $data['Remarks'] = 'WX';
+        }else if ($paytype == '115') {
+            $data['Remarks'] = 'AliPay';
         }
 
 
@@ -134,6 +143,8 @@ class RefundController extends Base {
             $url = C('SERVER_HOST') . "IPP3Swiftpass/RefundApiUnion";
         }else if ($paytype=='108'||$paytype=='109') {
             $url = C('SERVER_HOST') . "IPP3WSOrder/WSPayRefundUnion";
+        }else if ($paytype=='114'||$paytype=='115') {
+            $url = C('SERVER_HOST') . "IPP3LMFPay/Refund";
         }
 //        var_dump(json_encode($data));
 //        echo $url;

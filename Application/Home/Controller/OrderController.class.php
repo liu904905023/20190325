@@ -303,6 +303,29 @@ class OrderController extends Base {
                $Transaction_Id =  $List['Data']['orderNo'];
                $Time_End = "";
                $Code = $List['Code'];
+               break;
+           case 114:
+               $Data['ReqModel']['TransactionId'] = $Post_Data['Out_Trade_No'];
+               $Data['ReqModel']['OutTradeNo'] = $Post_Data['Transactionid'];
+               $Data['SystemUserSysNo'] = session('SysNO');
+               $Data['Remarks'] = 'WX';
+               $Url = C('SERVER_HOST') . 'IPP3LMFPay/OrderQuery';
+               $List = http($Url, $Data);
+               switch ($List['Data']['PayData']['orderStatus']) {
+                   case 'success':$Status = "支付成功";break;
+                   case 'paying':$Status = "支付中";break;
+                   case 'cancel':$Status = "已取消";break;
+                   case 'refund':$Status = "已退款";break;
+                   case 'refunding':$Status = "退款中";break;
+                   case 'closed':$Status = ":订单已关闭";break;
+               };
+               $TotalFee = $List['Data']['PayData']['totalFee'];
+               $Out_trade_no =  $List['Data']['PayData']['outTradeNo'];
+               $Transaction_Id =  $List['Data']['PayData']['transactionId'];
+               $Time_End = $List['Data']['PayData']['timeEnd'];
+               $Code = $List['Code'];
+               break;
+
        }
         $Info['Code'] = $Code;
         $Info['Trade_State'] = $Trade_State;
@@ -463,6 +486,27 @@ class OrderController extends Base {
                 $Out_trade_no =  $List['Data']['orgOrderNo'];
                 $Transaction_Id =  $List['Data']['orderNo'];
                 $Time_End = "";
+                $Code = $List['Code'];
+                break;
+            case 114:
+                $Data['ReqModel']['TransactionId'] = $Post_Data['Out_Trade_No'];
+                $Data['ReqModel']['OutTradeNo'] = $Post_Data['Transactionid'];
+                $Data['SystemUserSysNo'] = session('SysNO');
+                $Data['Remarks'] = 'AliPay';
+                $Url = C('SERVER_HOST') . 'IPP3LMFPay/OrderQuery';
+                $List = http($Url, $Data);
+                switch ($List['Data']['PayData']['orderStatus']) {
+                    case 'success':$Status = "支付成功";break;
+                    case 'paying':$Status = "支付中";break;
+                    case 'cancel':$Status = "已取消";break;
+                    case 'refund':$Status = "已退款";break;
+                    case 'refunding':$Status = "退款中";break;
+                    case 'closed':$Status = ":订单已关闭";break;
+                };
+                $TotalFee = $List['Data']['PayData']['totalFee'];
+                $Out_trade_no =  $List['Data']['PayData']['outTradeNo'];
+                $Transaction_Id =  $List['Data']['PayData']['transactionId'];
+                $Time_End = $List['Data']['PayData']['timeEnd'];
                 $Code = $List['Code'];
                 break;
         }
