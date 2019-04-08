@@ -63,7 +63,7 @@ class IsvController extends Controller {
 
 	
 //		var_dump($data);exit;
-		$Post_Url = "https://payapi.yunlaohu.cn/IPP3Customers/IPP3CustomerAliPayConfigTokenUpdate";
+		$Post_Url = C('SERVER_HOST') ."IPP3Customers/IPP3CustomerAliPayConfigTokenUpdate";
 		$Get_List = http( $Post_Url, $Post_List);
 
 		}

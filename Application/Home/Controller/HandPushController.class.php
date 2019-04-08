@@ -119,6 +119,7 @@ class HandPushController extends Base {
         $data['Transaction_id']=I('Transaction_id');
         $data['systemUserSysNo']=session('SysNO');
         $data['CustomerSysNo']=session('servicestoreno');
+        $data['Type']   ="网商";
         $url = C('SERVER_HOST') . "IPP3Order/IPP3HandPushWS";
         $list = http($url,$data);
         if($list['Code']==0){
@@ -130,6 +131,55 @@ class HandPushController extends Base {
 
     }
 
+    public function lmf_hand_push() {
+        R("Base/getMenu");
 
+        $this->display('lmf_hand_push');
+
+    }
+    public function lmfpushlist() {
+        if (IS_POST) {
+            $data['Transaction_id']=I('transcationnum');
+            $data['Out_trade_no']=I('out_trade_no');
+            $data['SystemUserSysNo']=session('SysNO');
+            $data['Time_Start']=I('Time_Start');
+            $data['Time_End']=I('Time_End');
+            $data['Type']='立码富';
+
+            $url = C('SERVER_HOST') . "IPP3Order/IPP3So_MasterNotifyLogListLMF";
+
+            $list = http($url, $data);
+            foreach ($list['model'] as $row => $val) {
+                $info['model'][$row]['Out_trade_no'] = $val['Out_trade_no'];
+                $info['model'][$row]['Transaction_id'] = $val['Transaction_id'];
+                $info['model'][$row]['Total_fee'] = ($val['Total_fee']);
+                $info['model'][$row]['Cash_fee'] = ($val['Cash_fee']);
+                $info['model'][$row]['fee'] = ($val['fee']);
+                $info['model'][$row]['Time_Start'] = str_replace('/','-',$val['CreateTime']);
+
+            }
+            $info['totalCount'] = $list['totalCount'];
+            $this->ajaxreturn($info);
+
+        }
+
+    }
+
+    public function lmfpush() {
+        $data['Out_trade_no']    = I('Out_trade_no');
+        $data['Transaction_id']  = I('Transaction_id');
+        $data['systemUserSysNo'] = session('SysNO');
+        $data['CustomerSysNo']   = session('servicestoreno');
+        $data['Type']   ="立码富";
+        $url                     = C('SERVER_HOST') . "IPP3Order/IPP3HandPushWS";
+        $list                    = http($url, $data);
+        if ($list['Code'] == 0) {
+            $return_info['Description'] = '推送成功！';
+        } else {
+            $return_info['Description'] = '推送失败！';
+        }
+        $this->ajaxReturn($return_info);
+        exit();
+    }
 
 }

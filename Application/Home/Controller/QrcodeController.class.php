@@ -46,7 +46,7 @@ class QrcodeController extends Controller{
 	}
 	
 	public function intelqrcode($url='http://www.baidu.com',$level=3,$size=6){
-		$url1="http://td.duoyoucai.com.cn/index.php/Intel/index?systemUserSysNo=";
+		$url1="http://".$_SERVER["SERVER_NAME"]."/index.php/Intel/index?systemUserSysNo=";
 		$url1.=$url;
 		$errorCorrectionLevel =intval($level) ;//容错级别 
 		$matrixPointSize = intval($size);//生成图片大小 

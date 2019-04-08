@@ -277,7 +277,7 @@ class LoginController extends Controller{
 
         $passagewaylist_url = C('SERVER_HOST').'IPP3Customers/SystemPassageWayList';//码表查询
 
-        $passageway_list = http($passagewaylist_url);
+        $passageway_list = http($passagewaylist_url,$passagewaylist_data);
 
         foreach ($passageway_list as $row=>$val) {
 

@@ -116,6 +116,7 @@ class LMFConfigController extends Base
             }
 
         }else{
+            R("Base/getMenu");
             $this->assign( 'passtype', -1 );
         }
 

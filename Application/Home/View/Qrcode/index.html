@@ -569,7 +569,7 @@
         $(".bg_black").show();
 
         var paths = "http://<{$_SERVER['SERVER_NAME']}>/index.php/Qrcode/qrcode?url=http://web.yunlaohu.cn/index.php/EFuliIndex/index?systemUserSysNo=" + sysno;
-
+        console.log(paths);
         $("#Efuliqcode").attr('src', paths);
         $(".qrcodename").html(name.replace("(", "<br\>("));
 
@@ -620,7 +620,7 @@
                         var logintype = "<a \"javascript:void(0);\" onclick=\"qrcode(" + v.SysNO + ",'" + v.DisplayName + "')\" class=\"btn btn-danger btn-xs refund\">付款二维码</a>";
                         var logintypes = "<a \"javascript:void(0);\" onclick=\"clearqrcode(" + v.SysNO + ",'" + v.DisplayName + "')\" class=\"btn btn-danger btn-xs refund\">通知二维码</a>";
                         var logintype1 = "<a \"javascript:void(0);\" onclick=\"DeletClear(" + v.SysNO + ",'" + v.DisplayName + "')\" class=\"btn btn-danger btn-xs refund2\">删除核销员</a>";
-                        var logintype2 = "<a href = \"https://openauth.alipay.com/oauth2/appToAppAuth.htm?app_id=" + data.AliAppId + "&redirect_uri=http://web.yunlaohu.cn/index.php/Isv/index?systemUserSysNo=" + v.SysNO + "\" class=\"btn btn-danger btn-xs refund2\" target=\"_blank\" >ISV网页授权</a>";
+                        var logintype2 = "<a href = \"https://openauth.alipay.com/oauth2/appToAppAuth.htm?app_id=" + data.AliAppId + "&redirect_uri=http://<{$_SERVER['SERVER_NAME']}>/index.php/Isv/index?systemUserSysNo=" + v.SysNO + "\" class=\"btn btn-danger btn-xs refund2\" target=\"_blank\" >ISV网页授权</a>";
                         var logintype3 = "<a \"javascript:void(0);\" onclick=\"isvmobile(" + v.SysNO + ",'" + v.DisplayName + "')\" class=\"btn btn-danger btn-xs refund2\">ISV手机授权</a>";
                         var logintype4 = "<a \"javascript:void(0);\" onclick=\"isali(" + v.SysNO + ",'" + v.DisplayName + "')\" class=\"btn btn-danger btn-xs refund2\">支付宝付款</a>";
                         var logintype5 = "<a \"javascript:void(0);\" onclick=\"intel(" + v.SysNO + ",'" + v.DisplayName + "')\" class=\"btn btn-danger btn-xs refund2\">智能付款码</a>";
