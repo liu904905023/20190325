@@ -97,7 +97,8 @@ class HandPushController extends Base {
         $data['Time_Start']=I('Time_Start');
         $data['Time_End']=I('Time_End');
         $data['Type']='网商';
-
+        $data['PagingInfo']['PageSize'] = I('PageSize');
+        $data['PagingInfo']['PageNumber'] = I('PageNumber');
         $url = C('SERVER_HOST') . "IPP3Order/IPP3So_MasterNotifyLogListWS";
 
         $list = http($url, $data);
@@ -120,6 +121,8 @@ class HandPushController extends Base {
         $data['systemUserSysNo']=session('SysNO');
         $data['CustomerSysNo']=session('servicestoreno');
         $data['Type']   ="网商";
+        $data['PagingInfo']['PageSize'] = I('PageSize');
+        $data['PagingInfo']['PageNumber'] = I('PageNumber');
         $url = C('SERVER_HOST') . "IPP3Order/IPP3HandPushWS";
         $list = http($url,$data);
         if($list['Code']==0){
@@ -145,6 +148,8 @@ class HandPushController extends Base {
             $data['Time_Start']=I('Time_Start');
             $data['Time_End']=I('Time_End');
             $data['Type']='立码富';
+            $data['PagingInfo']['PageSize'] = I('PageSize');
+            $data['PagingInfo']['PageNumber'] = I('PageNumber');
 
             $url = C('SERVER_HOST') . "IPP3Order/IPP3So_MasterNotifyLogListLMF";
 
@@ -155,6 +160,7 @@ class HandPushController extends Base {
                 $info['model'][$row]['Total_fee'] = ($val['Total_fee']);
                 $info['model'][$row]['Cash_fee'] = ($val['Cash_fee']);
                 $info['model'][$row]['fee'] = ($val['fee']);
+                $info['model'][$row]['payChannel'] = ($val['payChannel']=='WXPAY'?'立码富-微信':'立码富-支付宝');
                 $info['model'][$row]['Time_Start'] = str_replace('/','-',$val['CreateTime']);
 
             }
