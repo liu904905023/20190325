@@ -87,15 +87,16 @@ class HandPushController extends Base {
         $this->ajaxReturn( $return_info );
     }
     public function ws_hand_push_list() {
+
+        R("Base/getMenu");
+        $this->display();
+    }
+    public function wshandpushlist() {
         if(session(flag)==1&&session(servicestoretype)==1){
 
         }else{
             exit;
         }
-        R("Base/getMenu");
-        $this->display();
-    }
-    public function wshandpushlist() {
         $data['Transaction_id']=I('transcationnum');
         $data['Out_trade_no']=I('out_trade_no');
         $data['SystemUserSysNo']=session('SysNO');
@@ -140,16 +141,17 @@ class HandPushController extends Base {
     }
 
     public function lmf_hand_push() {
-        if(session(flag)==1&&session(servicestoretype)==1){
 
-        }else{
-            exit;
-        }
         R("Base/getMenu");
         $this->display('lmf_hand_push');
 
     }
     public function lmfpushlist() {
+        if(session(flag)==1&&session(servicestoretype)==1){
+
+        }else{
+            exit;
+        }
         if (IS_POST) {
             $data['Transaction_id']=I('transcationnum');
             $data['Out_trade_no']=I('out_trade_no');
