@@ -579,6 +579,12 @@ class OrderController extends Base {
             $SupplyOrderData['ChannelType']='ALI';
             $SupplyOrderData['SystemUserSysNo']=session('SysNO');
             $SupplyOrderUrl = C('SERVER_HOST') . "IPP3BKMerchantTrade/MCHPaySupplyOrder";
+        }else if($Type==114){
+            $SupplyOrderData['ReqModel']['OutTradeNo']=$Data['Transactionid'];
+            $SupplyOrderData['ReqModel']['TransactionId']=$Data['Out_Trade_No'];
+            $SupplyOrderData['Remarks']='AliPay';
+            $SupplyOrderData['SystemUserSysNo']=session('SysNO');
+            $SupplyOrderUrl = C('SERVER_HOST') . "IPP3LMFPay/LMFPaySupplyOrder";
         }
 //        var_dump(json_encode($SupplyOrderData));
 //        echo $SupplyOrderUrl;
@@ -777,13 +783,16 @@ class OrderController extends Base {
             $SupplyOrderData['ChannelType']='WX';
             $SupplyOrderData['SystemUserSysNo']=session('SysNO');
             $SupplyOrderUrl = C('SERVER_HOST') . "IPP3BKMerchantTrade/MCHPaySupplyOrder";
+        }else if($Type==114){
+            $SupplyOrderData['ReqModel']['OutTradeNo']=$Data['Transactionid'];
+            $SupplyOrderData['ReqModel']['TransactionId']=$Data['Out_Trade_No'];
+            $SupplyOrderData['Remarks']='WX';
+            $SupplyOrderData['SystemUserSysNo']=session('SysNO');
+            $SupplyOrderUrl = C('SERVER_HOST') . "IPP3LMFPay/LMFPaySupplyOrder";
         }
-//        var_dump($SupplyOrderData);
-//        echo $SupplyOrderUrl;
-//        exit();
+
         $list = http($SupplyOrderUrl, $SupplyOrderData);
-//        var_dump($list);
-//        exit();
+
         return $list;
     }
 

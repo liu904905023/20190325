@@ -5,7 +5,9 @@ namespace Home\Controller;
 use Common\Compose\Base;
 
 class BusinessRefundController extends Base {
-
+    public function _initialize() {
+        Vendor('Aes.Aes');
+    }
     public function refund() {
 
         R("Base/getMenu");
@@ -72,44 +74,43 @@ class BusinessRefundController extends Base {
     }
 
     public function refundinsert() {//退款新增
-        $Out_trade_no = $_POST['out_trade_no'];
-        $Total_Fee = yuan2fee($_POST['total_fee']);
-        $Refund_Fee = yuan2fee($_POST['refund_fee']);
-        $SOSysNo = $_POST['SOSysNo'];
-        $OldSysNo = $_POST['OldSysNo'];
-        $PayType = $_POST['paytype'];
-        $tranno = I('tranno');
-        $Url_GetPassageWay = C('SERVER_HOST') . "IPP3Customers/CustomerServicePassageWayList";
+        $Out_trade_no                        = $_POST['out_trade_no'];
+        $Total_Fee                           = yuan2fee($_POST['total_fee']);
+        $Refund_Fee                          = yuan2fee($_POST['refund_fee']);
+        $SOSysNo                             = $_POST['SOSysNo'];
+        $OldSysNo                            = $_POST['OldSysNo'];
+        $PayType                             = $_POST['paytype'];
+        $tranno                              = I('tranno');
+        $Url_GetPassageWay                   = C('SERVER_HOST') . "IPP3Customers/CustomerServicePassageWayList";
         $Data_GetPassageWay['CustomerSysNo'] = session('SysNO');
-        $Retrun_GetPassageWay = http($Url_GetPassageWay, $Data_GetPassageWay);
-        $Istrue = array_filter($Retrun_GetPassageWay, function ($t) use ($PayType) {
+        $Retrun_GetPassageWay                = http($Url_GetPassageWay, $Data_GetPassageWay);
+        $Istrue                              = array_filter($Retrun_GetPassageWay, function ($t) use ($PayType) {
             return $t['Type'] == $PayType;
         });
 
-        $CheckRefund_Url = C('SERVER_HOST') . "IPP3Customers/IPP3RoleApplicationList";
-        $CheckRefund_Data['SystemUserSysNo'] =$OldSysNo;
-        $CheckRefund_List = http($CheckRefund_Url, $CheckRefund_Data);
+        $CheckRefund_Url                     = C('SERVER_HOST') . "IPP3Customers/IPP3RoleApplicationList";
+        $CheckRefund_Data['SystemUserSysNo'] = $OldSysNo;
+        $CheckRefund_List                    = http($CheckRefund_Url, $CheckRefund_Data);
 
 
+        if (!empty($Istrue)) {
 
-       if (!empty($Istrue)) {
-
-       } else {
-           $list['Description'] = "非当前通道不允许退款";
-           $this->ajaxReturn($list, json);
-           exit();
-       }
+        } else {
+            $list['Description'] = "非当前通道不允许退款";
+            $this->ajaxReturn($list, json);
+            exit();
+        }
         $TimeStart = $_POST['timestart'];
-        $Time = explode(" ", $TimeStart);
-        $Ymd = $Time[0];
-        $NowDay = date("Y-m-d", time());
+        $Time      = explode(" ", $TimeStart);
+        $Ymd       = $Time[0];
+        $NowDay    = date("Y-m-d", time());
         if (strtotime($Ymd) == strtotime($NowDay)) {
 
 
         } else {
-            if($CheckRefund_List['Data'][0]['ApplicationSysNo']==1){
+            if ($CheckRefund_List['Data'][0]['ApplicationSysNo'] == 1) {
 
-            }else{
+            } else {
                 $list['Description'] = "非当天交易不允许退款";
                 $this->ajaxReturn($list, json);
                 exit();
@@ -117,14 +118,15 @@ class BusinessRefundController extends Base {
         }
         if ($PayType == '108' || $PayType == '109') {
             $data['ReqModel']['RefundAmount'] = $Refund_Fee;
-            $data['ReqModel']['Total_fee'] = $Total_Fee;
-            $data['SystemUserSysNo'] = $OldSysNo;
-        }else if ($PayType == '114' || $PayType == '115'){
-            $data['ReqModel']['RefundAmount'] = $Refund_Fee;
-            $data['SystemUserSysNo'] = $OldSysNo;
-        }else{
+            $data['ReqModel']['Total_fee']    = $Total_Fee;
+            $data['SystemUserSysNo']          = $OldSysNo;
+        } else if ($PayType == '114' || $PayType == '115') {
+            $aes = new \Aes("oh4qw2er16w8alda", "yCJXKLv4GvySreYK");
+            $data['ReqModel']['Refund_Amount'] = $aes->encrypt($Refund_Fee);
+            $data['SystemUserSysNo']          = $OldSysNo;
+        } else {
 
-            $data = array("refund_fee" => $Refund_Fee, "total_fee" => $Total_Fee, "SOSysNo" => $SOSysNo);
+            $data              = array("refund_fee" => $Refund_Fee, "total_fee" => $Total_Fee, "SOSysNo" => $SOSysNo);
             $data['YwMch_id2'] = $OldSysNo;
         }
 
@@ -135,26 +137,25 @@ class BusinessRefundController extends Base {
             $data['Pay_Type'] = 'AliPay';
         } else if ($PayType == '108') {
             $data['ChannelType'] = 'WX';
-        }else if ($PayType == '109') {
+        } else if ($PayType == '109') {
             $data['ChannelType'] = 'ALI';
-        }else if ($PayType == '114') {
+        } else if ($PayType == '114') {
             $data['Remarks'] = 'WX';
-        }else if ($PayType == '115') {
+        } else if ($PayType == '115') {
             $data['Remarks'] = 'AliPay';
         }
         if ($PayType == 104 || $PayType == 105 || $PayType == 106 || $PayType == 107) {
             $data["Transaction_id"] = $Out_trade_no;
 
-        } else if($PayType==102||$PayType==103) {
+        } else if ($PayType == 102 || $PayType == 103) {
             $data["out_trade_no"] = $Out_trade_no;
 
-        }else if ($PayType == '108' || $PayType == '109') {
+        } else if ($PayType == '108' || $PayType == '109') {
             $data['ReqModel']['OutTradeNo'] = $Out_trade_no;
 //            $data['Transaction_id'] = $tranno;
-        }else if ($PayType=='114'||$PayType=='115') {
+        } else if ($PayType == '114' || $PayType == '115') {
             $data['ReqModel']['TransactionId'] = $Out_trade_no;
         }
-
 
 
         if ($PayType == '102') {
@@ -165,16 +166,23 @@ class BusinessRefundController extends Base {
         }
         if ($PayType == '104' || $PayType == '105' || $PayType == 106 || $PayType == 107) {
             $url = C('SERVER_HOST') . "IPP3Swiftpass/RefundApiUnion";
-        }else if ($PayType=='108'||$PayType=='109') {
+        } else if ($PayType == '108' || $PayType == '109') {
             $url = C('SERVER_HOST') . "IPP3WSOrder/WSPayRefundUnion";
-        }else if ($PayType=='114'||$PayType=='115') {
+        } else if ($PayType == '114' || $PayType == '115') {
             $url = C('SERVER_HOST') . "IPP3LMFPay/Refund";
         }
-//        var_dump(json_encode($data));
-//        echo $url;
-//        exit();
-//
-        $list = http($url, $data);
+        if ($PayType == '114' || $PayType == '115') {
+            $data = json_encode($data);
+            $head = array(
+                "Content-Type:application/json;charset=UTF-8",
+                "Content-length:" . strlen( $data ),
+                "X-DYC-Authentication:".$aes->encrypt(session(SysNO))
+            );
+            $list = http_request($url, $data,$head);
+            $list = json_decode($list,json);
+        } else {
+            $list = http($url, $data);
+        }
 
         if($list['Code']==0&&$list){
             $return_data['Description']='退款成功！';

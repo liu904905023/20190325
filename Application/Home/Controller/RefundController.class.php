@@ -6,7 +6,9 @@ namespace Home\Controller;
 use Common\Compose\Base;
 
 class RefundController extends Base {
-
+    public function _initialize() {
+        Vendor('Aes.Aes');
+    }
     public function refund() {
         R("Base/getMenu");
 //		var_dump(session(data));
@@ -48,12 +50,12 @@ class RefundController extends Base {
     }
 
     public function refundinsert() {//退款新增
-        $out_trade_no = $_POST['out_trade_no'];
-        $tranno = $_POST['tranno'];
-        $total_fee = yuan2fee($_POST['total_fee']);
-        $refund_fee = yuan2fee($_POST['refund_fee']);
-        $SOSysNo = $_POST['SOSysNo'];
-        $paytype = $_POST['paytype'];
+        $out_trade_no = I("out_trade_no");
+        $tranno = I("tranno");
+        $total_fee = yuan2fee(I("total_fee"));
+        $refund_fee = yuan2fee(I('refund_fee'));
+        $SOSysNo = I('SOSysNo');
+        $paytype = I('paytype');
 
         $Url_GetPassageWay = C('SERVER_HOST') . "IPP3Customers/CustomerServicePassageWayList";
         $Data_GetPassageWay['CustomerSysNo'] = session('servicestoreno');
@@ -68,7 +70,7 @@ class RefundController extends Base {
             return $t['Type'] == $paytype;
         });
 
-        $timestart = $_POST['timestart'];
+        $timestart = I('timestart');
         $time = explode(" ", $timestart);
         $Ymd = $time[0];
         $NowDay = date("Y-m-d", time());
@@ -98,7 +100,8 @@ class RefundController extends Base {
             $data['ReqModel']['Total_fee'] = $total_fee;
             $data['SystemUserSysNo'] = session('SysNO');
         }else if ($paytype == '114' || $paytype == '115'){
-            $data['ReqModel']['RefundAmount'] = $refund_fee;
+            $aes = new \Aes("oh4qw2er16w8alda", "yCJXKLv4GvySreYK");
+            $data['ReqModel']['Refund_Amount'] = $aes->encrypt($refund_fee);
             $data['SystemUserSysNo'] = session('SysNO');
         }else{
             $data = array("refund_fee" => $refund_fee, "total_fee" => $total_fee, "SOSysNo" => $SOSysNo);
@@ -151,8 +154,19 @@ class RefundController extends Base {
 //        exit();
 
 
+        if ($paytype == '114' || $paytype == '115') {
+            $data = json_encode($data);
+            $head = array(
+                "Content-Type:application/json;charset=UTF-8",
+                "Content-length:" . strlen( $data ),
+                "X-DYC-Authentication:".$aes->encrypt(session(SysNO))
+            );
+            $list = http_request($url, $data,$head);
+            $list = json_decode($list,json);
+        }else{
+            $list = http($url, $data);
 
-        $list = http($url, $data);
+        }
         $return_data['Code'] = $list['Code'];
 
         if($list['Code']==0&&$list){
