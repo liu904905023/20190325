@@ -87,12 +87,12 @@ class HandPushController extends Base {
         $this->ajaxReturn( $return_info );
     }
     public function ws_hand_push_list() {
-        R("Base/getMenu");
         if(session(flag)==1&&session(servicestoretype)==1){
 
         }else{
             exit;
         }
+        R("Base/getMenu");
         $this->display();
     }
     public function wshandpushlist() {
