@@ -88,6 +88,11 @@ class HandPushController extends Base {
     }
     public function ws_hand_push_list() {
         R("Base/getMenu");
+        if(session(flag)==1&&session(servicestoretype)==1){
+
+        }else{
+            exit;
+        }
         $this->display();
     }
     public function wshandpushlist() {
@@ -135,8 +140,12 @@ class HandPushController extends Base {
     }
 
     public function lmf_hand_push() {
-        R("Base/getMenu");
+        if(session(flag)==1&&session(servicestoretype)==1){
 
+        }else{
+            exit;
+        }
+        R("Base/getMenu");
         $this->display('lmf_hand_push');
 
     }
