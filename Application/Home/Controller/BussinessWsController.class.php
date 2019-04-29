@@ -694,10 +694,10 @@ class BussinessWsController extends Base {
 
 
         $data['ReqModel']['TaxNum']=I('TaxNum');
-        $data['ReqModel']['BussAuthVld']=I('BussAuthVld');
+        $data['ReqModel']['BussAuthVld']=str_replace('/','-',I('BussAuthVld'));
         $data['ReqModel']['PersonSex']=I('PersonSex');
         $data['ReqModel']['PersonProfession']=I('PersonProfession');
-        $data['ReqModel']['PersonCertVld']=I('PersonCertVld');
+        $data['ReqModel']['PersonCertVld']=str_replace('/','-',I('PersonCertVld'));
 
 
         $data['ReqModel']['ShareholderName']=I('ShareholderName');
