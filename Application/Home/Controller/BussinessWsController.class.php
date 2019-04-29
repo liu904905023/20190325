@@ -8,10 +8,6 @@ class BussinessWsController extends Base {
         R("Base/getMenu");
         $this->display();
     }
-    public function register_Ws_zhiwen() {
-        R("Base/getMenu");
-        $this->display();
-    }
 
     public function activitycreate() {
         R("Base/getMenu");
@@ -568,6 +564,12 @@ class BussinessWsController extends Base {
                 $this->ajaxReturn($Return_Data);
                 exit();
             }
+            if(($_FILES['ShopEntrancePhoto']['name']==""||$_FILES['Storefront_Photo']['name']=="")&&($_FILES['ContractPhoto']['name']=="")){
+                $Return_Data['Code'] = 1;
+                $Return_Data['Description'] ="自然人商户门头照+内景照、租赁协议二选一!";
+                $this->ajaxReturn($Return_Data);
+                exit();
+            }
         }else if (I('Merchant_Type')=="03") {
             if(I('Settlement_Method')!='01'){
                 $Return_Data['Code'] = 1;
@@ -604,7 +606,18 @@ class BussinessWsController extends Base {
                 $Return_Data['Description'] ="企业商户开户人名称需要与企业法人必须一致！";
                 $this->ajaxReturn($Return_Data);
                 exit();
-
+            }
+            if($_FILES['ShopEntrancePhoto']['name']==""){
+                $Return_Data['Code'] = 1;
+                $Return_Data['Description'] ="企业商户需上传门店内景照片！";
+                $this->ajaxReturn($Return_Data);
+                exit();
+            }
+            if($_FILES['Storefront_Photo']['name']==""){
+                $Return_Data['Code'] = 1;
+                $Return_Data['Description'] ="企业商户需上传门头照！";
+                $this->ajaxReturn($Return_Data);
+                exit();
             }
         }
 
@@ -678,6 +691,21 @@ class BussinessWsController extends Base {
         $data['ReqModel']['AuthCode']= I('Verification_Code');//手机验证码
         $data['ReqModel']['SupportStage']= I('Flower_Staging');//是否使用花呗
         $data['ReqModel']['PartnerType']=I('Merchant_Public_Number');//商户在进行微信支付H5支付时所使用的公众号相关信息的类型，枚举值有：
+
+
+        $data['ReqModel']['TaxNum']=I('TaxNum');
+        $data['ReqModel']['BussAuthVld']=I('BussAuthVld');
+        $data['ReqModel']['PersonSex']=I('PersonSex');
+        $data['ReqModel']['PersonProfession']=I('PersonProfession');
+        $data['ReqModel']['PersonCertVld']=I('PersonCertVld');
+
+
+        $data['ReqModel']['ShareholderName']=I('ShareholderName');
+        $data['ReqModel']['ShareholderCertType']=I('ShareholderCertType');
+        $data['ReqModel']['ShareholderCertNo']=I('ShareholderCertNo');
+        $data['ReqModel']['ShareholderCertVld']=I('ShareholderCertVld');
+        $data['ReqModel']['PrincipalCertVld']=I('PrincipalCertVld');
+
         if (I('Merchant_Public_Number')=="03") {
             $data['ReqModel']['MerchantDetail']['SubscribeAppId'] = "";
         }else{
@@ -715,6 +743,20 @@ class BussinessWsController extends Base {
         if ($_FILES['Other_Photo']['name']!=""){
             $OtherPhoto= $this->uploadpic($_FILES['Other_Photo'],I('SysNo'), '07');
         }
+
+
+        if ($_FILES['CheckstandPhoto']['name']!=""){
+            $CheckstandPhoto= $this->uploadpic($_FILES['CheckstandPhoto'],I('SysNo'), '08');
+        }
+        if ($_FILES['ShopEntrancePhoto']['name']!=""){
+            $ShopEntrancePhoto= $this->uploadpic($_FILES['ShopEntrancePhoto'],I('SysNo'), '09');
+        }
+        if ($_FILES['CertPhotoC']['name']!=""){
+            $CertPhotoC= $this->uploadpic($_FILES['CertPhotoC'],I('SysNo'), '11');
+        }
+        if ($_FILES['ContractPhoto']['name']!=""){
+            $ContractPhoto= $this->uploadpic($_FILES['ContractPhoto'],I('SysNo'), '12');
+        }
 //
 //        $data['ReqModel']['MerchantDetail']['CertPhotoA'] = "b03438ce-265a-44d3-bd17-0b328b7f3ea5";
 //        $data['ReqModel']['MerchantDetail']['CertPhotoB'] = "aec723db-d074-4c61-b6a2-43d5fd6a8c0c";
@@ -730,6 +772,10 @@ class BussinessWsController extends Base {
         $data['ReqModel']['MerchantDetail']['IndustryLicensePhoto'] = $IndustryLicensePhoto;
         $data['ReqModel']['MerchantDetail']['ShopPhoto'] = $ShopPhoto;
         $data['ReqModel']['MerchantDetail']['OtherPhoto'] = $OtherPhoto;
+        $data['ReqModel']['MerchantDetail']['CheckstandPhoto'] = $CheckstandPhoto;
+        $data['ReqModel']['MerchantDetail']['ShopEntrancePhoto'] = $ShopEntrancePhoto;
+        $data['ReqModel']['MerchantDetail']['CertPhotoC'] = $CertPhotoC;
+        $data['ReqModel']['MerchantDetail']['ContractPhoto'] = $ContractPhoto;
 
 
 
@@ -975,6 +1021,26 @@ class BussinessWsController extends Base {
         }else{
             $OtherPhoto= I('Other_Photo');
         }
+        if ($_FILES['CheckstandPhoto']['name']!=""){
+            $CheckstandPhoto= $this->uploadpic($_FILES['CheckstandPhoto'],I('SysNo'), '08');
+        }else{
+            $CheckstandPhoto= I('CheckstandPhoto');
+        }
+        if ($_FILES['ShopEntrancePhoto']['name']!=""){
+            $ShopEntrancePhoto= $this->uploadpic($_FILES['ShopEntrancePhoto'],I('SysNo'), '09');
+        }else{
+            $ShopEntrancePhoto= I('ShopEntrancePhoto');
+        }
+        if ($_FILES['CertPhotoC']['name']!=""){
+            $CertPhotoC= $this->uploadpic($_FILES['CertPhotoC'],I('SysNo'), '11');
+        }else{
+            $CertPhotoC= I('CertPhotoC');
+        }
+        if ($_FILES['ContractPhoto']['name']!=""){
+            $ContractPhoto= $this->uploadpic($_FILES['ContractPhoto'],I('SysNo'), '12');
+        }else{
+            $ContractPhoto= I('ContractPhoto');
+        }
 //
 //        $data['ReqModel']['MerchantDetail']['CertPhotoA'] = "b03438ce-265a-44d3-bd17-0b328b7f3ea5";
 //        $data['ReqModel']['MerchantDetail']['CertPhotoB'] = "aec723db-d074-4c61-b6a2-43d5fd6a8c0c";
@@ -990,6 +1056,12 @@ class BussinessWsController extends Base {
         $data['ReqModel']['MerchantDetail']['IndustryLicensePhoto'] = $IndustryLicensePhoto;
         $data['ReqModel']['MerchantDetail']['ShopPhoto'] = $ShopPhoto;
         $data['ReqModel']['MerchantDetail']['OtherPhoto'] = $OtherPhoto;
+
+
+        $data['ReqModel']['MerchantDetail']['CheckstandPhoto'] = $CheckstandPhoto;
+        $data['ReqModel']['MerchantDetail']['ShopEntrancePhoto'] = $ShopEntrancePhoto;
+        $data['ReqModel']['MerchantDetail']['CertPhotoC'] = $CertPhotoC;
+        $data['ReqModel']['MerchantDetail']['ContractPhoto'] = $ContractPhoto;
 
 
         $list = http($url, $data);
@@ -1242,6 +1314,8 @@ class BussinessWsController extends Base {
         }else{
             $OtherPhoto= I('Other_Photo');
         }
+
+
 //
 //        $data['ReqModel']['MerchantDetail']['CertPhotoA'] = "b03438ce-265a-44d3-bd17-0b328b7f3ea5";
 //        $data['ReqModel']['MerchantDetail']['CertPhotoB'] = "aec723db-d074-4c61-b6a2-43d5fd6a8c0c";

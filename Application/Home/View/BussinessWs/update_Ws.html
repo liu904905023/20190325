@@ -1060,8 +1060,94 @@
                                                     </div>
                                                 </div>
                                             </div>
+                                            <div class="clearfix"></div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <div class="col-xs-12 mr_mab">
+                                                        <label>收银台照片</label>
+                                                        <div class="input-group">
+                                                            <div class="form-control">
+                                                                <input type="file" class="form-control checkPic"
+                                                                       name="CheckstandPhoto"
+                                                                       id="CheckstandPhoto">
+                                                                <span>请上传收银台照片</span>
+                                                                <input type="hidden" name="CheckstandPhotos" value="<{$data.MerchantDetail.CheckstandPhoto}>">
+                                                                <span class="glyphicon glyphicon-remove form-control-feedback delete"
+                                                                      aria-hidden="true"></span>
+                                                            </div>
+                                                            <span class="input-group-addon">
+                                                                           <i class="glyphicon glyphicon-upload"></i>
+                                                                    </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <div class="col-xs-12 mr_mab">
+                                                        <label>门店内景照片</label>
+                                                        <div class="input-group">
+                                                            <div class="form-control">
+                                                                <input type="file" class="form-control checkPic"
+                                                                       name="ShopEntrancePhoto"
+                                                                       id="ShopEntrancePhoto">
+                                                                <span>请上传门店内景照片</span>
+                                                                <input type="hidden" name="ShopEntrancePhotos" value="<{$data.MerchantDetail.ShopEntrancePhoto}>">
+
+                                                                <span class="glyphicon glyphicon-remove form-control-feedback delete"
+                                                                      aria-hidden="true"></span>
+                                                            </div>
+                                                            <span class="input-group-addon">
+                                                                           <i class="glyphicon glyphicon-upload"></i>
+                                                                    </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <div class="col-xs-12 mr_mab">
+                                                        <label>手持身份证照片</label>
+                                                        <div class="input-group">
+                                                            <div class="form-control">
+                                                                <input type="file" class="form-control checkPic"
+                                                                       name="CertPhotoC" id="CertPhotoC">
+                                                                <span>请上传手持身份证照片</span>
+                                                                <input type="hidden" name="CertPhotoCs" value="<{$data.MerchantDetail.CertPhotoC}>">
+
+                                                                <span class="glyphicon glyphicon-remove form-control-feedback delete"
+                                                                      aria-hidden="true"></span>
+                                                            </div>
+                                                            <span class="input-group-addon">
+                                                                           <i class="glyphicon glyphicon-upload"></i>
+                                                                    </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
 
                                             <div class="clearfix"></div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <div class="col-xs-12 mr_mab">
+                                                        <label>租赁协议图片</label>
+                                                        <div class="input-group">
+                                                            <div class="form-control">
+                                                                <input type="file" class="form-control checkPic"
+                                                                       name="ContractPhoto" id="ContractPhoto">
+                                                                <span>请上传租赁协议图片</span>
+                                                                <input type="hidden" name="ContractPhotos" value="<{$data.MerchantDetail.ContractPhoto}>">
+
+                                                                <span class="glyphicon glyphicon-remove form-control-feedback delete"
+                                                                      aria-hidden="true"></span>
+                                                            </div>
+                                                            <span class="input-group-addon">
+                                                                           <i class="glyphicon glyphicon-upload"></i>
+                                                                    </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                             <div class="col-md-4">
                                                 <div class="form-group">
                                                     <div class="col-xs-12 mr_mab">
@@ -1082,6 +1168,137 @@
                                                     </div>
                                                 </div>
                                             </div>
+                                            <!--<div class="col-md-4">-->
+                                                <!--<div class="form-group">-->
+                                                    <!--<div class="col-xs-12 mr_mab">-->
+                                                        <!--<label>税务登记证号码</label>-->
+                                                        <!--<div class="over">-->
+                                                            <!--<input type="text" class="form-control"-->
+                                                                   <!--name="TaxNum" id="TaxNum"-->
+                                                                   <!--placeholder="税务登记证号码"  value="<{$data.MerchantDetail.TaxNum}>"/>-->
+                                                        <!--</div>-->
+                                                    <!--</div>-->
+                                                <!--</div>-->
+                                            <!--</div>-->
+                                            <!--<div class="clearfix"></div>-->
+                                            <!--<div class="col-md-4">-->
+                                                <!--<div class="form-group">-->
+                                                    <!--<div class="col-xs-12 mr_mab">-->
+                                                        <!--<label>营业执照有效期</label>-->
+                                                        <!--<div class="over">-->
+                                                            <!--<input type="text" class="form-control"-->
+                                                                   <!--name="BussAuthVld" id="BussAuthVld"-->
+                                                                   <!--placeholder="营业执照有效期" value="<{$data.MerchantDetail.BussAuthVld}>" />-->
+                                                        <!--</div>-->
+                                                    <!--</div>-->
+                                                <!--</div>-->
+                                            <!--</div>-->
+                                            <!--<div class="col-md-4">-->
+                                                <!--<div class="form-group">-->
+                                                    <!--<div class="col-xs-12 mr_mab">-->
+                                                        <!--<label>控股股东或者实际控制人姓名</label>-->
+                                                        <!--<div class="over">-->
+                                                            <!--<input type="text" class="form-control"-->
+                                                                   <!--name="ShareholderName" id="ShareholderName"-->
+                                                                   <!--placeholder="控股股东或者实际控制人姓名" value="<{$data.MerchantDetail.ShareholderName}>"/>-->
+                                                        <!--</div>-->
+                                                    <!--</div>-->
+                                                <!--</div>-->
+                                            <!--</div>-->
+                                            <!--<div class="col-md-4">-->
+                                                <!--<div class="form-group">-->
+                                                    <!--<div class="col-xs-12 mr_mab">-->
+                                                        <!--<label>控股股东或者实际控制人身份证件类型</label>-->
+                                                        <!--<div class="over">-->
+                                                            <!--<input type="text" class="form-control"-->
+                                                                   <!--name="ShareholderCertType"-->
+                                                                   <!--id="ShareholderCertType"-->
+                                                                   <!--placeholder="控股股东或者实际控制人身份证件类型" value="<{$data.MerchantDetail.ShareholderCertType}>"/>-->
+                                                        <!--</div>-->
+                                                    <!--</div>-->
+                                                <!--</div>-->
+                                            <!--</div>-->
+                                            <!--<div class="clearfix"></div>-->
+                                            <!--<div class="col-md-4">-->
+                                                <!--<div class="form-group">-->
+                                                    <!--<div class="col-xs-12 mr_mab">-->
+                                                        <!--<label>控股股东或者实际控制人身份证件号码</label>-->
+                                                        <!--<div class="over">-->
+                                                            <!--<input type="text" class="form-control"-->
+                                                                   <!--name="ShareholderCertNo"-->
+                                                                   <!--id="ShareholderCertNo"-->
+                                                                   <!--placeholder="控股股东或者实际控制人身份证件号码" value="<{$data.MerchantDetail.ShareholderCertNo}>"/>-->
+                                                        <!--</div>-->
+                                                    <!--</div>-->
+                                                <!--</div>-->
+                                            <!--</div>-->
+                                            <!--<div class="col-md-4">-->
+                                                <!--<div class="form-group">-->
+                                                    <!--<div class="col-xs-12 mr_mab">-->
+                                                        <!--<label>控股股东或者实际控制人身份证件有效期</label>-->
+                                                        <!--<div class="over">-->
+                                                            <!--<input type="text" class="form-control"-->
+                                                                   <!--name="ShareholderCertVld"-->
+                                                                   <!--id="ShareholderCertVld"-->
+                                                                   <!--placeholder="控股股东或者实际控制人身份证件有效期" value="<{$data.MerchantDetail.ShareholderCertVld}>"/>-->
+                                                        <!--</div>-->
+                                                    <!--</div>-->
+                                                <!--</div>-->
+                                            <!--</div>-->
+                                            <!--<div class="col-md-4">-->
+                                                <!--<div class="form-group">-->
+                                                    <!--<div class="col-xs-12 mr_mab">-->
+                                                        <!--<label>法定代表人或负责人身份证件有效期</label>-->
+                                                        <!--<div class="over">-->
+                                                            <!--<input type="text" class="form-control"-->
+                                                                   <!--name="PrincipalCertVld" id="PrincipalCertVld"-->
+                                                                   <!--placeholder="法定代表人或负责人身份证件有效期" value="<{$data.MerchantDetail.PrincipalCertVld}>"/>-->
+                                                        <!--</div>-->
+                                                    <!--</div>-->
+                                                <!--</div>-->
+                                            <!--</div>-->
+                                            <!--<div class="clearfix"></div>-->
+                                            <!--<div class="col-md-4">-->
+                                                <!--<div class="form-group">-->
+                                                    <!--<div class="col-xs-12 mr_mab">-->
+                                                        <!--<label>性别</label>-->
+                                                        <!--<div class="over">-->
+                                                            <!--<select class="form-control" id="PersonSex"-->
+                                                                    <!--name="PersonSex">-->
+                                                                <!--<option value="">请选择性别</option>-->
+                                                                <!--<option value="M">男性</option>-->
+                                                                <!--<option value="F">女性</option>-->
+                                                            <!--</select>-->
+                                                        <!--</div>-->
+                                                    <!--</div>-->
+                                                <!--</div>-->
+                                            <!--</div>-->
+                                            <!--<div class="col-md-4">-->
+                                                <!--<div class="form-group">-->
+                                                    <!--<div class="col-xs-12 mr_mab">-->
+                                                        <!--<label>职业</label>-->
+                                                        <!--<div class="over">-->
+                                                            <!--<select class="form-control" id="PersonProfession"-->
+                                                                    <!--name="PersonProfession">-->
+                                                                <!--<option value="个体户">个体户</option>-->
+                                                            <!--</select>-->
+
+                                                        <!--</div>-->
+                                                    <!--</div>-->
+                                                <!--</div>-->
+                                            <!--</div>-->
+                                            <!--<div class="col-md-4">-->
+                                                <!--<div class="form-group">-->
+                                                    <!--<div class="col-xs-12 mr_mab">-->
+                                                        <!--<label>身份证件有效期限</label>-->
+                                                        <!--<div class="over">-->
+                                                            <!--<input type="text" class="form-control"-->
+                                                                   <!--name="PersonCertVld" id="PersonCertVld"-->
+                                                                   <!--placeholder="身份证件有效期限" value="<{$data.MerchantDetail.PersonCertVld}>"/>-->
+                                                        <!--</div>-->
+                                                    <!--</div>-->
+                                                <!--</div>-->
+                                            <!--</div>-->
 
                                             <input type="hidden" value="<{$_GET['CustomerSysNo']}>" id="SysNo"
                                                    name="SysNo">
