@@ -703,8 +703,8 @@ class BussinessWsController extends Base {
         $data['ReqModel']['ShareholderName']=I('ShareholderName');
         $data['ReqModel']['ShareholderCertType']=I('ShareholderCertType');
         $data['ReqModel']['ShareholderCertNo']=I('ShareholderCertNo');
-        $data['ReqModel']['ShareholderCertVld']=I('ShareholderCertVld');
-        $data['ReqModel']['PrincipalCertVld']=I('PrincipalCertVld');
+        $data['ReqModel']['ShareholderCertVld']=str_replace('/','-',I('ShareholderCertVld'));
+        $data['ReqModel']['PrincipalCertVld']=str_replace('/','-',I('PrincipalCertVld'));
 
         if (I('Merchant_Public_Number')=="03") {
             $data['ReqModel']['MerchantDetail']['SubscribeAppId'] = "";
