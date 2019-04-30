@@ -556,6 +556,12 @@ class BussinessWsController extends Base {
                 $this->ajaxReturn($Return_Data);
                 exit();
             }
+            if($_FILES['ShopEntrancePhoto']['name']==""){
+                $Return_Data['Code'] = 1;
+                $Return_Data['Description'] ="个人商户及个体工商户需上传门店内景照片！";
+                $this->ajaxReturn($Return_Data);
+                exit();
+            }
 
         }else if (I('Merchant_Type')=="01") {
             if (I('Registration_Number')||$_FILES['Business_License_Photo']['name']!="") {
