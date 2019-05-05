@@ -561,7 +561,7 @@
                                                                id="Search_Bank_Branch"
                                                                name="Search_Bank_Branch"
                                                                aria-describedby="inputGroupSuccess2Status"
-                                                               placeholder="开户支行名称" autocomplete="off" value="<{$data.BankCardParam.BranchName}>">
+                                                               placeholder="开户支行名称" value="<{$data.BankCardParam.BranchName}>">
                                                         <!-- autocomplete="off"-->
                                                         <span class="input-group-btn">
                                                                            <button class="btn btn-primary click_pass"
@@ -1665,8 +1665,7 @@
                 },
 
                 Search_Bank_Branch: {
-                    required: true,
-                    chinese: true
+                    required: true
                 },
                 Bank_Branch: {
                     required: true
@@ -1896,8 +1895,7 @@
                 },
 
                 Search_Bank_Branch: {
-                    required: "请输入开户支行名称.",
-                    chinese: "请输入中文."
+                    required: "请输入开户支行名称."
                 },
 
                 Bank_Branch: {
