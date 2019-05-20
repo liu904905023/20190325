@@ -66,8 +66,10 @@ class BusinessController extends Base {
     public function businessregister (){
         $Wx_Type    = I("PassageWay_WX");
         $Zfb_Type   = I("PassageWay_AliPay");
+        $Ysf_Type   = I("PassageWay_WsYsf");
         $Wx_Rate    = I("wx_rate");
         $Zfb_Rate   = I("zfb_rate");
+        $Ysf_Rate   = I("ysf_rate");
         if((preg_match("/^\d*$/", I("SystemUserSysNo")))&&I('SystemUserSysNo')!=''){
         }else{
             $data['Code']=1;
@@ -108,135 +110,71 @@ class BusinessController extends Base {
             "SystemUserSysNo" => I("SystemUserSysNo"),
             "NickName" => I("nickname")
         );
-        if ($Wx_Rate==""&&$Zfb_Rate==""){
+        if ($Wx_Rate==""&&$Zfb_Rate==""&&$Ysf_Rate==""){
             $data['Code']=1;
             $data['Description']="请选择至少一种支付方式，且费率不能为空";
         }else{
             $data  = http($url, $arr);
         }
         if($data['Code']==0){
+            $DefaultRoles_Insert_Data = array();
+            $Rate_Insert_Data = array();
             $CustomerSysno = $data['Data']['CustomerServiceSysNo'];
             $Rate_Insert_Url  = C( 'SERVER_HOST' ) . "IPP3Customers/CustomerServiceRateADD";
             $PassageWay_Insert_Url  = C('SERVER_HOST')."IPP3Customers/CustomerServicePassageWayInsert";
-            if ($Wx_Rate!=""&&$Zfb_Rate!=""){
+             if ($Wx_Rate!=""){
                 $Wx_DefaultRoles_Insert_Data  = array(
                     "CustomerServiceSysNo" => $CustomerSysno,
                     "InUser" => $CustomerSysno,
                     "EditUser" => $CustomerSysno,
                     "Type"=>$Wx_Type
                 );
-                $Zfb_DefaultRoles_Insert_Data  = array(
-                    "CustomerServiceSysNo" => $CustomerSysno,
-                    "InUser" => $CustomerSysno,
-                    "EditUser" => $CustomerSysno,
-                    "Type"=>$Zfb_Type
-                );
-                $DefaultRoles_Insert_Data =array($Wx_DefaultRoles_Insert_Data,$Zfb_DefaultRoles_Insert_Data);
+                array_push($DefaultRoles_Insert_Data,$Wx_DefaultRoles_Insert_Data);
                 $Wx_Rate_Insert_Data  = array(
                     "CustomerSysNo"   => $CustomerSysno,
                     "Rate"            => $Wx_Rate,
                     "Type"            => $Wx_Type,
                     "PassageWay"      => $Wx_PassageWay
                 );
-                $Zfb_Rate_Insert_Data  = array(
-                    "CustomerSysNo"   => $CustomerSysno,
-                    "Rate"            => $Zfb_Rate,
-                    "Type"            => $Zfb_Type,
-                    "PassageWay"     => $Zfb_PassageWay
-                );
-                $Rate_Insert_Data =array($Zfb_Rate_Insert_Data,$Wx_Rate_Insert_Data);
-                $Wx_PassageWay_Insert_Data  = array(
-                    "CustomerSysNo"   => $CustomerSysno,
-                    "PassageWay"     => $Wx_PassageWay,
-                    "Type"            => $Wx_Type,
-                    "Remarks"     => $Wx_Remarks
-                );
-                $Zfb_PassageWay_Insert_Data  = array(
-                    "CustomerSysNo"   => $CustomerSysno,
-                    "PassageWay"     => $Zfb_PassageWay,
-                    "Type"            => $Zfb_Type,
-                    "Remarks"     => $Zfb_Remarks
-                );
-            }
-            else if ($Wx_Rate!=""&&$Zfb_Rate==""){
-                $Wx_DefaultRoles_Insert_Data  = array(
-                    "CustomerServiceSysNo" => $CustomerSysno,
-                    "InUser" => $CustomerSysno,
-                    "EditUser" => $CustomerSysno,
-                    "Type"=>$Wx_Type
-                );
-                $DefaultRoles_Insert_Data =array($Wx_DefaultRoles_Insert_Data);
-                $Wx_Rate_Insert_Data  = array(
-                    "CustomerSysNo"   => $CustomerSysno,
-                    "Rate"            => $Wx_Rate,
-                    "Type"            => $Wx_Type,
-                    "PassageWay"      => $Wx_PassageWay
-                );
-                $Rate_Insert_Data =array($Wx_Rate_Insert_Data);
+                array_push($Rate_Insert_Data,$Wx_Rate_Insert_Data);
                 $PassageWay_Insert_Data  = array(
                     "CustomerSysNo"   => $CustomerSysno,
                     "PassageWay"     => $Wx_PassageWay,
                     "Type"            => $Wx_Type,
                     "Remarks"     => $Wx_Remarks
                 );
+                 $passagewaydata = http($PassageWay_Insert_Url, $PassageWay_Insert_Data);
+                 if ($passagewaydata['Code']==0){
+                     $data['Code']=0;
+                     $data['Description']="商户注册成功！";
+                 }else{
+                     $data['Code']=1;
+                     $data['Description']="商户注册失败！";
+                     $this->ajaxReturn( $data );
+                     return false;
+                 }
             }
-            else if ($Wx_Rate==""&&$Zfb_Rate!=""){
+            if ($Zfb_Rate!=""){
                 $Zfb_DefaultRoles_Insert_Data  = array(
                     "CustomerServiceSysNo" => $CustomerSysno,
                     "InUser" => $CustomerSysno,
                     "EditUser" => $CustomerSysno,
                     "Type"=>$Zfb_Type
                 );
-                $DefaultRoles_Insert_Data =array($Zfb_DefaultRoles_Insert_Data);
+                array_push($DefaultRoles_Insert_Data,$Zfb_DefaultRoles_Insert_Data);
                 $Zfb_Rate_Insert_Data  = array(
                     "CustomerSysNo"   => $CustomerSysno,
                     "Rate"            => $Zfb_Rate,
                     "Type"            => $Zfb_Type,
                     "PassageWay"     => $Zfb_PassageWay
                 );
-                $Rate_Insert_Data =  array($Zfb_Rate_Insert_Data);
+                array_push($Rate_Insert_Data,$Zfb_Rate_Insert_Data);
                 $PassageWay_Insert_Data  = array(
                     "CustomerSysNo"   => $CustomerSysno,
                     "PassageWay"     => $Zfb_PassageWay,
                     "Type"            => $Zfb_Type,
                     "Remarks"     => $Zfb_Remarks
                 );
-            }else{
-
-            }
-            $this -> CustomerAndSystemDefaultRoles($DefaultRoles_Insert_Data);
-            $ratedata = http($Rate_Insert_Url, $Rate_Insert_Data);
-            if ($ratedata['Code']==0){
-                $data['Code']=0;
-                $data['Description']="商户注册成功";
-            }else{
-                $data['Code']=1;
-                $data['Description']="商户注册失败！";
-                $this->ajaxReturn( $data );
-                return false;
-            }
-            if ($Wx_Rate!=""&&$Zfb_Rate!=""){
-                $wxpassagewaydata = http($PassageWay_Insert_Url, $Wx_PassageWay_Insert_Data);
-                if ($wxpassagewaydata['Code']==0){
-                    $data['Code']=0;
-                    $data['Description']="商户注册成功！";
-                    $zfbpassagewaydata = http($PassageWay_Insert_Url, $Zfb_PassageWay_Insert_Data);
-                    if ($zfbpassagewaydata['Code']==0){
-                        $data['Code']=0;
-                        $data['Description']="商户注册成功！";
-                    }else{
-                        $data['Code']=1;
-                        $data['Description']="商户注册失败！";
-                        $this->ajaxReturn( $data );
-                        return false;
-                    }
-                }else{
-                    $data['Code']=1;
-                    $data['Description']="商户注册失败！";
-                    $this->ajaxReturn( $data );
-                    return false;
-                }
-            }else{
                 $passagewaydata = http($PassageWay_Insert_Url, $PassageWay_Insert_Data);
                 if ($passagewaydata['Code']==0){
                     $data['Code']=0;
@@ -247,6 +185,51 @@ class BusinessController extends Base {
                     $this->ajaxReturn( $data );
                     return false;
                 }
+            }
+            if($Ysf_Rate!=""){
+                $Ysf_DefaultRoles_Insert_Data  = array(
+                    "CustomerServiceSysNo" => $CustomerSysno,
+                    "InUser" => $CustomerSysno,
+                    "EditUser" => $CustomerSysno,
+                    "Type"=>$Ysf_Type
+                );
+                array_push($DefaultRoles_Insert_Data,$Ysf_DefaultRoles_Insert_Data);
+                $Ysf_Rate_Insert_Data  = array(
+                    "CustomerSysNo"   => $CustomerSysno,
+                    "Rate"            => $Ysf_Rate,
+                    "Type"            => $Ysf_Type,
+                    "PassageWay"     => 108
+                );
+                array_push($Rate_Insert_Data,$Ysf_Rate_Insert_Data);
+                $PassageWay_Insert_Data  = array(
+                    "CustomerSysNo"   => $CustomerSysno,
+                    "PassageWay"     => 108,
+                    "Type"            => $Ysf_Type,
+                    "Remarks"     => 'QUICKPASS'
+                );
+                $passagewaydata = http($PassageWay_Insert_Url, $PassageWay_Insert_Data);
+                if ($passagewaydata['Code']==0){
+                    $data['Code']=0;
+                    $data['Description']="商户注册成功！";
+                }else{
+                    $data['Code']=1;
+                    $data['Description']="商户注册失败！";
+                    $this->ajaxReturn( $data );
+                    return false;
+                }
+            }
+            $aaa = $this -> CustomerAndSystemDefaultRoles($DefaultRoles_Insert_Data);
+            $ratedata = http($Rate_Insert_Url, $Rate_Insert_Data);
+            if ($ratedata['Code']==0){
+
+                    $data['Code']=0;
+                    $data['Description']="商户注册成功！";
+
+            }else{
+                $data['Code']=1;
+                $data['Description']="商户注册失败！";
+                $this->ajaxReturn( $data );
+                return false;
             }
         }else{
             $data['Code']=1;

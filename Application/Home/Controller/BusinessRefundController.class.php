@@ -15,6 +15,11 @@ class BusinessRefundController extends Base {
 
     }
 
+    public function refundk12() {
+        R("Base/getMenu");
+        $this->display();
+    }
+
     public function refundlist() {
 
         $Time_Start = $_POST['Time_Start'];
@@ -195,5 +200,76 @@ class BusinessRefundController extends Base {
         $this->ajaxReturn($return_data);
     }
 
+    public function k12refundinsert() {//退款新增
+        $Out_trade_no                        = $_POST['out_trade_no'];
+        $Total_Fee                           = yuan2fee($_POST['total_fee']);
+        $Refund_Fee                          = yuan2fee($_POST['refund_fee']);
+        $OldSysNo                            = $_POST['OldSysNo'];
+        $PayType                             = $_POST['paytype'];
+        $tranno                              = I('tranno');
+        $Url_GetPassageWay                   = C('SERVER_HOST') . "IPP3Customers/CustomerServicePassageWayList";
+        $Data_GetPassageWay['CustomerSysNo'] = session('SysNO');
+        $Retrun_GetPassageWay                = http($Url_GetPassageWay, $Data_GetPassageWay);
+        $Istrue                              = array_filter($Retrun_GetPassageWay, function ($t) use ($PayType) {
+            return $t['Type'] == $PayType;
+        });
+
+        $CheckRefund_Url                     = C('SERVER_HOST') . "IPP3Customers/IPP3RoleApplicationList";
+        $CheckRefund_Data['SystemUserSysNo'] = $OldSysNo;
+        $CheckRefund_List                    = http($CheckRefund_Url, $CheckRefund_Data);
+
+
+        if (!empty($Istrue)) {
+
+        } else {
+            $list['Description'] = "非当前通道不允许退款";
+            $this->ajaxReturn($list, json);
+            exit();
+        }
+        $TimeStart = $_POST['timestart'];
+        $Time      = explode(" ", $TimeStart);
+        $Ymd       = $Time[0];
+        $NowDay    = date("Y-m-d", time());
+//        if (strtotime($Ymd) == strtotime($NowDay)) {
+//
+//
+//        } else {
+//            if ($CheckRefund_List['Data'][0]['ApplicationSysNo'] == 1) {
+//
+//            } else {
+//                $list['Description'] = "非当天交易不允许退款";
+//                $this->ajaxReturn($list, json);
+//                exit();
+//            }
+//        }
+
+
+
+
+
+
+
+        if ($PayType == '103') {
+            $data["out_trade_no"] = $Out_trade_no;
+            $data["refund_fee"] = $Refund_Fee;
+            $data['YwMch_id2'] = $OldSysNo;
+            $url = C('SERVER_HOST') . "IPP3AliPay/AliPayRefundK12NonSOSysNo";
+            $list = http($url, $data);
+            if($list['Code']==0&&$list){
+                $return_data['Description']='退款成功！';
+            }else{
+                $return_data['Description']='退款失败！';
+            }
+        }else{
+            $return_data['Description']='非支付宝K12商户不允许退款！';
+        }
+
+
+
+
+
+
+        $this->ajaxReturn($return_data);
+    }
 
 }

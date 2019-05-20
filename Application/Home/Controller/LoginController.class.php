@@ -273,7 +273,6 @@ class LoginController extends Controller{
     //码表查询方法
 
     public function  passagewaylist(){
-		$passagewaylist_data['state'] = 0;
 
         $passagewaylist_url = C('SERVER_HOST').'IPP3Customers/SystemPassageWayList';//码表查询
 

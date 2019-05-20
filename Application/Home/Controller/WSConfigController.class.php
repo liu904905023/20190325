@@ -6,7 +6,6 @@ class WSConfigController extends Base {
 
     /*服务商网商配置*/
     public function fws_ws_config(){
-        R("Base/getMenu");
         if( IS_POST ){
             $flag = session('flag');//服务商商户0 或员工1
             if (session('data')['CustomersType'] == 0 & $flag == 0) {//服务商登陆
@@ -30,6 +29,7 @@ class WSConfigController extends Base {
                 exit();
             }
         }else{
+            R("Base/getMenu");
             $flag = session('flag');//服务商商户0 或员工1
             if (session('data')['CustomersType'] == 0 & $flag == 0) {//服务商登陆
                 $url  = C( 'SERVER_HOST' ) . "IPP3Customers/WSConfigList";
@@ -47,7 +47,6 @@ class WSConfigController extends Base {
     }
     /*商户网商微信配置新增、修改、查询*/
     public function sh_ws_wx_config(){
-        R("Base/getMenu");
         if( IS_POST ){
             $flag = session('flag');//服务商商户0 或员工1
             if (session('data')['CustomersType'] == 1 & $flag == 0) {//商户登录
@@ -70,6 +69,7 @@ class WSConfigController extends Base {
                 exit();
             }
         }else{
+            R("Base/getMenu");
             $flag = session('flag');//服务商商户0 或员工1
             if (session('data')['CustomersType'] == 1 & $flag == 0) {//商户登录
                 //商户通道查询
@@ -94,9 +94,54 @@ class WSConfigController extends Base {
         $this->display( 'sh_ws_wx_config' );
 
     }
+    /*商户网商微信配置新增、修改、查询*/
+    public function sh_ysf_config(){
+        if( IS_POST ){
+            $flag = session('flag');//服务商商户0 或员工1
+            if (session('data')['CustomersType'] == 1 & $flag == 0) {//商户登录
+                $url = C('SERVER_HOST') . "IPP3Customers/WS_PassageConfigQUICKPASSEdit";
+                $arr = array(
+                    "CustomerServiceSysNo" => session('data')['SysNo'],
+                    "MCHID" => I('sx_mchid', '', 'htmlspecialchars'),
+
+                );
+                $arrData = http($url, $arr);
+                $this->ajaxReturn($arrData);
+                exit();
+            }else{
+                $arrData['Code'] = 1;
+                $arrData['Description'] ="该角色无权限,进行该操作!";
+                $this->ajaxReturn($arrData);
+                exit();
+            }
+        }else{
+            R("Base/getMenu");
+            $flag = session('flag');//服务商商户0 或员工1
+            if (session('data')['CustomersType'] == 1 & $flag == 0) {//商户登录
+                //商户通道查询
+                $post_passageway_data['CustomerSysNo'] = session( 'data' )['SysNo'];
+                $post_passageway_data['Type'] = 110;
+                $post_passageway_url = C('SERVER_HOST').'IPP3Customers/CustomerServicePassageWayList';//通道查询
+                $post_passageway_list = http($post_passageway_url, $post_passageway_data);
+                if($post_passageway_list){
+                    $url  = C( 'SERVER_HOST' ) . "IPP3Customers/WS_PassageConfigQUICKPASSList";
+                    $arr  = array(
+                        'CustomerServiceSysNo' => session( 'data' )['SysNo'],
+                    );
+                    $arrData  = http( $url, $arr );
+                    $this->assign( 'data', $arrData );
+                }else{
+                    $this->assign( 'passtype', -1 );
+                }
+            }else{//其他角色 禁止配置
+                $this->assign( 'passtype', -1 );
+            }
+        }
+        $this->display( 'sh_ysf_config' );
+
+    }
     /*商户网商ali配置新增、修改、查询*/
     public function sh_ws_ali_config(){
-        R("Base/getMenu");
         if( IS_POST ){
             $flag = session('flag');//服务商商户0 或员工1
             if (session('data')['CustomersType'] == 1 & $flag == 0) {//商户登录
@@ -127,6 +172,7 @@ class WSConfigController extends Base {
                 exit();
             }
         }else{
+            R("Base/getMenu");
             $flag = session('flag');//服务商商户0 或员工1
             if (session('data')['CustomersType'] == 1 & $flag == 0) {//商户登录
                 //商户通道查询
