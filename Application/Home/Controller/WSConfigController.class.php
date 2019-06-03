@@ -159,7 +159,7 @@ class WSConfigController extends Base {
                     "ALi_merchant_private_key"  => I( 'sx_shsy', '','htmlspecialchars' ),
                     "ALi_PID"                   => "",
                     "ALi_sub_PID"               => "",
-                    "ALi_Status"                => "",
+                    "ALi_Status"                => I('sh_status'),
                     "ALi_merchant_public_key"   => ""
                 );
                 $arrData  = http( $url, $arr );

@@ -83,7 +83,50 @@
                                                               </div>
                                                             </div>
                                                         </div>
+                                                        <div class="clearfix"></div>
+                                                        <div class="col-xs-12 col-md-4">
 
+                                                            <div class="form-group">
+
+                                                                <div class="col-xs-12">
+
+                                                                    <label>加密方式</label>
+
+                                                                    <div class="over">
+
+                                                                        <div class="radio row">
+
+                                                                            <label>
+
+                                                                                <input name="sh_status" id="sh_status" value=0 type="radio" class="ace"
+                                                                                <php>if($data['ALi_Status']==0){echo "checked =true";}</php>
+                                                                                >
+
+                                                                                <span class="lbl"> RSA</span>
+
+                                                                            </label>
+
+                                                                            &emsp;
+
+                                                                            <label>
+
+                                                                                <input name="sh_status" id="sh_status" value=1 type="radio" class="ace"
+                                                                                <php>if($data['Status']==1){echo "checked =true";}</php>
+                                                                                >
+
+                                                                                <span class="lbl"> RSA2</span>
+
+                                                                            </label>
+
+                                                                        </div>
+
+                                                                    </div>
+
+                                                                </div>
+
+                                                            </div>
+
+                                                        </div>
                                                     </div>
                                                     <input type= "hidden" value = "<{$passtype}>" id ="passtype" name = "passtype">
 
@@ -236,6 +279,7 @@
                         sx_appid : $("#sx_appid" ).val( ),
                         sx_algy : $( "#sx_algy" ).val( ),
                         sx_shsy : $( "#sx_shsy" ).val( ),
+                        sh_status : $('input[name="sh_status"]:checked').val(),
                     },
                     async:false,
                     success : function ( data ){
