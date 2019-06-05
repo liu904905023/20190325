@@ -2307,7 +2307,6 @@
             url: "__APP__/Lian/GetWS_ContactLine",
             data: {"parent_id": $("#Area  option:selected").val(), "bankname": $("#Search_Bank_Branch").val()},
             success: function (data) {
-                if(data.Count!=0){
                     $("#Bank_Branch").html("<option value=''>选择开户支行</option>");
                     $("#Couplet_Number").val('');
                     $.each(data.data, function (i, item) {
@@ -2315,7 +2314,6 @@
                     });
                     $("#city_code").val(data.city_code);
 
-                }
 
 
 

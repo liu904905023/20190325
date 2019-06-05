@@ -90,9 +90,15 @@ class AopClient {
 		
 		$res = openssl_get_privatekey($this->rsaPrivateKeyFilePath);
 		//($res) or die('您使用的私钥格式错误，请检查RSA私钥配置'); 
-		if ("RSA2" == $signType) {
-			openssl_sign($data, $sign, $res, OPENSSL_ALGO_SHA256);
-		} else {
+        if ("RSA2" == $signType) {
+            $priKey= str_replace("-----END RSA PRIVATE KEY-----","",str_replace("-----BEGIN RSA PRIVATE KEY-----","",$this->rsaPrivateKeyFilePath));
+            $private_key = "-----BEGIN RSA PRIVATE KEY-----\n" .
+                ($priKey) .
+                "\n-----END RSA PRIVATE KEY-----";
+            $res = openssl_get_privatekey($private_key);
+
+            openssl_sign($data, $sign, $res, OPENSSL_ALGO_SHA256);
+        }else {
 			openssl_sign($data, $sign, $res);
 		}
 		openssl_free_key($res);
