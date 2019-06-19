@@ -93,6 +93,9 @@ class RefundController extends Base {
             $aes = new \Aes("oh4qw2er16w8alda", "yCJXKLv4GvySreYK");
             $data['ReqModel']['Refund_Amount'] = $aes->encrypt($refund_fee);
             $data['SystemUserSysNo'] = session('SysNO');
+        }else if($paytype=='116'||$paytype=='117'||$paytype=='118'){
+            $data['ReqModel']['txnAmt'] = $refund_fee;
+            $data['SystemUserSysNo'] = session('SysNO');
         }else{
             $data = array("refund_fee" => $refund_fee, "total_fee" => $total_fee, "SOSysNo" => $SOSysNo);
             if (session(flag) == 0) {
@@ -110,6 +113,9 @@ class RefundController extends Base {
 //            $data['Transaction_id'] = $tranno;
         }else if ($paytype=='114'||$paytype=='115') {
             $data['ReqModel']['TransactionId'] = $out_trade_no;
+        }else if ($paytype=='116'||$paytype=='117'||$paytype=='118'){
+            $data['ReqModel']['origOrderNo'] = $out_trade_no;
+
         }
 
 
@@ -125,6 +131,12 @@ class RefundController extends Base {
             $data['Remarks'] = 'WX';
         }else if ($paytype == '115') {
             $data['Remarks'] = 'AliPay';
+        }else if ($paytype == '116') {
+            $data['PayType'] = 'WX';
+        }else if ($paytype == '117') {
+            $data['PayType'] = 'AliPay';
+        }else if ($paytype == '118') {
+            $data['PayType'] = 'QUICKPASS';
         }
 
 
@@ -138,6 +150,8 @@ class RefundController extends Base {
             $url = C('SERVER_HOST') . "IPP3WSOrder/WSPayRefundUnion";
         }else if ($paytype=='114'||$paytype=='115') {
             $url = C('SERVER_HOST') . "IPP3LMFPay/Refund";
+        }else if ($paytype=='116'||$paytype=='117'||$paytype=='118') {
+            $url = C('SERVER_HOST') . "IPP3YLPay/Refund";
         }
 //        var_dump(json_encode($data));
 //        echo $url;

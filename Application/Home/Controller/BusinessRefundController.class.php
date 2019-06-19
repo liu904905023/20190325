@@ -129,6 +129,9 @@ class BusinessRefundController extends Base {
             $aes = new \Aes("oh4qw2er16w8alda", "yCJXKLv4GvySreYK");
             $data['ReqModel']['Refund_Amount'] = $aes->encrypt($Refund_Fee);
             $data['SystemUserSysNo']          = $OldSysNo;
+        } else if ($PayType == '116' || $PayType == '117' || $PayType == '118') {
+            $data['ReqModel']['txnAmt'] = $Refund_Fee;
+            $data['SystemUserSysNo']          = $OldSysNo;
         } else {
 
             $data              = array("refund_fee" => $Refund_Fee, "total_fee" => $Total_Fee, "SOSysNo" => $SOSysNo);
@@ -148,6 +151,12 @@ class BusinessRefundController extends Base {
             $data['Remarks'] = 'WX';
         } else if ($PayType == '115') {
             $data['Remarks'] = 'AliPay';
+        }else if ($PayType == '116') {
+            $data['PayType'] = 'WX';
+        }else if ($PayType == '117') {
+            $data['PayType'] = 'AliPay';
+        }else if ($PayType == '118') {
+            $data['PayType'] = 'QUICKPASS';
         }
         if ($PayType == 104 || $PayType == 105 || $PayType == 106 || $PayType == 107) {
             $data["Transaction_id"] = $Out_trade_no;
@@ -160,6 +169,9 @@ class BusinessRefundController extends Base {
 //            $data['Transaction_id'] = $tranno;
         } else if ($PayType == '114' || $PayType == '115') {
             $data['ReqModel']['TransactionId'] = $Out_trade_no;
+        }else if ($PayType=='116'||$PayType=='117'||$PayType=='118'){
+            $data['ReqModel']['origOrderNo'] = $Out_trade_no;
+
         }
 
 
@@ -175,6 +187,8 @@ class BusinessRefundController extends Base {
             $url = C('SERVER_HOST') . "IPP3WSOrder/WSPayRefundUnion";
         } else if ($PayType == '114' || $PayType == '115') {
             $url = C('SERVER_HOST') . "IPP3LMFPay/Refund";
+        }else if ($PayType=='116'||$PayType=='117'||$PayType=='118') {
+            $url = C('SERVER_HOST') . "IPP3YLPay/Refund";
         }
         if ($PayType == '114' || $PayType == '115') {
             $data = json_encode($data);

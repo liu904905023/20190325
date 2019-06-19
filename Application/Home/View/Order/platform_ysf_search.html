@@ -10,12 +10,12 @@
                 <i class="icon-home home-icon"></i>
                 <a href="__APP__">首页</a>
             </li>
-            <li>微信交易订单查询</li>
+            <li>云闪付平台订单查询</li>
         </ul>
     </div>
     <div class="page-content">
         <div class="page-header">
-            <h1>微信交易订单查询</h1>
+            <h1>云闪付平台订单查询</h1>
         </div>
         <div class="row">
             <div class="col-xs-12 sx-search">
@@ -43,7 +43,7 @@
                             <div class="col-sm-12 txrimar">
                                 <button type="button" id="search" class="btn btn-primary"><i class="icon-search bigger-110"></i> 查询</button>
                                 &emsp;
-                                <button type="button" id="addorder" class="btn btn-primary" <php>if($NowPassageWay==112||$NowPassageWay==116){echo 'disabled="disabled"';}</php>><i class="icon-search bigger-110"></i>补单</button>
+                                <button type="button" id="addorder" class="btn btn-primary" <php>if($NowPassageWay==116){echo 'disabled="disabled"';}</php>><i class="icon-search bigger-110"></i>补单</button>
                             </div>
                         </div>
                     </div>
@@ -138,7 +138,7 @@
         }
 
         $.ajax({
-            url: "__APP__/Order/platformsearch",
+            url: "__APP__/Order/platform_ysf_search",
             type: "post",
             async: false,
             data: {out_trade_no: out_trade_no, transactionid: transactionid},

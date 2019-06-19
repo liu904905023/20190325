@@ -150,6 +150,57 @@ class OrderController extends Base {
         $this->assign('NowPassageWay', $Retrun_GetPassageWay['NowPassageWay']);
         $this->display();
     }
+    public function platform_ysf_search() {
+        if(IS_POST){
+            $Retrun_GetPassageWay = $this->QueryNowPassageWay('QUICKPASS');
+            switch($Retrun_GetPassageWay['NowPassageWay']) {
+                case 116:
+                    if (I('out_trade_no')) {
+                    $Data['ReqModel']['orderNo'] = I('out_trade_no');
+                }
+                    if (I('transactionid')) {
+                        $Data['ReqModel']['orderNo'] = I('transactionid');
+                    }
+                    $Data['SystemUserSysNo'] = session('SysNO');
+                    $Data['PayType'] = 'QUICKPASS';
+                    $Url = C('SERVER_HOST') . 'IPP3YLPay/PayQuery';
+                    $List = http($Url, $Data);
+                    switch ($List['Data']['origRespCode']) {
+                        case '00':$Status = "支付成功";break;
+                        case '01':$Status = "转入退款";break;
+                        case '02':$Status = "未支付";break;
+                        case '03':$Status = "已关闭";break;
+                        case '04':$Status = "已撤销";break;
+                        case '05':$Status = ":用户支付中";break;
+                        case '06':$Status = ":支付失败";break;
+                    };
+                    $TotalFee = fee2yuan($List['Data']['settlementAmt']);
+                    $Out_trade_no =  $List['Data']['orderNo'];
+                    $Transaction_Id = $List['Data']['orderNo'] ;
+                    $Time_End_Temp = $List['Data']['payTime']?$List['Data']['payTime']:"";
+                    $Time_End = date("Y-m-d h:i:s",mktime(substr($Time_End_Temp, 8, 2),substr($Time_End_Temp, 10, 2),substr($Time_End_Temp, 12, 2),substr($Time_End_Temp, 4, 2) ,substr($Time_End_Temp, 6, 2),substr($Time_End_Temp, 0,4)));
+                    $Code = $List['Code'];
+                    break;
+
+            }
+            $Info['Code'] = $Code;
+            $Info['Trade_State'] = $Trade_State;
+            $Info['Out_Trade_No'] = $Out_trade_no;
+            $Info['Transaction_Id'] = $Transaction_Id;
+            $Info['Total_Fee'] = $TotalFee;
+            $Info['Time'] = $Time_End;
+            $Info['Status'] = $Status;
+            $Info['TypeName'] = CheckOrderType($Retrun_GetPassageWay['NowPassageType']);
+            $Info['Type'] = $Retrun_GetPassageWay['NowPassageWay'];
+            $this->ajaxReturn($Info);
+        }else{
+            R("Base/getMenu");
+            $Retrun_GetPassageWay = $this->QueryNowPassageWay('QUICKPASS');
+            $this->assign('NowPassageWay', $Retrun_GetPassageWay['NowPassageWay']);
+            $this->display();
+        }
+
+    }
     public function platformsearch(){
 
         $Data['Out_Trade_No'] = I('out_trade_no','','trim');
@@ -325,7 +376,33 @@ class OrderController extends Base {
                $Time_End = $List['Data']['PayData']['timeEnd']?$List['Data']['PayData']['timeEnd']:"";
                $Code = $List['Code'];
                break;
-
+           case 116:
+               if ($Post_Data['Out_Trade_No']) {
+                   $Data['ReqModel']['orderNo'] = $Post_Data['Out_Trade_No'];
+               }
+               if ($Post_Data['Transactionid']) {
+                   $Data['ReqModel']['orderNo'] = $Post_Data['Transactionid'];
+               }
+               $Data['SystemUserSysNo'] = session('SysNO');
+               $Data['PayType'] = 'WX';
+               $Url = C('SERVER_HOST') . 'IPP3YLPay/PayQuery';
+               $List = http($Url, $Data);
+               switch ($List['Data']['origRespCode']) {
+                   case '00':$Status = "支付成功";break;
+                   case '01':$Status = "转入退款";break;
+                   case '02':$Status = "未支付";break;
+                   case '03':$Status = "已关闭";break;
+                   case '04':$Status = "已撤销";break;
+                   case '05':$Status = ":用户支付中";break;
+                   case '06':$Status = ":支付失败";break;
+               };
+               $TotalFee = fee2yuan($List['Data']['settlementAmt']);
+               $Out_trade_no =  $List['Data']['orderNo'];
+               $Transaction_Id = $List['Data']['orderNo'] ;
+               $Time_End_Temp = $List['Data']['payTime']?$List['Data']['payTime']:"";
+               $Time_End = date("Y-m-d h:i:s",mktime(substr($Time_End_Temp, 8, 2),substr($Time_End_Temp, 10, 2),substr($Time_End_Temp, 12, 2),substr($Time_End_Temp, 4, 2) ,substr($Time_End_Temp, 6, 2),substr($Time_End_Temp, 0,4)));
+               $Code = $List['Code'];
+               break;
        }
         $Info['Code'] = $Code;
         $Info['Trade_State'] = $Trade_State;
@@ -507,6 +584,33 @@ class OrderController extends Base {
                 $Out_trade_no =  $List['Data']['PayData']['transactionId'];
                 $Transaction_Id =  $List['Data']['PayData']['outTradeNo'];
                 $Time_End = $List['Data']['PayData']['timeEnd']?$List['Data']['PayData']['timeEnd']:"";
+                $Code = $List['Code'];
+                break;
+            case 116:
+                if ($Post_Data['Out_Trade_No']) {
+                    $Data['ReqModel']['orderNo'] = $Post_Data['Out_Trade_No'];
+                }
+                if ($Post_Data['Transactionid']) {
+                    $Data['ReqModel']['orderNo'] = $Post_Data['Transactionid'];
+                }
+                $Data['SystemUserSysNo'] = session('SysNO');
+                $Data['PayType'] = 'AliPay';
+                $Url = C('SERVER_HOST') . 'IPP3YLPay/PayQuery';
+                $List = http($Url, $Data);
+                switch ($List['Data']['origRespCode']) {
+                    case '00':$Status = "支付成功";break;
+                    case '01':$Status = "转入退款";break;
+                    case '02':$Status = "未支付";break;
+                    case '03':$Status = "已关闭";break;
+                    case '04':$Status = "已撤销";break;
+                    case '05':$Status = ":用户支付中";break;
+                    case '06':$Status = ":支付失败";break;
+                };
+                $TotalFee = fee2yuan($List['Data']['settlementAmt']);
+                $Out_trade_no =  $List['Data']['orderNo'];
+                $Transaction_Id = $List['Data']['orderNo'] ;
+                $Time_End_Temp = $List['Data']['payTime']?$List['Data']['payTime']:"";
+                $Time_End = date("Y-m-d h:i:s",mktime(substr($Time_End_Temp, 8, 2),substr($Time_End_Temp, 10, 2),substr($Time_End_Temp, 12, 2),substr($Time_End_Temp, 4, 2) ,substr($Time_End_Temp, 6, 2),substr($Time_End_Temp, 0,4)));
                 $Code = $List['Code'];
                 break;
         }
