@@ -178,7 +178,11 @@ class OrderController extends Base {
                     $Out_trade_no =  $List['Data']['orderNo'];
                     $Transaction_Id = $List['Data']['orderNo'] ;
                     $Time_End_Temp = $List['Data']['payTime']?$List['Data']['payTime']:"";
-                    $Time_End = date("Y-m-d h:i:s",mktime(substr($Time_End_Temp, 8, 2),substr($Time_End_Temp, 10, 2),substr($Time_End_Temp, 12, 2),substr($Time_End_Temp, 4, 2) ,substr($Time_End_Temp, 6, 2),substr($Time_End_Temp, 0,4)));
+                    if ($Time_End_Temp) {
+                        $Time_End = date("Y-m-d h:i:s",mktime(substr($Time_End_Temp, 8, 2),substr($Time_End_Temp, 10, 2),substr($Time_End_Temp, 12, 2),substr($Time_End_Temp, 4, 2) ,substr($Time_End_Temp, 6, 2),substr($Time_End_Temp, 0,4)));
+                    }else{
+                        $Time_End = "";
+                    }
                     $Code = $List['Code'];
                     break;
 
@@ -400,7 +404,11 @@ class OrderController extends Base {
                $Out_trade_no =  $List['Data']['orderNo'];
                $Transaction_Id = $List['Data']['orderNo'] ;
                $Time_End_Temp = $List['Data']['payTime']?$List['Data']['payTime']:"";
-               $Time_End = date("Y-m-d h:i:s",mktime(substr($Time_End_Temp, 8, 2),substr($Time_End_Temp, 10, 2),substr($Time_End_Temp, 12, 2),substr($Time_End_Temp, 4, 2) ,substr($Time_End_Temp, 6, 2),substr($Time_End_Temp, 0,4)));
+               if ($Time_End_Temp) {
+                   $Time_End = date("Y-m-d h:i:s",mktime(substr($Time_End_Temp, 8, 2),substr($Time_End_Temp, 10, 2),substr($Time_End_Temp, 12, 2),substr($Time_End_Temp, 4, 2) ,substr($Time_End_Temp, 6, 2),substr($Time_End_Temp, 0,4)));
+               }else{
+                   $Time_End = "";
+               }
                $Code = $List['Code'];
                break;
        }
@@ -610,7 +618,11 @@ class OrderController extends Base {
                 $Out_trade_no =  $List['Data']['orderNo'];
                 $Transaction_Id = $List['Data']['orderNo'] ;
                 $Time_End_Temp = $List['Data']['payTime']?$List['Data']['payTime']:"";
-                $Time_End = date("Y-m-d h:i:s",mktime(substr($Time_End_Temp, 8, 2),substr($Time_End_Temp, 10, 2),substr($Time_End_Temp, 12, 2),substr($Time_End_Temp, 4, 2) ,substr($Time_End_Temp, 6, 2),substr($Time_End_Temp, 0,4)));
+                if ($Time_End_Temp) {
+                    $Time_End = date("Y-m-d h:i:s",mktime(substr($Time_End_Temp, 8, 2),substr($Time_End_Temp, 10, 2),substr($Time_End_Temp, 12, 2),substr($Time_End_Temp, 4, 2) ,substr($Time_End_Temp, 6, 2),substr($Time_End_Temp, 0,4)));
+                }else{
+                    $Time_End = "";
+                }
                 $Code = $List['Code'];
                 break;
         }
