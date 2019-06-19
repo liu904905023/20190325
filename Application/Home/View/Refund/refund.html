@@ -251,7 +251,7 @@
                     var renfundbutton = "<a  class=\"btn btn-info btn-xs  \">完成</a>";
                 }
 
-                tt += "<tr><td>"+v.SysNo+"</td><td>"+v.Out_trade_no+"</td><td>"+v.Pay_Type+"</td><td>人民币</td><td>"+v.Time_Start+"</td><td>"+v.Cash_fee+"</td><td>"+v.refund_fee+"</td><td>"+v.fee+"</td><td>"+v.refundCount+"</td><td> <input type=\'hidden\' value='"+v.Transaction_id+"'> <input type=\'hidden\' value='"+v.Pay_Types+"'>  <input type=\'hidden\' value='"+v.Total_fee+"'>"+renfundbutton+"</td></tr>";
+                tt += "<tr><td>"+v.SysNo+"</td><td>"+v.Out_trade_no+"</td><td>"+v.Pay_Type+"</td><td>人民币</td><td>"+v.Time_Start+"</td><td>"+v.Total_fee+"</td><td>"+v.refund_fee+"</td><td>"+v.fee+"</td><td>"+v.refundCount+"</td><td> <input type=\'hidden\' value='"+v.Transaction_id+"'> <input type=\'hidden\' value='"+v.Pay_Types+"'>  <input type=\'hidden\' value='"+v.Total_fee+"'>"+renfundbutton+"</td></tr>";
             });
             $('#TotalCount').html(data.totalCount);
             TotalPage = Math.ceil(data.totalCount/post_data.PageSize);
