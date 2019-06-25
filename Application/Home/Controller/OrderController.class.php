@@ -179,7 +179,7 @@ class OrderController extends Base {
                     $Transaction_Id = $List['Data']['orderNo'] ;
                     $Time_End_Temp = $List['Data']['payTime']?$List['Data']['payTime']:"";
                     if ($Time_End_Temp) {
-                        $Time_End = date("Y-m-d h:i:s",mktime(substr($Time_End_Temp, 8, 2),substr($Time_End_Temp, 10, 2),substr($Time_End_Temp, 12, 2),substr($Time_End_Temp, 4, 2) ,substr($Time_End_Temp, 6, 2),substr($Time_End_Temp, 0,4)));
+                        $Time_End = date("Y-m-d H:i:s",mktime(substr($Time_End_Temp, 8, 2),substr($Time_End_Temp, 10, 2),substr($Time_End_Temp, 12, 2),substr($Time_End_Temp, 4, 2) ,substr($Time_End_Temp, 6, 2),substr($Time_End_Temp, 0,4)));
                     }else{
                         $Time_End = "";
                     }
@@ -490,7 +490,7 @@ class OrderController extends Base {
                 $Out_trade_no=  $List['Data']['WxPayData']['transaction_id'];
                 $Transaction_Id=  $List['Data']['WxPayData']['out_trade_no'];
                 $Time_End_Temp =  $List['Data']['WxPayData']['time_end'];
-                $Time_End = date("Y-m-d h:i:s",mktime(substr($Time_End_Temp, 8, 2),substr($Time_End_Temp, 10, 2),substr($Time_End_Temp, 12, 2),substr($Time_End_Temp, 4, 2) ,substr($Time_End_Temp, 6, 2),substr($Time_End_Temp, 0,4)));//hour,minute,second,month,day,year
+                $Time_End = date("Y-m-d H:i:s",mktime(substr($Time_End_Temp, 8, 2),substr($Time_End_Temp, 10, 2),substr($Time_End_Temp, 12, 2),substr($Time_End_Temp, 4, 2) ,substr($Time_End_Temp, 6, 2),substr($Time_End_Temp, 0,4)));//hour,minute,second,month,day,year
 
                 break;
             case 106:
@@ -519,7 +519,7 @@ class OrderController extends Base {
                 $Out_trade_no=  $List['Data']['WxPayData']['transaction_id'];
                 $Transaction_Id=  $List['Data']['WxPayData']['out_trade_no'];
                 $Time_End_Temp =  $List['Data']['WxPayData']['time_end'];
-                $Time_End = date("Y-m-d h:i:s",mktime(substr($Time_End_Temp, 8, 2),substr($Time_End_Temp, 10, 2),substr($Time_End_Temp, 12, 2),substr($Time_End_Temp, 4, 2) ,substr($Time_End_Temp, 6, 2),substr($Time_End_Temp, 0,4)));//hour,minute,second,month,day,year
+                $Time_End = date("Y-m-d H:i:s",mktime(substr($Time_End_Temp, 8, 2),substr($Time_End_Temp, 10, 2),substr($Time_End_Temp, 12, 2),substr($Time_End_Temp, 4, 2) ,substr($Time_End_Temp, 6, 2),substr($Time_End_Temp, 0,4)));//hour,minute,second,month,day,year
                 break;
             case 108:
                 if($Post_Data['Transactionid']){
@@ -619,7 +619,7 @@ class OrderController extends Base {
                 $Transaction_Id = $List['Data']['orderNo'] ;
                 $Time_End_Temp = $List['Data']['payTime']?$List['Data']['payTime']:"";
                 if ($Time_End_Temp) {
-                    $Time_End = date("Y-m-d h:i:s",mktime(substr($Time_End_Temp, 8, 2),substr($Time_End_Temp, 10, 2),substr($Time_End_Temp, 12, 2),substr($Time_End_Temp, 4, 2) ,substr($Time_End_Temp, 6, 2),substr($Time_End_Temp, 0,4)));
+                    $Time_End = date("Y-m-d H:i:s",mktime(substr($Time_End_Temp, 8, 2),substr($Time_End_Temp, 10, 2),substr($Time_End_Temp, 12, 2),substr($Time_End_Temp, 4, 2) ,substr($Time_End_Temp, 6, 2),substr($Time_End_Temp, 0,4)));
                 }else{
                     $Time_End = "";
                 }
