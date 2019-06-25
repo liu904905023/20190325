@@ -174,7 +174,7 @@ class OrderController extends Base {
                         case '05':$Status = ":用户支付中";break;
                         case '06':$Status = ":支付失败";break;
                     };
-                    $TotalFee = fee2yuan($List['Data']['settlementAmt']);
+                    $TotalFee = fee2yuan($List['Data']['txnAmt']);
                     $Out_trade_no =  $List['Data']['orderNo'];
                     $Transaction_Id = $List['Data']['orderNo'] ;
                     $Time_End_Temp = $List['Data']['payTime']?$List['Data']['payTime']:"";
@@ -400,7 +400,7 @@ class OrderController extends Base {
                    case '05':$Status = ":用户支付中";break;
                    case '06':$Status = ":支付失败";break;
                };
-               $TotalFee = fee2yuan($List['Data']['settlementAmt']);
+               $TotalFee = fee2yuan($List['Data']['txnAmt']);
                $Out_trade_no =  $List['Data']['orderNo'];
                $Transaction_Id = $List['Data']['orderNo'] ;
                $Time_End_Temp = $List['Data']['payTime']?$List['Data']['payTime']:"";
@@ -614,7 +614,7 @@ class OrderController extends Base {
                     case '05':$Status = ":用户支付中";break;
                     case '06':$Status = ":支付失败";break;
                 };
-                $TotalFee = fee2yuan($List['Data']['settlementAmt']);
+                $TotalFee = fee2yuan($List['Data']['txnAmt']);
                 $Out_trade_no =  $List['Data']['orderNo'];
                 $Transaction_Id = $List['Data']['orderNo'] ;
                 $Time_End_Temp = $List['Data']['payTime']?$List['Data']['payTime']:"";
