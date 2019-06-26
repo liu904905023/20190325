@@ -701,6 +701,16 @@ class OrderController extends Base {
             $SupplyOrderData['Remarks']='AliPay';
             $SupplyOrderData['SystemUserSysNo']=session('SysNO');
             $SupplyOrderUrl = C('SERVER_HOST') . "IPP3LMFPay/LMFPaySupplyOrder";
+        }else if($Type==116){
+            if($Data['Transactionid']){
+                $SupplyOrderData['ReqModel']['orderNo']=$Data['Transactionid'];
+            }else{
+                $SupplyOrderData['ReqModel']['orderNo']=$Data['Out_Trade_No'];
+
+            }
+            $SupplyOrderData['PayType']='AliPay';
+            $SupplyOrderData['SystemUserSysNo']=session('SysNO');
+            $SupplyOrderUrl = C('SERVER_HOST') . "IPP3YLPay/PaySupplyOrder";
         }
 //        var_dump(json_encode($SupplyOrderData));
 //        echo $SupplyOrderUrl;
@@ -864,7 +874,43 @@ class OrderController extends Base {
 
         $this->ajaxReturn($Description);
     }
+    public function YsfSupplyOrder() {
+        $Data['Out_Trade_No'] = I('out_trade_no','','trim');
+        $Data['Transactionid'] = I('transactionid','','trim');
+        $YhQueryResult = $this->StaffQueryOrder($Data);//订单退款查询
+        $Retrun_GetPassageWay = $this->QueryNowPassageWay('QUICKPASS');
+        if (empty($YhQueryResult['SysNo'])) {
 
+                $ActStatus = $this->AddYsfOrder($Data,$Retrun_GetPassageWay['NowPassageWay']);
+                if ($ActStatus['Code']==0&&$ActStatus) {
+                    $Description = "补单成功!";
+                } else {
+                    $Description = "补单失败!";
+                }
+
+
+        } else {
+            $Description = "订单已存在,请勿重复补单!";
+        }
+
+
+        $this->ajaxReturn($Description);
+    }
+
+    private function AddYsfOrder($Data,$Type) {
+        if($Data['Transactionid']){
+            $SupplyOrderData['ReqModel']['orderNo']=$Data['Transactionid'];
+        }else{
+            $SupplyOrderData['ReqModel']['orderNo']=$Data['Out_Trade_No'];
+
+        }
+        $SupplyOrderData['PayType']='QUICKPASS';
+        $SupplyOrderData['SystemUserSysNo']=session('SysNO');
+        $SupplyOrderUrl = C('SERVER_HOST') . "IPP3YLPay/PaySupplyOrder";
+        $list = http($SupplyOrderUrl, $SupplyOrderData);
+
+        return $list;
+    }
     private function StaffQueryOrder($Data) {
 
         $data = array("Out_trade_no" => $Data['Out_Trade_No'],"Transaction_id"=>$Data['Transactionid'], "SystemUserSysNo" => session('SysNO')
@@ -905,6 +951,16 @@ class OrderController extends Base {
             $SupplyOrderData['Remarks']='WX';
             $SupplyOrderData['SystemUserSysNo']=session('SysNO');
             $SupplyOrderUrl = C('SERVER_HOST') . "IPP3LMFPay/LMFPaySupplyOrder";
+        }else if($Type==116){
+            if($Data['Transactionid']){
+                $SupplyOrderData['ReqModel']['orderNo']=$Data['Transactionid'];
+            }else{
+                $SupplyOrderData['ReqModel']['orderNo']=$Data['Out_Trade_No'];
+
+            }
+            $SupplyOrderData['PayType']='WX';
+            $SupplyOrderData['SystemUserSysNo']=session('SysNO');
+            $SupplyOrderUrl = C('SERVER_HOST') . "IPP3YLPay/PaySupplyOrder";
         }
 
         $list = http($SupplyOrderUrl, $SupplyOrderData);
