@@ -383,7 +383,15 @@
 	
 	function infoview(PageNumber,PageSize){
 			var Time_Start = $("#Time_Start").val();
+            if(Time_Start==""){
+                show_alert('开始时间不允许为空值！');
+                return false;
+            }
 			var Time_end = $("#Time_End").val();
+            if(Time_end==""){
+                show_alert('结束时间不允许为空值！');
+                return false;
+            }
 			var out_trade_no = $("#ordernum").val();
 			var transcationnum = $("#transcationnum").val();
 			var CustomerNames = $("#CustomerNames").val();

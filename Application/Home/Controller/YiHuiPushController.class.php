@@ -65,6 +65,12 @@ class YiHuiPushController extends Base {
                 $list  = http($url, $data);
 
                 $info['Type'] = 102;
+                foreach ($list['model'] as $row => $val) {
+                    $info['model'][$row]['Out_trade_no'] = $val['Out_trade_no'];
+                    $info['model'][$row]['Transaction_id'] = $val['Transaction_id'];
+                    $info['model'][$row]['Total_fee'] = fee2yuan($val['Total_fee']);
+                    $info['model'][$row]['Time_Start'] = str_replace('/','-',$val['CreateTime']);
+                }
             }
 
             if ($Ordertype==103) {
@@ -82,13 +88,14 @@ class YiHuiPushController extends Base {
                 $list  = http($url, $data);
 
                 $info['Type'] = 103;
+                foreach ($list['model'] as $row => $val) {
+                    $info['model'][$row]['Out_trade_no'] = $val['Out_trade_no'];
+                    $info['model'][$row]['Transaction_id'] = $val['Transaction_id'];
+                    $info['model'][$row]['Total_fee'] = $val['Total_fee'];
+                    $info['model'][$row]['Time_Start'] = str_replace('/','-',$val['CreateTime']);
+                }
             }
-            foreach ($list['model'] as $row => $val) {
-                $info['model'][$row]['Out_trade_no'] = $val['Out_trade_no'];
-                $info['model'][$row]['Transaction_id'] = $val['Transaction_id'];
-                $info['model'][$row]['Total_fee'] = fee2yuan($val['Total_fee']);
-                $info['model'][$row]['Time_Start'] = str_replace('/','-',$val['CreateTime']);
-            }
+
             $info['totalCount'] = $list['totalCount'];
         }
 
