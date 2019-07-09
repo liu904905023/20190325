@@ -226,10 +226,10 @@ class HandPushController extends Base {
             foreach ($list['model'] as $row => $val) {
                 $info['model'][$row]['Out_trade_no'] = $val['Out_trade_no'];
                 $info['model'][$row]['Transaction_id'] = $val['Transaction_id'];
-                $info['model'][$row]['Total_fee'] = ($val['Total_fee']);
+                $info['model'][$row]['Total_fee'] = fee2yuan($val['Total_fee']);
                 $info['model'][$row]['Cash_fee'] = ($val['Cash_fee']);
                 $info['model'][$row]['fee'] = ($val['fee']);
-                $info['model'][$row]['payChannel'] = ($val['payChannel']=='WXPAY'?'立码富-微信':'立码富-支付宝');
+                $info['model'][$row]['payChannel'] = ($val['payChannel']=='WXPAY'?'银联-微信':'银联-支付宝');
                 $info['model'][$row]['Time_Start'] = str_replace('/','-',$val['CreateTime']);
 
             }
