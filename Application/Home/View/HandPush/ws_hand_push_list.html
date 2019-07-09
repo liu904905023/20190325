@@ -44,7 +44,7 @@
                                         <div class="col-sm-8 input-group">
 
 
-                                            <input type="text" id="Time_Start" name="Time_Start" readonly="readonly" value="<php> echo date('Y-m-d',time()).' 00:00:00';</php>" onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss',minDate:'#F{$dp.$D(\'Time_End\',{M:-1})}',maxDate:'#F{$dp.$D(\'Time_End\')}',isShowClear:false})" class="form-control"/>
+                                            <input type="text" id="Time_Start" name="Time_Start" readonly="readonly" value="<php> echo date('Y-m-d',time()).' 00:00:00';</php>" onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss',minDate:'#F{$dp.$D(\'Time_End\',{M:-2})}',maxDate:'#F{$dp.$D(\'Time_End\')}',isShowClear:false})" class="form-control"/>
                                             <span class="input-group-addon">
 
                                                 <span class="glyphicon glyphicon-time"></span>
@@ -73,7 +73,7 @@
 
                                         <div class="col-sm-8 input-group">
 
-                                            <input type="text" id="Time_End" name="Time_End" readonly="readonly" value="<php> echo date('Y-m-d',time()).' 23:59:59';</php>" onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss',minDate:'#F{$dp.$D(\'Time_Start\')}',maxDate:'#F{$dp.$D(\'Time_Start\',{M:1})}',isShowClear:false})" class="form-control"/>
+                                            <input type="text" id="Time_End" name="Time_End" readonly="readonly" value="<php> echo date('Y-m-d',time()).' 23:59:59';</php>" onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss',minDate:'#F{$dp.$D(\'Time_Start\')}',maxDate:'#F{$dp.$D(\'Time_Start\',{M:2})}',isShowClear:false})" class="form-control"/>
                                             <span class="input-group-addon">
 
                                                 <span class="glyphicon glyphicon-time"></span>
