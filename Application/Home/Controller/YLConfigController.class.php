@@ -256,6 +256,142 @@ class YLConfigController extends Base {
     }
 
 
+    public function sh_yl_subappid_config(){
+        if( IS_POST ){
+            $flag = session('flag');//服务商商户0 或员工1
+            if (session('data')['CustomersType'] == 1 & $flag == 0) {//商户登录
+                $arr['ReqModel']['subAppid']= I('sx_appid', '', 'htmlspecialchars');
+                $arr['CustomerServiceSysNo']= session('data')['SysNo'];
+                $url = C('SERVER_HOST') . "IPP3YLPay/SubAppid";
+                $arrData = http($url, $arr);
+                $this->ajaxReturn( $arrData );
+                exit();
+            }else{
+                $arrData['Code'] = 1;
+                $arrData['Description'] ="该角色无权限,进行该操作!";
+                $this->ajaxReturn($arrData);
+                exit();
+            }
+        }else{
+            R("Base/getMenu");
+            $flag = session('flag');//服务商商户0 或员工1
+            if (session('data')['CustomersType'] == 1 & $flag == 0) {//商户登录
+                //商户通道查询
+                $post_passageway_data['CustomerSysNo'] = session( 'data' )['SysNo'];
+                $post_passageway_data['Type'] = 116;
+                $post_passageway_url = C('SERVER_HOST').'IPP3Customers/CustomerServicePassageWayList';//通道查询
+                $post_passageway_list = http($post_passageway_url, $post_passageway_data);
+                if($post_passageway_list){
+                    $url  = C( 'SERVER_HOST' ) . "IPP3Customers/YL_PassageConfigList";
+                    $arr  = array(
+                        'CustomerServiceSysNo' => session( 'data' )['SysNo'],
+                        'CustomerPassageWaysSysNo' => $post_passageway_list[0]['SysNo'],
+                    );
+                    $arrData  = http( $url, $arr );
+                    $this->assign( 'data', $arrData );
+                    $this->assign( 'CustomerPassageWaysSysNo', $post_passageway_list[0]['SysNo'] );
+
+                }else{
+                    $this->assign( 'passtype', -1 );
+                }
+            }else{//其他角色 禁止配置
+                $this->assign( 'passtype', -1 );
+            }
+        }
+        $this->display( 'sh_yl_subappid_config' );
+
+    }
+    public function sh_yl_subscribeappid_config(){
+        if( IS_POST ){
+            $flag = session('flag');//服务商商户0 或员工1
+            if (session('data')['CustomersType'] == 1 & $flag == 0) {//商户登录
+                $arr['ReqModel']['subAppid']= I('sx_appid', '', 'htmlspecialchars');
+                $arr['ReqModel']['subscribeAppid']= I('sx_sub_appid', '', 'htmlspecialchars');
+                $arr['CustomerServiceSysNo']= session('data')['SysNo'];
+                $url = C('SERVER_HOST') . "IPP3YLPay/SubscribeAppid";
+                $arrData = http($url, $arr);
+                $this->ajaxReturn( $arrData );
+                exit();
+            }else{
+                $arrData['Code'] = 1;
+                $arrData['Description'] ="该角色无权限,进行该操作!";
+                $this->ajaxReturn($arrData);
+                exit();
+            }
+        }else{
+            R("Base/getMenu");
+            $flag = session('flag');//服务商商户0 或员工1
+            if (session('data')['CustomersType'] == 1 & $flag == 0) {//商户登录
+                //商户通道查询
+                $post_passageway_data['CustomerSysNo'] = session( 'data' )['SysNo'];
+                $post_passageway_data['Type'] = 116;
+                $post_passageway_url = C('SERVER_HOST').'IPP3Customers/CustomerServicePassageWayList';//通道查询
+                $post_passageway_list = http($post_passageway_url, $post_passageway_data);
+                if($post_passageway_list){
+                    $url  = C( 'SERVER_HOST' ) . "IPP3Customers/YL_PassageConfigList_Ali";
+                    $arr  = array(
+                        'CustomerServiceSysNo' => session( 'data' )['SysNo'],
+                        'CustomerPassageWaysSysNo' => $post_passageway_list[0]['SysNo'],
+                    );
+                    $arrData  = http( $url, $arr );
+                    $this->assign( 'data', $arrData );
+                    $this->assign( 'CustomerPassageWaysSysNo', $post_passageway_list[0]['SysNo'] );
+
+                }else{
+                    $this->assign( 'passtype', -1 );
+                }
+            }else{//其他角色 禁止配置
+                $this->assign( 'passtype', -1 );
+            }
+        }
+        $this->display( 'sh_yl_subscribeappid_config' );
+
+    }
+    public function sh_yl_path_config(){
+        if( IS_POST ){
+            $flag = session('flag');//服务商商户0 或员工1
+            if (session('data')['CustomersType'] == 1 & $flag == 0) {//商户登录
+                $arr['ReqModel']['jsapiPath']= I('Wx_Path', '', 'htmlspecialchars');
+                $arr['CustomerServiceSysNo']= session('data')['SysNo'];
+                $url = C('SERVER_HOST') . "IPP3YLPay/JsapiPath";
+                $arrData = http($url, $arr);
+                $this->ajaxReturn( $arrData );
+                exit();
+            }else{
+                $arrData['Code'] = 1;
+                $arrData['Description'] ="该角色无权限,进行该操作!";
+                $this->ajaxReturn($arrData);
+                exit();
+            }
+        }else{
+            R("Base/getMenu");
+            $flag = session('flag');//服务商商户0 或员工1
+            if (session('data')['CustomersType'] == 1 & $flag == 0) {//商户登录
+                //商户通道查询
+                $post_passageway_data['CustomerSysNo'] = session( 'data' )['SysNo'];
+                $post_passageway_data['Type'] = 116;
+                $post_passageway_url = C('SERVER_HOST').'IPP3Customers/CustomerServicePassageWayList';//通道查询
+                $post_passageway_list = http($post_passageway_url, $post_passageway_data);
+                if($post_passageway_list){
+                    $url  = C( 'SERVER_HOST' ) . "IPP3Customers/YL_PassageConfigList_Ali";
+                    $arr  = array(
+                        'CustomerServiceSysNo' => session( 'data' )['SysNo'],
+                        'CustomerPassageWaysSysNo' => $post_passageway_list[0]['SysNo'],
+                    );
+                    $arrData  = http( $url, $arr );
+                    $this->assign( 'data', $arrData );
+                    $this->assign( 'CustomerPassageWaysSysNo', $post_passageway_list[0]['SysNo'] );
+
+                }else{
+                    $this->assign( 'passtype', -1 );
+                }
+            }else{//其他角色 禁止配置
+                $this->assign( 'passtype', -1 );
+            }
+        }
+        $this->display( 'sh_yl_path_config' );
+
+    }
 
 }
 
