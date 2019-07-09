@@ -175,7 +175,6 @@
 
                                                         <th>交易币种</th>
 
-                                                        <th>交易类型</th>
 
                                                         <th>推送时间</th>
                                                         <php>if(session('servicestoretype')==1&session('flag')==1){</php>
@@ -415,7 +414,7 @@
 
                         $.each(data.model, function(k, v) {
 
-                        tt += "<tr><td>"+v.Out_trade_no+"</td><td>"+v.Transaction_id+"</td><td>"+v.Total_fee+"</td><td>人民币</td><td>"+v.payChannel+"</td><td>"+v.Time_Start+"</td><td><a \"javascript:void(0);\" onclick=\"show('"+v.Out_trade_no+"','"+v.Transaction_id+"')\" class=\"btn btn-danger btn-xs refund\">手动推送</a></td></tr>";
+                        tt += "<tr><td>"+v.Out_trade_no+"</td><td>"+v.Transaction_id+"</td><td>"+v.Total_fee+"</td><td>人民币</td><td>"+v.Time_Start+"</td><td><a \"javascript:void(0);\" onclick=\"show('"+v.Out_trade_no+"','"+v.Transaction_id+"')\" class=\"btn btn-danger btn-xs refund\">手动推送</a></td></tr>";
                         });
 
                         $('#info').html(tt);
