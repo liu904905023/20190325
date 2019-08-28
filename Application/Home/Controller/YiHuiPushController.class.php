@@ -79,7 +79,7 @@ class YiHuiPushController extends Base {
                     "Time_Start" => $Time_Start,
                     "Time_End" => $Time_end,
                     "Out_trade_no" => $out_trade_no,
-                    "Pay_Type" => $Ordertype,
+                    "Pay_Type" => '支付宝',
                     "SystemUserSysNo" => session('SysNO'),
                     "Transaction_id" => $transcationnum
                 );
@@ -123,7 +123,7 @@ class YiHuiPushController extends Base {
             $data = array(
                 "Out_trade_no" => $Out_trade_no,
                 "Transaction_id" => $Transaction_id,
-                "Type" => $Ordertype,
+                "Type" => '支付宝',
                 "CustomerSysNo" => session('servicestoreno'),
                 "SystemUserSysNo" => session('SysNO')
             );
