@@ -540,6 +540,20 @@ function CheckOrderType($Pay_Type) {
     }
 
 }
+function CheckOrderChannel($channel){
+    switch ($channel) {
+        case 'COUPON':$Status = "支付宝红包";break;
+        case 'ALIPAYACCOUNT':$Status = "支付宝余额";break;
+        case 'POINT':$Status = "集分宝";break;
+        case 'DISCOUNT':$Status = "折扣券";break;
+        case 'PCARD':$Status = "预付卡";break;
+        case 'FINANCEACCOUNT':$Status = "余额宝";break;
+        case 'MDISCOUNT':$Status = "商户优惠券";break;
+        case 'MCOUPON':$Status = "商户红包";break;
+        case 'PCREDIT':$Status = "蚂蚁花呗";break;
+    }
+    return $Status;
+}
 
 function exportpost($url,$data){
 
