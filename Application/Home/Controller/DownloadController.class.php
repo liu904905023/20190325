@@ -158,15 +158,10 @@ class DownloadController extends Base {
 
                 $data['CustomersTopSysNo'] = session('SysNO');
 
-                if ($out_trade_no) {
 
                     $url = C('SERVER_HOST') . "POS/POSOrderList";
 
-                } else {
 
-                    $url = C('SERVER_HOST') . "IPP3Order/IPP3OrderListSP ";
-
-                }
 
             } else {
 
@@ -645,6 +640,7 @@ class DownloadController extends Base {
             $info[$row]['DisplayName'] = $val['DisplayName'];
 
             $info[$row]['Out_trade_no'] = "'" . $val['Out_trade_no'];       //订单号
+            $info[$row]['Out_refund_no'] = "'" . $val['Out_refund_no'];       //退款单号
 
             $info[$row]['CustomerName'] = $val['CustomerName'];
 
@@ -679,6 +675,11 @@ class DownloadController extends Base {
             if ($field == 'Out_trade_no') {
 
                 $headArr[] = '订单号';
+
+            }
+            if ($field == 'Out_refund_no') {
+
+                $headArr[] = '退款单号';
 
             }
             if ($field == 'CustomerName') {

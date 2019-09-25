@@ -4,6 +4,7 @@ namespace Home\Controller;
 
 //use Think\Controller;
 use Common\Compose\Base;
+use http\Url;
 
 class RefundSearchController extends Base{
    
@@ -11,6 +12,89 @@ class RefundSearchController extends Base{
   		R("Base/getMenu");
 		//var_dump(session(data));
         $this->display();
+    }
+
+    public function platformrefund() {
+        if (IS_POST) {
+            $Out_trade_no = I('Out_trade_no');
+            $Ordertype = I('Ordertype');
+            $data['SystemUserSysNo']=session(SysNO);
+            if($Ordertype==116){
+                $data['ReqModel']['orderNo'] = $Out_trade_no;
+                $data['PayType'] = 'WX';
+                $url =  C('SERVER_HOST').'IPP3YLPay/RefundQuery';//yl
+
+            } else if($Ordertype==117){
+                $data['ReqModel']['orderNo'] = $Out_trade_no;
+                $data['PayType'] = 'AliPay';
+                $url =  C('SERVER_HOST').'IPP3YLPay/RefundQuery';//yl
+
+            }else if($Ordertype==118){
+                $data['ReqModel']['orderNo'] = $Out_trade_no;
+                $data['PayType'] = 'QUICKPASS';
+                $url =  C('SERVER_HOST').'IPP3YLPay/RefundQuery';//yl
+
+            }else if($Ordertype==108){
+                $data['ReqModel']['OutRefundNo'] = $Out_trade_no;
+                $data['ChannelType'] = 'WX';
+                $url =  C('SERVER_HOST').'IPP3WSOrder/WSPayRefundQueryUnion';//ws
+
+            }else if($Ordertype==109){
+                $data['ReqModel']['OutRefundNo'] = $Out_trade_no;
+                $data['ChannelType'] = 'ALI';
+                $url =  C('SERVER_HOST').'IPP3WSOrder/WSPayRefundQueryUnion';//ws
+            }
+            $temp_list = http($url, $data);
+            if($temp_list['Code']==0){
+                if ($Ordertype == 108 || $Ordertype == 109) {
+                    $info['Code'] = 0;
+                    $info['RefundAmount'] = fee2yuan($temp_list['Data']['WxPayData']['m_values']['RefundAmount']);
+                    $info['TradeStatus'] = $temp_list['Data']['WxPayData']['m_values']['TradeStatus'];
+                    switch ( $temp_list['Data']['WxPayData']['m_values']['TradeStatus']) {
+                        case 'succ' :
+                            $status = '退款成功';
+                            break;
+                        case 'fail':
+                            $status = '退款失败';
+                            break;
+                        case 'refunding':
+                            $status = '退款中';
+                            break;
+                    }
+                    $info['TradeStatus'] =$status;
+                    $info['GmtRefundment'] = $temp_list['Data']['WxPayData']['m_values']['GmtRefundment'];
+                }
+                if ($Ordertype == 116||$Ordertype == 117||$Ordertype == 118) {
+                    $info['Code'] = 0;
+                    $info['RefundAmount'] = fee2yuan($temp_list['Data']['txnAmt']);
+                    $info['TradeStatus'] = $temp_list['Data']['origRespMsg'];
+                    $info['GmtRefundment'] = date('Y-m-d H:i:s', strtotime($temp_list['Data']['payTime']));;
+                }
+
+
+            }else{
+                $info['Code'] = 1;
+            }
+            $this->ajaxReturn($info);
+            exit();
+        }else{
+            R("Base/getMenu");
+            $post_passageway_data['CustomerSysNo'] =  session('servicestoreno');
+            $post_passageway_url = C('SERVER_HOST').'IPP3Customers/CustomerServicePassageWayList';
+            $post_passageway_list = http($post_passageway_url, $post_passageway_data);
+            if($post_passageway_list){
+                foreach ($post_passageway_list as $row=>$val){
+                    foreach(json_decode($_COOKIE['passageway_list'],true ) as $k=>$v) {
+                        if ($val['Type']==$v['T']) {
+                            $data[$val['Type']]=$v['N'];
+                        }
+                    }
+                }
+            }
+            //var_dump(session(data));
+            $this->assign('data', $data);
+            $this->display();
+        }
     }
 
   
@@ -80,6 +164,7 @@ class RefundSearchController extends Base{
 		$info['model'][$row]['LoginName']=$val['LoginName'];
 		$info['model'][$row]['DisplayName']=$val['DisplayName'];
 		$info['model'][$row]['Out_trade_no']=$val['Out_trade_no'];
+		$info['model'][$row]['Out_refund_no']=$val['Out_refund_no'];
 		$info['model'][$row]['Pay_Type']=CheckOrderType($val['Pay_Type']);
 		$info['model'][$row]['Time_Start']=$val['Time_Start'];
 		$info['model'][$row]['customername']=$val['CustomerName'];
