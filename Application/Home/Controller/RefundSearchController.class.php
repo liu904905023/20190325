@@ -16,6 +16,11 @@ class RefundSearchController extends Base{
 
     public function platformrefund() {
         if (IS_POST) {
+            if(session(flag)==1&&session(servicestoretype)==1){
+
+            }else{
+                exit;
+            }
             $Out_trade_no = I('Out_trade_no');
             $Ordertype = I('Ordertype');
             $data['SystemUserSysNo']=session(SysNO);
