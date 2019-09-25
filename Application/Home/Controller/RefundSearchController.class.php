@@ -73,7 +73,7 @@ class RefundSearchController extends Base{
                     $info['Code'] = 0;
                     $info['RefundAmount'] = fee2yuan($temp_list['Data']['txnAmt']);
                     $info['TradeStatus'] = $temp_list['Data']['origRespMsg'];
-                    $info['GmtRefundment'] = date('Y-m-d H:i:s', strtotime($temp_list['Data']['payTime']));;
+                    $info['GmtRefundment'] =$temp_list['Data']['payTime']? date('Y-m-d H:i:s', strtotime($temp_list['Data']['payTime'])):"";
                 }
 
 
