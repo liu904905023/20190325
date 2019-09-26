@@ -46,7 +46,7 @@ class RefundSearchController extends Base{
                 $url =  C('SERVER_HOST').'IPP3WSOrder/WSPayRefundQueryUnion';//ws
             }
             $temp_list = http($url, $data);
-            if($temp_list['Code']==0&&$temp_list['Code']){
+            if($temp_list['Code']==0&&$temp_list){
                 if ($Ordertype == 108 || $Ordertype == 109) {
                     $info['Code'] = 0;
                     $info['RefundAmount'] = fee2yuan($temp_list['Data']['WxPayData']['m_values']['RefundAmount']);
