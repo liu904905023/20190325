@@ -16,14 +16,10 @@ class RefundSearchController extends Base{
 
     public function platformrefund() {
         if (IS_POST) {
-            if(session(flag)==1&&session(servicestoretype)==1){
 
-            }else{
-                exit;
-            }
             $Out_trade_no = I('Out_trade_no');
             $Ordertype = I('Ordertype');
-            $data['SystemUserSysNo']=session(SysNO);
+            $data['SystemUserSysNo']=I('SystemUserSysNo');
             if($Ordertype==116){
                 $data['ReqModel']['orderNo'] = $Out_trade_no;
                 $data['PayType'] = 'WX';
@@ -165,7 +161,8 @@ class RefundSearchController extends Base{
 		$list = json_decode($list,true);
 //		var_dump($list);
 		foreach ($list['model'] as $row=>$val){
-//		$info['model'][$row]['SysNo']=$val['SysNo'];
+		$info['model'][$row]['SystemUserSysNo']=$val['SystemUserSysNo'];
+		$info['model'][$row]['Pay_Types']=$val['Pay_Type'];
 		$info['model'][$row]['LoginName']=$val['LoginName'];
 		$info['model'][$row]['DisplayName']=$val['DisplayName'];
 		$info['model'][$row]['Out_trade_no']=$val['Out_trade_no'];

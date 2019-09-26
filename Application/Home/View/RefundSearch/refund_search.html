@@ -204,6 +204,8 @@
 
                                                         <th>退款时间</th>
 
+                                                        <th>操作</th>
+
 
 
                                                     </tr>
@@ -414,7 +416,6 @@
 	<script>
 
 
-
 	var total,totalPage,pageStr; 
 	var SysNo= 0;
 	var PageSize = $("#PageSize").val();
@@ -464,15 +465,14 @@
 			}
 
 			Out_trade_no =v.Out_trade_no.toString();
-			tt += "<tr><td>"+v.LoginName+"</td><td>"+v.DisplayName+"</td><td>"+v.Out_trade_no+"</td><td>"+v.Out_refund_no+"</td><td>"+v.customername+"</td><td>"+v.Pay_Type+"</td><td>"+v.Total_fee+"</td><td>"+v.refund_fee+"</td><td>人民币</td><td>"+v.Time_Start+"</td><td>"+v.CreateTime+"</td></tr>";
+			tt += "<tr><td>"+v.LoginName+"</td><td>"+v.DisplayName+"</td><td>"+v.Out_trade_no+"</td><td>"+v.Out_refund_no+"</td><td>"+v.customername+"</td><td>"+v.Pay_Type+"</td><td>"+v.Total_fee+"</td><td>"+v.refund_fee+"</td><td>人民币</td><td>"+v.Time_Start+"</td><td>"+v.CreateTime+"</td><td><a href=\"#\" onclick=\"platformrefund("+v.SystemUserSysNo+","+v.Pay_Types+",'"+v.Out_refund_no+"')\"  class=\"btn btn-danger btn-xs refunds\">平台退款查询</a></td></tr>";
 			
 			});
 
 
 			$('#totalfee').html(data.totalfee);
 			$('#info').html(tt);
-			$('#TotalCount').html(data.totalCount);
-			TotalPage = Math.ceil(data.totalCount/PageSize);
+			$('#TotalCount').html(data.totalCount);			TotalPage = Math.ceil(data.totalCount/PageSize);
 			$('#TotalPage').html(TotalPage);
 			$('#PageNumber').html(PageNumber);
 			$('#NowPage').text(PageNumber+1);
@@ -500,7 +500,40 @@ function checkaction(v){
     searchform.submit(); 
 } 
 //end 
+    function platformrefund(a,b,c) {
 
+        $.ajax({
+
+            type : "post",
+
+            url : "__APP__/RefundSearch/platformrefund",
+
+            data : {
+
+                SystemUserSysNo:a,Ordertype:b,Out_trade_no:c
+
+            },
+
+            async:false,
+
+            success : function ( data ){
+                if (data.Code==0){
+                    show_alert("退款时间："+data.GmtRefundment+"<br/>退款金额："+data.RefundAmount+"<br/>退款状态："+data.TradeStatus)
+                } else {
+                    show_alert('查询失败');
+                }
+
+
+            },
+
+            error : function (){
+
+                show_alert( '请检查网络!' );
+
+            }
+
+        })
+    }
 
 	</script>
 	<script>
