@@ -17,34 +17,45 @@ class RefundSearchController extends Base{
     public function platformrefund() {
         if (IS_POST) {
 
+            $out_refund_no = I('Out_refund_no');
             $Out_trade_no = I('Out_trade_no');
             $Ordertype = I('Ordertype');
             $data['SystemUserSysNo']=I('SystemUserSysNo');
             if ($Ordertype == 102) {
-                $data['out_refund_no'] = $Out_trade_no;
+                $data['out_refund_no'] = $out_refund_no;
                 $url = C('SERVER_HOST') . "Payment/Payments/RefundWxQuery";
+            }else if($Ordertype==103){
+                $data['out_request_no'] = $out_refund_no;
+                $data['out_trade_no'] = $Out_trade_no;
+                $url =  C('SERVER_HOST').'IPP3AliPay/AliPayRefundQuery';//yl
+
+            }else if($Ordertype==114){
+                $data['ReqModel']['OutRefundNo'] = $out_refund_no;
+                $data['Remarks'] = 'WX';
+                $url =  C('SERVER_HOST').'IPP3LMFPay/RefundQuery';//yl
+
             }else if($Ordertype==116){
-                $data['ReqModel']['orderNo'] = $Out_trade_no;
+                $data['ReqModel']['orderNo'] = $out_refund_no;
                 $data['PayType'] = 'WX';
                 $url =  C('SERVER_HOST').'IPP3YLPay/RefundQuery';//yl
 
             } else if($Ordertype==117){
-                $data['ReqModel']['orderNo'] = $Out_trade_no;
+                $data['ReqModel']['orderNo'] = $out_refund_no;
                 $data['PayType'] = 'AliPay';
                 $url =  C('SERVER_HOST').'IPP3YLPay/RefundQuery';//yl
 
             }else if($Ordertype==118){
-                $data['ReqModel']['orderNo'] = $Out_trade_no;
+                $data['ReqModel']['orderNo'] = $out_refund_no;
                 $data['PayType'] = 'QUICKPASS';
                 $url =  C('SERVER_HOST').'IPP3YLPay/RefundQuery';//yl
 
             }else if($Ordertype==108){
-                $data['ReqModel']['OutRefundNo'] = $Out_trade_no;
+                $data['ReqModel']['OutRefundNo'] = $out_refund_no;
                 $data['ChannelType'] = 'WX';
                 $url =  C('SERVER_HOST').'IPP3WSOrder/WSPayRefundQueryUnion';//ws
 
             }else if($Ordertype==109){
-                $data['ReqModel']['OutRefundNo'] = $Out_trade_no;
+                $data['ReqModel']['OutRefundNo'] = $out_refund_no;
                 $data['ChannelType'] = 'ALI';
                 $url =  C('SERVER_HOST').'IPP3WSOrder/WSPayRefundQueryUnion';//ws
             }
@@ -52,7 +63,7 @@ class RefundSearchController extends Base{
             if($temp_list['Code']==0&&$temp_list){
                 if ($Ordertype == 108 || $Ordertype == 109) {
                     $info['Code'] = 0;
-                    $info['RefundAmount'] = fee2yuan($temp_list['Data']['WxPayData']['m_values']['refund_fee_0']);
+                    $info['RefundAmount'] = fee2yuan($temp_list['Data']['WxPayData']['m_values']['RefundAmount']);
                     $info['TradeStatus'] = $temp_list['Data']['WxPayData']['m_values']['TradeStatus'];
                     switch ( $temp_list['Data']['WxPayData']['m_values']['TradeStatus']) {
                         case 'succ' :
@@ -92,6 +103,36 @@ class RefundSearchController extends Base{
                     $info['TradeStatus'] =$status;
                     $info['RefundAmount'] = fee2yuan($temp_list['Data']['WxPayData']['m_values']['refund_fee_0']);
                     $info['GmtRefundment'] = $temp_list['Data']['WxPayData']['m_values']['refund_success_time_0'];
+                } elseif ($Ordertype == 103) {
+                    $info['Code'] = 0;
+                    $temp_list_1 =json_decode( $temp_list['Data']['WxPayData'],true);
+                    switch (  $temp_list_1['alipay_trade_fastpay_refund_query_response']['msg']) {
+                        case 'Success' :
+                            $status = '退款成功';
+                            break;
+                        default:
+                            $status = '退款异常';
+                            break;
+                    }
+                    $info['TradeStatus'] =$status;
+                    $info['RefundAmount'] =  $temp_list_1['alipay_trade_fastpay_refund_query_response']['refund_amount'];
+                    $info['GmtRefundment'] ="";
+                } elseif ($Ordertype == 114) {
+                    $info['Code'] = 0;
+                    switch (  $temp_list['Data']['PayData']['orderStatus1']) {
+                        case 'REFUNDING' :
+                            $status = '退款处理中';
+                            break;
+                        case 'REFUNDED':
+                            $status = '退款成功';
+                            break;
+                        case 'REFUNDFAIL':
+                            $status = '退款失败';
+                            break;
+                    }
+                    $info['TradeStatus'] =$status;
+                    $info['RefundAmount'] = ($temp_list['Data']['PayData']['refundAmount1']);
+                    $info['GmtRefundment'] = $temp_list['Data']['PayData']['endTime1'];
                 }
 
 
