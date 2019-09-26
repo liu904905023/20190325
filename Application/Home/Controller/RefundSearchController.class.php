@@ -20,7 +20,10 @@ class RefundSearchController extends Base{
             $Out_trade_no = I('Out_trade_no');
             $Ordertype = I('Ordertype');
             $data['SystemUserSysNo']=I('SystemUserSysNo');
-            if($Ordertype==116){
+            if ($Ordertype == 102) {
+                $data['out_refund_no'] = $Out_trade_no;
+                $url = C('SERVER_HOST') . "Payment/Payments/RefundWxQuery";
+            }else if($Ordertype==116){
                 $data['ReqModel']['orderNo'] = $Out_trade_no;
                 $data['PayType'] = 'WX';
                 $url =  C('SERVER_HOST').'IPP3YLPay/RefundQuery';//yl
@@ -49,7 +52,7 @@ class RefundSearchController extends Base{
             if($temp_list['Code']==0&&$temp_list){
                 if ($Ordertype == 108 || $Ordertype == 109) {
                     $info['Code'] = 0;
-                    $info['RefundAmount'] = fee2yuan($temp_list['Data']['WxPayData']['m_values']['RefundAmount']);
+                    $info['RefundAmount'] = fee2yuan($temp_list['Data']['WxPayData']['m_values']['refund_fee_0']);
                     $info['TradeStatus'] = $temp_list['Data']['WxPayData']['m_values']['TradeStatus'];
                     switch ( $temp_list['Data']['WxPayData']['m_values']['TradeStatus']) {
                         case 'succ' :
@@ -70,6 +73,25 @@ class RefundSearchController extends Base{
                     $info['RefundAmount'] = fee2yuan($temp_list['Data']['txnAmt']);
                     $info['TradeStatus'] = $temp_list['Data']['origRespMsg'];
                     $info['GmtRefundment'] =$temp_list['Data']['payTime']? date('Y-m-d H:i:s', strtotime($temp_list['Data']['payTime'])):"";
+                } elseif ($Ordertype == 102) {
+                    $info['Code'] = 0;
+                    switch (  $temp_list['Data']['WxPayData']['m_values']['refund_status_0']) {
+                        case 'SUCCESS' :
+                            $status = '退款成功';
+                            break;
+                        case 'REFUNDCLOSE':
+                            $status = '退款关闭';
+                            break;
+                        case 'PROCESSING':
+                            $status = '退款处理中';
+                            break;
+                        case 'CHANGE':
+                            $status = '退款异常';
+                            break;
+                    }
+                    $info['TradeStatus'] =$status;
+                    $info['RefundAmount'] = fee2yuan($temp_list['Data']['WxPayData']['m_values']['refund_fee_0']);
+                    $info['GmtRefundment'] = $temp_list['Data']['WxPayData']['m_values']['refund_success_time_0'];
                 }
 
 
