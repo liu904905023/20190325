@@ -59,7 +59,7 @@ class RefundSearchController extends Base{
                             $status = '退款失败';
                             break;
                         case 'refunding':
-                            $status = '退款中';
+                            $status = '退款处理中';
                             break;
                     }
                     $info['TradeStatus'] =$status;
