@@ -518,7 +518,7 @@ function checkaction(v){
 
             success : function ( data ){
                 if (data.Code==0){
-                    show_alert("退款时间："+data.GmtRefundment+"<br/>退款金额："+data.RefundAmount+"<br/>退款状态："+data.TradeStatus)
+                    show_alert("到账时间："+data.GmtRefundment+"<br/>到账金额："+data.RefundAmount+"<br/>到账状态："+data.TradeStatus)
                 } else {
                     show_alert('查询失败');
                 }
