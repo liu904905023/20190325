@@ -132,7 +132,8 @@ class RefundSearchController extends Base{
                     }
                     $info['TradeStatus'] =$status;
                     $info['RefundAmount'] = ($temp_list['Data']['PayData']['refundAmount1']);
-                    $info['GmtRefundment'] = $temp_list['Data']['PayData']['endTime1'];
+//                    $info['GmtRefundment'] = $temp_list['Data']['PayData']['endTime1'];
+                    $info['GmtRefundment'] = "";
                 }
 
 
