@@ -228,9 +228,9 @@
 
                                     <th>交易类型</th>
 
-                                    <th>交易金额</th>
 
-                                    <th>折后金额</th>
+                                    <th>资金类型</th>
+                                    <th>金额</th>
 
                                     <th>交易币种</th>
 
@@ -241,10 +241,9 @@
                                 <tr id = "total_name"  style = "display:none">
 
 
+                                    <th>资金类型</th>
 
                                     <th>交易金额</th>
-
-                                    <th>渠道类型</th>
 
                                     <th>交易笔数</th>
 
@@ -485,17 +484,17 @@
                         if(data.ButtonType==0){
                         <php>if(session( 'data')['CustomersType']==1){</php>
 
-                                tt += "<tr><td>"+v.loginname+"</td><td>"+v.displayname+"</td><td>"+v.Out_trade_no+"</td><td>"+v.Pay_Type+"</td><td>"+v.Total_fee+"</td><td>"+v.channel+"</td><td>人民币</td><td>"+v.Time_Start+"</td></tr>";
+                                tt += "<tr><td>"+v.loginname+"</td><td>"+v.displayname+"</td><td>"+v.Out_trade_no+"</td><td>"+v.Pay_Type+"</td><td>"+v.channel+"</td><td>"+v.Total_fee+"</td><td>人民币</td><td>"+v.Time_Start+"</td></tr>";
 
                             <php>}else{</php>
 
-                                tt += "<tr><td>"+v.Out_trade_no+"</td><td>"+v.Pay_Type+"</td><td>"+v.Total_fee+"</td><td>"+v.channel+"</td><td>人民币</td><td>"+v.Time_Start+"</td></tr>";
+                                tt += "<tr><td>"+v.Out_trade_no+"</td><td>"+v.Pay_Type+"</td><td>"+v.channel+"</td><td>"+v.Total_fee+"</td><td>人民币</td><td>"+v.Time_Start+"</td></tr>";
 
                             <php>}</php>
 
 
                         }else if(data.ButtonType==1){
-                                tt += "<tr><td>"+v.total_fee+"</td><td>"+v.channel+"</td><td>"+v.tradecount+"</td></tr>";
+                                tt += "<tr><td>"+v.channel+"</td><td>"+v.total_fee+"</td><td>"+v.tradecount+"</td></tr>";
                         }
                     });
                     $('#info').html(tt);
