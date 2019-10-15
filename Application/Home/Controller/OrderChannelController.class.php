@@ -12,16 +12,16 @@ class OrderChannelController extends Base {
     }
 
     public function orderchannellist(){
-        $Time_Start = $_POST['Time_Start'];
-        $Time_end = $_POST['Time_End'];
+        $Time_Start = I('Time_Start');
+        $Time_end = I('Time_End');
         $out_trade_no = I('out_trade_no', "");
         $channel = I('channel', "");
         $SystemUserSysNo = I('SystemUserSysNo', "");
-        $PageNumber = $_POST['PageNumber'];
-        $PageSize = $_POST['PageSize'];
-        $CustomerNames = $_POST['CustomerNames'];
-        $Ordertype = $_POST['Ordertype'];
-        $ButtonType = $_POST['ButtonType'];
+        $PageNumber = I('PageNumber');
+        $PageSize = I('PageSize');
+        $CustomerNames = I('CustomerNames');
+        $Ordertype = 103;
+        $ButtonType = I('ButtonType');
         $data = array("Time_Start" => $Time_Start, "Time_end" => $Time_end, "Out_trade_no" => $out_trade_no, "Pay_Type" => $Ordertype,
             "FundChannel"=>$channel
         );
@@ -33,9 +33,14 @@ class OrderChannelController extends Base {
 
 
         if (session('data')['CustomersType'] == 1 & $flag == 0) {//商户登录
-            $data['LoginName'] = $_POST['Customer'];
-            $data['DisplayName'] = $_POST['CustomerNames'];
+            $data['LoginName'] = I('Customer');
+            $data['DisplayName'] = I('CustomerNames');
             $data['CustomerSysNo'] = session('SysNO');
+
+        } if (session('data')['CustomersType'] == 0 & $flag == 0) {//商户登录
+            $data['Customer'] = I('Customer');
+            $data['CustomerName'] = I('CustomerNames');
+            $data['CustomersTopSysNo'] = session('SysNO');
 
         }
 
@@ -55,12 +60,14 @@ class OrderChannelController extends Base {
             }
         }
         if ($ButtonType == 0) {
-          if (session('data')['CustomersType'] == 1 & $flag == 0) {//商户
+            if (session('data')['CustomersType'] == 1 & $flag == 0) {//商户
 
                     $url = C('SERVER_HOST') . "IPP3Order/So_Master_Extend_FundChannelList";
 
             }else if ($type == 1 & $flag == 1) {//商户员工
                 $url = C('SERVER_HOST') . "IPP3Order/So_Master_Extend_FundChannelList";
+            }else if (session('data')['CustomersType'] == 0 && $flag ==0){
+                $url = C('SERVER_HOST') . "IPP3Order/So_Master_Extend_FundChannelListCustomer";
             }
 
 
@@ -77,6 +84,9 @@ class OrderChannelController extends Base {
                 $url = C('SERVER_HOST') . "IPP3Order/So_Master_Extend_FundChannelListGroupShop";
 
             }
+            if (session('data')['CustomersType'] == 0 && $flag ==0){
+                $url = C('SERVER_HOST') . "IPP3Order/So_Master_Extend_FundChannelListGroupCustomer";
+            }
         }
 
 
@@ -88,31 +98,67 @@ class OrderChannelController extends Base {
         $list = http($url,$data);
 
         if ($ButtonType == 0) {
-            foreach ($list['Data']['model'] as $row => $val) {
-                $info['model'][$row]['loginname'] = $val['LoginName'];
-                $info['model'][$row]['displayname'] = $val['DisplayName'];
-                $info['model'][$row]['Out_trade_no'] = $val['Out_trade_no'];
-                $info['model'][$row]['Pay_Type'] =CheckOrderType($val['Pay_Type']);
-                $info['model'][$row]['Total_fee'] = fee2yuan($val['FundChannelFee']);
-                $info['model'][$row]['Time_Start'] = $val['Time_Start'];
-                $info['model'][$row]['channel'] =CheckOrderChannel($val['FundChannel']) ;
+            if (session('data')['CustomersType'] == 0 && $flag ==0){
+                foreach ($list['Data']['model'] as $row => $val) {
+                    $info['model'][$row]['customer'] = $val['Customer'];
+                    $info['model'][$row]['customername'] = $val['CustomerName'];
+                    $info['model'][$row]['Out_trade_no'] = $val['Out_trade_no'];
+                    $info['model'][$row]['Pay_Type'] =CheckOrderType($val['Pay_Type']);
+                    $info['model'][$row]['Total_fee'] = fee2yuan($val['FundChannelFee']);
+                    $info['model'][$row]['Time_Start'] = $val['Time_Start'];
+                    $info['model'][$row]['channel'] =CheckOrderChannel($val['FundChannel']) ;
+                }
+                $info['totalCount'] = $list['Data']['totalCount'];
+                $info['ButtonType'] = $ButtonType;
+                if (session(flag) == 1) {
+                    $list['flag'] = session('servicestoretype');
+                }
+            }else{
+                foreach ($list['Data']['model'] as $row => $val) {
+                    $info['model'][$row]['loginname'] = $val['LoginName'];
+                    $info['model'][$row]['displayname'] = $val['DisplayName'];
+                    $info['model'][$row]['Out_trade_no'] = $val['Out_trade_no'];
+                    $info['model'][$row]['Pay_Type'] =CheckOrderType($val['Pay_Type']);
+                    $info['model'][$row]['Total_fee'] = fee2yuan($val['FundChannelFee']);
+                    $info['model'][$row]['Time_Start'] = $val['Time_Start'];
+                    $info['model'][$row]['channel'] =CheckOrderChannel($val['FundChannel']) ;
+                }
+                $info['totalCount'] = $list['Data']['totalCount'];
+                $info['ButtonType'] = $ButtonType;
+                if (session(flag) == 1) {
+                    $list['flag'] = session('servicestoretype');
+                }
             }
-            $info['totalCount'] = $list['Data']['totalCount'];
-            $info['ButtonType'] = $ButtonType;
-            if (session(flag) == 1) {
-                $list['flag'] = session('servicestoretype');
-            }
+
+
+
         } else if ($ButtonType == 1) {
-            foreach ($list['Data'] as $row => $val) {
-                $info['model'][$row]['total_fee'] = fee2yuan($val['FundChannelFee']);
-                $info['model'][$row]['channel'] =CheckOrderChannel($val['FundChannel']) ;
-                $info['model'][$row]['tradecount'] = $val['Tradecount'];
+            if (session('data')['CustomersType'] == 0 && $flag ==0){
+                foreach ($list['Data']['model'] as $row => $val) {
+                    $info['model'][$row]['total_fee'] = fee2yuan($val['FundChannelFee']);
+                    $info['model'][$row]['channel'] =CheckOrderChannel($val['FundChannel']) ;
+                    $info['model'][$row]['tradecount'] = $val['Tradecount'];
+                    $info['model'][$row]['customer'] = $val['Customer'];
+                    $info['model'][$row]['customername'] = $val['CustomerName'];
+                }
+                $info['totalCount'] =1;
+                $info['ButtonType'] = $ButtonType;
+                if (session(flag) == 1) {
+                    $list['flag'] = session('servicestoretype');
+                }
+            }else{
+                foreach ($list['Data'] as $row => $val) {
+                    $info['model'][$row]['total_fee'] = fee2yuan($val['FundChannelFee']);
+                    $info['model'][$row]['channel'] =CheckOrderChannel($val['FundChannel']) ;
+                    $info['model'][$row]['tradecount'] = $val['Tradecount'];
+                }
+                $info['totalCount'] =1;
+                $info['ButtonType'] = $ButtonType;
+                if (session(flag) == 1) {
+                    $list['flag'] = session('servicestoretype');
+                }
             }
-            $info['totalCount'] =1;
-            $info['ButtonType'] = $ButtonType;
-            if (session(flag) == 1) {
-                $list['flag'] = session('servicestoretype');
-            }
+
 
         }
         $this->ajaxReturn($info);
