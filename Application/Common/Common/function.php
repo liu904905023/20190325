@@ -554,6 +554,22 @@ function CheckOrderChannel($channel){
     }
     return $Status;
 }
+function CheckCCBCOrderType($channel){
+    switch ($channel) {
+        case '00':$Status = "聚合支付";break;
+        case '01':$Status = "支付宝";break;
+        case '02':$Status = "微信支付";break;
+        case '03':$Status = "云闪付";break;
+        case '04':$Status = "龙支付";break;
+        case '05':$Status = "和包支付";break;
+        case '06':$Status = "卫宁支付";break;
+        case '07':$Status = "海鹚支付";break;
+        case '08':$Status = "金蝶支付";break;
+        case '09':$Status = "保留";break;
+        case '99':$Status = "银行卡支付";break;
+    }
+    return $Status;
+}
 
 function exportpost($url,$data){
 
